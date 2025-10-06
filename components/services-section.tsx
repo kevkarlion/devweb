@@ -8,27 +8,27 @@ import { Palette, Code2, LineChart, Sparkles } from "lucide-react"
 const services = [
   {
     icon: Palette,
-    title: "Brand & Design",
+    title: "Diseño de Marca & Experiencia",
     description:
-      "Creating distinctive visual identities and user experiences that resonate with your audience and elevate your brand.",
+      "Creamos identidades visuales únicas y experiencias digitales que conectan con tus clientes y fortalecen tu marca en línea.",
   },
   {
     icon: Code2,
-    title: "Web Development",
+    title: "Desarrollo Web Profesional",
     description:
-      "Building fast, scalable, and maintainable web applications using cutting-edge technologies and best practices.",
+      "Desarrollamos sitios web rápidos, escalables y optimizados, utilizando las mejores tecnologías para ofrecer soluciones que realmente funcionan.",
   },
   {
     icon: LineChart,
-    title: "Digital Strategy",
+    title: "Estrategia Digital",
     description:
-      "Developing comprehensive digital strategies that align with your business goals and drive measurable growth.",
+      "Diseñamos estrategias digitales enfocadas en tus objetivos de negocio, ayudándote a atraer clientes, aumentar conversiones y crecer online.",
   },
   {
     icon: Sparkles,
-    title: "Creative Direction",
+    title: "Dirección Creativa",
     description:
-      "Guiding the creative vision of your project from concept to execution with meticulous attention to detail.",
+      "Guiamos la visión creativa de tu proyecto desde la idea hasta la ejecución, asegurando que cada detalle refuerce la identidad de tu marca y genere impacto.",
   },
 ]
 
@@ -37,7 +37,7 @@ export function ServicesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-[#0A0A0A]">
+    <section ref={ref} className="py-32 px-6 bg-[#0A0A0A]" id="servicios">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           className="font-[family-name:var(--font-inter-semibold)] text-[clamp(2rem,5vw,4rem)] text-[#E9E9E9] mb-20 text-center"
@@ -45,7 +45,7 @@ export function ServicesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          What We Do
+          Nuestros Servicios
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

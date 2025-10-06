@@ -3,83 +3,78 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import { Users, LayoutDashboard, PenTool, Code2, Activity, Rocket } from "lucide-react"
 
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    category: "Web Development",
-    image: "/modern-ecommerce-dark.png",
-  },
-  {
-    title: "Brand Identity",
-    category: "Design",
-    image: "/luxury-brand-identity-minimal.jpg",
-  },
-  {
-    title: "SaaS Dashboard",
-    category: "UI/UX Design",
-    image: "/modern-dashboard-interface-dark.jpg",
-  },
-  {
-    title: "Mobile App",
-    category: "App Development",
-    image: "/sleek-mobile-app-interface.png",
-  },
-  {
-    title: "Corporate Website",
-    category: "Web Design",
-    image: "/corporate-website-elegant.jpg",
-  },
-  {
-    title: "Digital Campaign",
-    category: "Strategy",
-    image: "/digital-marketing-campaign-creative.jpg",
-  },
+const processSteps = [
+  { title: "Reunión Inicial", description: "Entendemos tu marca, objetivos y necesidades. Escuchamos tu visión y definimos la dirección estratégica.", icon: Users },
+  { title: "Planificación & Estrategia", description: "Creamos un plan de acción detallado, definiendo funcionalidades y estructura, alineando todo a tus objetivos de negocio.", icon: Activity },
+  { title: "Diseño UI/UX", description: "Diseñamos interfaces y experiencias atractivas, cuidando cada detalle para que tu proyecto conecte con tus clientes.", icon: PenTool },
+  { title: "Desarrollo Web", description: "Convertimos los diseños en un sitio web funcional, rápido y optimizado, usando tecnologías modernas y escalables.", icon: Code2 },
+  { title: "Pruebas & Optimización", description: "Revisamos cada detalle: velocidad, usabilidad y compatibilidad, asegurando una experiencia digital impecable.", icon: LayoutDashboard },
+  { title: "Entrega & Lanzamiento", description: "Lanzamos tu proyecto online, garantizando que todo funcione perfectamente y proporcionándote soporte para crecer online.", icon: Rocket },
 ]
 
-export function PortfolioSection() {
+export function ProcessTimeline() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section ref={ref} className="py-32 px-6 bg-[#0A0A0A]">
+      <div className="max-w-4xl mx-auto relative">
         <motion.h2
           className="font-[family-name:var(--font-inter-semibold)] text-[clamp(2rem,5vw,4rem)] text-[#E9E9E9] mb-20 text-center"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          Selected Work
+          Nuestro Proceso de Trabajo
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-[#0A0A0A] cursor-pointer"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <img
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
+        {/* Línea vertical del timeline */}
+        <motion.div
+          className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-[#E9E9E9]/30 to-transparent hidden md:block"
+          initial={{ scaleY: 0 }}
+          animate={isInView ? { scaleY: 1 } : {}}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="font-[family-name:var(--font-inter-light)] text-[0.8125rem] text-[#E9E9E9]/60 mb-2">
-                    {project.category}
-                  </p>
-                  <h3 className="font-[family-name:var(--font-inter-semibold)] text-[2rem] text-[#E9E9E9]">
-                    {project.title}
-                  </h3>
+        <div className="space-y-16">
+          {processSteps.map((step, index) => {
+            const isLeft = index % 2 === 0
+            const IconComponent = step.icon
+            return (
+              <motion.div
+                key={step.title}
+                className={`flex flex-col md:flex-row items-start ${
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2, type: "spring", stiffness: 100 }}
+                whileHover={{ scale: 1.03 }}
+              >
+                {/* Icon circle */}
+                <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-[#E9E9E9] flex items-center justify-center mb-4 md:mb-0 z-10 md:mr-6 md:ml-0">
+                  <IconComponent className="w-6 h-6 text-[#0A0A0A]" />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Content */}
+                <motion.div
+                  className="bg-[#121212] p-6 rounded-2xl border border-[#E9E9E9]/10 flex-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.3 }}
+                >
+                  <h3 className="font-[family-name:var(--font-inter-semibold)] text-[1.8rem] text-[#E9E9E9] mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/70 leading-relaxed">
+                    {step.description}
+                  </p>
+                </motion.div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
