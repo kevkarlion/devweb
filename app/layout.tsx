@@ -84,14 +84,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-       <head>
+      <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
-<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180" />
-<link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
-      <body className={`${interLight.variable} ${interSemiBold.variable} antialiased`}>
+      <body className={`${interLight.variable} ${interSemiBold.variable} antialiased overflow-x-hidden`}> {/* ← AÑADIDO overflow-x-hidden */}
         <Navbar />
         <WhatsappButton />
         <Suspense fallback={null}>{children}</Suspense>
