@@ -45,7 +45,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.h1
-          className="font-[family-name:var(--font-inter-bold)] text-[clamp(3rem,12vw,8rem)] leading-[0.9] text-[#121212] mb-6 text-balance"
+          className="font-[family-name:var(--font-inter-bold)] text-[clamp(3rem,12vw,8rem)] leading-[0.9] text-[#121212] mb-6 text-balance max-w-full overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

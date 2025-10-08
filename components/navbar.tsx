@@ -7,13 +7,22 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Detectar scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Bloquear scroll cuando el menú está abierto
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+    document.documentElement.style.overflow = isMenuOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+    };
+  }, [isMenuOpen]);
 
   const menuItems = [
     { name: "Home", href: "#home" },
@@ -23,137 +32,161 @@ export function Navbar() {
   ];
 
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#E9E9E9]/80 backdrop-blur-md py-4"
-          : "bg-transparent py-8"
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      style={{ overflow: "hidden" }} // ← AÑADIDO
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"> {/* ← MODIFICADO */}
-        <div className="flex items-center justify-between relative"> {/* ← AÑADIDO relative */}
-
-          {/* Logo */}
-          <motion.a
-            href="#home"
-            className="font-[family-name:var(--font-inter-semibold)] text-xl sm:text-2xl text-[#121212] hover:text-[#121212]/80 transition-colors duration-300 whitespace-nowrap" // ← AÑADIDO whitespace-nowrap
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Devweb Patagonia
-          </motion.a>
-
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8"> {/* ← MODIFICADO */}
-            {menuItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="font-[family-name:var(--font-inter-semibold)] text-[#121212]/70 hover:text-[#121212] transition-all duration-300 text-base lg:text-lg relative whitespace-nowrap" // ← AÑADIDO whitespace-nowrap
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                {item.name}
-                <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#121212]"
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-            ))}
-          </div>
-
-          {/* CTA Button - Desktop */}
-          <motion.div className="hidden md:block">
+    <>
+      {/* NAVBAR */}
+      <motion.nav
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-[#E9E9E9]/80 backdrop-blur-xl py-4"
+            : "bg-transparent py-8"
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* LOGO */}
             <motion.a
-              href="https://wa.me/5492984252859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 lg:px-8 py-2.5 lg:py-3 bg-[#121212] text-[#E9E9E9] font-[family-name:var(--font-inter-semibold)] text-sm lg:text-base rounded-full hover:bg-[#121212]/90 transition-all duration-300 whitespace-nowrap" // ← AÑADIDO whitespace-nowrap
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px -10px rgba(18, 18, 18, 0.3)",
-              }}
+              href="#home"
+              className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#121212] hover:text-[#121212]/80 transition-colors duration-300"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Crea tu sitio web
+              Devweb Patagonia
             </motion.a>
-          </motion.div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden flex flex-col items-center justify-center w-8 h-8 relative z-60" // ← AÑADIDO z-60
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileTap={{ scale: 0.9 }}
-          >
-            <motion.span
-              className="w-6 h-0.5 bg-[#121212] mb-1.5 block"
-              animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="w-6 h-0.5 bg-[#121212] mb-1.5 block"
-              animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-            <motion.span
-              className="w-6 h-0.5 bg-[#121212] block"
-              animate={
-                isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
-              }
-              transition={{ duration: 0.3 }}
-            />
-          </motion.button>
-        </div>
+            {/* MENU DESKTOP */}
+            <div className="hidden md:flex items-center space-x-6">
+              {menuItems.map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className="font-[family-name:var(--font-inter-semibold)] text-[#121212]/70 hover:text-[#121212] transition-all duration-300 text-base relative"
+                  whileHover={{ y: -2 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  {item.name}
+                  <motion.div
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#121212]"
+                    whileHover={{ width: "100%" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.a>
+              ))}
+            </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              className="md:hidden absolute top-full left-0 right-0 bg-[#E9E9E9]/95 backdrop-blur-md border-t border-[#121212]/10 overflow-hidden" // ← AÑADIDO overflow-hidden
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              style={{ width: "100vw", left: "50%", right: "50%", marginLeft: "-50vw", marginRight: "-50vw" }} // ← AÑADIDO para controlar el ancho
+            {/* CTA DESKTOP/TABLET */}
+            <motion.div className="hidden md:block">
+              <motion.a
+                href="https://wa.me/5492984252859"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 bg-[#121212] text-[#E9E9E9] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-[#121212]/90 transition-all duration-300"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 30px -10px rgba(18,18,18,0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Crea tu sitio web
+              </motion.a>
+            </motion.div>
+
+            {/* BOTÓN HAMBURGER MÓVIL */}
+            <motion.button
+              className="md:hidden flex items-center justify-center w-10 h-10 relative z-[10000]"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileTap={{ scale: 0.9 }}
             >
-              <div className="px-6 py-8 w-full">
-                <div className="flex flex-col space-y-6 w-full">
-                  {menuItems.map((item, index) => (
-                    <motion.a
-                      key={item.name}
-                      href={item.href}
-                      className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#121212]/70 hover:text-[#121212] transition-colors duration-300 w-full text-left" // ← AÑADIDO w-full y text-left
-                      onClick={() => setIsMenuOpen(false)}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                    >
-                      {item.name}
-                    </motion.a>
-                  ))}
+              <AnimatePresence mode="wait" initial={false}>
+                {!isMenuOpen ? (
+                  // HAMBURGER
+                  <motion.div
+                    key="menu"
+                    initial={{ opacity: 0, rotate: -15, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 15, scale: 0.8 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <span className="w-6 h-0.5 bg-[#121212] mb-1.5 block"></span>
+                    <span className="w-6 h-0.5 bg-[#121212] mb-1.5 block"></span>
+                    <span className="w-6 h-0.5 bg-[#121212] block"></span>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
+            </motion.button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* MENÚ MÓVIL */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            key="mobileMenu"
+            className="md:hidden fixed inset-0 z-[9999]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            {/* Fondo con blur */}
+            <motion.div
+              className="absolute inset-0 bg-[#E9E9E9]/90 backdrop-blur-2xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            />
+
+            {/* BOTÓN X arriba derecha */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 w-8 h-8 flex items-center justify-center z-[10001]"
+            >
+              <span className="absolute w-6 h-0.5 bg-[#121212] rotate-45 rounded"></span>
+              <span className="absolute w-6 h-0.5 bg-[#121212] -rotate-45 rounded"></span>
+            </button>
+
+            {/* Contenido */}
+            <div className="relative z-10 h-full flex flex-col justify-start pt-20 px-6">
+              <div className="flex flex-col space-y-5">
+                {menuItems.map((item, index) => (
                   <motion.a
-                    href="#contact"
-                    className="mt-4 px-8 py-4 bg-[#121212] text-[#E9E9E9] font-[family-name:var(--font-inter-semibold)] text-lg rounded-full hover:bg-[#121212]/90 transition-all duration-300 text-center w-full" // ← AÑADIDO w-full
+                    key={item.name}
+                    href={item.href}
+                    className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#121212]/80 hover:text-[#121212] transition-colors duration-200 py-1"
                     onClick={() => setIsMenuOpen(false)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
+                    transition={{ duration: 0.3, delay: index * 0.08 }}
+                    whileHover={{ x: 8 }}
                   >
-                    Crea tu sitio web
+                    {item.name}
                   </motion.a>
-                </div>
+                ))}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.nav>
+
+              {/* CTA MÓVIL */}
+              <motion.a
+                href="https://wa.me/5492984252859"
+                className="mt-8 px-5 py-2.5 bg-[#121212] text-[#E9E9E9] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-[#121212]/90 transition-all duration-200 text-center"
+                onClick={() => setIsMenuOpen(false)}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+                whileHover={{ scale: 1.03 }}
+              >
+                Crea tu sitio web
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

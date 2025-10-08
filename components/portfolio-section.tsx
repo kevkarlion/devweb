@@ -11,7 +11,7 @@ const processSteps = [
   { title: "Diseño UI/UX", description: "Diseñamos interfaces y experiencias atractivas, cuidando cada detalle para que tu proyecto conecte con tus clientes.", icon: PenTool },
   { title: "Desarrollo Web", description: "Convertimos los diseños en un sitio web funcional, rápido y optimizado, usando tecnologías modernas y escalables.", icon: Code2 },
   { title: "Pruebas & Optimización", description: "Revisamos cada detalle: velocidad, usabilidad y compatibilidad, asegurando una experiencia digital impecable.", icon: LayoutDashboard },
-  { title: "Entrega & Lanzamiento", description: "Lanzamos tu proyecto online, garantizando que todo funcione perfectamente y proporcionándote soporte para crecer online.", icon: Rocket },
+  { title: "Entrega & Lanzamiento", description: "Lanzamos tu proyecto online, garantizando que todo funcione perfectamente y proporcionándote soporte para crecer online.", icon: Rocket }, // ← Coma agregada aquí
 ]
 
 export function ProcessTimeline() {
@@ -19,7 +19,7 @@ export function ProcessTimeline() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-[#0A0A0A]">
+    <section ref={ref} className="py-32 px-6 bg-[#0A0A0A] relative overflow-x-hidden">
       <div className="max-w-4xl mx-auto relative">
         <motion.h2
           className="font-[family-name:var(--font-inter-semibold)] text-[clamp(2rem,5vw,4rem)] text-[#E9E9E9] mb-20 text-center"
@@ -30,9 +30,9 @@ export function ProcessTimeline() {
           Nuestro Proceso de Trabajo
         </motion.h2>
 
-        {/* Línea vertical del timeline */}
+        {/* Línea vertical del timeline - SOLUCIÓN APLICADA */}
         <motion.div
-          className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-[#E9E9E9]/30 to-transparent hidden md:block"
+          className="absolute left-0 md:left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-[#E9E9E9]/30 to-transparent hidden md:block"
           initial={{ scaleY: 0 }}
           animate={isInView ? { scaleY: 1 } : {}}
           transition={{ duration: 1.2, ease: "easeInOut" }}
@@ -50,8 +50,13 @@ export function ProcessTimeline() {
                 }`}
                 initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2, type: "spring", stiffness: 100 }}
-                whileHover={{ scale: 1.03 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.2, 
+                  type: "spring", 
+                  stiffness: 100 
+                }}
+                whileHover={{ scale: 1.01 }}
               >
                 {/* Icon circle */}
                 <div className="relative flex-shrink-0 w-12 h-12 rounded-full bg-[#E9E9E9] flex items-center justify-center mb-4 md:mb-0 z-10 md:mr-6 md:ml-0">

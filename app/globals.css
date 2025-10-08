@@ -140,3 +140,26 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
+
+
+/* ===========================
+   Global Overflow & Layout Fix
+=========================== */
+
+/* Evitar que elementos fixed o absolute rompan el layout */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+  /* position: relative; */
+  overflow: hidden; /* Evita el desbordamiento horizontal */
+}
+
+
+
+
+* {
+   /* outline: 1px solid red !important; */
+  box-sizing: border-box;
+}
