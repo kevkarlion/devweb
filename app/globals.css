@@ -148,18 +148,19 @@
 
 /* Evitar que elementos fixed o absolute rompan el layout */
 html, body {
-  margin: 0;
+  /* margin: 0;
   padding: 0;
-  width: 100%;
-  
-  /* position: relative; */
-  overflow: hidden; /* Evita el desbordamiento horizontal */
+  width: 100%; */
+  background-color:#E9E9E9 ;
+ 
 }
 
-
+body {
+  min-height: 100vh;
+}
 
 
 * {
    /* outline: 1px solid red !important; */
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }

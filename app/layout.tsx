@@ -83,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark w-full overflow-hidden">
+    <html lang="en" className="dark w-screen">
       <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
@@ -91,7 +91,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </head>
-      <body className={`${interLight.variable} ${interSemiBold.variable} antialiased w-full p-0 overflow-hidden`}> {/* ← AÑADIDO overflow-x-hidden */}
+      <body className={`${interLight.variable} ${interSemiBold.variable} antialiased  p-0! w-full`}> {/* ← AÑADIDO overflow-x-hidden */}
         <Navbar />
         <WhatsappButton />
         <Suspense fallback={null}>{children}</Suspense>
