@@ -156,6 +156,7 @@ html, body {
 }
 
 body {
+ 
   min-height: 100vh;
 }
 
@@ -164,3 +165,4 @@ body {
    /* outline: 1px solid red !important; */
   box-sizing: border-box !important;
 }
+
