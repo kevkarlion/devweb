@@ -21,7 +21,7 @@ const interSemiBold = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'DevWeb - Diseño y Desarrollo Web Profesional | Buenos Aires',
+    default: 'DevWeb - Diseño y Desarrollo Web Profesional | Alto Valle Patagónico',
     template: '%s | DevWeb - Agencia de Desarrollo Web'
   },
   description: 'Agencia especializada en diseño web, desarrollo de sitios profesionales y experiencias digitales. Creamos tu presencia online con tecnología moderna y diseño impactante.',
