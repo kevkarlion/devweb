@@ -21,14 +21,14 @@ const interSemiBold = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'DevWeb - Diseño y Desarrollo Web Profesional | Buenos Aires',
-    template: '%s | DevWeb - Agencia de Desarrollo Web'
+    default: 'Devweb - Diseño y Desarrollo Web Profesional | Alto Valle Patagónico',
+    template: '%s | Devweb - Agencia de Desarrollo Web'
   },
   description: 'Agencia especializada en diseño web, desarrollo de sitios profesionales y experiencias digitales. Creamos tu presencia online con tecnología moderna y diseño impactante.',
-  keywords: 'diseño web, desarrollo web, agencia digital, sitio web, ecommerce, landing page, react, next.js, buenos aires',
-  authors: [{ name: 'DevWeb' }],
-  creator: 'DevWeb',
-  publisher: 'DevWeb',
+  keywords: 'diseño web, desarrollo web, agencia digital, sitio web, ecommerce, landing page, react, next.js, alto valle patagónico',
+  authors: [{ name: 'Devweb' }],
+  creator: 'Devweb',
+  publisher: 'Devweb',
   formatDetection: {
     email: false,
     address: false,
@@ -42,21 +42,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_AR',
     url: 'https://devwebpatagonia.com/',
-    siteName: 'DevWeb',
-    title: 'DevWeb - Diseño y Desarrollo Web Profesional',
+    siteName: 'Devweb',
+    title: 'Devweb - Diseño y Desarrollo Web Profesional',
     description: 'Agencia especializada en diseño web y desarrollo de sitios profesionales',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'DevWeb - Agencia de Diseño y Desarrollo Web',
+        alt: 'Devweb - Agencia de Diseño y Desarrollo Web',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'DevWeb - Diseño y Desarrollo Web Profesional',
+    title: 'Devweb - Diseño y Desarrollo Web Profesional',
     description: 'Agencia especializada en diseño web y desarrollo de sitios profesionales',
     images: ['/twitter-image.jpg'],
     creator: '@devweb',
