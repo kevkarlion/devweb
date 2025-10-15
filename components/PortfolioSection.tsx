@@ -73,13 +73,13 @@ const portfolioItems = [
   },
   {
     id: 4,
-    title: "Shopi | Diseño de Ecommerce",
+    title: "Coworking | One Page Informativa",
     description:
-      "Logeo de Usuarios | Carrito | Filtrado de Productos",
-    image: "/proyectos-img/shopi.png",
-    category: "Ecommerce",
-    technologies: ["Vite.js", "Tailwind.CSS"],
-    link: "https://kevkarlion.github.io/shopi-online/",
+      "CoSpace | Red de contactos profesionales y espacios de trabajo",
+    image: "/proyectos-img/coworking.png",
+    category: "One Page",
+    technologies: ["Next.js", "Tailwind.CSS", "TypeScript"],
+    link: "https://cohub-space.vercel.app/",
   },
   // {
   //   id: 5,
