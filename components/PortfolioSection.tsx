@@ -65,7 +65,7 @@ const portfolioItems = [
   {
     id: 3,
     title: "Ecommerce | Informativa",
-    description: "PERIMETRAL | Cerramientos perimetrales",
+    description: "PERIMETRAL | Control de Stock y Ventas | Logeo de Usuarios | Sistema de Pagos | Automatizacion de Pedidos y Stock",
     image: "/proyectos-img/perimetral.png",
     category: "Comercio Digital",
     technologies: ["Next.js", "Node.js", "MongoDB"],
