@@ -35,6 +35,7 @@ export function Navbar() {
     { name: "Home", href: "#home" },
     { name: "Nosotros", href: "#nosotros" },
     { name: "Servicios", href: "#servicios" },
+    { name: "Portfolio", href: "#portfolio" },
     { name: "Contacto", href: "#contacto" },
   ];
 
@@ -111,44 +112,43 @@ export function Navbar() {
             </motion.div>
 
             {/* BOTÓN HAMBURGER */}
-            {/* BOTÓN HAMBURGER / X con morph suave */}
-<motion.button
-  className="md:hidden flex items-center justify-center w-10 h-10 relative z-[10000]"
-  onClick={() => setIsMenuOpen(!isMenuOpen)}
-  whileTap={{ scale: 0.9 }}
-  style={{ WebkitTapHighlightColor: "transparent" }}
->
-  <div className="relative w-6 h-5 flex flex-col justify-between">
-    {/* Línea superior */}
-    <motion.span
-      className="absolute top-0 left-0 w-6 h-0.5 bg-[#121212] rounded"
-      animate={{
-        rotate: isMenuOpen ? 45 : 0,
-        y: isMenuOpen ? 8 : 0,
-      }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-    />
+            <motion.button
+              className="md:hidden flex items-center justify-center w-10 h-10 relative z-[10000]"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileTap={{ scale: 0.9 }}
+              style={{ WebkitTapHighlightColor: "transparent" }}
+            >
+              <div className="relative w-6 h-5 flex flex-col justify-between">
+                {/* Línea superior */}
+                <motion.span
+                  className="absolute top-0 left-0 w-6 h-0.5 bg-[#121212] rounded"
+                  animate={{
+                    rotate: isMenuOpen ? 45 : 0,
+                    y: isMenuOpen ? 8 : 0,
+                  }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                />
 
-    {/* Línea del medio */}
-    <motion.span
-      className="absolute top-[8px] left-0 w-6 h-0.5 bg-[#121212] rounded"
-      animate={{
-        opacity: isMenuOpen ? 0 : 1,
-      }}
-      transition={{ duration: 0.25, ease: "easeInOut" }}
-    />
+                {/* Línea del medio */}
+                <motion.span
+                  className="absolute top-[8px] left-0 w-6 h-0.5 bg-[#121212] rounded"
+                  animate={{
+                    opacity: isMenuOpen ? 0 : 1,
+                  }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                />
 
-    {/* Línea inferior */}
-    <motion.span
-      className="absolute bottom-0 left-0 w-6 h-0.5 bg-[#121212] rounded"
-      animate={{
-        rotate: isMenuOpen ? -45 : 0,
-        y: isMenuOpen ? -8 : 0,
-      }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-    />
-  </div>
-</motion.button>
+                {/* Línea inferior */}
+                <motion.span
+                  className="absolute bottom-0 left-0 w-6 h-0.5 bg-[#121212] rounded"
+                  animate={{
+                    rotate: isMenuOpen ? -45 : 0,
+                    y: isMenuOpen ? -8 : 0,
+                  }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                />
+              </div>
+            </motion.button>
 
           </div>
         </div>

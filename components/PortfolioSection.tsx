@@ -106,7 +106,7 @@ const portfolioItems = [
 export function PortfolioSection() {
   return (
     <div
-      className={`w-full ${cormorant.variable} ${oswald.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`w-full ${cormorant.variable} ${oswald.variable} ${inter.variable} ${jetbrainsMono.variable}`} id="portfolio"
     >
       <section
         className="relative min-h-screen py-20 px-6 w-full overflow-hidden"
