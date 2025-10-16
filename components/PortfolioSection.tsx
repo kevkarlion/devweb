@@ -81,16 +81,16 @@ const portfolioItems = [
     technologies: ["Next.js", "Tailwind.CSS", "TypeScript"],
     link: "https://cohub-space.vercel.app/",
   },
-  // {
-  //   id: 5,
-  //   title: "Plataforma Educativa",
-  //   description:
-  //     "E-learning platform with interactive courses and progress tracking",
-  //   image: "/portfolio/education-web.jpg",
-  //   category: "Desarrollo Web",
-  //   technologies: ["React", "Firebase", "Stripe"],
-  //   link: "https://ejemplo-educacion.com",
-  // },
+  {
+    id: 5, // Cambiar el ID para que sea único
+    title: "Bodega Patagonia | Web Institucional",
+    description:
+      "Diseño y desarrollo del sitio web oficial de la Bodega Patagonia",
+    image: "/proyectos-img/bodega.png", // Asegúrate de tener la imagen en esa ruta
+    category: "One Page Institucional",
+    technologies: ["Next.js", "Tailwind.CSS", "TypeScript"], // Tecnologías sugeridas para un sitio web de bodega
+    link: "https://patagonia-wine-bloom.vercel.app/", // URL de ejemplo
+},
   // {
   //   id: 6,
   //   title: "App Móvil HealthTech",
