@@ -7,6 +7,8 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { WhatsappButton } from "@/components/WhatsappButton"
 
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+
 const interLight = Inter({
   subsets: ["latin"],
   weight: ["300"],
@@ -95,6 +97,7 @@ export default function RootLayout({
         <Navbar />
         <WhatsappButton />
         <Suspense fallback={null}>{children}</Suspense>
+        <GoogleAnalytics />
         <Footer />
       </body>
     </html>
