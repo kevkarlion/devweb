@@ -1,123 +1,77 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion, useInView, Variants, Transition } from "framer-motion";
+import { useRef } from "react";
 
 export function AboutSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Animación de texto letra por letra para el título
-  const titleText = "Tu presencia online"
-  
-  const titleVariants = {
+  const titleText =
+    "Devweb Patagonia – Diseño y desarrollo web profesional en el Alto Valle"; // nota el nbsp entre Alto y Valle
+
+  // Transitions
+  const easeTransition: Transition = {
+    duration: 1.2,
+    ease: "easeInOut",
+    delay: 0.6,
+  };
+  const circleTransition: Transition = {
+    duration: 1.5,
+    ease: "easeOut",
+    delay: 1,
+  };
+
+  // Variants
+  const titleVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05
-      }
-    }
-  }
+    visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
+  };
 
-  const letterVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      scale: 0.8
-    },
+  const letterVariants: Variants = {
+    hidden: { opacity: 0, y: 20, scale: 0.8 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        type: "spring" as const,
-        damping: 12,
-        stiffness: 200
-      }
-    }
-  }
+      transition: { type: "spring", damping: 12, stiffness: 200 },
+    },
+  };
 
-  // Animación corregida para líneas de fondo
-  const lineVariants = {
+  const lineVariants: Variants = {
     hidden: { scaleX: 0 },
-    visible: { 
-      scaleX: 1,
-      transition: {
-        duration: 1.2,
-        ease: "easeInOut" as const,
-        delay: 0.6
-      }
-    }
-  }
+    visible: { scaleX: 1, transition: easeTransition },
+  };
 
-  // Variantes corregidas para los párrafos
-  const paragraphContainerVariants = {
+  const paragraphContainerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
-  }
-
-  const paragraphVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
     },
+  };
+
+  const paragraphVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut" as const
-      }
-    }
-  }
-
-  const secondParagraphVariants = {
-    hidden: { 
-      opacity: 0, 
-      x: -30,
-      filter: "blur(8px)" as const
+      transition: { duration: 0.8, ease: "easeOut" },
     },
-    visible: {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)" as const,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut" as const,
-        delay: 0.4
-      }
-    }
-  }
+  };
 
-  const circleVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0, 
-      rotate: -180 
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: {
-        duration: 1.5,
-        ease: "easeOut" as const,
-        delay: 1
-      }
-    }
-  }
+  const circleVariants: Variants = {
+    hidden: { opacity: 0, scale: 0, rotate: -180 },
+    visible: { opacity: 1, scale: 1, rotate: 0, transition: circleTransition },
+  };
 
   return (
-    <section ref={ref} className="py-32 px-6 relative overflow-hidden" id="nosotros">
-      {/* Elementos decorativos de fondo */}
+    <section
+      ref={ref}
+      id="nosotros"
+      className="py-24 sm:py-32 px-4 sm:px-6 relative overflow-hidden"
+    >
+      {/* Líneas decorativas */}
       <motion.div
         className="absolute top-1/4 -left-10 w-32 h-0.5 bg-[#E9E9E9]/10"
         variants={lineVariants}
@@ -132,60 +86,65 @@ export function AboutSection() {
       />
 
       <div className="max-w-5xl mx-auto relative">
-        {/* Título con animación letra por letra */}
+        {/* Título */}
         <motion.h2
-          className="font-[family-name:var(--font-inter-semibold)] text-[clamp(2rem,5vw,4rem)] text-[#E9E9E9] mb-12"
-          variants={titleVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {titleText.split("").map((char, index) => (
-            <motion.span
-              key={index}
-              variants={letterVariants}
-              className="inline-block"
-              whileHover={{
-                y: -5,
-                scale: 1.1,
-                color: "#ffffff",
-                transition: { duration: 0.2 }
-              }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </motion.h2>
+  className="font-[family-name:var(--font-inter-semibold)] text-[clamp(1.8rem,5vw,3.5rem)] text-[#E9E9E9] mb-12 leading-tight"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.2, ease: "easeOut" }}
+>
+  Diseño y Desarrollo web profesional
+  <br />
+  en el Alto Valle
+</motion.h2>
 
+        {/* Párrafos */}
         <motion.div
           className="space-y-8"
           variants={paragraphContainerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Primer párrafo */}
           <motion.p
             className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/80 leading-relaxed max-w-3xl"
             variants={paragraphVariants}
           >
-            Somos un estudio digital especializado en diseño y desarrollo web profesional, enfocado en crear experiencias únicas que combinan estética, estrategia y alto rendimiento.
+            Somos un estudio digital ubicado en el Alto Valle Patagónico,
+            especializado en diseño y desarrollo web profesional. Creamos
+            experiencias únicas que combinan estética, estrategia y alto
+            rendimiento.
           </motion.p>
 
-          {/* Segundo párrafo */}
-           <motion.p
+          <motion.p
             className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/80 leading-relaxed max-w-3xl"
             variants={paragraphVariants}
           >
-            Nuestra misión es ayudarte a potenciar tu marca online con sitios web que no solo se vean bien, sino que funcionen, comuniquen y generen resultados reales.
+            Nuestra misión es ayudarte a potenciar tu marca online con sitios
+            web que no solo se vean bien, sino que funcionen, comuniquen y
+            generen resultados reales para tu negocio.
           </motion.p>
 
-
-          {/* Tercer párrafo */}
           <motion.p
+            style={{ filter: "blur(8px)" }}
+            animate={{ filter: isInView ? "blur(0px)" : "blur(8px)" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/80 leading-relaxed max-w-3xl"
-            variants={secondParagraphVariants}
           >
-            Trabajamos junto a marcas y emprendedores que piensan en grande, acompañándolos desde la idea hasta el lanzamiento. Cada proyecto que realizamos fusiona diseño, tecnología y estrategia digital, para lograr una presencia online sólida, memorable y eficaz.
+            Trabajamos junto a marcas y emprendedores que piensan en grande,
+            acompañándolos desde la idea hasta el lanzamiento. Cada proyecto
+            fusiona diseño, tecnología y estrategia digital para lograr una
+            presencia online sólida, memorable y eficaz.
           </motion.p>
+
+          {/* Botón CTA */}
+          <motion.a
+            href="https://wa.me/5492984252859"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300"
+          >
+            Potenciá tu marca ahora
+          </motion.a>
         </motion.div>
 
         {/* Elemento decorativo flotante */}
@@ -198,10 +157,10 @@ export function AboutSection() {
             scale: 1.1,
             rotate: 45,
             borderColor: "rgba(233, 233, 233, 0.2)",
-            transition: { duration: 0.5 }
+            transition: { duration: 0.5 },
           }}
         />
       </div>
     </section>
-  )
+  );
 }

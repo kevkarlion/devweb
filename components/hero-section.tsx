@@ -96,61 +96,63 @@ export function HeroSection() {
         }}
         id="home"
       >
-        {/* Fondo animado mejorado */}
+        {/* Fondo animado */}
         <motion.div
           className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_20%_50%,rgba(18,18,18,0.2)_0%,transparent_60%)]"
-          animate={{ 
+          animate={{
             backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-            backgroundSize: ["120% 120%", "150% 150%", "120% 120%"]
+            backgroundSize: ["120% 120%", "150% 150%", "120% 120%"],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
 
         <div className="relative z-10 max-w-8xl mx-auto w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-center min-h-[75vh] 2xl:min-h-[80vh]">
-            {/* Texto principal - MÁS GRANDE */}
+            {/* Texto principal */}
             <motion.div
-              className="flex flex-col justify-center space-y-6 lg:space-y-8 text-left"
+              className="flex flex-col justify-center space-y-6 lg:space-y-8 text-left lg:ml-8 xl:ml-12"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <motion.div
+              <motion.h1
                 className="text-[clamp(3rem,10vw,6rem)] leading-[0.95] tracking-tighter text-[#121212]"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
               >
                 <span
                   className="uppercase font-light tracking-[-0.02em]"
-                  style={{ fontFamily: "var(--font-oswald)" }}
+                  style={{ fontFamily: "var(--font-oswald)", display: "block" }}
                 >
                   Creando
                 </span>
-                <br />
                 <span
                   className="italic font-normal tracking-[-0.01em]"
-                  style={{ fontFamily: "var(--font-cormorant)" }}
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    display: "block",
+                  }}
                 >
                   Experiencias
                 </span>
-                <br />
                 <span
                   className="uppercase font-normal tracking-[-0.02em]"
-                  style={{ fontFamily: "var(--font-judson)" }}
+                  style={{ fontFamily: "var(--font-judson)", display: "block" }}
                 >
                   Digitales
                 </span>
-              </motion.div>
+              </motion.h1>
 
               <motion.p
-                className="text-[clamp(1.3rem,3vw,1.8rem)] text-[#121212]/75 max-w-2xl pt-4 font-medium leading-relaxed"
+                className="text-[clamp(1rem,3vw,1.3rem)] text-[#121212]/75 max-w-2xl pt-4 font-medium leading-relaxed"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                Diseño y desarrollo web que potencia tu marca y conecta con tu audiencia
+                Diseño y desarrollo web que potencia tu marca y conecta con tu
+                audiencia
               </motion.p>
 
-              {/* Botón más grande */}
+              {/* Botón CTA WhatsApp */}
               <motion.div
                 className="pt-4"
                 initial={{ opacity: 0 }}
@@ -161,7 +163,7 @@ export function HeroSection() {
                   href="https://wa.me/5492984252859"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-10 py-4 lg:px-12 lg:py-5 bg-[#121212] text-[#E9E9E9] rounded-full hover:bg-[#121212]/90 transition-all duration-300 hover:scale-105 shadow-xl font-semibold text-lg lg:text-xl group"
+                  className="inline-flex items-center gap-3 px-10 py-4 lg:px-12 lg:py-5 bg-gradient-to-r from-[#1E40AF] to-[#1E3A8A] text-white rounded-full hover:scale-105 transition-all duration-300 shadow-xl font-semibold text-lg lg:text-xl group"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
                   Inicia tu proyecto
@@ -170,7 +172,7 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* Logo + ítems - MÁS GRANDE */}
+            {/* Logo + ítems */}
             <motion.div
               className="relative flex justify-center items-center lg:justify-start"
               initial={{ opacity: 0, x: 50 }}
@@ -178,14 +180,13 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="relative flex items-center">
-                {/* Logo más grande */}
                 <motion.div
                   whileHover={{ scale: 1.08, rotate: 2 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <Image
                     src="/logo-black-svg.svg"
-                    alt="Devweb Logo"
+                    alt="Logo de Devweb Patagonia, diseño y desarrollo web profesional en Alto Valle"
                     width={400}
                     height={400}
                     className="object-contain w-48 md:w-72 lg:w-80 xl:w-96 h-auto drop-shadow-2xl"
@@ -193,27 +194,27 @@ export function HeroSection() {
                   />
                 </motion.div>
 
-                {/* Ítems semicirculares más grandes (desktop) */}
+                {/* Ítems semicirculares desktop */}
                 <div className="relative w-[480px] h-[420px] hidden sm:block ml-8 xl:ml-12">
                   {desktopItems.map((item, i) => (
                     <motion.div
                       key={i}
-                      className="absolute flex flex-col items-center justify-center text-center w-36 h-36 rounded-full bg-[#121212] text-white shadow-2xl hover:scale-115 transition-all duration-300 hover:shadow-2xl border border-white/10"
-                      style={{ 
-                        left: `${item.position.left}px`, 
-                        top: `${item.position.top}px` 
+                      className="absolute flex flex-col items-center justify-center text-center w-36 h-36 rounded-full bg-gradient-to-br from-[#1E40AF] to-[#1E3A8A] text-white shadow-2xl hover:scale-115 transition-all duration-300 hover:shadow-2xl border border-white/10"
+                      style={{
+                        left: `${item.position.left}px`,
+                        top: `${item.position.top}px`,
                       }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        duration: 0.6, 
+                      transition={{
+                        duration: 0.6,
                         delay: item.delay,
                         type: "spring",
-                        stiffness: 200
+                        stiffness: 200,
                       }}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.15,
-                        transition: { duration: 0.2 }
+                        transition: { duration: 0.2 },
                       }}
                     >
                       <div className="mb-2 transform group-hover:scale-110 transition-transform duration-300">
@@ -229,15 +230,16 @@ export function HeroSection() {
                   ))}
                 </div>
 
-                {/* Ítems versión mobile mejorada */}
+                {/* Ítems mobile */}
+                {/* Ítems mobile */}
                 <div className="relative w-[140px] h-[140px] sm:hidden ml-4">
                   {mobileItems.map((item, i) => (
                     <motion.div
                       key={i}
-                      className="absolute flex flex-col items-center justify-center text-center w-24 h-24 rounded-full bg-[#121212] text-white shadow-lg hover:scale-110 transition-transform duration-300 border border-white/10"
-                      style={{ 
-                        left: `${item.position.left}px`, 
-                        top: `${item.position.top}px` 
+                      className="absolute flex flex-col items-center justify-center text-center w-24 h-24 rounded-full bg-gradient-to-br from-[#1E40AF] to-[#1E3A8A] text-white shadow-lg hover:scale-110 transition-transform duration-300 border border-white/10"
+                      style={{
+                        left: `${item.position.left}px`,
+                        top: `${item.position.top}px`,
                       }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -257,7 +259,7 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Elemento decorativo adicional para desktop */}
+          {/* Scroll indicator desktop */}
           <motion.div
             className="hidden xl:block absolute bottom-10 left-1/2 transform -translate-x-1/2"
             initial={{ opacity: 0, y: 20 }}
