@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Colores base existentes */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -37,6 +38,18 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* TUS NUEVOS COLORES PERSONALIZADOS */
+  --color-coral: rgb(255 183 178);      /* FFB7B2 */
+  --color-sky: rgb(168 216 234);        /* A8D8EA */
+  --color-mint: rgb(180 248 200);       /* B4F8C8 */
+  --color-lavender: rgb(202 184 255);   /* CAB8FF */
+  --color-blue: rgb(185 200 245);       /* B9C8F5 */
+
+  /* TU GRADIENTE PERSONALIZADO */
+  --gradient-primary: linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 57%, #A8D8EA 100%);
+  --gradient-primary-horizontal: linear-gradient(90deg, #FFB7B2 0%, #B9C8F5 57%, #A8D8EA 100%);
+  --gradient-primary-vertical: linear-gradient(180deg, #FFB7B2 0%, #B9C8F5 57%, #A8D8EA 100%);
 }
 
 .dark {
@@ -72,10 +85,17 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+
+  /* Versiones para modo oscuro de tus colores (opcional - puedes ajustarlos) */
+  --color-coral: rgb(220 150 145);
+  --color-sky: rgb(140 180 200);
+  --color-mint: rgb(150 220 170);
+  --color-lavender: rgb(170 150 220);
+  --color-blue: rgb(155 170 210);
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  /* Variables existentes */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -112,6 +132,18 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* TUS NUEVAS VARIABLES DE COLOR */
+  --color-coral: var(--color-coral);
+  --color-sky: var(--color-sky);
+  --color-mint: var(--color-mint);
+  --color-lavender: var(--color-lavender);
+  --color-blue: var(--color-blue);
+
+  /* TUS GRADIENTES */
+  --gradient-primary: var(--gradient-primary);
+  --gradient-primary-horizontal: var(--gradient-primary-horizontal);
+  --gradient-primary-vertical: var(--gradient-primary-vertical);
 }
 
 @layer base {
@@ -141,28 +173,92 @@
   background: #444;
 }
 
-
 /* ===========================
    Global Overflow & Layout Fix
 =========================== */
 
-/* Evitar que elementos fixed o absolute rompan el layout */
 html, body {
-  /* margin: 0;
-  padding: 0;
-  width: 100%; */
-  background-color:#E9E9E9 ;
- 
+  background-color: #E9E9E9;
+  overflow-x: hidden;
 }
 
 body {
- 
   min-height: 100vh;
 }
 
-
 * {
-   /* outline: 1px solid red !important; */
   box-sizing: border-box !important;
 }
 
+/* Clases utilitarias personalizadas para tus colores */
+.bg-coral {
+  background-color: var(--color-coral);
+}
+
+.bg-sky {
+  background-color: var(--color-sky);
+}
+
+.bg-mint {
+  background-color: var(--color-mint);
+}
+
+.bg-lavender {
+  background-color: var(--color-lavender);
+}
+
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-horizontal {
+  background: var(--gradient-primary-horizontal);
+}
+
+.bg-gradient-vertical {
+  background: var(--gradient-primary-vertical);
+}
+
+.text-coral {
+  color: var(--color-coral);
+}
+
+.text-sky {
+  color: var(--color-sky);
+}
+
+.text-mint {
+  color: var(--color-mint);
+}
+
+.text-lavender {
+  color: var(--color-lavender);
+}
+
+.text-blue {
+  color: var(--color-blue);
+}
+
+.border-coral {
+  border-color: var(--color-coral);
+}
+
+.border-sky {
+  border-color: var(--color-sky);
+}
+
+.border-mint {
+  border-color: var(--color-mint);
+}
+
+.border-lavender {
+  border-color: var(--color-lavender);
+}
+
+.border-blue {
+  border-color: var(--color-blue);
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView, Variants, Transition } from "framer-motion";
+import { ArrowRight, Briefcase, Users, Lightbulb } from "lucide-react";
 import { useRef } from "react";
 
 export function AboutSection() {
@@ -88,15 +89,15 @@ export function AboutSection() {
       <div className="max-w-5xl mx-auto relative">
         {/* Título */}
         <motion.h2
-  className="font-[family-name:var(--font-inter-semibold)] text-[clamp(1.8rem,5vw,3.5rem)] text-[#E9E9E9] mb-12 leading-tight"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1.2, ease: "easeOut" }}
->
-  Diseño y Desarrollo web profesional
-  <br />
-  en el Alto Valle
-</motion.h2>
+          className="font-[family-name:var(--font-inter-semibold)] text-[clamp(1.8rem,5vw,3.5rem)] text-[#E9E9E9] mb-12 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          Diseño y Desarrollo web profesional
+          <br />
+          en el Alto Valle
+        </motion.h2>
 
         {/* Párrafos */}
         <motion.div
@@ -137,14 +138,24 @@ export function AboutSection() {
           </motion.p>
 
           {/* Botón CTA */}
-          <motion.a
-            href="https://wa.me/5492984252859"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-4 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300"
+          {/* Botón CTA WhatsApp */}
+          <motion.div
+            className="pt-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Potenciá tu marca ahora
-          </motion.a>
+            <a
+              href="https://wa.me/5492984252859"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-gray-100 border-2 border-black transition-all duration-300 shadow-md font-medium text-base group"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              Solicitá tu consultoría
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </motion.div>
         </motion.div>
 
         {/* Elemento decorativo flotante */}
