@@ -45,8 +45,8 @@ export function Navbar() {
       <motion.nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 w-full ${
           isScrolled
-            ? "bg-[#E9E9E9]/80 backdrop-blur-xl py-4"
-            : "bg-transparent px-4 py-8"
+            ? "bg-white/15 backdrop-blur-xl py-4 border-b border-white/10"
+            : "bg-white/5 backdrop-blur-md px-4 py-8"
         }`}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -54,6 +54,9 @@ export function Navbar() {
         style={{
           WebkitBackfaceVisibility: "hidden",
           WebkitTransform: "translateZ(0)",
+          backdropFilter: isScrolled ? "blur(20px) saturate(120%)" : "blur(16px) saturate(110%)",
+          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.08)",
+          borderBottom: isScrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "none",
         }}
       >
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +68,7 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Devweb Patagonia
+              <span className="font-bold">devweb</span> <span className="uppercase font-semibold">Patagonia</span>
             </motion.a>
 
             {/* MENU DESKTOP */}
@@ -100,7 +103,7 @@ export function Navbar() {
                 href="https://wa.me/5492984252859"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-[#121212] text-[#E9E9E9] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-[#121212]/90 transition-all duration-300"
+                className="px-5 py-2.5 bg-[#121212] text-white font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-white hover:text-[#121212] border border-[#121212] transition-all duration-300"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 10px 30px -10px rgba(18,18,18,0.3)",
@@ -169,8 +172,14 @@ export function Navbar() {
               WebkitTransform: "translateZ(0)",
             }}
           >
+            {/* Fondo esmerilado tipo iPhone - menos brillante */}
             <motion.div
-              className="absolute inset-0 bg-[#E9E9E9]/90 backdrop-blur-2xl"
+              className="absolute inset-0"
+              style={{
+                backdropFilter: "blur(20px) saturate(140%)",
+                backgroundColor: "rgba(255, 255, 255, 0.65)",
+                WebkitBackdropFilter: "blur(20px) saturate(140%)",
+              }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -180,14 +189,14 @@ export function Navbar() {
             {/* BOTÓN X */}
             <motion.button
               onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[10001]"
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[10001] bg-white/20 rounded-full backdrop-blur-sm border border-white/15"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <span className="absolute w-6 h-0.5 bg-[#121212] rotate-45 rounded"></span>
-              <span className="absolute w-6 h-0.5 bg-[#121212] -rotate-45 rounded"></span>
+              <span className="absolute w-4 h-0.5 bg-[#121212] rotate-45 rounded"></span>
+              <span className="absolute w-4 h-0.5 bg-[#121212] -rotate-45 rounded"></span>
             </motion.button>
 
             {/* Contenido */}
@@ -198,7 +207,7 @@ export function Navbar() {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#121212]/80 hover:text-[#121212] transition-colors duration-200 py-1"
+                    className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#121212]/80 hover:text-[#121212] transition-colors duration-200 py-3 px-4 rounded-2xl hover:bg-white/20 backdrop-blur-sm"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
@@ -215,7 +224,7 @@ export function Navbar() {
               {/* CTA MOBILE */}
               <motion.a
                 href="https://wa.me/5492984252859"
-                className="mt-8 px-5 py-2.5 bg-[#121212] text-[#E9E9E9] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-[#121212]/90 transition-all duration-200 text-center block max-w-xs mx-auto"
+                className="mt-8 px-5 py-3 bg-[#121212] text-white font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-white hover:text-[#121212] border border-[#121212] transition-all duration-200 text-center block max-w-xs mx-auto backdrop-blur-sm"
                 onClick={() => setIsMenuOpen(false)}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

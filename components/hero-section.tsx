@@ -11,6 +11,7 @@ import {
   EB_Garamond,
   Judson,
 } from "next/font/google";
+import { useState, useEffect } from "react";
 
 // Fuentes
 const cormorant = Cormorant_Garamond({
@@ -40,44 +41,83 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export function HeroSection() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Precargar la imagen del background - método corregido
+  useEffect(() => {
+    let mounted = true;
+
+    const preloadImage = () => {
+      try {
+        // Usar el constructor nativo del DOM
+        const img = document.createElement('img');
+        img.src = '/bck-final-hero.png';
+        
+        img.onload = () => {
+          if (mounted) {
+            setImageLoaded(true);
+          }
+        };
+        
+        img.onerror = () => {
+          if (mounted) {
+            console.warn('Error cargando la imagen de fondo');
+            setImageLoaded(true);
+          }
+        };
+      } catch (error) {
+        if (mounted) {
+          console.warn('Error en precarga:', error);
+          setImageLoaded(true);
+        }
+      }
+    };
+
+    preloadImage();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const desktopItems = [
     {
-      icon: <Briefcase className="w-7 h-7 text-coral" />,
+      icon: <Briefcase className="w-6 h-6 lg:w-7 lg:h-7" />,
       title: "Comercio Digital",
-      position: { left: -50, top: -20 },
+      position: { lg: { left: -50, top: -20 }, xl: { left: -50, top: -20 } },
       delay: 0.6,
     },
     {
-      icon: <Users className="w-7 h-7 text-coral" />,
+      icon: <Users className="w-6 h-6 lg:w-7 lg:h-7" />,
       title: "Consigue Clientes",
-      position: { left: 35, top: 150 },
+      position: { lg: { left: 25, top: 120 }, xl: { left: 35, top: 150 } },
       delay: 0.8,
     },
     {
-      icon: <Lightbulb className="w-7 h-7 text-coral" />,
+      icon: <Lightbulb className="w-6 h-6 lg:w-7 lg:h-7" />,
       title: "Muestra tu Negocio",
-      position: { left: -50, top: 310 },
+      position: { lg: { left: -40, top: 260 }, xl: { left: -50, top: 310 } },
       delay: 1.0,
     },
   ];
 
   const mobileItems = [
     {
-      icon: <Briefcase className="w-6 h-6 text-white" />,
+      icon: <Briefcase className="w-5 h-5" />,
       title: "Comercio Digital",
-      position: { left: 8, top: -40 },
+      position: { left: 8, top: -30 },
       delay: 0.6,
     },
     {
-      icon: <Users className="w-6 h-6 text-white" />,
+      icon: <Users className="w-5 h-5" />,
       title: "Consigue Clientes",
-      position: { left: 55, top: 45 },
+      position: { left: 45, top: 35 },
       delay: 0.8,
     },
     {
-      icon: <Lightbulb className="w-6 h-6 text-white" />,
+      icon: <Lightbulb className="w-5 h-5" />,
       title: "Muestra tu Negocio",
-      position: { left: 25, top: 135 },
+      position: { left: 20, top: 105 },
       delay: 1.0,
     },
   ];
@@ -87,31 +127,37 @@ export function HeroSection() {
       className={`${cormorant.variable} ${ebGaramond.variable} ${oswald.variable} ${inter.variable} ${jetbrainsMono.variable} ${judson.variable}`}
     >
       <section
-        className="relative min-h-screen flex items-center justify-center px-6 w-full pt-24 pb-20 overflow-hidden bg-gradient-primary"
+        className="relative flex items-center justify-center px-4 sm:px-6 w-full pt-32 pb-20 lg:pt-24 lg:pb-20 overflow-hidden min-h-screen bg-cover bg-center bg-no-repeat"
         id="home"
-        style={{ overflowY: 'hidden' }} // ← Agregar esto
+        style={{ 
+          backgroundImage: imageLoaded ? "url('/bck-final-hero.png')" : "none",
+        }}
       >
-        {/* Fondo animado */}
-        <motion.div
-          className="absolute inset-0 opacity-15 bg-[radial-gradient(circle_at_20%_50%,rgba(18,18,18,0.2)_0%,transparent_60%)]"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-            backgroundSize: ["120% 120%", "150% 150%", "120% 120%"],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-
+        {/* Background de carga optimizado - solo se muestra mientras carga */}
+        {!imageLoaded && (
+          <div 
+            className="absolute inset-0 z-0 bg-gradient-to-br from-blue-50 via-gray-50 to-gray-100"
+          />
+        )}
+        
+        {/* Overlay sutil SOLO cuando la imagen está cargada */}
+        {imageLoaded && (
+          <div 
+            className="absolute inset-0 z-0 bg-white/5 backdrop-blur-[0.5px]"
+          />
+        )}
+        
         <div className="relative z-10 max-w-8xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 items-center min-h-[75vh] 2xl:min-h-[80vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 xl:gap-10 items-center min-h-[80vh] lg:min-h-[75vh] 2xl:min-h-[80vh]">
             {/* Texto principal */}
             <motion.div
-              className="flex flex-col justify-center items-center space-y-6 lg:space-y-8 text-center w-full"
+              className="flex flex-col justify-center items-center space-y-6 lg:space-y-6 text-center w-full pt-4 lg:pt-8 mb-8 lg:mb-8"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <motion.h1
-                className="text-[clamp(3rem,10vw,5.24rem)] leading-[0.95] tracking-tighter text-[#121212] w-full"
+                className="text-[clamp(2.8rem,9vw,4.5rem)] lg:text-[clamp(3rem,10vw,5.24rem)] leading-[0.95] tracking-tighter text-[#121212] w-full mb-4 lg:mb-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -140,7 +186,7 @@ export function HeroSection() {
               </motion.h1>
 
               <motion.p
-                className="text-[clamp(1rem,3vw,1rem)] md:px-8 lg:px-16 xl:px-32 text-center text-black max-w-xl pt-4 font-medium leading-relaxed mx-auto"
+                className="text-[clamp(1rem,3vw,1.1rem)] px-4 md:px-6 lg:px-8 xl:px-12 text-center text-black max-w-md lg:max-w-xl font-medium leading-relaxed mx-auto"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
                 Diseño y desarrollo web que potencia tu marca y conecta con tu
@@ -149,7 +195,7 @@ export function HeroSection() {
 
               {/* Botón CTA WhatsApp */}
               <motion.div
-                className="pt-4"
+                className="pt-4 lg:pt-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -158,47 +204,44 @@ export function HeroSection() {
                   href="https://wa.me/5492984252859"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-white hover:text-black border-2 border-black transition-all duration-300 shadow-md font-medium text-base group"
+                  className="inline-flex items-center gap-2 px-5 py-3 lg:px-5 lg:py-2.5 bg-black text-white rounded-lg hover:bg-white hover:text-black border-2 border-black transition-all duration-300 shadow-md font-medium text-base group"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
                   Solicitá tu consultoría
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 lg:w-4 lg:h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </motion.div>
             </motion.div>
 
             {/* Logo + ítems */}
             <motion.div
-              className="relative flex justify-center items-center lg:justify-start"
+              className="relative flex justify-center items-center lg:justify-start mt-8 lg:mt-0"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="relative flex items-center">
-                <div className="mb-4 mt-8">
+                <div className="mb-4 lg:mb-4 mt-4 lg:mt-6">
                   <Image
-                    src="/logo-black-svg.svg"
+                    src="/logo-hero.png"
                     alt="Logo de Devweb Patagonia, diseño y desarrollo web profesional en Alto Valle"
                     width={140}
                     height={140}
-                    className="object-contain w-24 md:w-32 lg:w-36 xl:w-40 h-auto drop-shadow-xl"
+                    className="object-contain w-28 md:w-32 lg:w-36 xl:w-40 h-auto drop-shadow-xl"
                     priority
+                    loading="eager"
                   />
-                  <div className="flex flex-col items-center text-black" >
-                    <p className="inter text-2xl font-semibold">devweb</p>
-                    <p className="uppercase  font-semibold text-xl"> <span className="mb-4">patagonia</span></p>
-                  </div>
                 </div>
 
                 {/* Ítems semicirculares desktop */}
-                <div className="relative w-[400px] h-[350px] hidden sm:block ml-6 xl:ml-8">
+                <div className="relative w-[320px] h-[280px] lg:w-[360px] lg:h-[320px] xl:w-[400px] xl:h-[350px] hidden sm:block ml-4 lg:ml-6 xl:ml-8">
                   {desktopItems.map((item, i) => (
                     <motion.div
                       key={i}
-                      className="absolute flex flex-col items-center justify-center text-center w-28 h-28 rounded-full bg-[#022244] shadow-2xl hover:scale-115 transition-all duration-300 hover:shadow-2xl border border-white/10 group"
+                      className="absolute flex flex-col items-center justify-center text-center w-24 h-24 lg:w-26 lg:h-26 xl:w-28 xl:h-28 rounded-full bg-[#022244] shadow-2xl hover:scale-115 transition-all duration-300 hover:shadow-2xl border border-white/10 group"
                       style={{
-                        left: `${item.position.left}px`,
-                        top: `${item.position.top}px`,
+                        left: `${item.position.lg.left}px`,
+                        top: `${item.position.lg.top}px`,
                       }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -213,11 +256,11 @@ export function HeroSection() {
                         transition: { duration: 0.2 },
                       }}
                     >
-                      <div  style={{ color: 'var(--color-coral)' }} className="mb-2 text-coral transform group-hover:scale-110 transition-transform duration-300 " >
+                      <div className="mb-1 lg:mb-2 text-coral transform group-hover:scale-110 transition-transform duration-300">
                         {item.icon}
                       </div>
                       <p
-                        className="text-[0.8rem] font-medium leading-tight px-3 text-mint"
+                        className="text-[0.7rem] lg:text-[0.75rem] xl:text-[0.8rem] font-medium leading-tight px-2 lg:px-3 text-mint"
                         style={{ fontFamily: "var(--font-mono)" }}
                       >
                         {item.title}
@@ -227,11 +270,11 @@ export function HeroSection() {
                 </div>
 
                 {/* Ítems mobile */}
-                <div className="relative w-[120px] h-[120px] sm:hidden ml-3">
+                <div className="relative w-[100px] h-[100px] sm:hidden ml-3">
                   {mobileItems.map((item, i) => (
                     <motion.div
                       key={i}
-                      className="absolute flex flex-col items-center justify-center text-center w-20 h-20 rounded-full bg-[#022244] shadow-lg hover:scale-110 transition-transform duration-300 border border-white/10 group"
+                      className="absolute flex flex-col items-center justify-center text-center w-16 h-16 rounded-full bg-[#022244] shadow-lg hover:scale-110 transition-transform duration-300 border border-white/10 group"
                       style={{
                         left: `${item.position.left}px`,
                         top: `${item.position.top}px`,
@@ -240,9 +283,9 @@ export function HeroSection() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.6, delay: item.delay }}
                     >
-                      <div className="mb-1 text-mint">{item.icon}</div>
+                      <div className="mb-0.5 text-coral">{item.icon}</div>
                       <p
-                        className="text-[0.65rem] font-medium leading-tight px-2 text-mint"
+                        className="text-[0.55rem] font-medium leading-tight px-1 text-mint text-center"
                         style={{ fontFamily: "var(--font-mono)" }}
                       >
                         {item.title}
@@ -253,8 +296,6 @@ export function HeroSection() {
               </div>
             </motion.div>
           </div>
-
-          {/* Scroll indicator desktop */}
         </div>
       </section>
     </div>

@@ -179,11 +179,13 @@
 
 html, body {
   background-color: #E9E9E9;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
+
+
 body {
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 * {

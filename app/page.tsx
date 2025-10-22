@@ -7,7 +7,7 @@ import { PortfolioSection } from "@/components/PortfolioSection"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#121212]	w-full p-0">
+    <main className=" bg-[#121212]	w-full p-0">
       <HeroSection />
       <AboutSection />
       <PortfolioSection />
