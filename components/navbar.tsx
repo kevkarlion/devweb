@@ -6,15 +6,18 @@ import { useState, useEffect } from "react";
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Detectar scroll
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Bloquear scroll optimizado
   useEffect(() => {
     if (isMenuOpen) {
       const scrollY = window.scrollY;
@@ -55,14 +58,21 @@ export function Navbar() {
     <>
       {/* NAVBAR */}
       <motion.nav
+        key="navbar"
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 w-full ${
           isScrolled
             ? "py-4 border-b border-white/20"
             : "px-4 py-6"
         }`}
-        initial={{ y: -80, opacity: 0 }}
+        initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.25, 0.46, 0.45, 0.94],
+          type: "spring",
+          stiffness: 100,
+          damping: 15
+        }}
         style={{
           WebkitBackfaceVisibility: "hidden",
           WebkitTransform: "translateZ(0)",
@@ -80,6 +90,7 @@ export function Navbar() {
               className="font-[family-name:var(--font-inter-semibold)] text-xl text-black hover:text-white/90 transition-colors duration-300 drop-shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <span className="font-bold">devweb</span> <span className="uppercase font-semibold">Patagonia</span>
             </motion.a>
@@ -96,7 +107,7 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.5,
-                    delay: index * 0.08,
+                    delay: index * 0.08 + 0.3,
                     ease: "easeOut",
                   }}
                 >
@@ -110,18 +121,30 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* CTA DESKTOP */}
-            <motion.div className="hidden md:block">
+            {/* CTA DESKTOP - CORREGIDO */}
+            <motion.div 
+              className="hidden md:block"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+            >
               <motion.a
                 href="https://wa.me/5492984252859"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-white text-[#121212] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-transparent hover:text-white border border-white transition-all duration-300 shadow-lg"
+                className="px-5 py-2.5 bg-white text-[#121212] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full border border-white relative overflow-hidden"
                 whileHover={{
+                  backgroundColor: "transparent",
+                  color: "#ffffff",
                   scale: 1.05,
-                  boxShadow: "0 10px 30px -10px rgba(255,255,255,0.4)",
                 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 400, 
+                  damping: 17,
+                  duration: 0.3
+                }}
               >
                 Crea tu sitio web
               </motion.a>
@@ -133,10 +156,13 @@ export function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileTap={{ scale: 0.9 }}
               style={{ WebkitTapHighlightColor: "transparent" }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
             >
               <div className="relative w-6 h-5 flex flex-col justify-between">
                 <motion.span
-                  className="absolute top-0 left-0 w-6 h-0.5 bg-white rounded drop-shadow-md"
+                  className="absolute top-0 left-0 w-6 h-0.5 bg-black rounded drop-shadow-md"
                   animate={{
                     rotate: isMenuOpen ? 45 : 0,
                     y: isMenuOpen ? 8 : 0,
@@ -144,14 +170,14 @@ export function Navbar() {
                   transition={{ duration: 0.35, ease: "easeInOut" }}
                 />
                 <motion.span
-                  className="absolute top-[8px] left-0 w-6 h-0.5 bg-white rounded drop-shadow-md"
+                  className="absolute top-[8px] left-0 w-6 h-0.5 bg-black rounded drop-shadow-md"
                   animate={{
                     opacity: isMenuOpen ? 0 : 1,
                   }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                 />
                 <motion.span
-                  className="absolute bottom-0 left-0 w-6 h-0.5 bg-white rounded drop-shadow-md"
+                  className="absolute bottom-0 left-0 w-6 h-0.5 bg-black rounded drop-shadow-md"
                   animate={{
                     rotate: isMenuOpen ? -45 : 0,
                     y: isMenuOpen ? -8 : 0,
@@ -165,7 +191,7 @@ export function Navbar() {
       </motion.nav>
 
       {/* MENÚ MÓVIL */}
-      <AnimatePresence mode="sync" initial={false}>
+      <AnimatePresence mode="wait">
         {isMenuOpen && (
           <motion.div
             key="mobileMenu"
@@ -173,7 +199,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             style={{
               WebkitBackfaceVisibility: "hidden",
               WebkitTransform: "translateZ(0)",
@@ -190,17 +216,17 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             />
 
             {/* BOTÓN X */}
             <motion.button
               onClick={handleCloseMenu}
               className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[10001] bg-white/20 rounded-full backdrop-blur-sm border border-white/30 shadow-lg"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
             >
               <span className="absolute w-4 h-0.5 bg-white rotate-45 rounded"></span>
               <span className="absolute w-4 h-0.5 bg-white -rotate-45 rounded"></span>
@@ -215,11 +241,12 @@ export function Navbar() {
                     href={item.href}
                     onClick={handleNavigation}
                     className="font-[family-name:var(--font-inter-semibold)] text-lg text-white/90 hover:text-white transition-colors duration-200 py-4 px-4 rounded-xl hover:bg-white/10 backdrop-blur-sm border border-transparent hover:border-white/20 drop-shadow-lg"
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
                     transition={{
-                      duration: 0.35,
-                      delay: index * 0.08,
+                      duration: 0.4,
+                      delay: index * 0.1 + 0.2,
                       ease: "easeOut",
                     }}
                   >
@@ -228,18 +255,25 @@ export function Navbar() {
                 ))}
               </div>
 
-              {/* CTA MOBILE */}
+              {/* CTA MOBILE - CORREGIDO */}
               <motion.a
                 href="https://wa.me/5492984252859"
-                className="mt-8 px-5 py-3 bg-white text-[#121212] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-transparent hover:text-white border border-white transition-all duration-200 text-center block max-w-xs mx-auto shadow-lg"
+                className="mt-8 px-5 py-3 bg-white text-[#121212] font-[family-name:var(--font-inter-semibold)] text-sm rounded-full border border-white text-center block max-w-xs mx-auto relative overflow-hidden"
                 onClick={handleNavigation}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.3,
-                  ease: "easeOut",
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                whileHover={{
+                  backgroundColor: "transparent",
+                  color: "#ffffff",
+                  scale: 1.05,
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 400, 
+                  damping: 17,
+                  duration: 0.3
                 }}
               >
                 Crea tu sitio web
