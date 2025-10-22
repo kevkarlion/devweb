@@ -95,21 +95,20 @@ export function HeroSection() {
       >
         {/* Imagen de fondo optimizada */}
         <div className="absolute inset-0 z-0">
-  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-gray-100" />
-  <Image
-    src="/bck-final-hero.webp"
-    alt="Fondo principal Devweb Patagonia"
-    fill
-    sizes="100vw"
-    priority
-    quality={90}
-    placeholder="blur"
-    blurDataURL="/blur-placeholder.webp"
-    className="object-cover object-center transition-opacity duration-700 ease-in-out"
-  />
-  <div className="absolute inset-0 bg-white/5 backdrop-blur-[0.5px]" />
-</div>
-
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-gray-50 to-gray-100" />
+          <Image
+            src="/bck-final-hero.webp"
+            alt="Fondo principal Devweb Patagonia"
+            fill
+            sizes="100vw"
+            priority
+            quality={90}
+            placeholder="blur"
+            blurDataURL="/blur-placeholder.webp"
+            className="object-cover object-center transition-opacity duration-700 ease-in-out"
+          />
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-[0.5px]" />
+        </div>
 
         {/* Contenido principal */}
         <div className="relative z-10 max-w-8xl mx-auto w-full">

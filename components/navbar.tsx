@@ -14,19 +14,25 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Bloquear scroll optimizado
+  // Bloquear scroll optimizado - CORREGIDO
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.dataset.scrollY = window.scrollY.toString();
+      // Guardar la posición actual del scroll
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      if (document.body.dataset.scrollY) {
-        window.scrollTo(0, parseInt(document.body.dataset.scrollY));
+      // Restaurar la posición del scroll
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
       }
     }
   }, [isMenuOpen]);
@@ -38,6 +44,16 @@ export function Navbar() {
     { name: "Portfolio", href: "#portfolio" },
     { name: "Contacto", href: "#contacto" },
   ];
+
+  // Función para cerrar menú y manejar navegación
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // Función para navegar y cerrar menú
+  const handleNavigation = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <>
@@ -188,7 +204,7 @@ export function Navbar() {
 
             {/* BOTÓN X */}
             <motion.button
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleCloseMenu}
               className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center z-[10001] bg-white/20 rounded-full backdrop-blur-sm border border-white/15"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -206,7 +222,7 @@ export function Navbar() {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={handleNavigation}
                     className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#121212]/80 hover:text-[#121212] transition-colors duration-200 py-3 px-4 rounded-2xl hover:bg-white/20 backdrop-blur-sm"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -225,7 +241,7 @@ export function Navbar() {
               <motion.a
                 href="https://wa.me/5492984252859"
                 className="mt-8 px-5 py-3 bg-[#121212] text-white font-[family-name:var(--font-inter-semibold)] text-sm rounded-full hover:bg-white hover:text-[#121212] border border-[#121212] transition-all duration-200 text-center block max-w-xs mx-auto backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={handleNavigation}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
