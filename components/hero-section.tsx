@@ -71,7 +71,7 @@ export function HeroSection() {
                   alt="Experiencias digitales - devweb Patagonia"
                   width={800}
                   height={600}
-                  className="object-contain rounded-2xl w-full sm:w-[95%] md:w-[90%] translate-x-[35%] sm:translate-x-[35%] md:translate-x-[30%]"
+                  className="object-contain rounded-2xl w-full sm:w-[95%] md:w-[90%] translate-x-[35%] sm:translate-x-[35%] md:translate-x-[30%] pb-16"
                   priority
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."
@@ -152,12 +152,13 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Layout Desktop - ORDEN INVERTIDO */}
-          <div className="hidden lg:px-4 xl:px-0 lg:pl-6 xl:pl-8 lg:grid lg:mt-8 xl:mt-16 grid-cols-1 lg:grid-cols-[55%_45%] xl:grid-cols-[50%_50%] items-start min-h-[85vh] lg:min-h-[80vh] xl:min-h-[75vh] bg-black">
+          {/* Layout Desktop - H1 DENTRO DEL GRID PERO CON WIDTH EXTENDIDO */}
+          <div className="hidden lg:px-4 xl:px-0 lg:pl-6 xl:pl-8 lg:grid lg:mt-8 xl:mt-16 grid-cols-1 lg:grid-cols-[55%_45%] xl:grid-cols-[50%_50%] items-start min-h-[85vh] lg:min-h-[80vh] xl:min-h-[75vh] bg-black relative overflow-visible">
             {/* Columna izquierda - CONTENIDO PRINCIPAL */}
-            <div className="flex flex-col w-full lg:pr-4 xl:pr-0">
+            <div className="flex flex-col w-full lg:pr-4 xl:pr-0 relative z-30">
+              {/* H1 CON WIDTH EXTENDIDO QUE PUEDE PISAR LA IMAGEN */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-5xl xl:text-6xl  leading-[0.9] tracking-normal uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent"
+                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-6xl xl:text-5xl 2xl:text-8xl leading-[0.9] tracking-normal uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
                   backgroundImage: 'url("/bck-final-hero.webp")',
@@ -173,7 +174,7 @@ export function HeroSection() {
               </motion.h1>
 
               <motion.div
-                className="flex flex-col justify-center items-start space-y-6 lg:space-y-6 xl:space-y-8 text-left w-full mt-2"
+                className="flex flex-col justify-center items-start space-y-6 lg:space-y-6 xl:space-y-8 text-left w-full mt-2 relative z-30"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -248,7 +249,7 @@ export function HeroSection() {
 
             {/* Columna derecha - IMAGEN OPTIMIZADA */}
             <motion.div
-              className="relative flex justify-center items-start lg:justify-end lg:items-center"
+              className="relative flex justify-center items-start lg:justify-end lg:items-center z-20 "
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -260,7 +261,7 @@ export function HeroSection() {
                   fill
                   sizes="(min-width: 1024px) 35vw, (min-width: 1280px) 40vw, 100vw"
                   priority
-                  className="object-cover object-center rounded-2xl"
+                  className="object-cover object-center rounded-2xl pb-8"
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..."
                 />
