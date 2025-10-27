@@ -158,7 +158,7 @@ export function HeroSection() {
             <div className="flex flex-col w-full lg:pr-4 xl:pr-0 relative z-30">
               {/* H1 CON WIDTH EXTENDIDO QUE PUEDE PISAR LA IMAGEN */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-6xl xl:text-5xl 2xl:text-8xl leading-[0.9] tracking-normal uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40"
+                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl leading-[0.9] tracking-normal uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
                   backgroundImage: 'url("/bck-final-hero.webp")',
@@ -271,14 +271,14 @@ export function HeroSection() {
         </div>
 
         {/* Efectos de fondo - MANTENIENDO FONDO NEGRO */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-black">
           <div
             className="absolute inset-0 opacity-10"
             style={{
               background: "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
             }}
           />
-          <div className="absolute inset-0 bg-black/80" />
+          <div className="absolute inset-0 bg-black" />
         </div>
       </section>
     </div>
