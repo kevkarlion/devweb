@@ -268,7 +268,7 @@ export function HeroSection() {
                 "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
             }}
           />
-          <div className="absolute inset-0 bg-black/80" />
+          <div className="absolute inset-0 bg-black" />
         </div>
       </section>
     </div>
