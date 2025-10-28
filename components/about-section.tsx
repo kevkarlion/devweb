@@ -320,7 +320,7 @@ export function AboutSection() {
     />
     
     {/* Contenido */}
-    <span className="relative z-10 text-white ">Contactanos</span>
+    <span className="relative z-10 text-white ">Contáctanos</span>
     <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
   </a>
 </motion.div>
