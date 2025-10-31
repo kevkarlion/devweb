@@ -6,8 +6,11 @@ import "./globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { WhatsappButton } from "@/components/WhatsappButton"
-
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+
+// ✅ Importar los componentes de Schema
+import { OnePageSchema } from "@/components/OnePageSchema"
+import { WebsiteSchema } from "@/components/WebsiteSchema"
 
 const interLight = Inter({
   subsets: ["latin"],
@@ -23,11 +26,22 @@ const interSemiBold = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Devweb - Diseño y Desarrollo Web Profesional | Alto Valle Patagónico',
-    template: '%s | Devweb - Agencia de Desarrollo Web'
+    default: 'Devweb - Diseño y Desarrollo Web | Alto Valle, General Roca, Cipolletti, Neuquén',
+    template: '%s | Devweb Patagonia'
   },
-  description: 'Agencia especializada en diseño web, desarrollo de sitios profesionales y experiencias digitales. Creamos tu presencia online con tecnología moderna y diseño impactante.',
-  keywords: 'diseño web, desarrollo web, agencia digital, sitio web, ecommerce, landing page, react, next.js, alto valle patagónico',
+  description: 'Agencia líder en diseño web y desarrollo en Alto Valle Patagónico. Servicios para General Roca, Cipolletti, Neuquén y Río Negro. Sitios rápidos, modernos y optimizados SEO.',
+  keywords: [
+    'diseño web alto valle',
+    'desarrollo web general roca',
+    'crear página web cipolletti',
+    'agencia digital neuquén',
+    'sitios web río negro',
+    'one page patagonia',
+    'landing page alto valle',
+    'portfolio web desarrollador',
+    'next.js desarrollo argentina',
+    'react desarrollo patagonia'
+  ].join(', '),
   authors: [{ name: 'Devweb' }],
   creator: 'Devweb',
   publisher: 'Devweb',
@@ -45,21 +59,21 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: 'https://devwebpatagonia.com/',
     siteName: 'Devweb',
-    title: 'Devweb - Diseño y Desarrollo Web Profesional',
-    description: 'Agencia especializada en diseño web y desarrollo de sitios profesionales',
+    title: 'Devweb - Diseño Web Profesional | Alto Valle, General Roca, Cipolletti, Neuquén',
+    description: 'Agencia especializada en diseño web y desarrollo de sitios en Alto Valle Patagónico, General Roca, Cipolletti, Neuquén y Río Negro.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Devweb - Agencia de Diseño y Desarrollo Web',
+        alt: 'Devweb - Agencia de Diseño Web en Alto Valle, General Roca, Cipolletti, Neuquén',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Devweb - Diseño y Desarrollo Web Profesional',
-    description: 'Agencia especializada en diseño web y desarrollo de sitios profesionales',
+    title: 'Devweb - Diseño Web Alto Valle | General Roca, Cipolletti, Neuquén',
+    description: 'Desarrollo web profesional en Alto Valle Patagónico, General Roca, Cipolletti, Neuquén y Río Negro. Tecnología moderna y diseño impactante.',
     images: ['/twitter-image.jpg'],
     creator: '@devweb',
   },
@@ -79,24 +93,34 @@ export const metadata: Metadata = {
     yandex: 'tu-codigo-verificacion-yandex',
   },
 }
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark w-screen">
+    <html lang="es" className="dark w-screen">
       <head>
         <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" sizes="32x32" />
         <link rel="icon" type="image/png" href="/favicon/favicon-16x16.png" sizes="16x16" />
         <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180" />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+        
+        {/* ✅ Preconexiones para mejor performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${interLight.variable} ${interSemiBold.variable} antialiased  p-0! w-full`}> {/* ← AÑADIDO overflow-x-hidden */}
+      <body className={`${interLight.variable} ${interSemiBold.variable} antialiased p-0! w-full`}>
         <Navbar />
         <WhatsappButton />
         <Suspense fallback={null}>{children}</Suspense>
+        
+        {/* ✅ SCHEMA MARKUP IMPLEMENTADO */}
+        <OnePageSchema />
+        <WebsiteSchema />
+        
         <GoogleAnalytics />
         <Footer />
       </body>
