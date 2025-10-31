@@ -2,34 +2,20 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import {
   Cormorant_Garamond,
   Inter,
   JetBrains_Mono,
   Oswald,
-  EB_Garamond,
-  Judson,
+  Alfa_Slab_One,
 } from "next/font/google";
 
 // Configurar las fuentes
-const cormorant = Cormorant_Garamond({
+const alfaSlab = Alfa_Slab_One({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["italic", "normal"],
-  variable: "--font-cormorant",
-});
-
-const judson = Judson({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["italic", "normal"],
-  variable: "--font-judson",
-});
-
-const oswald = Oswald({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
-  variable: "--font-oswald",
+  weight: ["400"],
+  variable: "--font-alfaslab",
 });
 
 const inter = Inter({
@@ -82,249 +68,220 @@ const portfolioItems = [
     link: "https://cohub-space.vercel.app/",
   },
   {
-    id: 5, // Cambiar el ID para que sea único
+    id: 5,
     title: "Bodega Patagonia | Web Institucional",
     description:
       "Diseño y desarrollo del sitio web oficial de la Bodega Patagonia",
-    image: "/proyectos-img/bodega.png", // Asegúrate de tener la imagen en esa ruta
+    image: "/proyectos-img/bodega.png",
     category: "One Page Institucional",
-    technologies: ["Next.js", "Tailwind.CSS", "TypeScript"], // Tecnologías sugeridas para un sitio web de bodega
-    link: "https://patagonia-wine-bloom.vercel.app/", // URL de ejemplo
-},
-  // {
-  //   id: 6,
-  //   title: "App Móvil HealthTech",
-  //   description:
-  //     "Aplicación de salud y bienestar con seguimiento personalizado",
-  //   image: "/portfolio/health-web.jpg",
-  //   category: "Product Design",
-  //   technologies: ["React Native", "GraphQL", "AWS"],
-  //   link: "https://ejemplo-salud.com",
-  // },
+    technologies: ["Next.js", "Tailwind.CSS", "TypeScript"],
+    link: "https://patagonia-wine-bloom.vercel.app/",
+  },
 ];
 
 export function PortfolioSection() {
   return (
     <div
-      className={`w-full ${cormorant.variable} ${oswald.variable} ${inter.variable} ${jetbrainsMono.variable}`} id="portfolio"
+      className={`w-full ${alfaSlab.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      id="portfolio"
     >
-      <section
-        className="relative min-h-screen py-20 px-6 w-full overflow-hidden"
-        style={{
-          backgroundColor: "rgb(233, 233, 233)",
-          backgroundImage: "url(/bck-figure.png)",
-          backgroundPosition: "80% 20%",
-        }}
-        id="portfolio"
-      >
-        {/* Animated gradient glow background */}
-        <motion.div
-          className="absolute inset-0 opacity-5"
-          animate={{
-            background: [
-              "radial-gradient(circle at 20% 80%, rgba(18,18,18,0.08) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 20%, rgba(18,18,18,0.08) 0%, transparent 50%)",
-              "radial-gradient(circle at 40% 40%, rgba(18,18,18,0.08) 0%, transparent 50%)",
-              "radial-gradient(circle at 20% 80%, rgba(18,18,18,0.08) 0%, transparent 50%)",
-            ],
+      <div className="min-h-screen w-full relative bg-black">
+        {/* Violet Storm Background with Top Glow */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.25), transparent 70%), #000000",
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
         />
-
-        {/* Contenedor principal */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full">
-          {/* Header del Portfolio */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h2
-              className="text-[clamp(2.5rem,6vw,4rem)] text-[#121212] mb-6"
-              initial={{ opacity: 0, y: 20 }}
+        
+        {/* Contenido principal */}
+        <section className="relative z-10 min-h-screen py-24 px-6 w-full overflow-hidden">
+          {/* Contenedor principal */}
+          <div className="relative z-10 max-w-7xl mx-auto w-full">
+            {/* Header del Portfolio */}
+            <motion.div
+              className="text-center flex flex-col justify-center items-center mb-12 lg:mb-16"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8 }}
             >
-              <span
-                className="uppercase font-light tracking-wide"
-                style={{ fontFamily: "var(--font-oswald)" }}
+              {/* Título principal */}
+              <motion.h1
+                className="lg:pt-6 xl:pt-8  mt-14  text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl  tracking-normal uppercase mb-12 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%]   z-40"
+                style={{
+                  fontFamily: "var(--font-alfaslab)",
+                  backgroundImage: 'url("/bck-final-hero.webp")',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Portfolio
-              </span>
+              </motion.h1>
 
-              {/* Línea horizontal decorativa */}
-              <div className="w-16 h-0.5 bg-[#121212]/30 mx-auto my-4" />
-
-              <span
-                className="italic font-medium"
-                style={{ fontFamily: "var(--font-cormorant)" }}
+              {/* Descripción */}
+              <motion.p
+                className="tracking-wider lg:tracking-normal text-base xl:text-lg text-white/70 max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white/70"
+                style={{ fontFamily: "var(--font-inter)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Selección de
-              </span>
-              <br />
-              <span
-                className="font-regular tracking-tight"
-                style={{ fontFamily: "var(--font-judson)" }}
-              >
-                Proyectos
-              </span>
-            </motion.h2>
+                Conocé los proyectos y emprendimientos con los que trabajamos, diseñados para impulsar marcas y transformar ideas en experiencias digitales impactantes.
+              </motion.p>
+            </motion.div>
 
-            <motion.p
-              className="text-lg text-[#121212]/70 max-w-2xl mx-auto leading-relaxed"
-              style={{ fontFamily: "var(--font-inter)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Conocé los proyectos y emprendimientos con los que trabajamos,
-              diseñados para impulsar marcas y transformar ideas en experiencias
-              digitales impactantes.
-            </motion.p>
-          </motion.div>
-
-          {/* Grid de Portfolio */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            {portfolioItems.map((item, index) => (
-              <a
-                key={item.id}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block group relative bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 no-underline"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="h-full"
-                >
-                  {/* Imagen del proyecto */}
-                  <div className="relative h-64 overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* Categoría */}
-                    <div className="absolute top-4 left-4">
-                      <span
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-white/90 backdrop-blur-sm text-[#121212]"
-                        style={{ fontFamily: "var(--font-inter)" }}
-                      >
-                        {item.category}
-                      </span>
-                    </div>
-
-                    {/* Botón de vista */}
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <div
-                        className="px-6 py-3 bg-white text-[#121212] rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-[#121212] hover:text-white"
-                        style={{ fontFamily: "var(--font-inter)" }}
-                      >
-                        Ver Proyecto
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Contenido */}
-                  <div className="p-6">
-                    <h3
-                      className="text-xl font-semibold text-[#121212] mb-3"
-                      style={{ fontFamily: "var(--font-inter)" }}
-                    >
-                      {item.title}
-                    </h3>
-
-                    <p
-                      className="text-[#121212]/70 text-sm leading-relaxed mb-4"
-                      style={{ fontFamily: "var(--font-inter)" }}
-                    >
-                      {item.description}
-                    </p>
-
-                    {/* Tecnologías */}
-                    <div className="flex flex-wrap gap-2">
-                      {item.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2 py-1 text-xs bg-[#121212]/5 text-[#121212]/80 rounded-md"
-                          style={{ fontFamily: "var(--font-mono)" }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Efecto de borde sutil */}
-                  <div className="absolute inset-0 rounded-2xl border border-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </motion.div>
-              </a>
-            ))}
-          </motion.div>
-
-          {/* CTA Final */}
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <motion.p
-              className="text-lg text-[#121212]/70 mb-6 max-w-2xl mx-auto"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
-              Digitalizá tu negocio con nosotros. Transformamos ideas en
-              experiencias digitales únicas que impulsan tu marca al éxito.
-            </motion.p>
+            {/* Grid de Portfolio */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {portfolioItems.map((item, index) => (
+                <a
+                  key={item.id}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group relative bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 no-underline"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="h-full"
+                  >
+                    {/* Imagen del proyecto */}
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+
+                      {/* Overlay gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      {/* Categoría */}
+                      <div className="absolute top-4 left-4">
+                        <span
+                          className="px-3 py-1 text-xs font-medium rounded-full bg-white/90 backdrop-blur-sm text-[#121212]"
+                          style={{ fontFamily: "var(--font-inter)" }}
+                        >
+                          {item.category}
+                        </span>
+                      </div>
+
+                      {/* Botón de vista */}
+                      <motion.div
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <div
+                          className="px-6 py-3 bg-white text-[#121212] rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-[#121212] hover:text-white"
+                          style={{ fontFamily: "var(--font-inter)" }}
+                        >
+                          Ver Proyecto
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Contenido */}
+                    <div className="p-6">
+                      <h3
+                        className="text-xl font-semibold text-[#121212] mb-3"
+                        style={{ fontFamily: "var(--font-inter)" }}
+                      >
+                        {item.title}
+                      </h3>
+
+                      <p
+                        className="text-[#121212]/70 text-sm leading-relaxed mb-4"
+                        style={{ fontFamily: "var(--font-inter)" }}
+                      >
+                        {item.description}
+                      </p>
+
+                      {/* Tecnologías */}
+                      <div className="flex flex-wrap gap-2">
+                        {item.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-2 py-1 text-xs bg-[#121212]/5 text-[#121212]/80 rounded-md"
+                            style={{ fontFamily: "var(--font-mono)" }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Efecto de borde sutil */}
+                    <div className="absolute inset-0 rounded-2xl border border-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </motion.div>
+                </a>
+              ))}
+            </motion.div>
+
+            {/* Texto CTA */}
+            <motion.div
+              className="text-center mt-12 lg:mt-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <motion.p
+                className="tracking-wider lg:tracking-normal text-base  xl:text-lg text-white/70 mb-6 max-w-2xl mx-auto text-center lg:text-left xl:mb-18 xl:mt-12"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                Digitalizá tu negocio con nosotros. Transformamos ideas en experiencias digitales únicas que impulsan tu marca al éxito.
+              </motion.p>
+            </motion.div>
+
+            {/* Botón CTA */}
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
             >
               <a
                 href="https://wa.me/5492984252859"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 bg-[#121212] text-[#E9E9E9] rounded-full hover:bg-[#121212]/90 transition-all duration-300 shadow-lg font-semibold"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
+                style={{
+                  fontFamily: "var(--font-inter)",
+                }}
               >
-                Hablemos de tu proyecto
+                {/* Fondo negro */}
+                <div className="absolute inset-0 rounded-lg bg-black" />
+
+                {/* Borde degradado */}
+                <div
+                  className="absolute inset-0 rounded-sm border-2 border-transparent"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
+                    mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                    maskComposite: "exclude",
+                  }}
+                />
+
+                {/* Contenido */}
+                <span className="relative z-10 text-white">Hablemos de tu proyecto</span>
+                <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
               </a>
             </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Elementos decorativos */}
-        <motion.div
-          className="absolute left-0 top-1/4 w-24 h-24 bg-gradient-to-br from-[#121212]/5 to-transparent transform -rotate-45 hidden lg:block"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-        />
-
-        <motion.div
-          className="absolute right-0 bottom-1/4 w-32 h-32 bg-gradient-to-tl from-[#121212]/5 to-transparent transform rotate-12 hidden lg:block"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
-        />
-      </section>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

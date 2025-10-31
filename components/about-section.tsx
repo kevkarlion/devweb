@@ -93,7 +93,7 @@ export function AboutSection() {
     <section
       ref={ref}
       id="nosotros"
-      className={`${alfaSlab.variable} py-24 sm:py-32 px-4 sm:px-6 lg:pt-32 relative overflow-hidden text-center bg-black border-t border-[white/10]`}
+      className={`${alfaSlab.variable} py-24 sm:py-32 px-6 sm:px-6 lg:pt-32 relative overflow-hidden text-center bg-black border-t border-[white/10]`}
     >
       {/* Líneas decorativas */}
       <motion.div
@@ -112,7 +112,7 @@ export function AboutSection() {
       <div className="max-w-5xl mx-auto relative">
         {/* Título con efecto hero */}
         <motion.h1
-          className="mt-16 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-6 bg-clip-text text-transparent z-[200]"
+          className="mt-14 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent z-[200]"
           style={{
             fontFamily: "var(--font-alfaslab)",
             backgroundImage: 'url("/bck-final-hero.webp")',
@@ -135,10 +135,10 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
+            className="border-l-3 border-white/70 pl-4 tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center lg:text-left"
             variants={paragraphVariants}
           >
-            En Devweb Patagonia elegimos trabajar con Next.js y Stack MERN para
+            En devweb Patagonia elegimos trabajar con Next.js y Stack MERN para
             ofrecer soluciones web de alto rendimiento y escalabilidad. Estas
             tecnologías nos permiten crear experiencias digitales personalizadas
             que se adaptan exactamente a las necesidades de tu negocio.
@@ -153,7 +153,7 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.h3
-            className="font-[family-name:var(--font-inter-semibold)] text-xl text-[#E9E9E9] mb-6 text-center"
+            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-semibold)] text-xl text-[#E9E9E9]/80 mb-6 text-center"
             variants={paragraphVariants}
           >
             ¿Por qué desarrollamos con Next.js y MERN?
@@ -177,9 +177,9 @@ export function AboutSection() {
                   className="text-lg text-black font-bold text-left"
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
-                  <strong>Máxima velocidad y rendimiento:</strong>{" "}
-                  Aplicaciones web ultrarrápidas que mejoran la experiencia de
-                  usuario y el posicionamiento SEO.
+                  <strong>Máxima velocidad y rendimiento:</strong> Aplicaciones
+                  web ultrarrápidas que mejoran la experiencia de usuario y el
+                  posicionamiento SEO.
                 </p>
                 <p
                   className="text-lg text-black font-bold text-left"
@@ -192,16 +192,16 @@ export function AboutSection() {
                   className="text-lg text-black font-bold text-left"
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
-                  <strong>Escalabilidad garantizada:</strong> Tu web crece
-                  junto a tu negocio, manejando alto tráfico y funcionalidades
+                  <strong>Escalabilidad garantizada:</strong> Tu web crece junto
+                  a tu negocio, manejando alto tráfico y funcionalidades
                   complejas.
                 </p>
                 <p
                   className="text-lg text-black font-bold text-left"
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
-                  <strong>SEO técnico avanzado:</strong> Renderizado
-                  server-side que los motores de búsqueda prefieren.
+                  <strong>SEO técnico avanzado:</strong> Renderizado server-side
+                  que los motores de búsqueda prefieren.
                 </p>
                 <p
                   className="text-lg text-black font-bold text-left"
@@ -256,7 +256,7 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
+            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center lg:text-left xl:mb-18 xl:mt-12"
             variants={paragraphVariants}
           >
             Trabajamos codo a codo con emprendedores, pymes y comercios de la
@@ -276,13 +276,13 @@ export function AboutSection() {
             <motion.div
               key={tech.id}
               className="w-16 h-16 bg-[#E9E9E9]/10 rounded-lg flex items-center justify-center flex-shrink-0"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.1,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
             >
-              <img 
-                src={tech.logoPath} 
+              <img
+                src={tech.logoPath}
                 alt={tech.alt}
                 className="w-10 h-10 object-contain"
               />
@@ -291,39 +291,40 @@ export function AboutSection() {
         </motion.div>
 
         {/* Botón Contactanos */}
-       <motion.div
-  className="flex justify-center"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.8, delay: 0.6 }}
->
-  <a
-    href="https://wa.me/5492984252859"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4  hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
-    style={{
-      fontFamily: "var(--font-inter)",
-    }}
-  >
-    {/* Fondo negro */}
-    <div className="absolute inset-0 rounded-lg bg-black" />
-    
-    {/* Borde degradado */}
-    <div 
-      className="absolute inset-0 rounded-sm border-2 border-transparent"
-      style={{
-        background: "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
-        mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
-        maskComposite: "exclude",
-      }}
-    />
-    
-    {/* Contenido */}
-    <span className="relative z-10 text-white ">Contáctanos</span>
-    <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
-  </a>
-</motion.div>
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <a
+            href="https://wa.me/5492984252859"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4  hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
+            style={{
+              fontFamily: "var(--font-inter)",
+            }}
+          >
+            {/* Fondo negro */}
+            <div className="absolute inset-0 rounded-lg bg-black" />
+
+            {/* Borde degradado */}
+            <div
+              className="absolute inset-0 rounded-sm border-2 border-transparent"
+              style={{
+                background:
+                  "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
+                mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                maskComposite: "exclude",
+              }}
+            />
+
+            {/* Contenido */}
+            <span className="relative z-10 text-white ">Contáctanos</span>
+            <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </motion.div>
 
         {/* Elemento decorativo flotante */}
         <motion.div

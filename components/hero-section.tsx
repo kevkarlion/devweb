@@ -86,7 +86,7 @@ export function HeroSection() {
                 >
                   <div className="bg-black/50 rounded-xl px-4 py-2 flex justify-center items-center">
                     <p
-                      className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-gray-50 text-center max-w-[85%] drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]"
+                      className="tracking-wider text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-[#E9E9E9]/80 text-center max-w-[85%] drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]"
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
                       Diseño y desarrollo web que potencia tu marca y conecta con
@@ -181,7 +181,7 @@ export function HeroSection() {
               >
                 {/* Subtítulo */}
                 <motion.p
-                  className="text-lg lg:text-xl xl:text-xl lg:w-full xl:w-[60%] max-w-2xl font-semibold leading-relaxed text-gray-300"
+                  className="  text-lg lg:text-xl xl:text-xl lg:w-full xl:w-[60%] max-w-2xl font-semibold leading-relaxed text-gray-300"
                   style={{ fontFamily: "var(--font-inter)" }}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
