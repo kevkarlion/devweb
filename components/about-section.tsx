@@ -244,52 +244,45 @@ export function AboutSection() {
         </motion.div>
 
         {/* Sección de beneficios con borde animado e iconos */}
+<motion.div
+  className="w-[90%] max-w-5xl mx-auto mb-12"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.8 }}
+>
+  <div className="relative rounded-lg p-6 lg:p-8 backdrop-blur-sm bg-white/5 drop-shadow-2xl">
+    {/* Moving Border */}
+    <div className="absolute inset-0 overflow-hidden rounded-lg p-px">
+      <div className="absolute inset-0 pointer-events-none">
+        <RotatingMovingBorder duration={4000} rx="12" ry="12">
+          <div className="h-0.5 w-16 bg-blue-400 shadow-[0_0_10px_#3b82f6]" />
+        </RotatingMovingBorder>
+      </div>
+    </div>
+
+    <div className="absolute inset-0 rounded-lg border border-white/20" />
+
+    <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-3">
+      {benefits.map((benefit, index) => (
         <motion.div
-          className="w-[90%] max-w-3xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          key={index}
+          className="flex items-center gap-3 p-4 bg-white/5 rounded-lg border border-white/10"
+          variants={listItemVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ delay: index * 0.1 }}
         >
-          <div className="relative rounded-lg p-8 backdrop-blur-sm bg-white/5 drop-shadow-2xl">
-            {/* Moving Border con rotación automática */}
-            <div className="absolute inset-0 overflow-hidden rounded-lg p-px">
-              <div className="absolute inset-0 pointer-events-none">
-                <RotatingMovingBorder duration={4000} rx="12" ry="12">
-                  <div className="h-0.5 w-16 bg-blue-400 shadow-[0_0_10px_#3b82f6]" />
-                </RotatingMovingBorder>
-              </div>
-            </div>
-
-            {/* Borde base sutil */}
-            <div className="absolute inset-0 rounded-lg border border-white/20" />
-
-            <div className="relative z-10 space-y-4">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start gap-4 group"
-                  variants={listItemVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {/* Icono */}
-                  <div className="shrink-0 w-6 h-6 mt-1 text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                    {getBenefitIcon(benefit)}
-                  </div>
-
-                  {/* Texto */}
-                  <p
-                    className="text-lg text-white font-bold text-left uppercase flex-1"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    {benefit}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="shrink-0 w-5 h-5 text-blue-400">
+            {getBenefitIcon(benefit)}
           </div>
+          <p className="text-xs lg:text-sm text-white font-bold uppercase flex-1" style={{ fontFamily: "var(--font-mono)" }}>
+            {benefit}
+          </p>
         </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.div>
 
         {/* Segundo párrafo centrado */}
         <motion.div
