@@ -1,16 +1,78 @@
 "use client";
 
 import { motion, useInView, Variants, Transition } from "framer-motion";
-import { ArrowRight, ArrowUpRightIcon } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRightIcon,
+  Bot,
+  Clock,
+  Globe,
+  TrendingDown,
+  Users,
+  LayoutGrid,
+  Calendar,
+  Zap,
+  Target,
+} from "lucide-react";
 import { useRef } from "react";
 import { Alfa_Slab_One } from "next/font/google";
 import RotatingMovingBorder from "@/components/MovingBorderWrapper";
+import Image from "next/image";
+
 // Fuentes
 const alfaSlab = Alfa_Slab_One({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-alfaslab",
 });
+
+// Función para obtener el icono según el beneficio
+const getBenefitIcon = (benefit: string) => {
+  const lowerBenefit = benefit.toLowerCase();
+
+  if (lowerBenefit.includes("leads") || lowerBenefit.includes("automática")) {
+    return <Bot className="w-6 h-6" />;
+  }
+  if (lowerBenefit.includes("24hs") || lowerBenefit.includes("vender")) {
+    return <Clock className="w-6 h-6" />;
+  }
+  if (
+    lowerBenefit.includes("zona") ||
+    lowerBenefit.includes("expandir") ||
+    lowerBenefit.includes("general roca")
+  ) {
+    return <Globe className="w-6 h-6" />;
+  }
+  if (lowerBenefit.includes("costos") || lowerBenefit.includes("reducir")) {
+    return <TrendingDown className="w-6 h-6" />;
+  }
+  if (lowerBenefit.includes("fidelizar") || lowerBenefit.includes("clientes")) {
+    return <Users className="w-6 h-6" />;
+  }
+  if (
+    lowerBenefit.includes("catálogo") ||
+    lowerBenefit.includes("mostrar") ||
+    lowerBenefit.includes("espacio físico")
+  ) {
+    return <LayoutGrid className="w-6 h-6" />;
+  }
+  if (
+    lowerBenefit.includes("citas") ||
+    lowerBenefit.includes("consultas") ||
+    lowerBenefit.includes("máquina")
+  ) {
+    return <Calendar className="w-6 h-6" />;
+  }
+  if (
+    lowerBenefit.includes("información") ||
+    lowerBenefit.includes("instant") ||
+    lowerBenefit.includes("horario")
+  ) {
+    return <Zap className="w-6 h-6" />;
+  }
+
+  return <Target className="w-6 h-6" />;
+};
 
 export function AboutSection() {
   const ref = useRef(null);
@@ -99,40 +161,51 @@ export function AboutSection() {
   ];
 
   const benefits = [
-    "GENERAR LEADS DE FORMA AUTOMATICA Y CONSTANTE",
+    "GENERAR LEADS DE FORMA AUTOMÁTICA Y CONSTANTE",
     "VENDER LAS 24HS",
-    "EXPANDIR TU ZONA DE VENTAS MAS ALLA DE GENERAL ROCA",
-    "REDUCIR COSTOS OPERATIVOS MEDIANTE AUTOMATIZACION DE PROCESOS",
+    "EXPANDIR TU ZONA DE VENTAS MÁS ALLÁ DE GENERAL ROCA",
+    "REDUCIR COSTOS OPERATIVOS MEDIANTE AUTOMATIZACIÓN DE PROCESOS",
     "FIDELIZAR CLIENTES Y AUMENTAR SU FRECUENCIA DE COMPRA",
-    "MOSTRAR TU CATALOGO COMPLETO, SIN LIMITES DE ESPACIO FISICO",
-    "CREAR UNA MAQUINA PARA GENERAR CITAS Y CONSULTAS PARA TU NEGOCIO",
-    "PROVEER INFORMACION DE PRODUCTOS Y SERVICIOS AL INSTANTE, SIN DEPENDER DEL HORARIO DE ATENCION"
+    "MOSTRAR TU CATÁLOGO COMPLETO, SIN LÍMITES DE ESPACIO FÍSICO",
+    "CREAR UNA MÁQUINA PARA GENERAR CITAS Y CONSULTAS PARA TU NEGOCIO",
+    "PROVEER INFORMACIÓN DE PRODUCTOS Y SERVICIOS AL INSTANTE, SIN DEPENDER DEL HORARIO DE ATENCIÓN",
   ];
 
   return (
     <section
       ref={ref}
       id="nosotros"
-      className={`${alfaSlab.variable} py-24 sm:py-32 px-6 sm:px-6 lg:pt-32 relative overflow-hidden text-center bg-black border-t border-[white/10]`}
+      className={`${alfaSlab.variable} min-h-screen w-full py-24 sm:py-32 px-6 sm:px-6 lg:pt-32 relative overflow-hidden text-center`}
     >
+      {/* Blue Radial Glow Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `radial-gradient(circle 600px at 50% 50%, rgba(59,130,246,0.3), transparent)`,
+        }}
+      />
+
+      {/* Fondo base oscuro */}
+      <div className="absolute inset-0 bg-[#0f172a] z-[-1]" />
+
       {/* Líneas decorativas */}
       <motion.div
-        className="absolute top-1/4 -left-10 w-32 h-0.5 bg-[#E9E9E9]/10"
+        className="absolute top-1/4 -left-10 w-32 h-0.5 bg-[#E9E9E9]/10 z-10"
         variants={lineVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       />
       <motion.div
-        className="absolute bottom-1/4 -right-10 w-32 h-0.5 bg-[#E9E9E9]/10"
+        className="absolute bottom-1/4 -right-10 w-32 h-0.5 bg-[#E9E9E9]/10 z-10"
         variants={lineVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       />
 
-      <div className="max-w-5xl mx-auto relative">
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Título con efecto hero */}
         <motion.h1
-          className="mt-14 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent z-[200]"
+          className="mt-14 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent"
           style={{
             fontFamily: "var(--font-alfaslab)",
             backgroundImage: 'url("/bck-final-hero.webp")',
@@ -155,53 +228,68 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
+            className="tracking-wider lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
             variants={paragraphVariants}
           >
-            En devweb Patagonia, creemos que una web o un sistema no es solo un producto digital; es una herramienta de negocio.
-            <br /><br />
+            En devweb Patagonia, creemos que una web o un sistema no es solo un
+            producto digital; es una herramienta de negocio.
+            <br />
+            <br />
             Por eso, nuestro enfoque va más allá de la estética.
-            <br /><br />
-            Nos especializamos en crear experiencias digitales diseñadas con una intención clara:
+            <br />
+            <br />
+            Nos especializamos en crear experiencias digitales diseñadas con una
+            intención clara:
           </motion.p>
         </motion.div>
 
-<motion.div
-  className="w-[90%] max-w-3xl mx-auto mb-12"
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.8 }}
->
-  <div className="relative rounded-lg p-8 backdrop-blur-sm bg-white/5">
-    {/* Moving Border con rotación automática */}
-    <div className="absolute inset-0 overflow-hidden rounded-lg p-[1px]">
-      <div className="absolute inset-0 pointer-events-none">
-        <RotatingMovingBorder duration={4000} rx="12" ry="12">
-          <div className="h-[2px] w-16 bg-blue-400 shadow-[0_0_10px_#3b82f6]" />
-        </RotatingMovingBorder>
-      </div>
-    </div>
-    
-    {/* Borde base sutil */}
-    <div className="absolute inset-0 rounded-lg border border-white/20" />
-    
-    <div className="relative z-10 space-y-3">
-      {benefits.map((benefit, index) => (
-        <motion.p
-          key={index}
-          className="text-lg text-white font-bold text-left uppercase"
-          style={{ fontFamily: "var(--font-mono)" }}
-          variants={listItemVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          transition={{ delay: index * 0.1 }}
+        {/* Sección de beneficios con borde animado e iconos */}
+        <motion.div
+          className="w-[90%] max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
-          • {benefit}
-        </motion.p>
-      ))}
-    </div>
-  </div>
-</motion.div>
+          <div className="relative rounded-lg p-8 backdrop-blur-sm bg-white/5 drop-shadow-2xl">
+            {/* Moving Border con rotación automática */}
+            <div className="absolute inset-0 overflow-hidden rounded-lg p-px">
+              <div className="absolute inset-0 pointer-events-none">
+                <RotatingMovingBorder duration={4000} rx="12" ry="12">
+                  <div className="h-0.5 w-16 bg-blue-400 shadow-[0_0_10px_#3b82f6]" />
+                </RotatingMovingBorder>
+              </div>
+            </div>
+
+            {/* Borde base sutil */}
+            <div className="absolute inset-0 rounded-lg border border-white/20" />
+
+            <div className="relative z-10 space-y-4">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-start gap-4 group"
+                  variants={listItemVariants}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {/* Icono */}
+                  <div className="shrink-0 w-6 h-6 mt-1 text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                    {getBenefitIcon(benefit)}
+                  </div>
+
+                  {/* Texto */}
+                  <p
+                    className="text-lg text-white font-bold text-left uppercase flex-1"
+                    style={{ fontFamily: "var(--font-mono)" }}
+                  >
+                    {benefit}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* Segundo párrafo centrado */}
         <motion.div
@@ -211,10 +299,12 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
+            className="tracking-wider lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
             variants={paragraphVariants}
           >
-            Cada línea de código, cada diseño y cada funcionalidad que desarrollamos responde a una pregunta fundamental: ¿Cómo esto ayuda a tu negocio a alcanzar sus objetivos?
+            Cada línea de código, cada diseño y cada funcionalidad que
+            desarrollamos responde a una pregunta fundamental: ¿Cómo esto ayuda
+            a tu negocio a alcanzar sus objetivos?
           </motion.p>
         </motion.div>
 
@@ -225,26 +315,54 @@ export function AboutSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {/* Espacio para foto - placeholder */}
+          {/* Contenedor de foto con información */}
           <motion.div
-            className="w-48 h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-[#FFB7B2] to-[#B9C8F5] flex items-center justify-center flex-shrink-0"
+            className="flex flex-col items-center text-center shrink-0"
             variants={paragraphVariants}
           >
-            <span className="text-black font-bold text-center text-sm px-2">
-              TU FOTO AQUÍ
-            </span>
+            {/* Foto libre sin formato circular */}
+            <div className="w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center bg-transparent">
+              <Image
+                src="/kevin-yo.png"
+                alt="Kevin Riquelme - Fundador y Desarrollador"
+                width={400}
+                height={400}
+                className="w-full h-full object-contain"
+                priority
+              />
+            </div>
+
+            {/* Nombre */}
+            <h3
+              className="mt-4 text-xl font-bold text-white"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              Kevin Riquelme
+            </h3>
+
+            {/* Cargo */}
+            <p
+              className="mt-2 text-sm text-[#E9E9E9]/80"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              Fundador y Desarrollador
+            </p>
           </motion.div>
 
           {/* Texto personal */}
           <motion.div
-            className="text-left space-y-6"
+            className="text-left space-y-6 flex-1"
             variants={paragraphVariants}
           >
-            <p className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
-              Mi pasión es convertir los desafíos operativos de emprendedores y pymes en soluciones digitales elegantes y eficientes. Como tu contacto directo, me aseguro de que no solo ames el diseño de tu proyecto, sino que también obtengas una herramienta confiable que te ahorre tiempo, reduzca costos y aumente tus ganancias.
+            <p className="tracking-wider text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
+              Mi pasión es convertir los desafíos operativos de emprendedores y
+              pymes en soluciones digitales elegantes y eficientes. Como tu
+              contacto directo, me aseguro de que no solo ames el diseño de tu
+              proyecto, sino que también obtengas una herramienta confiable que
+              te ahorre tiempo, reduzca costos y aumente tus ganancias.
             </p>
-            
-            <p className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-semibold)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
+
+            <p className="tracking-wider text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-semibold) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
               Hablemos de cómo podemos llevar tu visión al mundo digital
             </p>
           </motion.div>
@@ -267,7 +385,7 @@ export function AboutSection() {
             }}
           >
             {/* Fondo negro */}
-            <div className="absolute inset-0 rounded-lg bg-black" />
+            <div className="absolute inset-0 rounded-lg" />
 
             {/* Borde degradado */}
             <div
@@ -296,7 +414,7 @@ export function AboutSection() {
           {technologies.map((tech) => (
             <motion.div
               key={tech.id}
-              className="w-16 h-16 bg-[#E9E9E9]/10 rounded-lg flex items-center justify-center flex-shrink-0"
+              className="w-16 h-16 bg-[#E9E9E9]/10 rounded-lg flex items-center justify-center shrink-0"
               whileHover={{
                 scale: 1.1,
                 transition: { duration: 0.3 },
