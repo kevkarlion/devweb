@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useInView, Variants, Transition } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRightIcon } from "lucide-react";
 import { useRef } from "react";
 import { Alfa_Slab_One } from "next/font/google";
-
+import RotatingMovingBorder from "@/components/MovingBorderWrapper";
 // Fuentes
 const alfaSlab = Alfa_Slab_One({
   subsets: ["latin"],
@@ -51,6 +51,15 @@ export function AboutSection() {
     },
   };
 
+  const listItemVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   const circleVariants: Variants = {
     hidden: { opacity: 0, scale: 0, rotate: -180 },
     visible: { opacity: 1, scale: 1, rotate: 0, transition: circleTransition },
@@ -89,6 +98,17 @@ export function AboutSection() {
     },
   ];
 
+  const benefits = [
+    "GENERAR LEADS DE FORMA AUTOMATICA Y CONSTANTE",
+    "VENDER LAS 24HS",
+    "EXPANDIR TU ZONA DE VENTAS MAS ALLA DE GENERAL ROCA",
+    "REDUCIR COSTOS OPERATIVOS MEDIANTE AUTOMATIZACION DE PROCESOS",
+    "FIDELIZAR CLIENTES Y AUMENTAR SU FRECUENCIA DE COMPRA",
+    "MOSTRAR TU CATALOGO COMPLETO, SIN LIMITES DE ESPACIO FISICO",
+    "CREAR UNA MAQUINA PARA GENERAR CITAS Y CONSULTAS PARA TU NEGOCIO",
+    "PROVEER INFORMACION DE PRODUCTOS Y SERVICIOS AL INSTANTE, SIN DEPENDER DEL HORARIO DE ATENCION"
+  ];
+
   return (
     <section
       ref={ref}
@@ -124,7 +144,7 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          devweb &gt; NOSOTROS
+          NOSOTROS
         </motion.h1>
 
         {/* Primer párrafo centrado */}
@@ -135,120 +155,55 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="border-l-3 border-white/70 pl-4 tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center lg:text-left"
+            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
             variants={paragraphVariants}
           >
-            En devweb Patagonia elegimos trabajar con Next.js y Stack MERN para
-            ofrecer soluciones web de alto rendimiento y escalabilidad. Estas
-            tecnologías nos permiten crear experiencias digitales personalizadas
-            que se adaptan exactamente a las necesidades de tu negocio.
+            En devweb Patagonia, creemos que una web o un sistema no es solo un producto digital; es una herramienta de negocio.
+            <br /><br />
+            Por eso, nuestro enfoque va más allá de la estética.
+            <br /><br />
+            Nos especializamos en crear experiencias digitales diseñadas con una intención clara:
           </motion.p>
         </motion.div>
 
-        {/* Card con ventajas */}
-        <motion.div
-          className="mb-12"
-          variants={paragraphContainerVariants}
+<motion.div
+  className="w-[90%] max-w-3xl mx-auto mb-12"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.8 }}
+>
+  <div className="relative rounded-lg p-8 backdrop-blur-sm bg-white/5">
+    {/* Moving Border con rotación automática */}
+    <div className="absolute inset-0 overflow-hidden rounded-lg p-[1px]">
+      <div className="absolute inset-0 pointer-events-none">
+        <RotatingMovingBorder duration={4000} rx="12" ry="12">
+          <div className="h-[2px] w-16 bg-blue-400 shadow-[0_0_10px_#3b82f6]" />
+        </RotatingMovingBorder>
+      </div>
+    </div>
+    
+    {/* Borde base sutil */}
+    <div className="absolute inset-0 rounded-lg border border-white/20" />
+    
+    <div className="relative z-10 space-y-3">
+      {benefits.map((benefit, index) => (
+        <motion.p
+          key={index}
+          className="text-lg text-white font-bold text-left uppercase"
+          style={{ fontFamily: "var(--font-mono)" }}
+          variants={listItemVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
+          transition={{ delay: index * 0.1 }}
         >
-          <motion.h3
-            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-semibold)] text-xl text-[#E9E9E9]/80 mb-6 text-center"
-            variants={paragraphVariants}
-          >
-            ¿Por qué desarrollamos con Next.js y MERN?
-          </motion.h3>
+          • {benefit}
+        </motion.p>
+      ))}
+    </div>
+  </div>
+</motion.div>
 
-          <motion.div
-            className="w-[90%] max-w-3xl mx-auto mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <div
-              className="rounded-lg p-8 border border-white/40 shadow-2xl shadow-black/50 backdrop-blur-sm"
-              style={{
-                background:
-                  "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
-              }}
-            >
-              <div className="space-y-4">
-                <p
-                  className="text-lg text-black font-bold text-left"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  <strong>Máxima velocidad y rendimiento:</strong> Aplicaciones
-                  web ultrarrápidas que mejoran la experiencia de usuario y el
-                  posicionamiento SEO.
-                </p>
-                <p
-                  className="text-lg text-black font-bold text-left"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  <strong>Personalización total:</strong> Desarrollos 100% a
-                  medida, sin las limitaciones de plantillas predefabricadas.
-                </p>
-                <p
-                  className="text-lg text-black font-bold text-left"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  <strong>Escalabilidad garantizada:</strong> Tu web crece junto
-                  a tu negocio, manejando alto tráfico y funcionalidades
-                  complejas.
-                </p>
-                <p
-                  className="text-lg text-black font-bold text-left"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  <strong>SEO técnico avanzado:</strong> Renderizado server-side
-                  que los motores de búsqueda prefieren.
-                </p>
-                <p
-                  className="text-lg text-black font-bold text-left"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
-                  <strong>Seguridad robusta:</strong> Arquitectura moderna que
-                  protege tu sitio y datos sensibles.
-                </p>
-
-                <div className="mt-6 pt-4 border-t border-black/20">
-                  <p
-                    className="text-lg text-black font-bold text-left mb-3"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    <strong>Ideal para proyectos donde importa:</strong>
-                  </p>
-                  <p
-                    className="text-lg text-black font-bold text-left"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    • El rendimiento y la velocidad de carga.
-                  </p>
-                  <p
-                    className="text-lg text-black font-bold text-left"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    • La personalización total del diseño y funcionalidades.
-                  </p>
-                  <p
-                    className="text-lg text-black font-bold text-left"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    • La escalabilidad a futuro.
-                  </p>
-                  <p
-                    className="text-lg text-black font-bold text-left"
-                    style={{ fontFamily: "var(--font-mono)" }}
-                  >
-                    • La integración con sistemas y APIs complejas.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Tercer párrafo centrado */}
+        {/* Segundo párrafo centrado */}
         <motion.div
           className="mb-12"
           variants={paragraphContainerVariants}
@@ -256,16 +211,82 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center lg:text-left xl:mb-18 xl:mt-12"
+            className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
             variants={paragraphVariants}
           >
-            Trabajamos codo a codo con emprendedores, pymes y comercios de la
-            Patagonia, combinando expertise técnico con diseño estratégico para
-            convertir ideas en realidades digitales exitosas.
+            Cada línea de código, cada diseño y cada funcionalidad que desarrollamos responde a una pregunta fundamental: ¿Cómo esto ayuda a tu negocio a alcanzar sus objetivos?
           </motion.p>
         </motion.div>
 
-        {/* Logos de tecnologías - FIJOS */}
+        {/* Sección personal con foto y texto */}
+        <motion.div
+          className="flex flex-col lg:flex-row items-center gap-8 mb-12 max-w-4xl mx-auto"
+          variants={paragraphContainerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {/* Espacio para foto - placeholder */}
+          <motion.div
+            className="w-48 h-48 lg:w-56 lg:h-56 rounded-full bg-gradient-to-br from-[#FFB7B2] to-[#B9C8F5] flex items-center justify-center flex-shrink-0"
+            variants={paragraphVariants}
+          >
+            <span className="text-black font-bold text-center text-sm px-2">
+              TU FOTO AQUÍ
+            </span>
+          </motion.div>
+
+          {/* Texto personal */}
+          <motion.div
+            className="text-left space-y-6"
+            variants={paragraphVariants}
+          >
+            <p className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-light)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
+              Mi pasión es convertir los desafíos operativos de emprendedores y pymes en soluciones digitales elegantes y eficientes. Como tu contacto directo, me aseguro de que no solo ames el diseño de tu proyecto, sino que también obtengas una herramienta confiable que te ahorre tiempo, reduzca costos y aumente tus ganancias.
+            </p>
+            
+            <p className="tracking-wider lg:tracking-normal font-[family-name:var(--font-inter-semibold)] text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
+              Hablemos de cómo podemos llevar tu visión al mundo digital
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* Botón Consultoría */}
+        <motion.div
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <a
+            href="https://wa.me/5492984252859"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
+            style={{
+              fontFamily: "var(--font-inter)",
+            }}
+          >
+            {/* Fondo negro */}
+            <div className="absolute inset-0 rounded-lg bg-black" />
+
+            {/* Borde degradado */}
+            <div
+              className="absolute inset-0 rounded-sm border-2 border-transparent"
+              style={{
+                background:
+                  "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
+                mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                maskComposite: "exclude",
+              }}
+            />
+
+            {/* Contenido */}
+            <span className="relative z-10 text-white">Consultoría</span>
+            <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+        </motion.div>
+
+        {/* Logos de tecnologías */}
         <motion.div
           className="flex justify-center items-center gap-8 mb-12 flex-wrap"
           initial={{ opacity: 0, y: 30 }}
@@ -288,42 +309,6 @@ export function AboutSection() {
               />
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Botón Contactanos */}
-        <motion.div
-          className="flex justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <a
-            href="https://wa.me/5492984252859"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4  hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
-            style={{
-              fontFamily: "var(--font-inter)",
-            }}
-          >
-            {/* Fondo negro */}
-            <div className="absolute inset-0 rounded-lg bg-black" />
-
-            {/* Borde degradado */}
-            <div
-              className="absolute inset-0 rounded-sm border-2 border-transparent"
-              style={{
-                background:
-                  "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
-                mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
-                maskComposite: "exclude",
-              }}
-            />
-
-            {/* Contenido */}
-            <span className="relative z-10 text-white ">Contáctanos</span>
-            <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
         </motion.div>
 
         {/* Elemento decorativo flotante */}
