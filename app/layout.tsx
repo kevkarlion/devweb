@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Suspense } from "react";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
+import  { Navbar }  from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { WhatsappButton } from "@/components/WhatsappButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
