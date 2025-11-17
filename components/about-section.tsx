@@ -205,7 +205,7 @@ export function AboutSection() {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Título con efecto hero */}
         <motion.h1
-          className="mt-14 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent"
+          className="mt-4 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent"
           style={{
             fontFamily: "var(--font-alfaslab)",
             backgroundImage: 'url("/bck-final-hero.webp")',
@@ -221,27 +221,30 @@ export function AboutSection() {
         </motion.h1>
 
         {/* Primer párrafo centrado */}
-        <motion.div
-          className="space-y-8 mb-12"
-          variants={paragraphContainerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <motion.p
-            className="tracking-wider lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed max-w-3xl mx-auto text-center"
-            variants={paragraphVariants}
+        {/* Párrafo con línea vertical */}
+          <motion.div
+            className="flex justify-center mb-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
-            En devweb Patagonia, creemos que una web o un sistema no es solo un
+            <div className="relative max-w-2xl">
+              {/* Línea vertical decorativa */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-[#E9E9E9] to-transparent rounded-full" />
+              
+              <p className="font-['Inter'] text-bas lg:text-lg text-[#E9E9E9]/80 leading-relaxed text-left pl-8 tracking-wider lg:tracking-normal">
+                En devweb Patagonia, creemos que una web o un sistema no es solo un
             producto digital; es una herramienta de negocio.
             <br />
-            <br />
+            
             Por eso, nuestro enfoque va más allá de la estética.
             <br />
             <br />
             Nos especializamos en crear experiencias digitales diseñadas con una
             intención clara:
-          </motion.p>
-        </motion.div>
+              </p>
+            </div>
+          </motion.div>
 
         {/* Sección de beneficios con borde animado e iconos */}
 <motion.div
@@ -347,17 +350,15 @@ export function AboutSection() {
             className="text-left space-y-6 flex-1"
             variants={paragraphVariants}
           >
-            <p className="tracking-wider text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
-              Mi pasión es convertir los desafíos operativos de emprendedores y
+            <p className="tracking-wider text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-md text-[#E9E9E9]/80 leading-relaxed">
+              Me dedico a convertir los desafíos operativos de emprendedores y
               pymes en soluciones digitales elegantes y eficientes. Como tu
               contacto directo, me aseguro de que no solo ames el diseño de tu
               proyecto, sino que también obtengas una herramienta confiable que
               te ahorre tiempo, reduzca costos y aumente tus ganancias.
             </p>
 
-            <p className="tracking-wider text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-semibold) text-base xl:text-lg text-[#E9E9E9]/80 leading-relaxed">
-              Hablemos de cómo podemos llevar tu visión al mundo digital
-            </p>
+          
           </motion.div>
         </motion.div>
 

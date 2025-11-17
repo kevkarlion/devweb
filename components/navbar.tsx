@@ -21,8 +21,8 @@ export function Navbar() {
 
   const menuItems = [
     { name: "Home", href: "#home" },
-    { name: "Nosotros", href: "#nosotros" },
     { name: "Servicios", href: "#servicios" },
+    { name: "Nosotros", href: "#nosotros" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Contacto", href: "#contacto" },
   ];
@@ -48,7 +48,7 @@ export function Navbar() {
     <>
       {/* NAVBAR PRINCIPAL */}
       <motion.nav
-        className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-1000 transition-all duration-500 ${
           isScrolled ? "py-3" : "py-5"
         }`}
         style={isScrolled ? scrolledNavStyles : baseNavStyles}
@@ -64,7 +64,7 @@ export function Navbar() {
           {/* LOGO */}
           <motion.a
             href="#home"
-            className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[#FFB7B2] via-[#B9C8F5] to-white bg-clip-text text-transparent drop-shadow-lg"
+            className="text-2xl font-extrabold tracking-tight bg-linear-to-r from-[#FFB7B2] via-[#B9C8F5] to-white bg-clip-text text-transparent drop-shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -89,7 +89,7 @@ export function Navbar() {
               >
                 {item.name}
                 <motion.span
-                  className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-[#FFB7B2] to-[#B9C8F5]"
+                  className="absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-[#FFB7B2] to-[#B9C8F5]"
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
                 />
@@ -101,7 +101,7 @@ export function Navbar() {
               href="https://wa.me/5492984252859"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 rounded-full text-sm font-semibold text-black bg-gradient-to-r from-[#FFB7B2] to-[#B9C8F5] shadow-md hover:shadow-lg transition-all duration-300"
+              className="px-5 py-2 rounded-full text-sm font-semibold text-black bg-linear-to-r from-[#FFB7B2] to-[#B9C8F5] shadow-md hover:shadow-lg transition-all duration-300"
               whileHover={{ 
                 scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 10 }
@@ -120,7 +120,7 @@ export function Navbar() {
 
           {/* BOTÓN HAMBURGER */}
           <motion.button
-            className="md:hidden flex flex-col justify-between w-7 h-5 relative z-[1001]"
+            className="md:hidden flex flex-col justify-between w-7 h-5 relative z-1001"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileTap={{ scale: 0.9 }}
             initial={isMounted ? { opacity: 0 } : false}
@@ -171,7 +171,7 @@ export function Navbar() {
         {isMenuOpen && (
           <motion.div
             key="mobile-menu"
-            className="fixed inset-0 z-[999] flex flex-col items-center justify-center space-y-8"
+            className="fixed inset-0 z-999 flex flex-col items-center justify-center space-y-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -210,7 +210,7 @@ export function Navbar() {
               href="https://wa.me/5492984252859"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-[#FFB7B2] to-[#B9C8F5] text-black font-semibold shadow-lg"
+              className="mt-6 px-6 py-3 rounded-full bg-linear-to-r from-[#FFB7B2] to-[#B9C8F5] text-black font-semibold shadow-lg"
               onClick={() => setIsMenuOpen(false)}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}

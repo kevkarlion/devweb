@@ -199,7 +199,7 @@ export function HeroSection() {
                   <strong>
                     diseño UX/UI, desarrollo web y posicionamiento en Google
                   </strong>{" "}
-                  para empresas de Patagonia.
+                  para empresas de la Patagonia.
                 </motion.p>
 
                 {/* Botón CTA optimizado */}

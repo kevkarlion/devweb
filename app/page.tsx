@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main className=" bg-[#121212]	w-full p-0">
       <HeroSection />
+      <ServicesSection />
       <AboutSection />
       <PortfolioSection />
-      <ServicesSection />
       <ProcessTimeline />
       <ContactSection />
     </main>
