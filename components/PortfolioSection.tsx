@@ -124,7 +124,7 @@ export function PortfolioSection() {
 
               {/* Descripción */}
               <motion.p
-                className="tracking-wider lg:tracking-normal text-base xl:text-lg text-white/70 max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white/70"
+                className="tracking-wider lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white/70"
                 style={{ fontFamily: "var(--font-inter)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -166,7 +166,7 @@ export function PortfolioSection() {
                       />
 
                       {/* Overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* Categoría */}
                       <div className="absolute top-4 left-4">
@@ -237,7 +237,7 @@ export function PortfolioSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.p
-                className="tracking-wider lg:tracking-normal text-base  xl:text-lg text-white/70 mb-6 max-w-2xl mx-auto text-center lg:text-left xl:mb-18 xl:mt-12"
+                className="tracking-wider lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
                 Digitalizá tu negocio con nosotros. Transformamos ideas en experiencias digitales únicas que impulsan tu marca al éxito.
