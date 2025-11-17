@@ -232,7 +232,7 @@ export function AboutSection() {
               {/* Línea vertical decorativa */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-[#E9E9E9] to-transparent rounded-full" />
               
-              <p className="font-['Inter'] text-base lg:text-base 2xl:text-lg text-white leading-relaxed text-left pl-8 tracking-wider lg:tracking-normal">
+              <p className="font-['Inter'] text-base lg:text-base 2xl:text-lg text-white leading-relaxed text-left pl-8 tracking-wide lg:tracking-norma">
                 En devweb Patagonia, creemos que una web o un sistema no es solo un
             producto digital; es una herramienta de negocio.
             <br />
@@ -295,7 +295,7 @@ export function AboutSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.p
-            className="tracking-wider lg:tracking-normal font-(family-name:--font-inter-light) text-base lg:text-base 2xl:text-lg text-white leading-relaxed max-w-3xl mx-auto text-center"
+            className="tracking-wide lg:tracking-normal font-(family-name:--font-inter-light) text-base lg:text-base 2xl:text-lg text-white leading-relaxed max-w-3xl mx-auto text-center"
             variants={paragraphVariants}
           >
             Cada línea de código, cada diseño y cada funcionalidad que
@@ -350,7 +350,7 @@ export function AboutSection() {
             className="text-left space-y-6 flex-1"
             variants={paragraphVariants}
           >
-            <p className="tracking-wider text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-md text-white leading-relaxed">
+            <p className="tracking-wide text-center lg:text-left lg:tracking-normal font-(family-name:--font-inter-light) text-base xl:text-md text-white leading-relaxed">
               Me dedico a convertir los desafíos operativos de emprendedores y
               pymes en soluciones digitales elegantes y eficientes. Como tu
               contacto directo, me aseguro de que no solo ames el diseño de tu

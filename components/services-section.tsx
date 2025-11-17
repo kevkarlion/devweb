@@ -83,7 +83,7 @@ export function ServicesSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Servicios de diseño y desarrollo web
+            Nuestros servicios
           </motion.h1>
 
           {/* Subtítulo con rectángulos */}
@@ -128,7 +128,7 @@ export function ServicesSection() {
               {/* Línea vertical decorativa */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-[#E9E9E9] to-transparent rounded-full" />
 
-              <p className="font-['Inter'] text-base lg:text-base 2xl:text-lg text-white leading-relaxed text-left pl-8 tracking-wider lg:tracking-normal">
+              <p className="font-['Inter'] text-base lg:text-base 2xl:text-lg text-white leading-relaxed text-left pl-8 tracking-wide lg:tracking-normal">
                 Nuestra agencia crea sitios webs rápidos, modernos y
                 estratégicos para que puedas atraer clientes y competir de
                 verdad.

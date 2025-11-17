@@ -124,7 +124,7 @@ export function PortfolioSection() {
 
               {/* Descripción */}
               <motion.p
-                className="tracking-wider lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white/70"
+                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white/70"
                 style={{ fontFamily: "var(--font-inter)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -237,7 +237,7 @@ export function PortfolioSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.p
-                className="tracking-wider lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
+                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
                 Digitalizá tu negocio con nosotros. Transformamos ideas en experiencias digitales únicas que impulsan tu marca al éxito.
