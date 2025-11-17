@@ -221,10 +221,10 @@ export function ServicesSection() {
                 </div>
 
                 {/* Card title and detail*/}
-                <div className="flex flex-col items-center bg-[#FFB7B2] border border-white rounded px-6 py-4 w-full max-w-md">
+                <div className="flex flex-col items-center bg-[#FFB7B2] border border-white rounded-tr-2xl rounded-bl-2xl px-6 py-4 w-full max-w-md">
                   <div className="flex items-center justify-center gap-2 mb-3">
                     <service.icon className="w-5 h-5 text-black" />
-                    <h3 className="font-['Inter'] font-semibold text-lg text-black">
+                    <h3 className="font-['Inter'] font-bold text-lg text-black">
                       {service.title}
                     </h3>
                   </div>
