@@ -71,7 +71,7 @@ export function ServicesSection() {
         <div className="max-w-6xl mx-auto flex flex-col justify-center ">
           {/* Título principal */}
           <motion.h1
-            className=" mt-4 flex justify-center w-[85%]  text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase"
+            className=" mt-4 flex justify-center w-[85%]  text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase"
             style={{
               fontFamily: "var(--font-afa-scrub-one)",
               backgroundImage: 'url("/bck-final-hero.webp")',
@@ -155,10 +155,23 @@ export function ServicesSection() {
                   </div>
 
                   {/* Card content */}
-                  <div className="flex-1 p-5 bg-[#FFB7B2] border border-white rounded-tr-2xl rounded-bl-2xl hover:border-[#E9E9E9]/40 transition-all duration-300 group max-w-[320px]">
+                  <div 
+                    className="flex-1 p-5 border-r-2 border-b-2 border-gray-700  rounded-tr-2xl rounded-bl-2xl hover:border-[#E9E9E9]/80 transition-all duration-300 group max-w-[320px] min-h-[200px]"
+                    style={{
+                      background: "#ffffff",
+                      backgroundImage: `
+                        radial-gradient(
+                          circle at top right,
+                          rgba(70, 130, 180, 0.5),
+                          transparent 70%
+                        )
+                      `,
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
                     {/* Título con ícono */}
                     <div className="flex justify-center items-center gap-2 mb-3">
-                      <service.icon className="w-5 h-5 text-black" />
+                      <service.icon className="w-8 h-8 text-black" />
                       <h3 className="font-['Inter'] font-semibold text-lg text-black transition-colors duration-300 text-center">
                         {service.title}
                       </h3>
@@ -174,7 +187,7 @@ export function ServicesSection() {
                         delay: index * 0.2,
                       }}
                     >
-                      <ChevronDown className="w-4 h-4 text-black" />
+                      <ChevronDown className="w-6 h-6 text-black" />
                     </motion.div>
 
                     {/* Descripción */}
@@ -203,35 +216,49 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Grid de servicios - Versión móvil */}
-          <div className="lg:hidden grid grid-cols-1 gap-20 justify-center mb-20">
+          {/* Grid de servicios - Versión móvil MODIFICADA */}
+          <div className="lg:hidden grid grid-cols-1 gap-16 justify-center mb-20">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                className="flex flex-col items-center justify-evenly text-center"
+                className="flex flex-col items-center text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
               >
-                {/* Número en círculo */}
-                <div className="flex items-center justify-center w-28 h-28 rounded-full border-4 border-white mb-6">
-                  <span className="font-['Inter'] font-bold text-5xl text-white">
+                {/* Número en círculo - TAMAÑO 96px */}
+                <div className="flex items-center justify-center w-36 h-36 rounded-full border-4 border-white mb-8">
+                  <span className="font-['Inter'] font-bold text-6xl text-white">
                     {service.number}
                   </span>
                 </div>
 
-                {/* Card title and detail*/}
-                <div className="flex flex-col items-center bg-[#FFB7B2] border border-white rounded-tr-2xl rounded-bl-2xl px-6 py-4 w-full max-w-md">
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <service.icon className="w-5 h-5 text-black" />
-                    <h3 className="font-['Inter'] font-bold text-lg text-black">
-                      {service.title}
-                    </h3>
-                  </div>
+                {/* Card - MÁS LARGA QUE ANCHA CON PADDING ESPECÍFICO */}
+                <div 
+                  className="flex flex-col items-center border-r-2 border-b-2 border-gray-700 rounded-tr-2xl rounded-bl-2xl px-[15px] py-[25px] w-[90%] max-w-md min-h-[250px]"
+                  style={{
+                    background: "#ffffff",
+                    backgroundImage: `
+                      radial-gradient(
+                        circle at top right,
+                        rgba(70, 130, 180, 0.5),
+                        transparent 70%
+                      )
+                    `,
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  {/* Ícono */}
+                  <service.icon className="w-12 h-12 text-black mb-4" />
+                  
+                  {/* Título del servicio - INTER BOLD 20px */}
+                  <h3 className="font-['Inter'] font-bold text-xl text-black mb-4">
+                    {service.title}
+                  </h3>
 
                   {/* Flecha hacia abajo */}
                   <motion.div
-                    className="mb-3"
+                    className="mb-4"
                     animate={{ y: [0, 4, 0] }}
                     transition={{
                       duration: 1.5,
@@ -242,8 +269,8 @@ export function ServicesSection() {
                     <ChevronDown className="w-5 h-5 text-black" />
                   </motion.div>
 
-                  {/* Descripción */}
-                  <p className="font-['Inter'] font-light text-sm text-black leading-relaxed">
+                  {/* Descripción - INTER MEDIUM 14px */}
+                  <p className="font-['Inter'] font-medium text-base text-black leading-relaxed w-[90%]">
                     {service.description}
                   </p>
                 </div>

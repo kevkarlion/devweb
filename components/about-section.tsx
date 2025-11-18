@@ -205,7 +205,7 @@ export function AboutSection() {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Título con efecto hero */}
         <motion.h1
-          className="mt-4 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent"
+          className="mt-4 relative text-5xl  leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent"
           style={{
             fontFamily: "var(--font-alfaslab)",
             backgroundImage: 'url("/bck-final-hero.webp")',
