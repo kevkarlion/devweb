@@ -107,7 +107,7 @@ export function PortfolioSection() {
             >
               {/* Título principal */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8  mt-4  text-4xl lg:text-6xl xl:text-5xl 2xl:text-7xl  tracking-normal uppercase mb-12 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%]   z-40"
+                className="lg:pt-6 xl:pt-8  mt-4  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal uppercase mb-12 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%]   z-40"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
                   backgroundImage: 'url("/bck-final-hero.webp")',
