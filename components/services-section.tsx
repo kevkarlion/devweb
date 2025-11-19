@@ -71,13 +71,9 @@ export function ServicesSection() {
         <div className="max-w-6xl mx-auto flex flex-col justify-center ">
           {/* Título principal */}
           <motion.h1
-            className=" mt-4 flex justify-center w-[85%]  text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase"
+            className=" mt-4 flex justify-center w-[85%]  text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase bg-linear-to-r from-[#333f71] via-[#a782c2] to-[#415285]"
             style={{
               fontFamily: "var(--font-afa-scrub-one)",
-              backgroundImage: 'url("/bck-final-hero.webp")',
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

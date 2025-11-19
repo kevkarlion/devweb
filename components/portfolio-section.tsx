@@ -22,7 +22,7 @@ export function ProcessTimeline() {
     <section ref={ref} className="py-32 px-6 bg-[#0A0A0A] relative overflow-x-hidden">
       <div className="max-w-4xl mx-auto relative">
         <motion.h2
-          className="font-[family-name:var(--font-inter-semibold)] text-[clamp(2rem,5vw,4rem)] text-[#E9E9E9] mb-20 text-center"
+          className="font-(family-name:--font-inter-semibold) text-[clamp(2rem,5vw,4rem)] text-[#E9E9E9] mb-20 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}

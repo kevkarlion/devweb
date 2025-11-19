@@ -205,15 +205,11 @@ export function AboutSection() {
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Título con efecto hero */}
         <motion.h1
-          className="mt-4 relative text-5xl lg:text-6xl  leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent"
+          className="mt-4 relative text-5xl lg:text-6xl  leading-[0.9] tracking-normal uppercase mb-12 bg-clip-text text-transparent bg-linear-to-r from-[#333f71] via-[#a782c2] to-[#415285] "
           style={{
             fontFamily: "var(--font-alfaslab)",
-            backgroundImage: 'url("/bck-final-hero.webp")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
           }}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >

@@ -50,12 +50,9 @@ export function HeroSection() {
           <div className="lg:hidden flex flex-col items-center text-center">
             {/* H1 SEMÁNTICO con keywords */}
             <motion.h1
-              className="mt-16 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-normal uppercase mb-6 bg-clip-text text-transparent z-200"
+              className="pt-16 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-wide uppercase mb-6 font-bold bg-linear-to-r from-[#333f71] via-[#a782c2] to-[#415285] bg-clip-text text-transparent z-200"
               style={{
                 fontFamily: "var(--font-alfaslab)",
-                backgroundImage: 'url("/bck-final-hero.webp")',
-                backgroundSize: "cover",
-                backgroundPosition: "center",
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -95,7 +92,8 @@ export function HeroSection() {
                       className="tracking-wide text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-white text-center max-w-[85%] drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]"
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
-                      Desarrollo web que potencia tu marca y posiciona en Google
+                      Desarrollo web que potencia tu marca y posiciona en Google. <br /> Alto Valle, General Roca, Cipolletti,
+                  Neuquén.
                     </p>
                   </div>
                 </motion.div>
@@ -166,12 +164,9 @@ export function HeroSection() {
             <div className="flex flex-col w-full lg:pr-4 xl:pr-0 relative z-30">
               {/* H1 PRINCIPAL con keywords */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40"
+                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-wide	 uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40 font-bold bg-linear-to-r from-[#333f71] via-[#c082c2] to-[#415285]"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
-                  backgroundImage: 'url("/bck-final-hero.webp")',
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                 }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -199,7 +194,8 @@ export function HeroSection() {
                   <strong>
                     diseño UX/UI, desarrollo web y posicionamiento en Google
                   </strong>{" "}
-                  para empresas de la Patagonia.
+                  para empresas del Alto Valle, General Roca, Cipolletti,
+                  Neuquén.
                 </motion.p>
 
                 {/* Botón CTA optimizado */}
