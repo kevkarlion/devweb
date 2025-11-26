@@ -1,9 +1,9 @@
 "use client";
 
 import { Alfa_Slab_One, Inter } from "next/font/google";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   ChevronDown,
@@ -12,6 +12,8 @@ import {
   Search,
   TrendingUp,
   Plus,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 const afaScrubOne = Alfa_Slab_One({
@@ -27,28 +29,28 @@ const inter = Inter({
 
 const services = [
   {
-    number: "01",
+    number: "1",
     title: "DESARROLLO WEB MODERNO",
     description:
       "Sitios rápidos, escalables y diseñados con Next.js, TS y Tailwind.",
     icon: Code,
   },
   {
-    number: "02",
+    number: "2",
     title: "DISEÑO UI/UX PERSONALIZADO",
     description:
       "Identidad visual única y experiencia de usuario pensada para convertir.",
     icon: Palette,
   },
   {
-    number: "03",
+    number: "3",
     title: "SEO AVANZADO",
     description:
       "Optimización técnica y de contenido para aparecer en Google y atraer clientes.",
     icon: Search,
   },
   {
-    number: "04",
+    number: "4",
     title: "WEBS ORIENTADAS AL MARKETING",
     description:
       "Landing pages, funnels y páginas de venta listas para convertir.",
@@ -59,6 +61,39 @@ const services = [
 export function ServicesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(0); // 0: right, 1: left
+
+  const nextSlide = () => {
+    setDirection(0);
+    setCurrentSlide((prev) => (prev === services.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = () => {
+    setDirection(1);
+    setCurrentSlide((prev) => (prev === 0 ? services.length - 1 : prev - 1));
+  };
+
+  const goToSlide = (index: number) => {
+    setDirection(index > currentSlide ? 0 : 1);
+    setCurrentSlide(index);
+  };
+
+  // Variantes de animación para el carrusel
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction === 0 ? 300 : -300,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      x: direction === 0 ? -300 : 300,
+      opacity: 0
+    })
+  };
 
   return (
     <section
@@ -86,17 +121,17 @@ export function ServicesSection() {
           </motion.h1>
 
           {/* Contenedor principal - Se reorganiza según breakpoint */}
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto flex justify-center mt-8">
             {/* VERSIÓN DESKTOP */}
             <motion.div
-              className="hidden lg:flex items-start justify-between gap-8 mb-16"
+              className="hidden lg:flex items-center justify-between gap-8 mb-16 w-[75%]"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               {/* Esfera con texto */}
               <div className="shrink-0">
-                <div className="bg-primary-gradient w-48 h-48 rounded-full flex items-center justify-center p-4">
+                <div className="bg-primary-gradient w-48 h-48 rounded-full border-white border-2 flex items-center justify-center p-4">
                   <p 
                     className="font-['Inter'] font-medium text-lg text-white text-center leading-tight"
                     style={{
@@ -109,12 +144,12 @@ export function ServicesSection() {
               </div>
 
               {/* Línea divisoria */}
-              <div className="shrink-0 w-1 h-48 bg-white rounded-full mx-8" />
+              <div className="shrink-0 w-px h-24 bg-white rounded-full mx-8" />
 
               {/* Texto descriptivo */}
               <div className="flex-1">
                 <p 
-                  className="font-['Inter'] text-xl text-white leading-relaxed text-left"
+                  className="font-['Inter'] text-base text-white leading-relaxed text-left w-[80%]"
                   style={{
                     fontFamily: "var(--font-inter)",
                   }}
@@ -134,7 +169,7 @@ export function ServicesSection() {
               {/* Texto descriptivo */}
               <div className="w-full">
                 <p 
-                  className="font-['Inter'] text-lg text-white leading-relaxed text-center mt-12"
+                  className="font-['Inter'] text-lg text-white leading-relaxed text-center "
                   style={{
                     fontFamily: "var(--font-inter)",
                   }}
@@ -163,12 +198,12 @@ export function ServicesSection() {
           </div>
 
           {/* Grid de servicios - 2 columnas en desktop con cruz central */}
-          <div className="hidden lg:block relative mb-20">
-            <div className="grid grid-cols-2 gap-8">
+          <div className="hidden lg:block relative mb-20 mt-18">
+            <div className="grid grid-cols-2 gap-16">
               {services.map((service, index) => (
                 <motion.div
                   key={service.title}
-                  className="flex items-start gap-4"
+                  className="flex items-center gap-8 "
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
@@ -182,23 +217,13 @@ export function ServicesSection() {
 
                   {/* Card content */}
                   <div 
-                    className="flex-1 p-5 border-r-2 border-b-2 border-gray-700 rounded-tr-2xl rounded-bl-2xl hover:border-[#E9E9E9]/80 transition-all duration-300 group max-w-[320px] min-h-[200px]"
-                    style={{
-                      background: "#ffffff",
-                      backgroundImage: `
-                        radial-gradient(
-                          circle at top right,
-                          rgba(70, 130, 180, 0.5),
-                          transparent 70%
-                        )
-                      `,
-                      backgroundRepeat: "no-repeat",
-                    }}
+                    className="flex-1 p-5 border-2 border-white  rounded-lg transition-all duration-300 group max-w-[320px] min-h-[200px] bg-primary-gradient "
+                    
                   >
                     {/* Título con ícono */}
                     <div className="flex justify-center items-center gap-2 mb-3">
-                      <service.icon className="w-8 h-8 text-black" />
-                      <h3 className="font-['Inter'] font-semibold text-lg text-black transition-colors duration-300 text-center">
+                      <service.icon className="w-8 h-8 text-white" />
+                      <h3 className="font-['Inter'] font-semibold text-lg text-white transition-colors duration-300 text-center">
                         {service.title}
                       </h3>
                     </div>
@@ -213,11 +238,11 @@ export function ServicesSection() {
                         delay: index * 0.2,
                       }}
                     >
-                      <ChevronDown className="w-6 h-6 text-black" />
+                      <ChevronDown className="w-6 h-6 text-white" />
                     </motion.div>
 
                     {/* Descripción */}
-                    <p className="font-['Inter'] font-light text-sm text-black leading-relaxed text-center">
+                    <p className="font-['Inter'] font-light text-sm text-white leading-relaxed text-center">
                       {service.description}
                     </p>
                   </div>
@@ -242,71 +267,132 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Grid de servicios - Versión móvil */}
-          <div className="lg:hidden grid grid-cols-1 gap-16 justify-center mb-20">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                className="flex flex-col items-center text-center"
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
-              >
-                {/* Número en círculo */}
-                <div className="flex items-center justify-center w-36 h-36 rounded-full border-4 border-white mb-8">
-                  <span className="font-['Inter'] font-bold text-6xl text-white">
-                    {service.number}
-                  </span>
-                </div>
-
-                {/* Card */}
-                <div 
-                  className="flex flex-col items-center border-r-2 border-b-2 border-gray-700 rounded-tr-2xl rounded-bl-2xl px-[15px] py-[25px] w-[90%] max-w-md min-h-[250px]"
-                  style={{
-                    background: "#ffffff",
-                    backgroundImage: `
-                      radial-gradient(
-                        circle at top right,
-                        rgba(70, 130, 180, 0.5),
-                        transparent 70%
-                      )
-                    `,
-                    backgroundRepeat: "no-repeat",
+          {/* CARRUSEL MOBILE */}
+          <div className="lg:hidden relative mb-12 ">
+            <div className="flex flex-col items-center text-center mt-12 min-h-[340px]">
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                  key={currentSlide}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.2 }
                   }}
+                  className="flex flex-col items-center text-center w-full"
                 >
-                  {/* Ícono */}
-                  <service.icon className="w-12 h-12 text-black mb-4" />
-                  
-                  {/* Título del servicio */}
-                  <h3 className="font-['Inter'] font-bold text-xl text-black mb-4">
-                    {service.title}
-                  </h3>
-
-                  {/* Flecha hacia abajo */}
-                  <motion.div
-                    className="mb-4"
-                    animate={{ y: [0, 4, 0] }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      delay: index * 0.2,
-                    }}
+                  {/* Card */}
+                  <div 
+                    className="flex flex-col items-center border-2 border-white rounded-tr-2xl rounded-bl-2xl px-[23px] py-[25px] w-[90%] max-w-md min-w-[380px] min-h-60 bg-mobile-gradient mt-8"
                   >
-                    <ChevronDown className="w-5 h-5 text-black" />
-                  </motion.div>
+                    {/* Título del servicio */}
+                    <h3 className="font-['Inter'] font-bold text-3xl text-white mb-2 mt-4">
+                      {services[currentSlide].title}
+                    </h3>
 
-                  {/* Descripción */}
-                  <p className="font-['Inter'] font-medium text-base text-black leading-relaxed w-[90%]">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                    {/* Flecha hacia abajo */}
+                    <motion.div
+                      className="mb-2"
+                      animate={{ y: [0, 4, 0] }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                      }}
+                    >
+                      <ChevronDown className="w-5 h-5 text-white" />
+                    </motion.div>
+
+                    {/* Descripción */}
+                    <p className="font-['Inter'] font-light text-lg text-white leading-relaxed  tracking-wide	w-[95%]">
+                      {services[currentSlide].description}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Controles del carrusel */}
+            <div className="flex justify-center items-center gap-8 mt-4">
+              {/* Flecha izquierda */}
+              <motion.button
+                onClick={prevSlide}
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+                whileTap={{ scale: 0.9 }}
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </motion.button>
+
+              {/* Indicadores */}
+              <div className="flex gap-2">
+                {services.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentSlide ? 'bg-white' : 'bg-white/30'
+                    }`}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  />
+                ))}
+              </div>
+
+              {/* Flecha derecha */}
+              <motion.button
+                onClick={nextSlide}
+                className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+                whileTap={{ scale: 0.9 }}
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </motion.button>
+            </div>
           </div>
 
-          {/* Botón Consultoría */}
+          {/* Flecha hacia abajo y Botón CTA - Solo mobile */}
           <motion.div
-            className="flex justify-center"
+            className="lg:hidden flex flex-col items-center gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            {/* Flecha hacia abajo */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
+            >
+              <ChevronDown className="w-8 h-8 text-white" />
+            </motion.div>
+
+            {/* Botón Consultoría */}
+            <a
+              href="https://wa.me/5492984252859"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-[95%] mt-2 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
+              style={{
+                fontFamily: "var(--font-inter)",
+              }}
+            >
+              {/* Fondo con gradiente mobile */}
+              <div className="absolute inset-0 rounded-lg bg-mobile-gradient border-white border-2" />
+
+              {/* Contenido */}
+              <span className="relative z-10 text-white">
+                Cotizá tu sitio web ideal
+              </span>
+              <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </motion.div>
+
+          {/* Botón Consultoría - Desktop */}
+          <motion.div
+            className="hidden lg:flex justify-center mt-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -325,13 +411,8 @@ export function ServicesSection() {
 
               {/* Borde degradado */}
               <div
-                className="absolute inset-0 rounded-sm border-2 border-transparent"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
-                  mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
-                  maskComposite: "exclude",
-                }}
+                className="absolute inset-0 rounded-sm border-2  bg-mobile-gradient border-white"
+               
               />
 
               {/* Contenido */}
