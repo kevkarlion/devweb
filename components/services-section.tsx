@@ -68,10 +68,10 @@ export function ServicesSection() {
     >
       {/* Contenido */}
       <div className="relative z-10 py-24 md:py-32 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col justify-center ">
-          {/* Título principal */}
+        <div className="max-w-6xl mx-auto flex flex-col justify-center">
+          {/* Título principal - Diferente texto para mobile y desktop */}
           <motion.h1
-            className=" mt-4 flex justify-center w-[85%]  text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase bg-linear-to-r from-[#333f71] via-[#a782c2] to-[#415285]"
+            className="mt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient"
             style={{
               fontFamily: "var(--font-afa-scrub-one)",
             }}
@@ -79,58 +79,88 @@ export function ServicesSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Nuestros servicios
+            {/* Texto para mobile */}
+            <span className="block lg:hidden leading-14">NUESTROS SERVICIOS</span>
+            {/* Texto para desktop */}
+            <span className="hidden lg:block">Servicios de diseño & desarrollo web</span>
           </motion.h1>
 
-          {/* Subtítulo con rectángulos */}
-          <motion.div
-            className="flex justify-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative inline-block">
-              {/* Rectángulo principal con background degradado */}
-              <div
-                className="px-8 py-2 rounded-lg"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
-                }}
-              >
-                {/* Rectángulo interior con borde blanco y fondo negro */}
-                <div className="px-8 py-2 rounded border border-white bg-black shadow-2xl">
-                  <h2
-                    className="font-['Inter'] font-medium text-xl text-white text-center"
+          {/* Contenedor principal - Se reorganiza según breakpoint */}
+          <div className="max-w-6xl mx-auto">
+            {/* VERSIÓN DESKTOP */}
+            <motion.div
+              className="hidden lg:flex items-start justify-between gap-8 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              {/* Esfera con texto */}
+              <div className="shrink-0">
+                <div className="bg-primary-gradient w-48 h-48 rounded-full flex items-center justify-center p-4">
+                  <p 
+                    className="font-['Inter'] font-medium text-lg text-white text-center leading-tight"
                     style={{
                       fontFamily: "var(--font-inter)",
                     }}
                   >
-                    Para emprendedores y pymes
-                  </h2>
+                    Para Emprendedores y Pequeños Negocios
+                  </p>
                 </div>
               </div>
-            </div>
-          </motion.div>
 
-          {/* Párrafo con línea vertical */}
-          <motion.div
-            className="flex justify-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="relative max-w-2xl">
-              {/* Línea vertical decorativa */}
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-[#E9E9E9] to-transparent rounded-full" />
+              {/* Línea divisoria */}
+              <div className="shrink-0 w-1 h-48 bg-white rounded-full mx-8" />
 
-              <p className="font-['Inter'] text-base lg:text-base 2xl:text-lg text-white leading-relaxed text-left pl-8 tracking-wide lg:tracking-normal">
-                Nuestra agencia crea sitios webs rápidos, modernos y
-                estratégicos para que puedas atraer clientes y competir de
-                verdad.
-              </p>
-            </div>
-          </motion.div>
+              {/* Texto descriptivo */}
+              <div className="flex-1">
+                <p 
+                  className="font-['Inter'] text-xl text-white leading-relaxed text-left"
+                  style={{
+                    fontFamily: "var(--font-inter)",
+                  }}
+                >
+                  Nuestra agencia crea sitios webs rápidos, modernos y estratégicos para que puedas atraer clientes y competir de verdad.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* VERSIÓN MOBILE/TABLET */}
+            <motion.div
+              className="lg:hidden flex flex-col items-center gap-8 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              {/* Texto descriptivo */}
+              <div className="w-full">
+                <p 
+                  className="font-['Inter'] text-lg text-white leading-relaxed text-center mt-12"
+                  style={{
+                    fontFamily: "var(--font-inter)",
+                  }}
+                >
+                  Nuestra agencia crea sitios webs rápidos, modernos y estratégicos para que puedas atraer clientes y competir de verdad.
+                </p>
+              </div>
+
+              {/* Línea divisoria horizontal */}
+              <div className="w-48 h-0.5 bg-white rounded-full my-4" />
+
+              {/* Esfera con texto */}
+              <div className="shrink-0">
+                <div className="bg-mobile-gradient w-64 h-64 rounded-full border-2 border-white flex items-center justify-center p-4">
+                  <p 
+                    className="font-['Inter'] font-medium text-2xl text-white text-center leading-tight"
+                    style={{
+                      fontFamily: "var(--font-inter)",
+                    }}
+                  >
+                    Para Emprendedores y Pequeños Negocios
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
           {/* Grid de servicios - 2 columnas en desktop con cruz central */}
           <div className="hidden lg:block relative mb-20">
@@ -152,7 +182,7 @@ export function ServicesSection() {
 
                   {/* Card content */}
                   <div 
-                    className="flex-1 p-5 border-r-2 border-b-2 border-gray-700  rounded-tr-2xl rounded-bl-2xl hover:border-[#E9E9E9]/80 transition-all duration-300 group max-w-[320px] min-h-[200px]"
+                    className="flex-1 p-5 border-r-2 border-b-2 border-gray-700 rounded-tr-2xl rounded-bl-2xl hover:border-[#E9E9E9]/80 transition-all duration-300 group max-w-[320px] min-h-[200px]"
                     style={{
                       background: "#ffffff",
                       backgroundImage: `
@@ -212,7 +242,7 @@ export function ServicesSection() {
             </div>
           </div>
 
-          {/* Grid de servicios - Versión móvil MODIFICADA */}
+          {/* Grid de servicios - Versión móvil */}
           <div className="lg:hidden grid grid-cols-1 gap-16 justify-center mb-20">
             {services.map((service, index) => (
               <motion.div
@@ -222,14 +252,14 @@ export function ServicesSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
               >
-                {/* Número en círculo - TAMAÑO 96px */}
+                {/* Número en círculo */}
                 <div className="flex items-center justify-center w-36 h-36 rounded-full border-4 border-white mb-8">
                   <span className="font-['Inter'] font-bold text-6xl text-white">
                     {service.number}
                   </span>
                 </div>
 
-                {/* Card - MÁS LARGA QUE ANCHA CON PADDING ESPECÍFICO */}
+                {/* Card */}
                 <div 
                   className="flex flex-col items-center border-r-2 border-b-2 border-gray-700 rounded-tr-2xl rounded-bl-2xl px-[15px] py-[25px] w-[90%] max-w-md min-h-[250px]"
                   style={{
@@ -247,7 +277,7 @@ export function ServicesSection() {
                   {/* Ícono */}
                   <service.icon className="w-12 h-12 text-black mb-4" />
                   
-                  {/* Título del servicio - INTER BOLD 20px */}
+                  {/* Título del servicio */}
                   <h3 className="font-['Inter'] font-bold text-xl text-black mb-4">
                     {service.title}
                   </h3>
@@ -265,7 +295,7 @@ export function ServicesSection() {
                     <ChevronDown className="w-5 h-5 text-black" />
                   </motion.div>
 
-                  {/* Descripción - INTER MEDIUM 14px */}
+                  {/* Descripción */}
                   <p className="font-['Inter'] font-medium text-base text-black leading-relaxed w-[90%]">
                     {service.description}
                   </p>

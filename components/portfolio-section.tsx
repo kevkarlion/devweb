@@ -70,10 +70,10 @@ export function ProcessTimeline() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.3 }}
                 >
-                  <h3 className="font-[family-name:var(--font-inter-semibold)] text-[1.8rem] text-[#E9E9E9] mb-2">
+                  <h3 className="font-(family-name:--font-inter-semibold) text-[1.8rem] text-[#E9E9E9] mb-2">
                     {step.title}
                   </h3>
-                  <p className="font-[family-name:var(--font-inter-light)] text-base text-[#E9E9E9]/70 leading-relaxed">
+                  <p className="font-(family-name:--font-inter-light) text-base text-[#E9E9E9]/70 leading-relaxed">
                     {step.description}
                   </p>
                 </motion.div>

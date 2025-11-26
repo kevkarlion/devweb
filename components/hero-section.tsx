@@ -50,7 +50,7 @@ export function HeroSection() {
           <div className="lg:hidden flex flex-col items-center text-center">
             {/* H1 SEMÁNTICO con keywords */}
             <motion.h1
-              className="pt-16 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-wide uppercase mb-6 font-bold bg-linear-to-r from-[#333f71] via-[#a782c2] to-[#415285] bg-clip-text text-transparent z-200"
+              className="pt-16 relative text-[2.7rem] sm:text-5xl leading-[0.9] tracking-wide uppercase mb-6 font-bold text-mobile-gradient bg-clip-text text-transparent z-200"
               style={{
                 fontFamily: "var(--font-alfaslab)",
               }}
@@ -114,11 +114,9 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Solicitar consultoría de diseño web en WhatsApp"
-                className="inline-flex items-center justify-center w-[95%] md:max-w-[75%] gap-3 px-8 py-4 border border-white rounded-lg hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-base group text-black"
+                className="inline-flex items-center justify-center w-[95%] md:max-w-[75%] gap-3 px-8 py-4 border border-white rounded-sm hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-base group text-white bg-mobile-gradient"
                 style={{
                   fontFamily: "var(--font-inter)",
-                  background:
-                    "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
                 }}
               >
                 Consultoría Web Gratuita
@@ -134,19 +132,16 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div
-                className="rounded-lg p-4 border border-white/40 shadow-2xl shadow-black/50 backdrop-blur-sm"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
-                }}
+                className="rounded-sm p-4 border border-white shadow-2xl shadow-black/50 backdrop-blur-sm bg-mobile-gradient"
+               
               >
                 {/* Grid de 2 columnas para mobile */}
                 <div className="grid grid-cols-2 gap-3">
                   {checklistItems.map((item, index) => (
                     <div key={index} className="flex items-start gap-2 group">
-                      <Check className="w-4 h-4 text-black font-bold shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-white font-bold shrink-0 mt-0.5" />
                       <span
-                        className="text-sm text-black font-bold text-left leading-tight"
+                        className="text-sm text-white font-bold text-left leading-tight"
                         style={{ fontFamily: "var(--font-mono)" }}
                       >
                         {item}
@@ -164,7 +159,7 @@ export function HeroSection() {
             <div className="flex flex-col w-full lg:pr-4 xl:pr-0 relative z-30">
               {/* H1 PRINCIPAL con keywords */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-wide	 uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40 font-bold bg-linear-to-r from-[#333f71] via-[#c082c2] to-[#415285]"
+                className="lg:pt-6 xl:pt-8 relative text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-wide	 uppercase mb-4 lg:mb-4 xl:mb-6 bg-clip-text text-transparent w-[143%] -mr-[20%] pr-[10%] z-40 font-bold text-primary-gradient"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
                 }}
@@ -183,7 +178,7 @@ export function HeroSection() {
               >
                 {/* Subtítulo optimizado con keywords */}
                 <motion.p
-                  className="text-lg lg:text-base xl:text-base lg:w-full xl:w-[80%] max-w-2xl font-medium leading-relaxed text-gray-300"
+                  className="text-lg lg:text-base xl:text-base lg:w-full xl:w-[80%] max-w-2xl font-medium leading-relaxed text-white"
                   style={{ fontFamily: "var(--font-inter)" }}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -210,11 +205,10 @@ export function HeroSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Consultoría gratuita de diseño web en WhatsApp"
-                    className="inline-flex items-center justify-left w-full gap-3 px-6 lg:px-8 py-3 lg:py-4 border border-white rounded-lg hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-base lg:text-base group text-black"
+                    className="inline-flex items-center justify-left w-full gap-3 px-6 lg:px-8 py-3 lg:py-4 border-2 border-white rounded-sm hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-base lg:text-base group text-white bg-primary-gradient"
                     style={{
                       fontFamily: "var(--font-inter)",
-                      background:
-                        "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
+                      
                     }}
                   >
                     Consultoría Web Gratuita
@@ -230,11 +224,8 @@ export function HeroSection() {
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
                   <div
-                    className="rounded-lg p-4 lg:p-5 border border-white/40 shadow-2xl shadow-black/50 backdrop-blur-sm"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%)",
-                    }}
+                    className="rounded-sm p-4 lg:p-5 border border-white shadow-2xl shadow-black/50 backdrop-blur-sm bg-primary-gradient"
+                   
                   >
                     {/* Grid responsive: 3 columnas en desktop, 2 en mobile */}
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
@@ -243,9 +234,9 @@ export function HeroSection() {
                           key={index}
                           className="flex items-start gap-2 group"
                         >
-                          <Check className="w-4 lg:w-5 h-4 lg:h-5 text-black font-bold shrink-0 mt-0.5" />
+                          <Check className="w-4 lg:w-5 h-4 lg:h-5 text-white font-bold shrink-0 mt-0.5" />
                           <span
-                            className="text-sm lg:text-base text-black font-bold text-left leading-tight"
+                            className="text-sm lg:text-base text-white font-bold text-left leading-tight"
                             style={{ fontFamily: "var(--font-mono)" }}
                           >
                             {item}
