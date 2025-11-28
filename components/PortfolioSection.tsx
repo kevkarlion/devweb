@@ -88,10 +88,8 @@ export function PortfolioSection() {
       <div className="min-h-screen w-full relative bg-black">
         {/* Violet Storm Background with Top Glow */}
         <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.25), transparent 70%), #000000",
-          }}
+          className="absolute inset-0 z-0 bg-black"
+          
         />
         
         {/* Contenido principal */}
@@ -107,7 +105,7 @@ export function PortfolioSection() {
             >
               {/* Título principal */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8  mt-4  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal uppercase mb-12 lg:mb-4 xl:mb-6  text-transparent w-[143%] z-40 bg-linear-to-r from-[#333f71] via-[#a782c2] to-[#415285] bg-clip-text"
+                className="lg:pt-6 xl:pt-8  mt-4  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal uppercase   text-transparent w-[143%] z-40 text-primary-gradient bg-clip-text"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
                 }}
@@ -117,10 +115,11 @@ export function PortfolioSection() {
               >
                 Portfolio
               </motion.h1>
+               <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
 
               {/* Descripción */}
               <motion.p
-                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white/70"
+                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-base text-white max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white mt-8 mb-14 md:w-[85%] lg:w-[60%] xl:w-[48%]"
                 style={{ fontFamily: "var(--font-inter)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -227,13 +226,13 @@ export function PortfolioSection() {
 
             {/* Texto CTA */}
             <motion.div
-              className="text-center mt-12 lg:mt-16"
+              className="text-center mt-12 lg:mt-24"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.p
-                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-lg text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
+                className="tracking-wide lg:tracking-normal text-base  text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
                 Digitalizá tu negocio con nosotros. Transformamos ideas en experiencias digitales únicas que impulsan tu marca al éxito.
@@ -241,40 +240,31 @@ export function PortfolioSection() {
             </motion.div>
 
             {/* Botón CTA */}
-            <motion.div
-              className="flex justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1 }}
+             <motion.div
+            className="flex justify-center mt-24"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+          >
+            <a
+              href="https://wa.me/5492984252859"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-[90%] md:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
+              style={{
+                fontFamily: "var(--font-inter)",
+              }}
             >
-              <a
-                href="https://wa.me/5492984252859"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
-                style={{
-                  fontFamily: "var(--font-inter)",
-                }}
-              >
-                {/* Fondo negro */}
-                <div className="absolute inset-0 rounded-lg bg-black" />
+              {/* Fondo con gradiente */}
+              <div className="absolute inset-0 rounded-lg bg-primary-gradient border-white border-2" />
 
-                {/* Borde degradado */}
-                <div
-                  className="absolute inset-0 rounded-sm border-2 border-transparent"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FFB7B2 0%, #B9C8F5 50%, #5A5A5A 100%) border-box",
-                    mask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
-                    maskComposite: "exclude",
-                  }}
-                />
-
-                {/* Contenido */}
-                <span className="relative z-10 text-white">Hablemos de tu proyecto</span>
-                <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-            </motion.div>
+              {/* Contenido */}
+              <span className="relative z-10 text-white text-base lg:text-medium">
+                Hablemos sobre tu proyecto
+              </span>
+              <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </motion.div>
           </div>
         </section>
       </div>

@@ -32,7 +32,7 @@ export function ProcessTimeline() {
 
         {/* Línea vertical del timeline - SOLUCIÓN APLICADA */}
         <motion.div
-          className="absolute left-0 md:left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-[#E9E9E9]/30 to-transparent hidden md:block"
+          className="absolute left-0 md:left-6 top-0 bottom-0 w-1 bg-linear-to-b from-[#E9E9E9]/30 to-transparent hidden md:block"
           initial={{ scaleY: 0 }}
           animate={isInView ? { scaleY: 1 } : {}}
           transition={{ duration: 1.2, ease: "easeInOut" }}

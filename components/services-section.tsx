@@ -106,7 +106,7 @@ export function ServicesSection() {
         <div className="max-w-6xl mx-auto flex flex-col justify-center">
           {/* Título principal - Diferente texto para mobile y desktop */}
           <motion.h1
-            className="mt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient"
+            className="pt-6 lg:pt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient"
             style={{
               fontFamily: "var(--font-afa-scrub-one)",
             }}
@@ -209,8 +209,8 @@ export function ServicesSection() {
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
                 >
                   {/* Número fuera de la card */}
-                  <div className="flex items-center justify-center w-32 h-32 rounded-full border-4 border-white mt-1 shrink-0">
-                    <span className="font-['Inter'] font-bold text-5xl text-white">
+                  <div className="flex items-center justify-center w-32 h-32 rounded-full border-6 border-white mt-1 shrink-0">
+                    <span className="font-['Inter'] font-bold text-7xl text-white">
                       {service.number}
                     </span>
                   </div>
