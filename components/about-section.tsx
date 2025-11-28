@@ -355,7 +355,7 @@ export function AboutSection() {
             </p>
             <div className="flex gap-4 justify-center">
               <a 
-                href="https://github.com/tuusuario" 
+                href="https://github.com/kevkarlion" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300"
@@ -363,7 +363,7 @@ export function AboutSection() {
                 <Github className="w-8 h-8 text-white" />
               </a>
               <a 
-                href="https://instagram.com/tuusuario" 
+                href="https://www.instagram.com/kevinrqm?igsh=dWswMWg4MmplOWVk&utm_source=qr" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300"
