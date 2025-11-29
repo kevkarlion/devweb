@@ -24,6 +24,7 @@ export function Navbar() {
     { name: "Servicios", href: "#servicios" },
     { name: "Nosotros", href: "#nosotros" },
     { name: "Portfolio", href: "#portfolio" },
+    { name: "Metodología", href: "#metodo" },
     { name: "Contacto", href: "#contacto" },
   ];
 
