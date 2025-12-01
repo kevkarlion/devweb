@@ -58,7 +58,7 @@ export function ProcessTimeline() {
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Título principal */}
         <motion.h1
-          className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 uppercase"
+          className="flex flex-col justify-center items-center text-[2.7rem] lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 uppercase"
           style={{
             fontFamily: "var(--font-afa-scrub-one)",
           }}
@@ -83,10 +83,10 @@ export function ProcessTimeline() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <p 
-                className="font-['Inter'] text-sm text-white leading-relaxed tracking-wide text-justify hyphens-auto w-[88%]"
+                className="font-['Inter'] text-left text-sm lg:text-base text-white leading-relaxed tracking-wide  hyphens-auto w-[88%]"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                En un mundo donde el desarrollo web rápido y genérico es la norma, <br /> nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.
+                En un mundo donde el desarrollo web rápido y genérico es la norma, nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.
               </p>
             </motion.div>
 
@@ -218,7 +218,7 @@ export function ProcessTimeline() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <p 
-              className="font-['Inter'] text-sm text-white leading-relaxed tracking-wide text-center"
+              className="font-['Inter'] text-base text-white leading-relaxed tracking-wide text-center"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               En un mundo donde el desarrollo web rápido y genérico es la norma, nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.

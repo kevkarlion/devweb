@@ -65,11 +65,11 @@ export function Navbar() {
           {/* LOGO */}
           <motion.a
             href="#home"
-            className="text-2xl font-extrabold tracking-tight bg-linear-to-r from-[#FFB7B2] via-[#B9C8F5] to-white bg-clip-text text-transparent drop-shadow-lg"
+            className="text-2xl font-bold tracking-tight text-white drop-shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            devweb <span className="uppercase font-semibold">Patagonia</span>
+            devweb <span className="uppercase font-semibold text-2xl">Patagonia</span>
           </motion.a>
 
           {/* MENÚ DESKTOP */}
@@ -102,7 +102,7 @@ export function Navbar() {
               href="https://wa.me/5492984252859"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 rounded-full text-sm font-semibold text-black bg-linear-to-r from-[#FFB7B2] to-[#B9C8F5] shadow-md hover:shadow-lg transition-all duration-300"
+              className="px-5 py-2 rounded-md text-sm font-semibold text-white bg-primary-gradient shadow-md hover:shadow-lg transition-all duration-300 border-2 border-white"
               whileHover={{ 
                 scale: 1.05,
                 transition: { type: "spring", stiffness: 400, damping: 10 }
@@ -211,7 +211,7 @@ export function Navbar() {
               href="https://wa.me/5492984252859"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 px-6 py-3 rounded-full bg-linear-to-r from-[#FFB7B2] to-[#B9C8F5] text-black font-semibold shadow-lg"
+              className="mt-6 px-6 py-3 rounded-sm border-2 border-white bg-mobile-gradient text-white font-semibold shadow-lg"
               onClick={() => setIsMenuOpen(false)}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}

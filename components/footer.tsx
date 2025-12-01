@@ -13,9 +13,9 @@ export function Footer() {
   ]
 
   return (
-    <div className="bg-[#121212]"> {/* Contenedor con fondo fijo */}
+    <div className="bg-black border-t-2 border-[#E9E9E9]/10"> {/* Contenedor con fondo fijo */}
       <motion.footer
-        className="bg-[#121212] text-[#E9E9E9] py-12 px-6"
+        className="bg-black text-[#E9E9E9] py-12 px-6"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -32,7 +32,7 @@ export function Footer() {
               height={60}
               className="object-contain"
             />
-            <p className="text-[#E9E9E9]/70 text-sm max-w-xs">
+            <p className="text-white text-base max-w-xs">
               Creando experiencias digitales que potencian tu marca.
             </p>
           </div>
@@ -46,7 +46,7 @@ export function Footer() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-[#E9E9E9]/80 hover:text-[#E9E9E9] transition-colors duration-300 text-base"
+                className="text-white hover:text-[#E9E9E9] transition-colors duration-300 text-base"
               >
                 {item.name}
               </a>
@@ -62,7 +62,7 @@ export function Footer() {
               href="https://wa.me/5492984252859"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#E9E9E9] hover:text-[#25D366] transition-colors duration-300"
+              className="text-white hover:text-[#25D366] transition-colors duration-300"
             >
               <FaWhatsapp />
             </a>
@@ -70,7 +70,7 @@ export function Footer() {
               href="https://www.instagram.com/devwebpatagonia/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#E9E9E9] hover:text-[#E1306C] transition-colors duration-300"
+              className="text-white hover:text-[#E1306C] transition-colors duration-300"
             >
               <FaInstagram />
             </a>

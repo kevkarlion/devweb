@@ -82,7 +82,7 @@ const portfolioItems = [
 export function PortfolioSection() {
   return (
     <div
-      className={`w-full ${alfaSlab.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`w-full ${alfaSlab.variable} ${inter.variable} ${jetbrainsMono.variable} border-t border-[#E9E9E9]/10 `}
       id="portfolio"
     >
       <div className="min-h-screen w-full relative bg-black">
@@ -105,7 +105,7 @@ export function PortfolioSection() {
             >
               {/* Título principal */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8  mt-4  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal uppercase   text-transparent w-[143%] z-40 text-primary-gradient bg-clip-text"
+                className="lg:pt-6 xl:pt-8  mt-16  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal uppercase   text-transparent w-[143%] z-40 text-primary-gradient bg-clip-text"
                 style={{
                   fontFamily: "var(--font-alfaslab)",
                 }}
@@ -241,7 +241,7 @@ export function PortfolioSection() {
 
             {/* Botón CTA */}
              <motion.div
-            className="flex justify-center mt-24"
+            className="flex justify-center mt-24 mb-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}

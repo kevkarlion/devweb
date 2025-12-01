@@ -122,7 +122,7 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.h1
-            className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 uppercase"
+            className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 uppercase"
             style={{
               fontFamily: "var(--font-afa-scrub-one)",
             }}

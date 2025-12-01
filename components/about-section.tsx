@@ -150,7 +150,7 @@ export function AboutSection() {
       <div className="max-w-6xl mx-auto flex flex-col justify-center">
         {/* Título principal */}
         <motion.h1
-          className="flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal  bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient "
+          className="flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal  bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient mt-12"
           style={{
             fontFamily: "var(--font-afa-scrub-one)",
           }}
@@ -786,7 +786,7 @@ export function AboutSection() {
 
           {/* Botón Consultoría (original) - Desktop */}
           <motion.div
-            className="flex justify-center mt-16"
+            className="flex justify-center mt-16 mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
