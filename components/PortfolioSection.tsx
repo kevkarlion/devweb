@@ -30,6 +30,15 @@ const jetbrainsMono = JetBrains_Mono({
 
 // Datos del portfolio
 const portfolioItems = [
+   {
+    id: 6,
+    title: "Institucional",
+    description: "CDC | Casa de la Cultura",
+    image: "/proyectos-img/cdcroca.webp",
+    category: "Desarrollo Web",
+    technologies: ["Next.js", "Tailwind", "SEO"],
+    link: "https://cdcroca.com/",
+  },
   {
     id: 1,
     title: "Marketing",
@@ -46,7 +55,7 @@ const portfolioItems = [
     image: "/proyectos-img/la-negra.png",
     category: "Diseño UI/UX",
     technologies: ["Figma", "Next.js", "Tailwind.CSS"],
-    link: "https://la-negra-nails.vercel.app/",
+    link: "https://maridaniagarcia.com.ar/",
   },
   {
     id: 3,
