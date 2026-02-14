@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+
 import { Suspense } from "react";
 import "./globals.css";
 import  { Navbar }  from "@/components/navbar";
@@ -11,6 +11,12 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 // ✅ Importar los componentes de Schema
 import { OnePageSchema } from "@/components/OnePageSchema";
 import { WebsiteSchema } from "@/components/WebsiteSchema";
+
+import { Alfa_Slab_One, Inter, JetBrains_Mono } from "next/font/google";
+
+const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 const interLight = Inter({
   subsets: ["latin"],
@@ -24,15 +30,17 @@ const interSemiBold = Inter({
   variable: "--font-inter-semibold",
 });
 
+
 export const metadata: Metadata = {
   title: {
     default:
-      "Devweb - Diseño y Desarrollo Web | Alto Valle, General Roca, Cipolletti, Neuquén",
+      "Devweb - Gestión Digital y Desarrollo Web Profesional | Alto Valle, General Roca, Cipolletti, Neuquén",
     template: "%s | Devweb Patagonia",
   },
   description:
-    '🚀 Diseño y desarrollo web profesional en Alto Valle, Río Negro. Especialistas en General Roca, Cipolletti y Neuquén. Creamos sitios web rápidos y optimizados SEO que convierten visitantes en clientes. ¡Presupuesto sin compromiso!',
+    "🚀 Diseño y desarrollo web profesional en Alto Valle. Especialistas en sitios rápidos, optimizados para SEO y gestión integral de presencia digital. Creamos páginas web en General Roca, Cipolletti y Neuquén que convierten visitantes en clientes con soporte permanente. ¡Presupuesto sin compromiso!",
   keywords: [
+    // Originales mantenidas
     "diseño web alto valle río negro",
     "desarrollo web general roca patagonia",
     "crear sitio web cipolletti empresarial",
@@ -43,6 +51,13 @@ export const metadata: Metadata = {
     "mantenimiento web río negro",
     "optimización seo neuquén",
     "ecommerce desarrollo alto valle",
+    // Nuevas incorporaciones de gestión
+    "gestión de presencia digital",
+    "partner tecnológico para empresas",
+    "posicionamiento en google patagonia",
+    "estrategia digital permanente",
+    "mantenimiento técnico web profesional",
+    "desarrollo de software y dashboards",
   ].join(", "),
   authors: [{ name: "Devweb" }],
   creator: "Devweb",
@@ -60,27 +75,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: "https://devwebpatagonia.com/",
-    siteName: "Devweb",
+    siteName: "Devweb - Gestión y Desarrollo Web",
     title:
-      "Devweb - Diseño Web Profesional | Alto Valle, General Roca, Cipolletti, Neuquén",
+      "Devweb - Diseño Web Profesional y Gestión Digital | Alto Valle, Roca, Cipolletti, Neuquén",
     description:
-      "Agencia especializada en diseño web y desarrollo de sitios en Alto Valle Patagónico, General Roca, Cipolletti, Neuquén y Río Negro.",
+      "Agencia especializada en diseño web, SEO y gestión de presencia digital en Alto Valle Patagónico. Expertos en General Roca, Cipolletti y Neuquén.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb - Agencia de Diseño Web en Alto Valle, General Roca, Cipolletti, Neuquén",
+        alt: "Devweb - Agencia de Diseño Web y Gestión Digital en Alto Valle",
       },
     ],
-    emails: ['devwebpatagonia@gmail.com'], // Agregar si tienes
-    phoneNumbers: ['+542984252859'], // Agregar si quieres
   },
   twitter: {
     card: "summary_large_image",
-    title: "Devweb - Diseño Web Alto Valle | General Roca, Cipolletti, Neuquén",
+    title: "Devweb - Desarrollo Web y Gestión Digital Alto Valle",
     description:
-      "Desarrollo web profesional en Alto Valle Patagónico, General Roca, Cipolletti, Neuquén y Río Negro. Tecnología moderna y diseño impactante.",
+      "Diseño web profesional, optimización SEO y gestión de presencia digital en General Roca, Cipolletti y Neuquén. Tecnología Next.js.",
     images: ["/twitter-image.jpg"],
     creator: "@devweb",
   },
@@ -138,7 +151,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${interLight.variable} ${interSemiBold.variable} antialiased p-0! w-full`}
+        className={`${interLight.variable} ${interSemiBold.variable} ${jetbrainsMono.variable} antialiased p-0! w-full`}
       >
         <Navbar />
         <WhatsappButton />

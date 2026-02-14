@@ -30,7 +30,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 // Datos del portfolio
 const portfolioItems = [
-   {
+  {
+    id: 7,
+    title: "Inmobiliaria",
+    description:
+      "Riquelme Propiedades | Gestión inmobiliaria con dashboard personalizado",
+    image: "/proyectos-img/riqprop.webp",
+    category: "Desarrollo Fullstack",
+    technologies: ["Next.js", "Tailwind", "MongoDB", "Dashboard"],
+    link: "https://riquelmeprop.com/",
+  },
+  {
     id: 6,
     title: "Institucional",
     description: "CDC | Casa de la Cultura",
@@ -58,9 +68,19 @@ const portfolioItems = [
     link: "https://maridaniagarcia.com.ar/",
   },
   {
+  id: 8, // O el ID que corresponda en tu secuencia
+  title: "Ingeniería Industrial",
+  description: "Hacemos que Funcione | Sistemas térmicos y eléctricos de alta precisión",
+  image: "/proyectos-img/hacemosquefuncione.webp",
+  category: "Desarrollo Web",
+  technologies: ["Next.js", "Tailwind", "SEO", "UI/UX Design"],
+  link: "https://thermoelectrica.vercel.app//", // Ajustar si la URL es distinta
+},
+  {
     id: 3,
     title: "Ecommerce | Informativa",
-    description: "PERIMETRAL | Control de Stock y Ventas | Logeo de Usuarios | Sistema de Pagos | Automatizacion de Pedidos y Stock",
+    description:
+      "PERIMETRAL | Control de Stock y Ventas | Logeo de Usuarios | Sistema de Pagos | Automatizacion de Pedidos y Stock",
     image: "/proyectos-img/perimetral.png",
     category: "Comercio Digital",
     technologies: ["Next.js", "Node.js", "MongoDB"],
@@ -96,11 +116,8 @@ export function PortfolioSection() {
     >
       <div className="min-h-screen w-full relative bg-black">
         {/* Violet Storm Background with Top Glow */}
-        <div
-          className="absolute inset-0 z-0 bg-black"
-          
-        />
-        
+        <div className="absolute inset-0 z-0 bg-black" />
+
         {/* Contenido principal */}
         <section className="relative z-10 min-h-screen py-24 px-6 w-full overflow-hidden">
           {/* Contenedor principal */}
@@ -124,7 +141,7 @@ export function PortfolioSection() {
               >
                 Portfolio
               </motion.h1>
-               <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
+              <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
 
               {/* Descripción */}
               <motion.p
@@ -134,7 +151,9 @@ export function PortfolioSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Conocé los proyectos y emprendimientos con los que trabajamos, diseñados para impulsar marcas y transformar ideas en experiencias digitales impactantes.
+                Conocé los proyectos y emprendimientos con los que trabajamos,
+                diseñados para impulsar marcas y transformar ideas en
+                experiencias digitales impactantes.
               </motion.p>
             </motion.div>
 
@@ -244,36 +263,37 @@ export function PortfolioSection() {
                 className="tracking-wide lg:tracking-normal text-base  text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                Digitalizá tu negocio con nosotros. Transformamos ideas en experiencias digitales únicas que impulsan tu marca al éxito.
+                Digitalizá tu negocio con nosotros. Transformamos ideas en
+                experiencias digitales únicas que impulsan tu marca al éxito.
               </motion.p>
             </motion.div>
 
             {/* Botón CTA */}
-             <motion.div
-            className="flex justify-center mt-24 mb-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-          >
-            <a
-              href="https://wa.me/5492984252859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-[90%] md:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
-              style={{
-                fontFamily: "var(--font-inter)",
-              }}
+            <motion.div
+              className="flex justify-center mt-24 mb-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
             >
-              {/* Fondo con gradiente */}
-              <div className="absolute inset-0 rounded-lg bg-primary-gradient border-white border-2" />
+              <a
+                href="https://wa.me/5492984252859"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-[90%] md:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
+                style={{
+                  fontFamily: "var(--font-inter)",
+                }}
+              >
+                {/* Fondo con gradiente */}
+                <div className="absolute inset-0 rounded-lg bg-primary-gradient border-white border-2" />
 
-              {/* Contenido */}
-              <span className="relative z-10 text-white text-base lg:text-medium">
-                Hablemos sobre tu proyecto
-              </span>
-              <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-          </motion.div>
+                {/* Contenido */}
+                <span className="relative z-10 text-white text-base lg:text-medium">
+                  Hablemos sobre tu proyecto
+                </span>
+                <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+            </motion.div>
           </div>
         </section>
       </div>

@@ -82,7 +82,7 @@ export function Footer() {
 
         {/* Copyright */}
         <p className="text-sm text-[#E9E9E9]/50 mt-4 text-center">
-          © 2025 Devweb. Todos los derechos reservados.
+          © 2026 devweb - Gestión Digital. Todos los derechos reservados.
         </p>
       </motion.footer>
     </div>

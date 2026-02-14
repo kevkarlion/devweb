@@ -2,232 +2,158 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Alfa_Slab_One, Inter, JetBrains_Mono } from "next/font/google";
+
+const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+
+
   useEffect(() => {
     setIsMounted(true);
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    
-    // Establecer el estado inicial de scroll inmediatamente
     handleScroll();
-    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const menuItems = [
-    { name: "Home", href: "#home" },
+    { name: "Inicio", href: "#home" },
     { name: "Servicios", href: "#servicios" },
-    { name: "Nosotros", href: "#nosotros" },
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "Proyectos", href: "#portfolio" },
     { name: "Metodología", href: "#metodo" },
     { name: "Contacto", href: "#contacto" },
   ];
 
-  // Estilos base para evitar FOUC (Flash of Unstyled Content)
+  // Paleta Nueva: Más "Tech" y Profesional
   const baseNavStyles = {
-    background: "linear-gradient(90deg, rgba(255,183,178,0.18) 0%, rgba(185,200,245,0.18) 100%)",
-    backdropFilter: "blur(18px) saturate(160%)",
-    WebkitBackdropFilter: "blur(18px) saturate(160%)",
-    borderBottom: "none",
-    boxShadow: "none",
+    background: "transparent",
+    backdropFilter: "none",
+    borderBottom: "1px solid rgba(255,255,255,0)",
   };
 
   const scrolledNavStyles = {
-    background: "linear-gradient(90deg, rgba(255,183,178,0.12) 0%, rgba(185,200,245,0.12) 100%)",
-    backdropFilter: "blur(18px) saturate(160%)",
-    WebkitBackdropFilter: "blur(18px) saturate(160%)",
-    borderBottom: "1px solid rgba(255,255,255,0.2)",
-    boxShadow: "0 4px 30px rgba(0,0,0,0.25)",
+    background: "rgba(0, 0, 0, 0.8)", // Negro profundo para autoridad
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
+    boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
   };
 
   return (
     <>
-      {/* NAVBAR PRINCIPAL */}
       <motion.nav
         className={`fixed top-0 left-0 w-full z-1000 transition-all duration-500 ${
-          isScrolled ? "py-3" : "py-5"
+          isScrolled ? "py-3" : "py-6"
         }`}
         style={isScrolled ? scrolledNavStyles : baseNavStyles}
-        initial={isMounted ? { y: -60, opacity: 0 } : false}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ 
-          duration: 0.6, 
-          ease: [0.25, 0.46, 0.45, 0.94],
-          opacity: { duration: 0.4 }
-        }}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* LOGO */}
+          {/* LOGO - Enfoque Minimalista */}
           <motion.a
             href="#home"
-            className="text-2xl font-bold tracking-tight text-white drop-shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="group flex items-center gap-2 text-xl font-bold tracking-tighter text-white"
+            whileHover={{ scale: 1.02 }}
           >
-            devweb <span className="uppercase font-semibold text-2xl">Patagonia</span>
+            <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-sm text-sm group-hover:bg-[#B9C8F5] transition-colors">
+              DW
+            </div>
+            <span className="hidden sm:inline">DEVWEB <span className="font-light text-gray-400">PATAGONIA</span></span>
           </motion.a>
 
-          {/* MENÚ DESKTOP */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* MENÚ DESKTOP - Links con Hover sofisticado */}
+          <div className={`hidden md:flex items-center gap-8 `}>
             {menuItems.map((item, index) => (
-              <motion.a
+              <a
                 key={item.name}
                 href={item.href}
-                className="relative text-white/80 hover:text-white text-base font-medium transition-colors duration-300"
-                whileHover={{ y: -2 }}
-                initial={isMounted ? { opacity: 0, y: -10 } : false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: isMounted ? 0.1 + index * 0.05 : 0,
-                  duration: 0.4,
-                  ease: "easeOut"
-                }}
+                className={`relative text-sm uppercase  font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`}
               >
                 {item.name}
                 <motion.span
-                  className="absolute left-0 -bottom-1 h-0.5 w-0 bg-linear-to-r from-[#FFB7B2] to-[#B9C8F5]"
+                  className="absolute -bottom-1 left-0 w-0 h-px bg-white"
                   whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
                 />
-              </motion.a>
+              </a>
             ))}
 
-            {/* CTA */}
+            {/* CTA - Cambio de "Crea tu sitio" a "Impulsar marca" */}
             <motion.a
               href="https://wa.me/5492984252859"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 rounded-md text-sm font-semibold text-white bg-primary-gradient shadow-md hover:shadow-lg transition-all duration-300 border-2 border-white"
-              whileHover={{ 
-                scale: 1.05,
-                transition: { type: "spring", stiffness: 400, damping: 10 }
-              }}
-              whileTap={{ scale: 0.95 }}
-              initial={isMounted ? { opacity: 0, scale: 0.9 } : false}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ 
-                delay: isMounted ? 0.3 : 0,
-                duration: 0.4 
-              }}
+              className="px-6 py-2.5 rounded-sm text-xs font-bold uppercase tracking-widest text-black bg-white hover:bg-[#B9C8F5] transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              Crea tu sitio web
+              Potenciar mi marca
             </motion.a>
           </div>
 
-          {/* BOTÓN HAMBURGER */}
-          <motion.button
-            className="md:hidden flex flex-col justify-between w-7 h-5 relative z-1001"
+          {/* BOTÓN HAMBURGER - Estilizado */}
+          <button
+            className="md:hidden flex flex-col gap-1.5 z-1001"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            whileTap={{ scale: 0.9 }}
-            initial={isMounted ? { opacity: 0 } : false}
-            animate={{ opacity: 1 }}
-            transition={{ delay: isMounted ? 0.2 : 0 }}
           >
-            <motion.span
-              className="block h-0.5 bg-white rounded"
-              animate={{ 
-                rotate: isMenuOpen ? 45 : 0, 
-                y: isMenuOpen ? 8 : 0,
-                width: isMenuOpen ? "100%" : "100%"
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: "easeInOut"
-              }}
+            <motion.span 
+              className="w-8 h-0.5 bg-white rounded-full" 
+              animate={isMenuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
             />
-            <motion.span
-              className="block h-0.5 bg-white rounded"
-              animate={{ 
-                opacity: isMenuOpen ? 0 : 1,
-                scale: isMenuOpen ? 0 : 1
-              }}
-              transition={{ 
-                duration: 0.2,
-                ease: "easeInOut"
-              }}
+            <motion.span 
+              className="w-8 h-0.5 bg-white rounded-full" 
+              animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
             />
-            <motion.span
-              className="block h-0.5 bg-white rounded"
-              animate={{ 
-                rotate: isMenuOpen ? -45 : 0, 
-                y: isMenuOpen ? -8 : 0,
-                width: isMenuOpen ? "100%" : "100%"
-              }}
-              transition={{ 
-                duration: 0.3,
-                ease: "easeInOut"
-              }}
+            <motion.span 
+              className="w-8 h-0.5 bg-white rounded-full" 
+              animate={isMenuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
             />
-          </motion.button>
+          </button>
         </div>
       </motion.nav>
 
-      {/* MENÚ MOBILE */}
-      <AnimatePresence mode="wait">
+      {/* MENÚ MOBILE - Full screen Tech */}
+      <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            key="mobile-menu"
-            className="fixed inset-0 z-999 flex flex-col items-center justify-center space-y-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ 
-              duration: 0.25,
-              ease: "easeInOut"
-            }}
-            style={{
-              background: "radial-gradient(circle at top right, rgba(185,200,245,0.25), rgba(0,0,0,0.85) 70%)",
-              backdropFilter: "blur(25px)",
-              WebkitBackdropFilter: "blur(25px)",
-            }}
+            className="fixed inset-0 z-999 bg-black flex flex-col items-center justify-center"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.4 }}
           >
-            {menuItems.map((item, index) => (
+            <div className="flex flex-col gap-8 text-center">
+              {menuItems.map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className="text-3xl font-bold text-white uppercase tracking-tighter hover:text-gray-400"
+                  onClick={() => setIsMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
               <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-white text-2xl font-semibold hover:text-[#B9C8F5] transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ 
-                  delay: index * 0.05,
-                  duration: 0.3,
-                  ease: "easeOut"
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                href="https://wa.me/5492984252859"
+                className="mt-4 px-8 py-4 bg-white text-black font-bold uppercase text-sm tracking-widest"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
               >
-                {item.name}
+                Comenzar ahora
               </motion.a>
-            ))}
-
-            <motion.a
-              href="https://wa.me/5492984252859"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 px-6 py-3 rounded-sm border-2 border-white bg-mobile-gradient text-white font-semibold shadow-lg"
-              onClick={() => setIsMenuOpen(false)}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ 
-                delay: menuItems.length * 0.05,
-                duration: 0.3
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                transition: { type: "spring", stiffness: 400, damping: 10 }
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Crea tu sitio web
-            </motion.a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
