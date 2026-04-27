@@ -24,12 +24,12 @@ export function Navbar() {
   }, []);
 
   const menuItems = [
-    { name: "Inicio", href: "#home" },
-    { name: "Servicios", href: "#servicios" },
+    { name: "Inicio", href: "/" },
+    { name: "Servicios", href: "/#servicios" },
     { name: "Blog", href: "/blog" },
-    { name: "Proyectos", href: "#portfolio" },
-    { name: "Metodología", href: "#metodo" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Proyectos", href: "/#portfolio" },
+    { name: "Metodología", href: "/#metodo" },
+    { name: "Contacto", href: "/#contacto" },
   ];
 
   // Paleta Nueva: Más "Tech" y Profesional
@@ -61,7 +61,7 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* LOGO - Enfoque Minimalista */}
           <motion.a
-            href="#home"
+            href="/"
             className="group flex items-center gap-2 text-xl font-bold tracking-tighter text-white"
             whileHover={{ scale: 1.02 }}
           >

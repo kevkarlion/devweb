@@ -6,11 +6,11 @@ import Image from "next/image"
 
 export function Footer() {
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Nosotros", href: "#nosotros" },
-    { name: "Servicios", href: "#servicios" },
+    { name: "Inicio", href: "/" },
     { name: "Blog", href: "/blog" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Nosotros", href: "/#nosotros" },
+    { name: "Servicios", href: "/#servicios" },
+    { name: "Contacto", href: "/#contacto" },
   ]
 
   return (
