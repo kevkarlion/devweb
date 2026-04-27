@@ -2,13 +2,11 @@
 export function OnePageSchema() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "WebDesignCompany",
-    "name": "Devweb - Diseño y Desarrollo Web Patagonia",
-    "description": "Agencia especializada en diseño web, desarrollo de sitios profesionales y experiencias digitales en Alto Valle, General Roca, Cipolletti, Neuquén y Río Negro",
+    "@type": "ProfessionalService",
+    "name": "Devweb Patagonia — Gestión Digital Integral",
+    "description": "Tu partner digital en la Patagonia. Diseñamos webs que atraen clientes, optimizamos tu presencia en Google y te acompañamos con soporte permanente. Especialistas en General Roca, Cipolletti y Neuquén.",
     "url": "https://devwebpatagonia.com/",
     "logo": "https://devwebpatagonia.com/logo.png",
-    "telephone": "+54-299-1234567",
-    "email": "info@devwebpatagonia.com",
     
     // 🎯 INFORMACIÓN GEOGRÁFICA CRÍTICA
     "areaServed": [
@@ -77,13 +75,13 @@ export function OnePageSchema() {
     },
 
     // 🌟 INFORMACIÓN ADICIONAL
-    "founder": {
-      "@type": "Person",
-      "name": "Tu Nombre" // ← Cambia por tu nombre real
-    },
-    
-    "foundingDate": "2023", // ← Año que empezaste
-    "slogan": "Diseño y Desarrollo Web Profesional en Patagonia"
+    "knowsAbout": [
+      "Diseño Web",
+      "Desarrollo Next.js",
+      "SEO",
+      "Gestión Digital",
+      "Presencia Online"
+    ],
   }
 
   return (

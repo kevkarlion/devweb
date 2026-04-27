@@ -26,6 +26,7 @@ export function Navbar() {
   const menuItems = [
     { name: "Inicio", href: "#home" },
     { name: "Servicios", href: "#servicios" },
+    { name: "Blog", href: "/blog" },
     { name: "Proyectos", href: "#portfolio" },
     { name: "Metodología", href: "#metodo" },
     { name: "Contacto", href: "#contacto" },

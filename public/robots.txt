@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Bloquear rutas administrativas si existieran
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://devwebpatagonia.com/sitemap.xml
+
+# Indicaciones para Google
+User-agent: Googlebot
+Crawl-delay: 1

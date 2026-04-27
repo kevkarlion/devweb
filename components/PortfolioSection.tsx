@@ -50,6 +50,16 @@ const portfolioItems = [
     link: "https://cdcroca.com/",
   },
   {
+    id: 22,
+    title: "Ecommerce",
+    description:
+      "Ecommerce | Tienda online para la venta de productos de cuidado y belleza corporal",
+    image: "/proyectos-img/ushuaiaecommerce.webp",
+    category: "Comercio Digital",
+    technologies: ["Next.js", "Agent.AI", "MongoDB", "Ecommerce"],
+    link: "https://ushuaiaglow.com/",
+  },
+  {
     id: 1,
     title: "Marketing",
     description: "NGURU | Agencia de Marketing Integral",
