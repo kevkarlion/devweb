@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Shield, Zap, AlertTriangle, Check, Code, Clock, FileText } from "lucide-react";
-import { Alfa_Slab_One, Inter } from "next/font/google";
-
-const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// Las fuentes se cargan globalmente desde layout.tsx
 
 export const metadata: Metadata = {
   title: "Mantenimiento Web en Río Negro: Soporte y Actualizaciones | Devweb Patagonia",
@@ -19,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function MantenimientoWebRioNegroPage() {
   return (
-    <main className={`${alfaSlab.variable} ${inter.variable} min-h-screen bg-[#121212] w-full p-0`}>
+    <main className="min-h-screen bg-[#121212] w-full p-0">
       {/* Hero */}
       <section className="relative flex items-center justify-center w-full min-h-[80vh] overflow-hidden bg-black lg:pt-24 pt-14 pb-20">
         <div className="relative z-10 max-w-8xl mx-auto w-full px-6">
@@ -28,7 +25,7 @@ export default function MantenimientoWebRioNegroPage() {
               Blog
             </span>
             <h1
-              className="text-4xl md:text-5xl xl:text-6xl leading-[0.9] tracking-wide uppercase font-bold mb-8 text-primary-gradient bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl xl:text-6xl leading-[0.9] tracking-wide font-bold mb-8 text-primary-gradient bg-clip-text text-transparent"
             >
               Mantenimiento Web en Río Negro
             </h1>
@@ -55,8 +52,8 @@ export default function MantenimientoWebRioNegroPage() {
           {/* Por qué mantenimiento */}
           <div className="mb-16">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent uppercase"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent"
+              style={{ fontFamily: "var(--font-titles)" }}
             >
               ¿Por qué tu web necesita mantenimiento?
             </h2>
@@ -74,8 +71,8 @@ export default function MantenimientoWebRioNegroPage() {
           {/* Riesgos */}
           <div className="mb-16">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent uppercase"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent"
+              style={{ fontFamily: "var(--font-titles)" }}
             >
               Los riesgos de no mantener tu web
             </h2>
@@ -124,8 +121,8 @@ export default function MantenimientoWebRioNegroPage() {
           {/* Qué incluye */}
           <div className="mb-16">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent uppercase"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent"
+              style={{ fontFamily: "var(--font-titles)" }}
             >
               Qué incluye un plan de mantenimiento web
             </h2>
@@ -167,8 +164,8 @@ export default function MantenimientoWebRioNegroPage() {
           {/* Precios */}
           <div className="mb-16">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent uppercase"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent"
+              style={{ fontFamily: "var(--font-titles)" }}
             >
               Planes de mantenimiento: cuánto sale
             </h2>
@@ -203,8 +200,8 @@ export default function MantenimientoWebRioNegroPage() {
           {/* Freelancer vs agencia */}
           <div className="mb-16">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent uppercase"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              className="text-3xl md:text-4xl font-bold mb-8 text-center text-primary-gradient bg-clip-text text-transparent"
+              style={{ fontFamily: "var(--font-titles)" }}
             >
               ¿Freelancer o agencia para mantenimiento?
             </h2>
@@ -223,7 +220,7 @@ export default function MantenimientoWebRioNegroPage() {
           {/* CTA */}
           <div className="border-2 border-white rounded-lg p-10 bg-primary-gradient text-center">
             <h3 className="text-3xl font-bold mb-4 text-white"
-                style={{ fontFamily: "var(--font-inter)" }}>
+                style={{ fontFamily: "var(--font-body)" }}>
               ¿Tu web necesita mantenimiento?
             </h3>
             <p className="text-white/90 text-lg mb-8">

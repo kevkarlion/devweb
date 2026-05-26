@@ -2,18 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Alfa_Slab_One, Inter, JetBrains_Mono } from "next/font/google";
+import Image from "next/image";
+import { JetBrains_Mono } from "next/font/google";
 
-const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-
-
 
   useEffect(() => {
     setIsMounted(true);
@@ -32,7 +29,6 @@ export function Navbar() {
     { name: "Contacto", href: "/#contacto" },
   ];
 
-  // Paleta Nueva: Más "Tech" y Profesional
   const baseNavStyles = {
     background: "transparent",
     backdropFilter: "none",
@@ -40,7 +36,7 @@ export function Navbar() {
   };
 
   const scrolledNavStyles = {
-    background: "rgba(0, 0, 0, 0.8)", // Negro profundo para autoridad
+    background: "rgba(0, 0, 0, 0.8)",
     backdropFilter: "blur(12px)",
     WebkitBackdropFilter: "blur(12px)",
     borderBottom: "1px solid rgba(255,255,255,0.1)",
@@ -51,7 +47,7 @@ export function Navbar() {
     <>
       <motion.nav
         className={`fixed top-0 left-0 w-full z-1000 transition-all duration-500 ${
-          isScrolled ? "py-3" : "py-6"
+          isScrolled ? "py-3" : "py-5"
         }`}
         style={isScrolled ? scrolledNavStyles : baseNavStyles}
         initial={{ y: -100 }}
@@ -59,25 +55,30 @@ export function Navbar() {
         transition={{ duration: 0.5 }}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* LOGO - Enfoque Minimalista */}
+          {/* LOGO - Imagen siempre a la izquierda */}
           <motion.a
             href="/"
-            className="group flex items-center gap-2 text-xl font-bold tracking-tighter text-white"
-            whileHover={{ scale: 1.02 }}
+            className="flex items-center shrink-0"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <div className="w-8 h-8 bg-white text-black flex items-center justify-center rounded-sm text-sm group-hover:bg-[#B9C8F5] transition-colors">
-              DW
-            </div>
-            <span className="hidden sm:inline">DEVWEB <span className="font-light text-gray-400">PATAGONIA</span></span>
+            <Image
+              src="/logo-new-white.png"
+              alt="Devweb Patagonia"
+              width={100}
+              height={79}
+              className="h-10 md:h-11 w-auto object-contain"
+              priority
+            />
           </motion.a>
 
-          {/* MENÚ DESKTOP - Links con Hover sofisticado */}
-          <div className={`hidden md:flex items-center gap-8 `}>
-            {menuItems.map((item, index) => (
+          {/* MENÚ DESKTOP */}
+          <div className="hidden md:flex items-center gap-8">
+            {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`relative text-sm uppercase  font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`}
+                className={`relative text-sm uppercase font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`}
               >
                 {item.name}
                 <motion.span
@@ -87,7 +88,6 @@ export function Navbar() {
               </a>
             ))}
 
-            {/* CTA - Cambio de "Crea tu sitio" a "Impulsar marca" */}
             <motion.a
               href="https://wa.me/5492984252859"
               target="_blank"
@@ -100,7 +100,7 @@ export function Navbar() {
             </motion.a>
           </div>
 
-          {/* BOTÓN HAMBURGER - Estilizado */}
+          {/* BOTÓN HAMBURGER */}
           <button
             className="md:hidden flex flex-col gap-1.5 z-1001"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -121,7 +121,7 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* MENÚ MOBILE - Full screen Tech */}
+      {/* MENÚ MOBILE - Full screen */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

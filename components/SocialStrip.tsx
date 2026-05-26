@@ -37,8 +37,8 @@ export function SocialStrip() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Texto descriptivo */}
           <motion.p
-            className="text-sm text-white/60 text-center sm:text-left"
-            style={{ fontFamily: "var(--font-inter)" }}
+            className="text-sm text-neutral-400 text-center sm:text-left"
+            style={{ fontFamily: "var(--font-body)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.1 }}
@@ -55,7 +55,7 @@ export function SocialStrip() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className={`text-white/70 transition-all duration-300 transform hover:scale-110 ${social.color} group`}
+                className={`text-neutral-300 transition-all duration-300 transform hover:scale-110 ${social.color} group`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 1.3 + index * 0.1 }}

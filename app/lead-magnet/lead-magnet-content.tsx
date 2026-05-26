@@ -98,7 +98,7 @@ if (status === "success") {
         className="text-center p-8 border-2 border-white/30 rounded-lg bg-black"
       >
         <Check className="w-16 h-16 text-white mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-alfaslab)" }}>¡Listo!</h3>
+        <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-titles)" }}>¡Listo!</h3>
         <p className="text-gray-300">Revisa tu email para ver el checklist completo.</p>
       </motion.div>
     );
@@ -163,7 +163,7 @@ export default function LeadMagnetContent() {
             </span>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              style={{ fontFamily: "var(--font-titles)" }}
             >
               7 Señales de que tu Web{" "}
               <span className="text-transparent bg-clip-text bg-primary-gradient">
@@ -193,7 +193,7 @@ export default function LeadMagnetContent() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-gradient bg-clip-text text-transparent"
-                style={{ fontFamily: "var(--font-alfaslab)" }}>
+                style={{ fontFamily: "var(--font-titles)" }}>
               Las 7 Señales
             </h2>
             <p className="text-gray-400">
@@ -264,7 +264,7 @@ export default function LeadMagnetContent() {
       <section className="py-20 px-4 bg-black border-t border-[#434343]">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary-gradient bg-clip-text text-transparent"
-              style={{ fontFamily: "var(--font-alfaslab)" }}>
+              style={{ fontFamily: "var(--font-titles)" }}>
             ¿Por qué renovar tu web?
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -291,7 +291,7 @@ export default function LeadMagnetContent() {
                 className="p-6 border-2 border-white/30 rounded-lg bg-black"
               >
                 <h3 className="text-xl font-semibold text-primary-gradient bg-clip-text text-transparent mb-2"
-                    style={{ fontFamily: "var(--font-alfaslab)" }}>
+                    style={{ fontFamily: "var(--font-titles)" }}>
                   {item.title}
                 </h3>
                 <p className="text-gray-400">{item.description}</p>

@@ -1,7 +1,22 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* ===========================
+   Tipografía Global
+=========================== */
+@layer base {
+  html {
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-titles), system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+}
 
 :root {
   /* Colores base existentes */

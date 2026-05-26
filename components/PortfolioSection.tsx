@@ -3,25 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import {
-  Cormorant_Garamond,
-  Inter,
-  JetBrains_Mono,
-  Oswald,
-  Alfa_Slab_One,
-} from "next/font/google";
-
-// Configurar las fuentes
-const alfaSlab = Alfa_Slab_One({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-alfaslab",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+import { JetBrains_Mono } from "next/font/google";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -121,12 +103,12 @@ const portfolioItems = [
 export function PortfolioSection() {
   return (
     <div
-      className={`w-full ${alfaSlab.variable} ${inter.variable} ${jetbrainsMono.variable} border-t border-[#E9E9E9]/10 `}
+      className={`w-full ${jetbrainsMono.variable} border-t border-[#E9E9E9]/10 `}
       id="portfolio"
     >
-      <div className="min-h-screen w-full relative bg-black">
+      <div className="min-h-screen w-full relative bg-neutral-950">
         {/* Violet Storm Background with Top Glow */}
-        <div className="absolute inset-0 z-0 bg-black" />
+        <div className="absolute inset-0 z-0 bg-neutral-950" />
 
         {/* Contenido principal */}
         <section className="relative z-10 min-h-screen py-24 px-6 w-full overflow-hidden">
@@ -141,9 +123,9 @@ export function PortfolioSection() {
             >
               {/* Título principal */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8  mt-16  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal uppercase   text-transparent w-[143%] z-40 text-primary-gradient bg-clip-text"
+                className="lg:pt-6 xl:pt-8  mt-16  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal   text-transparent w-[143%] z-40 text-primary-gradient bg-clip-text font-bold"
                 style={{
-                  fontFamily: "var(--font-alfaslab)",
+                  fontFamily: "var(--font-titles)",
                 }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -155,8 +137,8 @@ export function PortfolioSection() {
 
               {/* Descripción */}
               <motion.p
-                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-base text-white max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white mt-8 mb-14 md:w-[85%] lg:w-[60%] xl:w-[48%]"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-base text-neutral-300 max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white mt-8 mb-14 md:w-[85%] lg:w-[60%] xl:w-[48%]"
+                style={{ fontFamily: "var(--font-body)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -205,7 +187,7 @@ export function PortfolioSection() {
                       <div className="absolute top-4 left-4">
                         <span
                           className="px-3 py-1 text-xs font-medium rounded-full bg-white/90 backdrop-blur-sm text-[#121212]"
-                          style={{ fontFamily: "var(--font-inter)" }}
+                          style={{ fontFamily: "var(--font-body)" }}
                         >
                           {item.category}
                         </span>
@@ -218,7 +200,7 @@ export function PortfolioSection() {
                       >
                         <div
                           className="px-6 py-3 bg-white text-[#121212] rounded-full font-semibold shadow-lg transition-all duration-300 hover:bg-[#121212] hover:text-white"
-                          style={{ fontFamily: "var(--font-inter)" }}
+                          style={{ fontFamily: "var(--font-body)" }}
                         >
                           Ver Proyecto
                         </div>
@@ -229,14 +211,14 @@ export function PortfolioSection() {
                     <div className="p-6">
                       <h3
                         className="text-xl font-semibold text-[#121212] mb-3"
-                        style={{ fontFamily: "var(--font-inter)" }}
+                        style={{ fontFamily: "var(--font-body)" }}
                       >
                         {item.title}
                       </h3>
 
                       <p
                         className="text-[#121212]/70 text-sm leading-relaxed mb-4"
-                        style={{ fontFamily: "var(--font-inter)" }}
+                        style={{ fontFamily: "var(--font-body)" }}
                       >
                         {item.description}
                       </p>
@@ -270,8 +252,8 @@ export function PortfolioSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.p
-                className="tracking-wide lg:tracking-normal text-base  text-white mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="tracking-wide lg:tracking-normal text-base  text-neutral-300 mb-6 max-w-2xl mx-auto text-center  xl:mb-18 xl:mt-12"
+                style={{ fontFamily: "var(--font-body)" }}
               >
                 Digitalizá tu negocio con nosotros. Transformamos ideas en
                 experiencias digitales únicas que impulsan tu marca al éxito.
@@ -291,7 +273,7 @@ export function PortfolioSection() {
                 rel="noopener noreferrer"
                 className="w-[90%] md:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
                 style={{
-                  fontFamily: "var(--font-inter)",
+                  fontFamily: "var(--font-body)",
                 }}
               >
                 {/* Fondo con gradiente */}

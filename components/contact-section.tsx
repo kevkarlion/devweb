@@ -3,19 +3,7 @@
 import React, { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import { Alfa_Slab_One, Inter } from "next/font/google"
-
-// Fuentes
-const afaScrubOne = Alfa_Slab_One({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-afa-scrub-one",
-})
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-})
+// Las fuentes se cargan globalmente desde layout.tsx
 
 interface FormData {
   name: string
@@ -112,7 +100,7 @@ export function ContactSection() {
   }
 
   return (
-    <section ref={ref} id="contacto" className={`${afaScrubOne.variable} ${inter.variable} w-full bg-black py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]`}>
+    <section ref={ref} id="contacto" className="w-full bg-neutral-950 py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]">
       <div className="max-w-4xl mx-auto flex flex-col justify-center items-center">
         {/* Header */}
         <motion.div
@@ -122,19 +110,19 @@ export function ContactSection() {
           transition={{ duration: 0.6 }}
         >
           <motion.h1
-            className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 uppercase"
+            className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
             style={{
-              fontFamily: "var(--font-afa-scrub-one)",
+              fontFamily: "var(--font-titles)",
             }}
           >
-            HABLEMOS <br /> DE TU PROYECTO
+            Hablemos <br /> de tu proyecto
           </motion.h1>
 
           <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-8"></div>
 
           <p 
-            className="font-['Inter'] text-lg text-white/90 leading-relaxed tracking-wide text-center max-w-2xl mx-auto mt-8"
-            style={{ fontFamily: "var(--font-inter)" }}
+            className="text-lg text-neutral-300 leading-relaxed tracking-wide text-center max-w-2xl mx-auto mt-8"
+            style={{ fontFamily: "var(--font-body)" }}
           >
             ¿Tenés un proyecto de diseño web o desarrollo de sitio profesional? Contanos tu idea y juntos vamos a crear una experiencia digital que potencie tu marca y atraiga clientes.
           </p>
@@ -150,7 +138,7 @@ export function ContactSection() {
                 ? 'bg-green-500/10 border-green-500/20 text-green-400' 
                 : 'bg-red-500/10 border-red-500/20 text-red-400'
             }`}
-            style={{ fontFamily: "var(--font-inter)" }}
+            style={{ fontFamily: "var(--font-body)" }}
           >
             {submitStatus.message}
           </motion.div>
@@ -167,8 +155,8 @@ export function ContactSection() {
           <div>
             <label 
               htmlFor="name" 
-              className="block font-['Inter'] font-medium text-sm text-white/80 mb-3"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="block font-medium text-sm text-neutral-400 mb-3"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Nombre
             </label>
@@ -179,8 +167,8 @@ export function ContactSection() {
               placeholder="Tu nombre"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-6 py-4 bg-[#0D0D0D] border border-[#434343] rounded-lg text-white font-['Inter'] text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-white/40"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="w-full px-6 py-4 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-neutral-600"
+              style={{ fontFamily: "var(--font-body)" }}
               required
               disabled={loading}
             />
@@ -189,8 +177,8 @@ export function ContactSection() {
           <div>
             <label 
               htmlFor="email" 
-              className="block font-['Inter'] font-medium text-sm text-white/80 mb-3"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="block font-medium text-sm text-neutral-400 mb-3"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Email
             </label>
@@ -201,8 +189,8 @@ export function ContactSection() {
               placeholder="tu@email.com"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-6 py-4 bg-[#0D0D0D] border border-[#434343] rounded-lg text-white font-['Inter'] text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-white/40"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="w-full px-6 py-4 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-neutral-600"
+              style={{ fontFamily: "var(--font-body)" }}
               required
               disabled={loading}
             />
@@ -211,8 +199,8 @@ export function ContactSection() {
           <div>
             <label 
               htmlFor="message" 
-              className="block font-['Inter'] font-medium text-sm text-white/80 mb-3"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="block font-medium text-sm text-neutral-400 mb-3"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Mensaje
             </label>
@@ -223,8 +211,8 @@ export function ContactSection() {
               value={formData.message}
               onChange={handleChange}
               rows={6}
-              className="w-full px-6 py-4 bg-[#0D0D0D] border border-[#434343] rounded-lg text-white font-['Inter'] text-base focus:border-white focus:outline-none transition-all duration-300 resize-none placeholder:text-white/40"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="w-full px-6 py-4 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 resize-none placeholder:text-neutral-600"
+              style={{ fontFamily: "var(--font-body)" }}
               required
               disabled={loading}
             />
@@ -239,7 +227,7 @@ export function ContactSection() {
             whileHover={!loading ? { scale: 1.05 } : {}}
             whileTap={!loading ? { scale: 0.95 } : {}}
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-body)",
             }}
           >
             {/* Fondo con gradiente */}
@@ -272,8 +260,8 @@ export function ContactSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p 
-            className="font-['Inter'] text-white/80 mb-4"
-            style={{ fontFamily: "var(--font-inter)" }}
+            className="text-neutral-400 mb-4"
+            style={{ fontFamily: "var(--font-body)" }}
           >
             ¿Preferís contactarnos directamente?
           </p>
@@ -284,8 +272,8 @@ export function ContactSection() {
             className="inline-flex items-center gap-2 px-6 py-3 border border-white/30 rounded-lg hover:bg-white/10 transition-all duration-300"
           >
             <span 
-              className="font-['Inter'] text-white"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="text-neutral-300"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Escribinos por WhatsApp
             </span>

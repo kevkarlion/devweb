@@ -13,24 +13,22 @@ import { OnePageSchema } from "@/components/OnePageSchema";
 import { FAQSchema } from "@/components/FAQSchema";
 import { WebsiteSchema } from "@/components/WebsiteSchema";
 
-import { Alfa_Slab_One, Inter, JetBrains_Mono } from "next/font/google";
+import { Titillium_Web, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { LeadCapturePopupProvider } from "@/components/lead-capture-popup-provider";
 
-const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const titilliumWeb = Titillium_Web({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-titles",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body",
+});
+
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
-
-const interLight = Inter({
-  subsets: ["latin"],
-  weight: ["300"],
-  variable: "--font-inter-light",
-});
-
-const interSemiBold = Inter({
-  subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-inter-semibold",
-});
 
 
 export const metadata: Metadata = {
@@ -153,7 +151,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${interLight.variable} ${interSemiBold.variable} ${jetbrainsMono.variable} antialiased p-0! w-full`}
+        className={`${titilliumWeb.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} antialiased p-0! w-full`}
       >
         <LeadCapturePopupProvider>
           <Navbar />

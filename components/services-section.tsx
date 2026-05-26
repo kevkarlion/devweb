@@ -1,6 +1,5 @@
 "use client";
 
-import { Alfa_Slab_One, Inter } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
@@ -16,16 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const afaScrubOne = Alfa_Slab_One({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-afa-scrub-one",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+// Las fuentes se cargan globalmente desde layout.tsx
 
 const services = [
   {
@@ -98,7 +88,7 @@ export function ServicesSection() {
   return (
     <section
       ref={ref}
-      className={`${afaScrubOne.variable} ${inter.variable} w-full bg-black relative`}
+      className="w-full bg-neutral-950 relative"
       id="servicios"
     >
       {/* Contenido */}
@@ -106,16 +96,16 @@ export function ServicesSection() {
         <div className="max-w-6xl mx-auto flex flex-col justify-center">
           {/* Título principal - Diferente texto para mobile y desktop */}
           <motion.h1
-            className="pt-6 lg:pt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient"
+            className="pt-6 lg:pt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center text-mobile-gradient lg:text-primary-gradient font-bold"
             style={{
-              fontFamily: "var(--font-afa-scrub-one)",
+              fontFamily: "var(--font-titles)",
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Texto para mobile */}
-            <span className="block lg:hidden leading-14">NUESTROS SERVICIOS</span>
+            <span className="block lg:hidden leading-14">Nuestros servicios</span>
             {/* Texto para desktop */}
             <span className="hidden lg:block">Servicios de diseño & desarrollo web</span>
           </motion.h1>
@@ -132,12 +122,12 @@ export function ServicesSection() {
               {/* Esfera con texto */}
               <div className="shrink-0">
                 <div className="bg-primary-gradient w-48 h-48 rounded-full border-white border-2 flex items-center justify-center p-4">
-                  <p 
-                    className="font-['Inter'] font-medium text-lg text-white text-center leading-tight"
-                    style={{
-                      fontFamily: "var(--font-inter)",
-                    }}
-                  >
+<p 
+                  className="font-medium text-lg text-neutral-300 text-center leading-tight"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
                     Para Emprendedores y Pequeños Negocios
                   </p>
                 </div>
@@ -149,9 +139,9 @@ export function ServicesSection() {
               {/* Texto descriptivo */}
               <div className="flex-1">
                 <p 
-                  className="font-['Inter'] text-base text-white leading-relaxed text-left w-[80%]"
+                  className="text-base text-neutral-300 leading-relaxed text-left w-[80%]"
                   style={{
-                    fontFamily: "var(--font-inter)",
+                    fontFamily: "var(--font-body)",
                   }}
                 >
                   Nuestra agencia crea sitios webs rápidos, modernos y estratégicos para que puedas atraer clientes y competir de verdad.
@@ -169,9 +159,9 @@ export function ServicesSection() {
               {/* Texto descriptivo */}
               <div className="w-full">
                 <p 
-                  className="font-['Inter'] text-lg text-white leading-relaxed text-center "
+                  className="text-lg text-neutral-300 leading-relaxed text-center "
                   style={{
-                    fontFamily: "var(--font-inter)",
+                    fontFamily: "var(--font-body)",
                   }}
                 >
                   Nuestra agencia crea sitios webs rápidos, modernos y estratégicos para que puedas atraer clientes y competir de verdad.
@@ -185,9 +175,9 @@ export function ServicesSection() {
               <div className="shrink-0">
                 <div className="bg-mobile-gradient w-64 h-64 rounded-full border-2 border-white flex items-center justify-center p-4">
                   <p 
-                    className="font-['Inter'] font-medium text-2xl text-white text-center leading-tight"
+                    className="font-medium text-2xl text-neutral-300 text-center leading-tight"
                     style={{
-                      fontFamily: "var(--font-inter)",
+                      fontFamily: "var(--font-body)",
                     }}
                   >
                     Para Emprendedores y Pequeños Negocios
@@ -210,7 +200,7 @@ export function ServicesSection() {
                 >
                   {/* Número fuera de la card */}
                   <div className="flex items-center justify-center w-32 h-32 rounded-full border-6 border-white mt-1 shrink-0">
-                    <span className="font-['Inter'] font-bold text-7xl text-white">
+                    <span className="font-bold text-7xl text-neutral-300">
                       {service.number}
                     </span>
                   </div>
@@ -223,7 +213,7 @@ export function ServicesSection() {
                     {/* Título con ícono */}
                     <div className="flex justify-center items-center gap-2 mb-3">
                       <service.icon className="w-8 h-8 text-white" />
-                      <h3 className="font-['Inter'] font-semibold text-lg text-white transition-colors duration-300 text-center">
+                      <h3 className="font-semibold text-lg text-neutral-300 transition-colors duration-300 text-center">
                         {service.title}
                       </h3>
                     </div>
@@ -242,7 +232,7 @@ export function ServicesSection() {
                     </motion.div>
 
                     {/* Descripción */}
-                    <p className="font-['Inter'] font-light text-sm text-white leading-relaxed text-center">
+                    <p className="font-light text-sm text-neutral-300 leading-relaxed text-center">
                       {service.description}
                     </p>
                   </div>
@@ -289,7 +279,7 @@ export function ServicesSection() {
                     className="flex flex-col items-center border-2 border-white rounded-tr-2xl rounded-bl-2xl px-[23px] py-[25px] w-[90%] max-w-md min-w-[380px] min-h-60 bg-mobile-gradient mt-8"
                   >
                     {/* Título del servicio */}
-                    <h3 className="font-['Inter'] font-bold text-3xl text-white mb-2 mt-4">
+                    <h3 className="font-bold text-3xl text-neutral-300 mb-2 mt-4">
                       {services[currentSlide].title}
                     </h3>
 
@@ -306,7 +296,7 @@ export function ServicesSection() {
                     </motion.div>
 
                     {/* Descripción */}
-                    <p className="font-['Inter'] font-light text-lg text-white leading-relaxed  tracking-wide	w-[95%]">
+                    <p className="font-light text-lg text-neutral-300 leading-relaxed  tracking-wide	w-[95%]">
                       {services[currentSlide].description}
                     </p>
                   </div>
@@ -376,7 +366,7 @@ export function ServicesSection() {
               rel="noopener noreferrer"
               className="w-[95%] mt-2 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-body)",
               }}
             >
               {/* Fondo con gradiente mobile */}
@@ -403,7 +393,7 @@ export function ServicesSection() {
               rel="noopener noreferrer"
               className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-left gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-body)",
               }}
             >
               {/* Fondo negro */}

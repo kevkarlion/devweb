@@ -3,19 +3,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Github, Instagram, MessageCircle, ArrowRight, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
-import { Alfa_Slab_One, Inter } from "next/font/google";
 import Image from "next/image";
 
-// Fuentes
-const afaScrubOne = Alfa_Slab_One({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-afa-scrub-one",
-});
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+// Las fuentes se cargan globalmente desde layout.tsx
 
 export function ProcessTimeline() {
   const ref = useRef(null);
@@ -54,19 +44,19 @@ export function ProcessTimeline() {
   };
 
   return (
-    <section ref={ref} className={`${afaScrubOne.variable} ${inter.variable} w-full bg-black py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]`} id="metodo">
+    <section ref={ref} className="w-full py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]" id="metodo">
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Título principal */}
         <motion.h1
-          className="flex flex-col justify-center items-center text-[2.7rem] lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 uppercase"
+          className="flex flex-col justify-center items-center text-[2.7rem] lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
           style={{
-            fontFamily: "var(--font-afa-scrub-one)",
+            fontFamily: "var(--font-titles)",
           }}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          NUESTRA <br /> METODOLOGÍA <br /> <span className="text-2xl">diseñada para tu éxito</span> 
+          Nuestra <br /> metodología <br /> <span className="text-2xl">diseñada para tu éxito</span> 
         </motion.h1>
 
         <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-16"></div>
@@ -83,8 +73,8 @@ export function ProcessTimeline() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <p 
-                className="font-['Inter'] text-left text-sm lg:text-base text-white leading-relaxed tracking-wide  hyphens-auto w-[88%]"
-                style={{ fontFamily: "var(--font-inter)" }}
+                className="text-left text-sm lg:text-base text-neutral-300 leading-relaxed tracking-wide  hyphens-auto w-[88%]"
+                style={{ fontFamily: "var(--font-body)" }}
               >
                 En un mundo donde el desarrollo web rápido y genérico es la norma, nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.
               </p>
@@ -103,7 +93,7 @@ export function ProcessTimeline() {
                 rel="noopener noreferrer"
                 className="w-full max-w-[350px] inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-2xl font-bold text-xl group relative"
                 style={{
-                  fontFamily: "var(--font-inter)",
+                  fontFamily: "var(--font-body)",
                 }}
               >
                 <div className="absolute inset-0 rounded-md bg-primary-gradient border-2 border-white" />
@@ -147,8 +137,8 @@ export function ProcessTimeline() {
                   </a>
                 </div>
                 <p 
-                  className="font-['Inter'] font-light text-white mb-6 text-center text-lg"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="font-light text-neutral-300 mb-6 text-center text-lg"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Conoce nuestras redes sociales
                 </p>
@@ -175,8 +165,8 @@ export function ProcessTimeline() {
                 {/* Lado izquierdo - Título con fondo de color (35%) */}
                 <div className="lg:w-[35%] bg-primary-gradient p-8 flex items-center justify-center">
                   <h3 
-                    className="font-['Inter'] font-bold text-2xl lg:text-3xl text-white text-center leading-tight"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="font-bold text-2xl lg:text-3xl text-neutral-300 text-center leading-tight"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     {card.title}
                   </h3>
@@ -197,8 +187,8 @@ export function ProcessTimeline() {
                   
                   {/* Texto descriptivo */}
                   <p 
-                    className="font-['Inter'] text-base text-black leading-relaxed tracking-wide px-8 py-4"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-base text-black leading-relaxed tracking-wide px-8 py-4"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     {card.description}
                   </p>
@@ -218,8 +208,8 @@ export function ProcessTimeline() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <p 
-              className="font-['Inter'] text-base text-white leading-relaxed tracking-wide text-center"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="text-base text-neutral-300 leading-relaxed tracking-wide text-center"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               En un mundo donde el desarrollo web rápido y genérico es la norma, nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.
             </p>
@@ -247,8 +237,8 @@ export function ProcessTimeline() {
               {/* Título */}
               <div className="bg-primary-gradient p-6">
                 <h3 
-                  className="font-['Inter'] font-bold text-xl text-white text-center leading-tight"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="font-bold text-xl text-neutral-300 text-center leading-tight"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   {cardsData[currentCard].title}
                 </h3>
@@ -268,8 +258,8 @@ export function ProcessTimeline() {
               {/* Descripción */}
               <div className="p-6 bg-white">
                 <p 
-                  className="font-['Inter'] text-sm text-black leading-relaxed tracking-wide text-center"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-sm text-black leading-relaxed tracking-wide text-center"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   {cardsData[currentCard].description}
                 </p>
@@ -319,7 +309,7 @@ export function ProcessTimeline() {
               rel="noopener noreferrer"
               className="w-full max-w-[350px] inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-2xl font-bold text-lg group relative"
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-body)",
               }}
             >
               <div className="absolute inset-0 rounded-md bg-primary-gradient border-2 border-white" />
@@ -364,8 +354,8 @@ export function ProcessTimeline() {
               </a>
             </div>
             <p 
-              className="font-['Inter'] font-light text-white text-center text-base"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="font-light text-neutral-300 text-center text-base"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Conoce nuestras redes
             </p>
@@ -385,7 +375,7 @@ export function ProcessTimeline() {
             rel="noopener noreferrer"
             className="w-full max-w-[400px] inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-body)",
             }}
           >
             <div className="absolute inset-0 rounded-lg bg-primary-gradient border-2 border-white" />

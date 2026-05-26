@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Alfa_Slab_One, Inter } from "next/font/google";
 import LeadMagnetContent from "./lead-magnet-content";
 
-const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// Las fuentes se cargan globalmente desde layout.tsx
 
 export const metadata: Metadata = {
   title: "7 Señales de que tu Web Necesita una Renewal | Devweb",
@@ -33,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function LeadMagnetPage() {
   return (
-    <div className={`${alfaSlab.variable} ${inter.variable}`}>
+    <div>
       <LeadMagnetContent />
     </div>
   );

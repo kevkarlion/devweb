@@ -27,13 +27,13 @@ export function Footer() {
           {/* Izquierda: Logo + descripción */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 md:gap-4">
             <Image
-              src="/logo-blanco.png"
+              src="/logo-new-white.png"
               alt="Devweb Logo"
               width={60}
               height={60}
               className="object-contain"
             />
-            <p className="text-white text-base max-w-xs">
+            <p className="text-neutral-300 text-base max-w-xs">
               Creando experiencias digitales que potencian tu marca.
             </p>
           </div>
@@ -47,7 +47,7 @@ export function Footer() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white hover:text-[#E9E9E9] transition-colors duration-300 text-base"
+                className="text-neutral-300 hover:text-[#E9E9E9] transition-colors duration-300 text-base"
               >
                 {item.name}
               </a>

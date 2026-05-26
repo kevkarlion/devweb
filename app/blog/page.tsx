@@ -42,8 +42,8 @@ export default function BlogIndexPage() {
             {/* Contenido */}
             <div className="text-center lg:text-left max-w-3xl">
               <h1
-                className="text-4xl md:text-5xl xl:text-6xl leading-[0.9] tracking-wide uppercase font-bold mb-6 text-primary-gradient bg-clip-text text-transparent"
-                style={{ fontFamily: "var(--font-alfaslab)" }}
+                className="text-4xl md:text-5xl xl:text-6xl leading-[0.9] tracking-wide font-bold mb-6 text-primary-gradient bg-clip-text text-transparent"
+                style={{ fontFamily: "var(--font-titles)" }}
               >
                 Blog de Devweb Patagonia
               </h1>
@@ -71,7 +71,7 @@ export default function BlogIndexPage() {
                       Blog
                     </span>
                     <h2 className="text-2xl md:text-3xl font-bold mb-2 text-white group-hover:scale-[1.01] transition-transform"
-                        style={{ fontFamily: "var(--font-alfaslab)" }}>
+                        style={{ fontFamily: "var(--font-titles)" }}>
                       {post.title}
                     </h2>
                     <p className="text-white/80 mb-4 text-lg leading-relaxed">{post.description}</p>
@@ -87,7 +87,7 @@ export default function BlogIndexPage() {
           <div className="mt-12 w-full">
             <div className="border-2 border-white rounded-lg p-8 bg-primary-gradient">
               <h3 className="text-2xl font-bold mb-4 text-center text-white"
-                  style={{ fontFamily: "var(--font-inter)" }}>
+                  style={{ fontFamily: "var(--font-body)" }}>
                 ¿Necesitás una web para tu negocio?
               </h3>
               <p className="text-white/90 text-center mb-6">

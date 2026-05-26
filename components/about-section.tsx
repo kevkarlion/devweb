@@ -2,7 +2,6 @@
 
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Alfa_Slab_One, Inter } from "next/font/google";
 import { 
   ArrowRight, 
   MousePointer, 
@@ -17,21 +16,13 @@ import {
   Github,
   Instagram,
   MessageCircle,
-  ChevronRight
+  ChevronRight,
+  Sparkles
 } from "lucide-react";
 import Image from "next/image";
 
 // Fuentes
-const afaScrubOne = Alfa_Slab_One({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-afa-scrub-one",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+// Las fuentes se cargan globalmente desde layout.tsx
 
 const gridItems = [
   {
@@ -145,20 +136,20 @@ export function AboutSection() {
     <section
       ref={ref}
       id="nosotros"
-      className={`${afaScrubOne.variable} ${inter.variable} w-full bg-black py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]`}
+      className="w-full py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]"
     >
       <div className="max-w-6xl mx-auto flex flex-col justify-center">
         {/* Título principal */}
         <motion.h1
-          className="flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal  bg-clip-text text-transparent text-center self-center uppercase text-mobile-gradient lg:text-primary-gradient mt-12"
+          className="flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal  bg-clip-text text-transparent text-center self-center text-mobile-gradient lg:text-primary-gradient mt-12 font-bold"
           style={{
-            fontFamily: "var(--font-afa-scrub-one)",
+            fontFamily: "var(--font-titles)",
           }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          NOSOTROS
+          Nosotros
         </motion.h1>
         <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
 
@@ -184,8 +175,8 @@ export function AboutSection() {
                 >
                   <div className="w-32 h-32 rounded-full border-4 border-white flex flex-col items-center justify-center">
                     <span 
-                      className="font-['Inter'] font-medium text-xl text-white text-center leading-tight"
-                      style={{ fontFamily: "var(--font-inter)" }}
+                      className="font-medium text-xl text-neutral-300 text-center leading-tight"
+                      style={{ fontFamily: "var(--font-body)" }}
                     >
                       INTRO &<br />FILOSOFÍA
                     </span>
@@ -203,8 +194,8 @@ export function AboutSection() {
                     <Star className="w-4 h-4 text-white fill-white" />
                   </div>
                   <p 
-                    className="font-['Inter'] text-sm text-white leading-relaxed text-center tracking-wide"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-sm text-neutral-400 leading-relaxed text-center tracking-wide"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     En devweb PATAGONIA, creemos que una web o un sistema no es solo un producto digital; es el activo más valioso de tu empresa. Por eso, nuestro enfoque va más allá de la estética visual. Nos especializamos en desarrollar experiencias digitales con una sola intención: hacer que tu negocio funcione mejor.
                   </p>
@@ -235,14 +226,14 @@ export function AboutSection() {
                       <item.icon className="w-5 h-5 text-white" />
                     </div>
                     <h3 
-                      className="font-['Inter'] font-bold text-2xl text-white mb-2"
-                      style={{ fontFamily: "var(--font-inter)" }}
+                      className="font-bold text-2xl text-neutral-300 mb-2"
+                      style={{ fontFamily: "var(--font-body)" }}
                     >
                       {item.title}
                     </h3>
                     <p 
-                      className="font-['Inter'] text-base text-white font-light leading-relaxed px-8"
-                      style={{ fontFamily: "var(--font-inter)" }}
+                      className="text-base text-neutral-300 font-light leading-relaxed px-8"
+                      style={{ fontFamily: "var(--font-body)" }}
                     >
                       {item.description}
                     </p>
@@ -287,7 +278,7 @@ export function AboutSection() {
               rel="noopener noreferrer"
               className="w-full max-w-[300px] inline-flex items-center justify-center gap-2 px-6 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-base group relative"
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-body)",
               }}
             >
               <div className="absolute inset-0 rounded-md bg-primary-gradient border border-white" />
@@ -319,14 +310,14 @@ export function AboutSection() {
               {/* Texto superpuesto */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                 <p 
-                  className="font-['Inter'] text-base text-white leading-relaxed mb-4"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-base text-neutral-300 leading-relaxed mb-4"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Cada línea de código y cada funcionalidad que implementamos responde a una pregunta fundamental:
                 </p>
                 <p 
-                  className="font-['Inter'] font-bold text-lg text-white uppercase leading-relaxed tracking-wide mb-4"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="font-bold text-lg text-neutral-300 uppercase leading-relaxed tracking-wide mb-4"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   ¿CÓMO AYUDA ESTO A TU NEGOCIO A RENTABILIZAR LA INVERSIÓN?
                 </p>
@@ -348,8 +339,8 @@ export function AboutSection() {
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <p 
-              className="font-['Inter'] font-medium text-white mb-4 text-center text-lg"
-              style={{ fontFamily: "var(--font-inter)" }}
+              className="font-medium text-neutral-400 mb-4 text-center text-lg"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               Seguime en mis redes:
             </p>
@@ -403,14 +394,14 @@ export function AboutSection() {
               {/* Nombre y profesión */}
               <div className="bg-[#0D0D0D] border-[#434343] border rounded-lg p-3 mb-4 w-full">
                 <h2 
-                  className="font-['Inter'] font-bold text-lg text-white"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="font-bold text-lg text-neutral-300"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Kevin Riquelme
                 </h2>
                 <p 
-                  className="font-['Inter'] font-light text-base text-white"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="font-light text-base text-neutral-300"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Fundador & Lead Developer
                 </p>
@@ -419,35 +410,49 @@ export function AboutSection() {
               {/* Descripción */}
               <div className="space-y-3 mb-16 mt-6">
                 <p 
-                  className="font-['Inter'] text-base text-white leading-relaxed tracking-wide"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-base text-neutral-300 leading-relaxed tracking-wide"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   No soy solo un programador; soy tu socio estratégico. Me dedico a transformar los desafíos operativos de emprendedores y PyMEs en soluciones digitales elegantes y eficientes.
                 </p>
                 <p 
-                  className="font-['Inter'] text-base text-white leading-relaxed tracking-wide"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-base text-neutral-300 leading-relaxed tracking-wide"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Al trabajar conmigo, obtienes trato directo y sin intermediarios. Me aseguro personalmente de que obtengas una herramienta confiable que te ahorre tiempo, reduzca costos y aumente tus ganancias.
                 </p>
               </div>
 
-              {/* Tecnologías Mobile */}
-              <div className="flex gap-4 justify-center flex-wrap mb-8">
-                {technologies.map((tech) => (
-                  <div 
-                    key={tech.id}
-                    className="w-18 h-18 bg-white/10 rounded-lg flex items-center justify-center"
-                  >
-                    <Image
-                      src={tech.logoPath}
-                      alt={tech.alt}
-                      width={48}
-                      height={48}
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
+              {/* Tecnologías Mobile - Orquestadas por IA */}
+              <div className="flex flex-col items-center gap-4 mb-8">
+                {/* Badge IA */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20">
+                  <Sparkles className="w-4 h-4 text-[#B9C8F5]" />
+                  <span className="text-xs font-semibold text-white uppercase tracking-wider" style={{ fontFamily: "var(--font-titles)" }}>
+                    Orquestado por IA
+                  </span>
+                </div>
+
+                <p className="text-sm text-neutral-400 text-center max-w-xs" style={{ fontFamily: "var(--font-body)" }}>
+                  Agentes de IA que utilizan estas herramientas para crear soluciones completas.
+                </p>
+
+                <div className="flex gap-4 justify-center flex-wrap">
+                  {technologies.map((tech) => (
+                    <div 
+                      key={tech.id}
+                      className="w-18 h-18 bg-white/10 rounded-lg flex items-center justify-center"
+                    >
+                      <Image
+                        src={tech.logoPath}
+                        alt={tech.alt}
+                        width={48}
+                        height={48}
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -459,7 +464,7 @@ export function AboutSection() {
             rel="noopener noreferrer"
             className=" w-full md:w-[70%] xl:w-[35%]  lg:mt-4 inline-flex items-center justify-center self-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
             style={{
-              fontFamily: "var(--font-inter)",
+              fontFamily: "var(--font-body)",
             }}
           >
             <div className="absolute inset-0 rounded-lg bg-primary-gradient border-2 border-white" />
@@ -496,8 +501,8 @@ export function AboutSection() {
                 <div className="relative">
                   <div className="w-48 h-48 rounded-full border-6 border-white flex flex-col items-center justify-center mb-4">
                     <span 
-                      className="font-['Inter'] font-medium text-3xl text-white text-center leading-tight"
-                      style={{ fontFamily: "var(--font-inter)" }}
+                      className="font-medium text-3xl text-neutral-300 text-center leading-tight"
+                      style={{ fontFamily: "var(--font-body)" }}
                     >
                       INTRO &<br />FILOSOFÍA
                     </span>
@@ -523,8 +528,8 @@ export function AboutSection() {
                 </div>
 
                 <p 
-                  className="font-['Inter'] text-base text-white leading-relaxed text-center px-4"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-base text-neutral-300 leading-relaxed text-center px-4"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   En devweb PATAGONIA, creemos que una web o un sistema no es solo un producto digital; es el activo más valioso de tu empresa. Por eso, nuestro enfoque va más allá de la estética visual. Nos especializamos en desarrollar experiencias digitales con una sola intención: hacer que tu negocio funcione mejor.
                 </p>
@@ -563,16 +568,16 @@ export function AboutSection() {
 
                   {/* Título */}
                   <h3 
-                    className="font-['Inter'] font-bold text-2xl text-white mb-3"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="font-bold text-2xl text-neutral-300 mb-3"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     {item.title}
                   </h3>
 
                   {/* Descripción */}
                   <p 
-                    className="font-['Inter'] text-sm text-white font-light leading-relaxed w-[75%]"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-sm text-neutral-300 font-light leading-relaxed w-[75%]"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     {item.description}
                   </p>
@@ -593,16 +598,16 @@ export function AboutSection() {
               <div>
                 {/* Primer párrafo - texto normal */}
                 <p 
-                  className="font-['Inter'] text-lg text-white leading-relaxed mb-6 text-center px-8"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="text-lg text-neutral-300 leading-relaxed mb-6 text-center px-8"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   Cada línea de código y cada funcionalidad que implementamos responde a una pregunta fundamental:
                 </p>
 
                 {/* Segundo párrafo - mayúsculas */}
                 <p 
-                  className="font-['Inter'] font-bold text-xl text-white uppercase leading-relaxed tracking-wide mb-6 text-center px-6"
-                  style={{ fontFamily: "var(--font-inter)" }}
+                  className="font-bold text-xl text-neutral-300 uppercase leading-relaxed tracking-wide mb-6 text-center px-6"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   ¿CÓMO AYUDA ESTO A TU NEGOCIO A RENTABILIZAR LA INVERSIÓN?
                 </p>
@@ -650,7 +655,7 @@ export function AboutSection() {
                 rel="noopener noreferrer"
                 className="w-[90%] lg:w-[500px] inline-flex items-center justify-center gap-3 px-12 py-6 hover:scale-105 transition-all duration-300 shadow-2xl font-bold text-xl group relative"
                 style={{
-                  fontFamily: "var(--font-inter)",
+                  fontFamily: "var(--font-body)",
                 }}
               >
                 {/* Fondo con gradiente */}
@@ -691,14 +696,14 @@ export function AboutSection() {
                 {/* Rectángulo con nombre y profesión */}
                 <div className="bg-[#323232] border rounded-lg p-2 mb-2 w-[95%] mt-8">
                   <h2 
-                    className="font-['Inter'] font-bold text-lg text-white text-center"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="font-bold text-lg text-neutral-300 text-center"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     Kevin Riquelme
                   </h2>
                   <p 
-                    className="font-['Inter'] font-medium text-base text-white text-center"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="font-medium text-base text-neutral-300 text-center"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     Fundador & Lead Developer
                   </p>
@@ -707,14 +712,14 @@ export function AboutSection() {
                 {/* Párrafos */}
                 <div className="space-y-4 mb-8">
                   <p 
-                    className="font-['Inter'] text-sm text-white leading-relaxed mt-8"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-sm text-neutral-300 leading-relaxed mt-8"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     No soy solo un programador; soy tu socio estratégico. Me dedico a transformar los desafíos operativos de emprendedores y PyMEs en soluciones digitales elegantes y eficientes.
                   </p>
                   <p 
-                    className="font-['Inter'] text-sm text-white leading-relaxed"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="text-sm text-neutral-300 leading-relaxed"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     Al trabajar conmigo, obtienes trato directo y sin intermediarios. Me aseguro personalmente de que obtengas una herramienta confiable que te ahorre tiempo, reduzca costos y aumente tus ganancias.
                   </p>
@@ -723,8 +728,8 @@ export function AboutSection() {
                 {/* Iconos de redes sociales */}
                 <div className="flex flex-col items-center justify-center">
                   <p 
-                    className="font-['Inter'] font-lg text-white mb-4 text-center lg:text-left"
-                    style={{ fontFamily: "var(--font-inter)" }}
+                    className="font-lg text-neutral-400 mb-4 text-center lg:text-left"
+                    style={{ fontFamily: "var(--font-body)" }}
                   >
                     Seguime en mis redes:
                   </p>
@@ -759,18 +764,33 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Iconos de Tecnologías - Desktop */}
+          {/* Tecnologías Desktop - Orquestadas por IA */}
           <motion.div
-            className="flex justify-center mb-16"
+            className="flex flex-col items-center gap-6 mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
+            {/* Badge IA */}
+            <motion.div
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 border border-white/20"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Sparkles className="w-5 h-5 text-[#B9C8F5]" />
+              <span className="text-sm font-bold text-white uppercase tracking-widest" style={{ fontFamily: "var(--font-titles)" }}>
+                Orquestado por IA
+              </span>
+            </motion.div>
+
+            <p className="text-sm text-neutral-400 text-center max-w-md" style={{ fontFamily: "var(--font-body)" }}>
+              Agentes de IA que integran y potencian estas tecnologías para ofrecer soluciones digitales completas.
+            </p>
+
             <div className="flex gap-8 justify-center items-center flex-wrap">
               {technologies.map((tech) => (
                 <div 
                   key={tech.id}
-                  className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-all duration-300"
+                  className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300"
                 >
                   <Image
                     src={tech.logoPath}
@@ -797,7 +817,7 @@ export function AboutSection() {
               rel="noopener noreferrer"
               className="w-[90%] lg:w-[70%] xl:w-[35%] mt-2 lg:mt-4 inline-flex items-center justify-center gap-3 px-8 py-4 hover:scale-105 transition-all duration-300 shadow-lg font-semibold text-lg group relative"
               style={{
-                fontFamily: "var(--font-inter)",
+                fontFamily: "var(--font-body)",
               }}
             >
               {/* Fondo con gradiente */}

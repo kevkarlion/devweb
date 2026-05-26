@@ -4,10 +4,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
-import { Alfa_Slab_One, Inter, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 
-const alfaSlab = Alfa_Slab_One({ subsets: ["latin"], weight: ["400"], variable: "--font-alfaslab" });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export function HeroSection() {
@@ -22,7 +20,7 @@ export function HeroSection() {
   ];
 
   return (
-    <div className={`${alfaSlab.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+    <div className={`${jetbrainsMono.variable}`}>
       <section
         id="home"
         role="banner"
@@ -34,13 +32,13 @@ export function HeroSection() {
           {/* Layout Mobile */}
           <div className="lg:hidden flex flex-col items-center text-center">
             <motion.h1
-              className="pt-16 relative text-[2.5rem] sm:text-5xl leading-[0.9] tracking-wide uppercase mb-6 font-bold text-mobile-gradient bg-clip-text text-transparent z-20"
-              style={{ fontFamily: "var(--font-alfaslab)" }}
+              className="pt-16 relative text-[2.5rem] sm:text-5xl leading-[1.05] tracking-wide mb-6 font-bold text-mobile-gradient bg-clip-text text-transparent z-20 px-4 pb-1"
+                style={{ fontFamily: "var(--font-titles)" }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Gestión Integral de tu Presencia Digital
+              Tu Aliado en Presencia Digital
             </motion.h1>
 
             <div className="relative w-full mb-4">
@@ -55,7 +53,7 @@ export function HeroSection() {
                 />
                 <motion.div className="absolute inset-0 flex items-center justify-center z-10 px-4">
                   <div className="bg-black/60 rounded-xl px-4 py-3">
-                    <p className="text-lg font-medium text-white leading-tight">
+                    <p className="text-lg font-medium text-neutral-300 leading-tight">
                       Acompañamos el crecimiento de tu empresa con soluciones digitales permanentes.
                     </p>
                   </div>
@@ -78,7 +76,7 @@ export function HeroSection() {
               {checklistItems.map((item, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                  <span className="text-xs text-white font-bold text-left uppercase" style={{ fontFamily: "var(--font-mono)" }}>{item}</span>
+                  <span className="text-xs text-neutral-300 font-bold text-left uppercase" style={{ fontFamily: "var(--font-mono)" }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -88,17 +86,17 @@ export function HeroSection() {
           <div className="hidden lg:grid lg:mt-16 grid-cols-1 lg:grid-cols-[55%_45%] items-start min-h-[75vh] px-8 bg-black">
             <div className="flex flex-col z-30">
               <motion.h1
-                className="text-5xl xl:text-6xl leading-[0.9] tracking-wide uppercase mb-6 font-bold text-primary-gradient bg-clip-text text-transparent"
-                style={{ fontFamily: "var(--font-alfaslab)" }}
+                className="text-5xl xl:text-6xl leading-[1.05] tracking-wide mb-6 font-bold text-primary-gradient bg-clip-text text-transparent pb-1"
+              style={{ fontFamily: "var(--font-titles)" }}
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
               >
-                Tu Partner en <br /> Presencia Digital
+                Tu Aliado en <br /> Presencia Digital
               </motion.h1>
 
               <motion.div className="space-y-8">
-                <p className="text-lg text-white max-w-xl leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
-                  No solo creamos tu web; <strong>gestionamos tu ecosistema digital</strong> de punta a punta. Diseño, SEO y tecnología escalable con soporte continuo para empresas que buscan liderar el mercado en la <strong>Patagonia</strong>.
+                <p className="text-lg text-neutral-300 max-w-xl leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
+                  <strong>Gestionamos tu ecosistema digital</strong> de punta a punta. Diseño, SEO y tecnología escalable con soporte continuo para empresas que buscan liderar el mercado en la <strong>Patagonia</strong>.
                 </p>
 
                 <div className="w-[60%]">
@@ -117,7 +115,7 @@ export function HeroSection() {
                     {checklistItems.map((item, index) => (
                       <div key={index} className="flex items-center gap-2">
                         <Check className="w-5 h-5 text-white shrink-0" />
-                        <span className="text-sm text-white font-bold uppercase" style={{ fontFamily: "var(--font-mono)" }}>{item}</span>
+                        <span className="text-sm text-neutral-300 font-bold uppercase" style={{ fontFamily: "var(--font-mono)" }}>{item}</span>
                       </div>
                     ))}
                   </div>
