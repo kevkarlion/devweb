@@ -148,7 +148,7 @@ export function PortfolioSection() {
 
               {/* Descripción */}
               <motion.p
-                className="text-neutral-300 text-base leading-relaxed text-left"
+                className="text-neutral-300 text-base leading-relaxed text-left max-w-4xl"
                 style={{ fontFamily: "var(--font-body)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

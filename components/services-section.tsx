@@ -128,7 +128,7 @@ export function ServicesSection() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                    Para Emprendedores y Pequeños Negocios
+                    Soluciones Empresariales a Medida
                   </p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export function ServicesSection() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  Nuestra agencia crea sitios webs rápidos, modernos y estratégicos para que puedas atraer clientes y competir de verdad.
+                  Desarrollamos plataformas, sistemas y herramientas digitales adaptadas a los procesos y objetivos de tu empresa.
                 </p>
               </div>
             </motion.div>
@@ -164,7 +164,7 @@ export function ServicesSection() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  Nuestra agencia crea sitios webs rápidos, modernos y estratégicos para que puedas atraer clientes y competir de verdad.
+                  Desarrollamos plataformas, sistemas y herramientas digitales adaptadas a los procesos y objetivos de tu empresa.
                 </p>
               </div>
 
@@ -180,7 +180,7 @@ export function ServicesSection() {
                       fontFamily: "var(--font-body)",
                     }}
                   >
-                    Para Emprendedores y Pequeños Negocios
+                    Soluciones Empresariales a Medida
                   </p>
                 </div>
               </div>
