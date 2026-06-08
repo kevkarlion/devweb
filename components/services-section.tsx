@@ -159,7 +159,7 @@ export function ServicesSection() {
               {/* Texto descriptivo */}
               <div className="w-full">
                 <p 
-                  className="text-lg text-neutral-300 leading-relaxed text-center "
+                  className="text-lg text-neutral-300 leading-relaxed text-left"
                   style={{
                     fontFamily: "var(--font-body)",
                   }}
@@ -232,7 +232,7 @@ export function ServicesSection() {
                     </motion.div>
 
                     {/* Descripción */}
-                    <p className="font-light text-sm text-neutral-300 leading-relaxed text-center">
+                    <p className="font-light text-sm text-neutral-300 leading-relaxed text-left">
                       {service.description}
                     </p>
                   </div>

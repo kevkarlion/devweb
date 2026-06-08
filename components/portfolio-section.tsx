@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useCallback } from "react";
 import { Github, Instagram, MessageCircle, ArrowRight, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
@@ -11,6 +11,7 @@ export function ProcessTimeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentCard, setCurrentCard] = useState(0);
+  const [direction, setDirection] = useState(1);
 
   const cardsData = [
     {
@@ -36,19 +37,36 @@ export function ProcessTimeline() {
   ];
 
   const nextCard = () => {
+    setDirection(1);
     setCurrentCard((prev) => (prev === cardsData.length - 1 ? 0 : prev + 1));
   };
 
   const prevCard = () => {
+    setDirection(-1);
     setCurrentCard((prev) => (prev === 0 ? cardsData.length - 1 : prev - 1));
   };
 
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 200 : -200,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -200 : 200,
+      opacity: 0,
+    }),
+  };
+
   return (
-    <section ref={ref} className="w-full py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]" id="metodo">
+    <section ref={ref} className="w-full bg-neutral-950 py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]" id="metodo">
       <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Título principal */}
         <motion.h1
-          className="flex flex-col justify-center items-center text-[2.7rem] lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
+          className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
           style={{
             fontFamily: "var(--font-titles)",
           }}
@@ -56,10 +74,20 @@ export function ProcessTimeline() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Nuestra <br /> metodología <br /> <span className="text-2xl">diseñada para tu éxito</span> 
+          Nuestra <br /> metodología
         </motion.h1>
 
-        <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-16"></div>
+        <motion.h2
+          className="text-3xl lg:text-4xl font-bold text-white leading-tight"
+          style={{ fontFamily: "var(--font-titles)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          Diseñada para tu <span className="text-primary-gradient">éxito</span>
+        </motion.h2>
+
+        <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-16"></div>
 
         {/* VERSIÓN DESKTOP */}
         <div className="hidden lg:block">
@@ -73,7 +101,7 @@ export function ProcessTimeline() {
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <p 
-                className="text-left text-sm lg:text-base text-neutral-300 leading-relaxed tracking-wide  hyphens-auto w-[88%]"
+                className="text-neutral-300 text-base leading-relaxed text-left"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 En un mundo donde el desarrollo web rápido y genérico es la norma, nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.
@@ -208,7 +236,7 @@ export function ProcessTimeline() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <p 
-              className="text-base text-neutral-300 leading-relaxed tracking-wide text-center"
+              className="text-neutral-300 text-base leading-relaxed text-left"
               style={{ fontFamily: "var(--font-body)" }}
             >
               En un mundo donde el desarrollo web rápido y genérico es la norma, nosotros elegimos el camino opuesto. Nuestra metodología de trabajo se basa en la comprensión profunda de tu negocio antes de escribir una sola línea de código. Garantizamos un resultado final que no solo cumple, sino que supera expectativas, porque está construido sobre los cimientos de una estrategia sólida.
@@ -225,6 +253,20 @@ export function ProcessTimeline() {
             <ArrowRight className="w-8 h-8 text-white transform rotate-90" />
           </motion.div>
 
+          {/* Precarga oculta de todas las imágenes */}
+          <div className="hidden" aria-hidden="true">
+            {cardsData.map((card, i) => (
+              <Image
+                key={i}
+                src={card.image}
+                alt=""
+                width={400}
+                height={300}
+                priority
+              />
+            ))}
+          </div>
+
           {/* Carrusel de Cards */}
           <motion.div
             className="relative mb-12"
@@ -234,36 +276,49 @@ export function ProcessTimeline() {
           >
             {/* Card actual */}
             <div className="bg-[#0D0D0D] border border-[#434343] rounded-xl overflow-hidden">
-              {/* Título */}
-              <div className="bg-primary-gradient p-6">
-                <h3 
-                  className="font-bold text-xl text-neutral-300 text-center leading-tight"
-                  style={{ fontFamily: "var(--font-body)" }}
+              <AnimatePresence mode="wait" custom={direction}>
+                <motion.div
+                  key={currentCard}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  {cardsData[currentCard].title}
-                </h3>
-              </div>
+                  {/* Título */}
+                  <div className="bg-primary-gradient p-6">
+                    <h3 
+                      className="font-bold text-xl text-neutral-300 text-center leading-tight"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {cardsData[currentCard].title}
+                    </h3>
+                  </div>
 
-              {/* Imagen */}
-              <div className="relative w-full h-48">
-                <Image
-                  src={cardsData[currentCard].image}
-                  alt={cardsData[currentCard].title}
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                />
-              </div>
+                  {/* Imagen */}
+                  <div className="relative w-full h-48">
+                    <Image
+                      src={cardsData[currentCard].image}
+                      alt={cardsData[currentCard].title}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      priority
+                    />
+                  </div>
 
-              {/* Descripción */}
-              <div className="p-6 bg-white">
-                <p 
-                  className="text-sm text-black leading-relaxed tracking-wide text-center"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {cardsData[currentCard].description}
-                </p>
-              </div>
+                  {/* Descripción */}
+                  <div className="p-6 bg-white">
+                    <p 
+                      className="text-sm text-black leading-relaxed tracking-wide text-center"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {cardsData[currentCard].description}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Controles del carrusel */}

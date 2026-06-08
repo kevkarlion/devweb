@@ -3,7 +3,7 @@ import transporter from '@/lib/nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, phone, message } = await request.json();
 
     // Validaciones
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
@@ -56,6 +56,11 @@ export async function POST(request: Request) {
                   <strong>📧 Email</strong>
                   ${email}
                 </div>
+                ${phone ? `
+                <div class="field">
+                  <strong>📱 Celular</strong>
+                  ${phone}
+                </div>` : ''}
                 <div class="field">
                   <strong>💬 Mensaje</strong>
                   <div class="message">${message}</div>
@@ -78,7 +83,8 @@ NUEVO MENSAJE DE CONTACTO - DEVWEB
 ===================================
 
 Nombre: ${name}
-Email: ${email}
+Email: ${email}${phone ? `
+Celular: ${phone}` : ''}
 
 Mensaje:
 ${message}

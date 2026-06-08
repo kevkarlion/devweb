@@ -123,7 +123,7 @@ export function PortfolioSection() {
             >
               {/* Título principal */}
               <motion.h1
-                className="lg:pt-6 xl:pt-8  mt-16  text-5xl lg:text-6xl  2xl:text-7xl  tracking-normal   text-transparent w-[143%] z-40 text-primary-gradient bg-clip-text font-bold"
+                className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
                 style={{
                   fontFamily: "var(--font-titles)",
                 }}
@@ -133,11 +133,22 @@ export function PortfolioSection() {
               >
                 Portfolio
               </motion.h1>
-              <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
+
+              <motion.h2
+                className="text-3xl lg:text-4xl font-bold text-white leading-tight"
+                style={{ fontFamily: "var(--font-titles)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Proyectos que impulsan tu <span className="text-primary-gradient">marca</span>
+              </motion.h2>
+
+              <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
 
               {/* Descripción */}
               <motion.p
-                className="tracking-wide lg:tracking-normal text-base lg:text-base 2xl:text-base text-neutral-300 max-w-2xl pl-4 leading-relaxed  text-center lg:text-left border-l-3 border-white mt-8 mb-14 md:w-[85%] lg:w-[60%] xl:w-[48%]"
+                className="text-neutral-300 text-base leading-relaxed text-left"
                 style={{ fontFamily: "var(--font-body)" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

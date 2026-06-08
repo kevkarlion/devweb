@@ -1,17 +1,15 @@
 "use client";
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import { 
   ArrowRight, 
-  MousePointer, 
   ShoppingCart,
   Map,
   Filter,
   ArrowDown,
   Heart,
   Infinity,
-  Star,
   Briefcase,
   Github,
   Instagram,
@@ -92,13 +90,9 @@ const technologies = [
 
 export function AboutSection() {
   const ref = useRef(null);
-  const cardRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const cardInView = useInView(cardRef, { margin: "-100px" });
   
-  const [isFlipped, setIsFlipped] = useState(false);
   const [currentGridPage, setCurrentGridPage] = useState(0);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Para mobile: dividir las 6 cards en 3 páginas de 2 cards cada una
   const gridPages = [];
@@ -111,37 +105,16 @@ export function AboutSection() {
   };
 
   // Efecto para detectar dirección del scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (cardInView) {
-        if (currentScrollY > lastScrollY) {
-          // Scroll hacia abajo - mostrar texto
-          setIsFlipped(true);
-        } else if (currentScrollY < lastScrollY) {
-          // Scroll hacia arriba - mostrar burbuja
-          setIsFlipped(false);
-        }
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, cardInView]);
-
   return (
     <section
       ref={ref}
       id="nosotros"
-      className="w-full py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]"
+      className="w-full bg-neutral-950 py-24 md:py-32 px-6 relative overflow-hidden border-t border-[#434343]"
     >
-      <div className="max-w-6xl mx-auto flex flex-col justify-center">
+      <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
         {/* Título principal */}
         <motion.h1
-          className="flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal  bg-clip-text text-transparent text-center self-center text-mobile-gradient lg:text-primary-gradient mt-12 font-bold"
+          className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
           style={{
             fontFamily: "var(--font-titles)",
           }}
@@ -149,60 +122,33 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Nosotros
+          Sobre nosotros
         </motion.h1>
-        <div className="flex justify-center self-center items-center border-2 border-white w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
+
+        <motion.h2
+          className="text-3xl lg:text-4xl font-bold text-white leading-tight"
+          style={{ fontFamily: "var(--font-titles)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          Intro y <span className="text-primary-gradient">filosofía</span>
+        </motion.h2>
+
+        <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
+
+        <motion.p
+          className="text-neutral-300 text-base leading-relaxed text-left max-w-4xl mb-16"
+          style={{ fontFamily: "var(--font-body)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          En devweb PATAGONIA, creemos que una web o un sistema no es solo un producto digital; es el activo más valioso de tu empresa. Por eso, nuestro enfoque va más allá de la estética visual. Nos especializamos en desarrollar experiencias digitales con una sola intención: hacer que tu negocio funcione mejor.
+        </motion.p>
 
         {/* VERSIÓN MOBILE/TABLET */}
         <div className="lg:hidden">
-          {/* Card Intro & Filosofía - Mobile CON EFECTO DE SCROLL DIRECCIONAL */}
-          <div ref={cardRef}>
-            <motion.div
-              className="flex justify-center mb-16 mt-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div 
-                className="relative w-full max-w-[350px] h-62 bg-[#0D0D0D] border-[#434343] border rounded-xl"
-              >
-                <motion.div
-                  className="absolute inset-0 flex flex-col items-center justify-center p-4 backface-hidden"
-                  initial={false}
-                  animate={{ rotateY: isFlipped ? 180 : 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <div className="w-32 h-32 rounded-full border-4 border-white flex flex-col items-center justify-center">
-                    <span 
-                      className="font-medium text-xl text-neutral-300 text-center leading-tight"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      INTRO &<br />FILOSOFÍA
-                    </span>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center p-4 backface-hidden h-auto"
-                  initial={false}
-                  animate={{ rotateY: isFlipped ? 0 : -180 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  style={{ transformStyle: "preserve-3d" }}
-                >
-                  <div className="absolute top-2 right-2 z-20">
-                    <Star className="w-4 h-4 text-white fill-white" />
-                  </div>
-                  <p 
-                    className="text-sm text-neutral-400 leading-relaxed text-center tracking-wide"
-                    style={{ fontFamily: "var(--font-body)" }}
-                  >
-                    En devweb PATAGONIA, creemos que una web o un sistema no es solo un producto digital; es el activo más valioso de tu empresa. Por eso, nuestro enfoque va más allá de la estética visual. Nos especializamos en desarrollar experiencias digitales con una sola intención: hacer que tu negocio funcione mejor.
-                  </p>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
 
           {/* Grid Mobile - Carrusel de 2 cards */}
           <motion.div
@@ -477,65 +423,6 @@ export function AboutSection() {
 
         {/* VERSIÓN DESKTOP - Se mantiene igual */}
         <div className="hidden lg:block">
-          {/* Card Intro & Filosofía Desktop */}
-          <motion.div
-            className="flex justify-center mb-16 mt-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div 
-              className="relative w-full max-w-[650px] h-64 bg-[#0D0D0D] border-[#434343] border rounded-xl cursor-pointer"
-              onMouseEnter={() => setIsFlipped(true)}
-              onMouseLeave={() => setIsFlipped(false)}
-            >
-              {/* Frente de la card */}
-              <motion.div
-                className="absolute inset-0 flex flex-col items-center justify-center p-6 backface-hidden"
-                initial={false}
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.6 }}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {/* Círculo con borde blanco y cursor elegante */}
-                <div className="relative">
-                  <div className="w-48 h-48 rounded-full border-6 border-white flex flex-col items-center justify-center mb-4">
-                    <span 
-                      className="font-medium text-3xl text-neutral-300 text-center leading-tight"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
-                      INTRO &<br />FILOSOFÍA
-                    </span>
-                  </div>
-                  {/* Cursor elegante horizontal inclinado - posición superior derecha */}
-                  <div className="absolute top-42 -right-3">
-                    <MousePointer className="w-10 h-10 text-white transform -rotate-12" />
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Reverso de la card CON ESTRELLA */}
-              <motion.div
-                className="absolute inset-0 flex items-center justify-center p-8 backface-hidden"
-                initial={false}
-                animate={{ rotateY: isFlipped ? 0 : -180 }}
-                transition={{ duration: 0.6 }}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {/* Estrella en esquina superior derecha - SOLO en el reverso */}
-                <div className="absolute top-4 right-4 z-20">
-                  <Star className="w-6 h-6 text-white fill-white" />
-                </div>
-
-                <p 
-                  className="text-base text-neutral-300 leading-relaxed text-center px-4"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  En devweb PATAGONIA, creemos que una web o un sistema no es solo un producto digital; es el activo más valioso de tu empresa. Por eso, nuestro enfoque va más allá de la estética visual. Nos especializamos en desarrollar experiencias digitales con una sola intención: hacer que tu negocio funcione mejor.
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
 
           {/* Grid de 3 columnas y 2 filas - Desktop */}
           <motion.div
@@ -598,7 +485,7 @@ export function AboutSection() {
               <div>
                 {/* Primer párrafo - texto normal */}
                 <p 
-                  className="text-lg text-neutral-300 leading-relaxed mb-6 text-center px-8"
+                  className="text-lg text-neutral-300 leading-relaxed mb-6 text-left px-8"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   Cada línea de código y cada funcionalidad que implementamos responde a una pregunta fundamental:
@@ -606,7 +493,7 @@ export function AboutSection() {
 
                 {/* Segundo párrafo - mayúsculas */}
                 <p 
-                  className="font-bold text-xl text-neutral-300 uppercase leading-relaxed tracking-wide mb-6 text-center px-6"
+                  className="font-bold text-xl text-neutral-300 uppercase leading-relaxed tracking-wide mb-6 text-left px-6"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   ¿CÓMO AYUDA ESTO A TU NEGOCIO A RENTABILIZAR LA INVERSIÓN?
