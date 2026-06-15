@@ -2,10 +2,29 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+const baseUrl = "https://devwebpatagonia.com";
+
 export const metadata: Metadata = {
   title: "Blog | Devweb Patagonia - Artículos sobre Diseño Web y Marketing Digital",
   description:
     "Artículos sobre diseño web, SEO, presencia digital y marketing online para empresas de la Patagonia. Guías prácticas para mejorar tu negocio en internet.",
+  alternates: {
+    canonical: `${baseUrl}/blog`,
+  },
+  openGraph: {
+    title: "Blog | Devweb Patagonia",
+    description:
+      "Artículos sobre diseño web, SEO, presencia digital y marketing online para empresas de la Patagonia.",
+    url: `${baseUrl}/blog`,
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Devweb Patagonia",
+    description:
+      "Artículos sobre diseño web, SEO, presencia digital y marketing online para empresas de la Patagonia.",
+  },
 };
 
 const posts = [

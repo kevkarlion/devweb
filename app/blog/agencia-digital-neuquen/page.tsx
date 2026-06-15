@@ -1,13 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Code, Search, Globe, Users } from "lucide-react";
+import { BlogArticleSchema } from "@/components/BlogArticleSchema";
 // Las fuentes se cargan globalmente desde layout.tsx
+
+const baseUrl = "https://devwebpatagonia.com";
+const slug = "agencia-digital-neuquen";
 
 export const metadata: Metadata = {
   title: "Agencia Digital en Neuquén: Desarrollo Web y Marketing Online | Devweb Patagonia",
   description:
     "Agencia digital en Neuquén. Desarrollo web, SEO y presencia online para empresas de Neuquén capital y toda la región. Soporte permanente y estrategia digital.",
+  alternates: {
+    canonical: `${baseUrl}/blog/${slug}`,
+  },
   openGraph: {
+    title: "Agencia Digital en Neuquén",
+    description:
+      "Desarrollo web y marketing online en Neuquén. Presencia digital para empresas.",
+    url: `${baseUrl}/blog/${slug}`,
+    locale: "es_AR",
+    type: "article",
+    publishedTime: "2026-04-27",
+    authors: ["Devweb Patagonia"],
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Agencia Digital en Neuquén",
     description:
       "Desarrollo web y marketing online en Neuquén. Presencia digital para empresas.",
@@ -254,6 +272,12 @@ export default function AgenciaDigitalNeuquenPage() {
           </div>
         </div>
       </section>
+      <BlogArticleSchema
+        title="Agencia Digital en Neuquén: Desarrollo Web y Marketing Online"
+        description="Agencia digital en Neuquén. Desarrollo web, SEO y presencia online para empresas de Neuquén capital y toda la región."
+        url={`${baseUrl}/blog/${slug}`}
+        publishedTime="2026-04-27"
+      />
     </main>
   );
 }

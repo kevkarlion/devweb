@@ -88,8 +88,9 @@ export function HeroSection() {
             <div className="absolute inset-0 z-0">
               <Image
                 src="/new-hero.webp"
-                alt="Presencia digital estratégica"
+                alt="Presencia digital estratégica en Patagonia - Desarrollo web y SEO en General Roca, Cipolletti y Neuquén"
                 fill
+                sizes="(max-width: 1024px) 100vw, 100vw"
                 className="object-cover object-right scale-[1]"
                 priority
               />

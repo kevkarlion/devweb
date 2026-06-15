@@ -1,13 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, AlertTriangle, Clock, Shield, Code } from "lucide-react";
+import { BlogArticleSchema } from "@/components/BlogArticleSchema";
 // Las fuentes se cargan globalmente desde layout.tsx
+
+const baseUrl = "https://devwebpatagonia.com";
+const slug = "diseno-web-general-roca";
 
 export const metadata: Metadata = {
   title: "Diseño Web en General Roca: Guía Completa 2026 | Devweb Patagonia",
   description:
     "Todo lo que necesitás saber sobre diseño web en General Roca. Costos, tiempos, tipos de sitios y cómo elegir la mejor opción para tu negocio en el Alto Valle.",
+  alternates: {
+    canonical: `${baseUrl}/blog/${slug}`,
+  },
   openGraph: {
+    title: "Diseño Web en General Roca: Guía Completa 2026",
+    description:
+      "Todo lo que necesitás saber sobre diseño web en General Roca. Costos, tiempos y tipos de sitios para tu negocio.",
+    url: `${baseUrl}/blog/${slug}`,
+    locale: "es_AR",
+    type: "article",
+    publishedTime: "2026-04-27",
+    authors: ["Devweb Patagonia"],
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Diseño Web en General Roca: Guía Completa 2026",
     description:
       "Todo lo que necesitás saber sobre diseño web en General Roca. Costos, tiempos y tipos de sitios para tu negocio.",
@@ -252,6 +270,12 @@ export default function DisenoWebGeneralRocaPage() {
           </div>
         </div>
       </section>
+      <BlogArticleSchema
+        title="Diseño Web en General Roca: Guía Completa 2026"
+        description="Todo lo que necesitás saber sobre diseño web en General Roca. Costos, tiempos, tipos de sitios y cómo elegir la mejor opción para tu negocio en el Alto Valle."
+        url={`${baseUrl}/blog/${slug}`}
+        publishedTime="2026-04-27"
+      />
     </main>
   );
 }

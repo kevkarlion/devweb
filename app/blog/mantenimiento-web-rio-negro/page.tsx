@@ -1,13 +1,31 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Shield, Zap, AlertTriangle, Check, Code, Clock, FileText } from "lucide-react";
+import { BlogArticleSchema } from "@/components/BlogArticleSchema";
 // Las fuentes se cargan globalmente desde layout.tsx
+
+const baseUrl = "https://devwebpatagonia.com";
+const slug = "mantenimiento-web-rio-negro";
 
 export const metadata: Metadata = {
   title: "Mantenimiento Web en Río Negro: Soporte y Actualizaciones | Devweb Patagonia",
   description:
     "Mantenimiento web en Río Negro para empresas y emprendedores. Soporte técnico, actualizaciones de seguridad, backups y mejoras. Planes mensuales para que tu web nunca se quede obsoleta.",
+  alternates: {
+    canonical: `${baseUrl}/blog/${slug}`,
+  },
   openGraph: {
+    title: "Mantenimiento Web en Río Negro",
+    description:
+      "Soporte y actualizaciones para tu web. Backups, seguridad y mejoras continuas.",
+    url: `${baseUrl}/blog/${slug}`,
+    locale: "es_AR",
+    type: "article",
+    publishedTime: "2026-04-27",
+    authors: ["Devweb Patagonia"],
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Mantenimiento Web en Río Negro",
     description:
       "Soporte y actualizaciones para tu web. Backups, seguridad y mejoras continuas.",
@@ -266,6 +284,12 @@ export default function MantenimientoWebRioNegroPage() {
           </div>
         </div>
       </section>
+      <BlogArticleSchema
+        title="Mantenimiento Web en Río Negro: Soporte y Actualizaciones"
+        description="Mantenimiento web en Río Negro para empresas y emprendedores. Soporte técnico, actualizaciones de seguridad, backups y mejoras. Planes mensuales."
+        url={`${baseUrl}/blog/${slug}`}
+        publishedTime="2026-04-27"
+      />
     </main>
   );
 }

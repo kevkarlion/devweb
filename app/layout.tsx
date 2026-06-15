@@ -70,6 +70,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://devwebpatagonia.com/"),
   alternates: {
     canonical: "/",
+    languages: {
+      "es-AR": "/",
+    },
   },
   openGraph: {
     type: "website",
@@ -85,17 +88,22 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb - Agencia de Diseño Web y Gestión Digital en Alto Valle",
+        alt: "Devweb Patagonia - Agencia de Diseño Web y Gestión Digital en General Roca, Cipolletti y Neuquén",
       },
     ],
+    ttl: 604800,
   },
   twitter: {
     card: "summary_large_image",
+    site: "@devweb",
+    creator: "@devweb",
     title: "Devweb Patagonia — Gestión Digital Integral para Empresas",
     description:
-      "Tu partner digital en la Patagonia. Webs que atraen clientes, SEO optimizado y soporte permanente.",
-    images: ["/twitter-image.jpg"],
-    creator: "@devweb",
+      "Tu partner digital en la Patagonia. Webs que atraen clientes, SEO optimizado y soporte permanente. General Roca, Cipolletti, Neuquén.",
+    images: {
+      url: "/twitter-image.jpg",
+      alt: "Devweb Patagonia - Diseño Web y Gestión Digital en el Alto Valle",
+    },
   },
   robots: {
     index: true,
@@ -109,8 +117,8 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "tu-codigo-verificacion-google",
-    yandex: "tu-codigo-verificacion-yandex",
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || "",
   },
 };
 
@@ -122,6 +130,10 @@ export default function RootLayout({
   return (
     <html lang="es" className="dark w-screen">
       <head>
+        <meta name="theme-color" content="#121212" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"

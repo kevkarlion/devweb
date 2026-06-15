@@ -6,14 +6,10 @@ export function WebsiteSchema() {
     "name": "Devweb",
     "description": "Agencia de diseño y desarrollo web en Alto Valle Patagónico, General Roca, Cipolletti, Neuquén y Río Negro",
     "url": "https://devwebpatagonia.com/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devwebpatagonia.com/buscar?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
     "publisher": {
-      "@type": "WebDesignCompany",
-      "name": "Devweb"
+      "@type": "Organization",
+      "name": "Devweb",
+      "url": "https://devwebpatagonia.com"
     }
   }
 
