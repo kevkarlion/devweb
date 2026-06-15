@@ -144,7 +144,7 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          En devweb PATAGONIA, creemos que una web o un sistema no es solo un producto digital; es el activo más valioso de tu empresa. Por eso, nuestro enfoque va más allá de la estética visual. Nos especializamos en desarrollar experiencias digitales con una sola intención: hacer que tu negocio funcione mejor.
+          En devweb PATAGONIA, combinamos diseño, tecnología y estrategia para crear soluciones digitales que acompañen el crecimiento de tu negocio. Nuestro objetivo es desarrollar herramientas útiles, eficientes y alineadas con las necesidades reales de cada empresa.
         </motion.p>
 
         {/* VERSIÓN MOBILE/TABLET */}

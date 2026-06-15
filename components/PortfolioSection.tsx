@@ -13,6 +13,22 @@ const jetbrainsMono = JetBrains_Mono({
 // Datos del portfolio
 const portfolioItems = [
   {
+    id: 17,
+    title: "TechnoStore",
+    description:
+      "TechnoStore | Tienda online de electrónica e informática con gestión integral de stock y clientes",
+    image: "/proyectos-img/technostore.webp",
+    category: "Desarrollo Fullstack",
+    technologies: [
+      "Next.js",
+      "Tailwind",
+      "MongoDB",
+      "Agentes IA",
+      "Dashboard"
+    ],
+    link: "https://technostorecrypto.com/",
+  },
+  {
     id: 7,
     title: "Inmobiliaria",
     description:

@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
+  ExternalLink,
   LayoutDashboard,
   BarChart3,
   Users,
@@ -214,6 +215,119 @@ export function SoftwareSystemsSection() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* CRM Demo Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-24"
+          >
+            <div className="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.03] to-white/[0.01] p-8 md:p-12 overflow-hidden group hover:border-white/20 transition-all duration-300">
+              {/* Background glow */}
+              <div className="pointer-events-none absolute -right-20 -top-20 h-60 w-60 rounded-full bg-blue/10 blur-3xl" />
+
+              <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                {/* Left: Text + CTA */}
+                <div className="flex-1">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-mint/30 bg-mint/5 text-mint text-xs font-semibold uppercase tracking-wider mb-4">
+                    Demo en vivo
+                  </div>
+
+                  <h3
+                    className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight"
+                    style={{ fontFamily: "var(--font-titles)" }}
+                  >
+                    Probá nuestro{" "}
+                    <span className="text-primary-gradient bg-clip-text text-transparent">
+                      CRM
+                    </span>{" "}
+                    en acción
+                  </h3>
+
+                  <p
+                    className="text-neutral-400 font-light leading-relaxed mb-6 max-w-lg text-base"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
+                    Gestioná contactos, seguimientos y oportunidades comerciales
+                    en una interfaz moderna e intuitiva. Sin registros, sin
+                    compromiso.
+                  </p>
+
+                  {/* Feature tags */}
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {[
+                      "Gestión de leads",
+                      "Historial clientes",
+                      "Dashboard ventas",
+                      "Tareas y seguimiento",
+                    ].map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-neutral-300"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <motion.a
+                    href="https://crm-demo-silk-gamma.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-gradient border border-white/20 font-semibold text-white text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg group w-auto"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <span>Abrir demo</span>
+                    <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </motion.a>
+                </div>
+
+                {/* Right: Mockup preview */}
+                <div className="flex-shrink-0 w-full lg:w-80 h-56 rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden relative">
+                  <div className="absolute inset-0 flex flex-col">
+                    {/* Browser bar mockup */}
+                    <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-white/10">
+                      <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
+                      <span className="ml-3 flex-1 h-5 rounded bg-white/5 px-2 flex items-center text-[10px] text-neutral-500 truncate">
+                        crm-demo-silk-gamma.vercel.app
+                      </span>
+                    </div>
+                    {/* Mock content */}
+                    <div className="flex-1 p-4 space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="h-8 w-8 rounded-full bg-mint/20 flex items-center justify-center">
+                          <Users className="h-4 w-4 text-mint" />
+                        </div>
+                        <div className="flex-1 space-y-1">
+                          <div className="h-2.5 w-3/4 rounded bg-white/10" />
+                          <div className="h-2 w-1/2 rounded bg-white/5" />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[32, 24, 18].map((w) => (
+                          <div
+                            key={w}
+                            className="h-16 rounded-lg border border-white/5 bg-white/[0.02] p-2 flex flex-col justify-between"
+                          >
+                            <div className="h-1.5 w-full rounded bg-white/10" />
+                            <div className="h-3 w-2/3 rounded bg-mint/30" />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="h-8 rounded-lg border border-white/5 bg-white/[0.02] flex items-center px-3">
+                        <div className="h-1.5 w-1/3 rounded bg-white/10" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Dashboard Real - Imagen + Texto */}

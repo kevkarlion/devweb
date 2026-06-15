@@ -2,15 +2,14 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   ArrowRight,
   ChevronDown,
   Code,
   Palette,
-  Search,
-  TrendingUp,
-  Plus,
+  Settings2,
+  BarChart3,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -19,32 +18,28 @@ import {
 
 const services = [
   {
-    number: "1",
-    title: "DESARROLLO WEB MODERNO",
+    title: "Software a Medida",
     description:
-      "Sitios rápidos, escalables y diseñados con Next.js, TS y Tailwind.",
+      "Desarrollamos sistemas CRM, paneles de administración y soluciones digitales personalizadas para optimizar cada proceso de tu negocio.",
     icon: Code,
   },
   {
-    number: "2",
-    title: "DISEÑO UI/UX PERSONALIZADO",
+    title: "Automatización de Procesos",
     description:
-      "Identidad visual única y experiencia de usuario pensada para convertir.",
+      "Eliminá tareas repetitivas con flujos inteligentes que conectan herramientas, notifican en tiempo real y mejoran la eficiencia operativa.",
+    icon: Settings2,
+  },
+  {
+    title: "Dashboards Interactivos",
+    description:
+      "Visualizá métricas clave, controlá tu negocio en tiempo real y tomá decisiones estratégicas respaldadas por datos concretos.",
+    icon: BarChart3,
+  },
+  {
+    title: "Desarrollo Web Full-Stack",
+    description:
+      "Creamos sitios rápidos y escalables con Next.js, diseño UI/UX profesional, SEO avanzado y rendimiento optimizado.",
     icon: Palette,
-  },
-  {
-    number: "3",
-    title: "SEO AVANZADO",
-    description:
-      "Optimización técnica y de contenido para aparecer en Google y atraer clientes.",
-    icon: Search,
-  },
-  {
-    number: "4",
-    title: "WEBS ORIENTADAS AL MARKETING",
-    description:
-      "Landing pages, funnels y páginas de venta listas para convertir.",
-    icon: TrendingUp,
   },
 ];
 
@@ -110,156 +105,73 @@ export function ServicesSection() {
             <span className="hidden lg:block">Servicios de diseño & desarrollo web</span>
           </motion.h1>
 
-          {/* Contenedor principal - Se reorganiza según breakpoint */}
-          <div className="max-w-6xl mx-auto flex justify-center mt-8">
-            {/* VERSIÓN DESKTOP */}
-            <motion.div
-              className="hidden lg:flex items-center justify-between gap-8 mb-16 w-[75%]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              {/* Esfera con texto */}
-              <div className="shrink-0">
-                <div className="bg-primary-gradient w-48 h-48 rounded-full border-white border-2 flex items-center justify-center p-4">
-<p 
-                  className="font-medium text-lg text-neutral-300 text-center leading-tight"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                    Soluciones Empresariales a Medida
-                  </p>
+          {/* Subtítulo h2 */}
+          <motion.h2
+            className="text-2xl md:text-3xl font-bold text-white text-center mb-8"
+            style={{ fontFamily: "var(--font-titles)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.25 }}
+          >
+            Soluciones Empresariales a Medida
+          </motion.h2>
+
+          {/* Divider line */}
+          <motion.div
+            className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-6 mt-8"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          />
+
+          {/* Paragraph */}
+          <motion.p
+            className="text-base md:text-lg text-neutral-300 font-light leading-relaxed text-left max-w-2xl mx-auto mb-10 px-4"
+            style={{ fontFamily: "var(--font-body)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Desarrollamos plataformas, sistemas y herramientas digitales adaptadas a los procesos y objetivos de tu empresa.
+          </motion.p>
+
+          {/* Grid de servicios - 2 columnas en desktop */}
+          <div className="hidden lg:grid grid-cols-2 gap-6 mb-20">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                className="group relative flex flex-col rounded-xl border-2 border-white/20 bg-primary-gradient p-6 md:p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
+              >
+                {/* Icon container */}
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 group-hover:scale-110 group-hover:border-white/40">
+                  <service.icon className="h-7 w-7 text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
-              </div>
 
-              {/* Línea divisoria */}
-              <div className="shrink-0 w-px h-24 bg-white rounded-full mx-8" />
-
-              {/* Texto descriptivo */}
-              <div className="flex-1">
-                <p 
-                  className="text-base text-neutral-300 leading-relaxed text-left w-[80%]"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                  }}
+                {/* Title */}
+                <h3
+                  className="mb-3 text-xl font-bold text-white"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Desarrollamos plataformas, sistemas y herramientas digitales adaptadas a los procesos y objetivos de tu empresa.
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="text-sm text-white font-light leading-relaxed"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {service.description}
                 </p>
-              </div>
-            </motion.div>
-
-            {/* VERSIÓN MOBILE/TABLET */}
-            <motion.div
-              className="lg:hidden flex flex-col items-center gap-8 mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              {/* Texto descriptivo */}
-              <div className="w-full">
-                <p 
-                  className="text-lg text-neutral-300 leading-relaxed text-left"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  Desarrollamos plataformas, sistemas y herramientas digitales adaptadas a los procesos y objetivos de tu empresa.
-                </p>
-              </div>
-
-              {/* Línea divisoria horizontal */}
-              <div className="w-48 h-0.5 bg-white rounded-full my-4" />
-
-              {/* Esfera con texto */}
-              <div className="shrink-0">
-                <div className="bg-mobile-gradient w-64 h-64 rounded-full border-2 border-white flex items-center justify-center p-4">
-                  <p 
-                    className="font-medium text-2xl text-neutral-300 text-center leading-tight"
-                    style={{
-                      fontFamily: "var(--font-body)",
-                    }}
-                  >
-                    Soluciones Empresariales a Medida
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Grid de servicios - 2 columnas en desktop con cruz central */}
-          <div className="hidden lg:block relative mb-20 mt-18">
-            <div className="grid grid-cols-2 gap-16">
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  className="flex items-center gap-8 "
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
-                >
-                  {/* Número fuera de la card */}
-                  <div className="flex items-center justify-center w-32 h-32 rounded-full border-6 border-white mt-1 shrink-0">
-                    <span className="font-bold text-7xl text-neutral-300">
-                      {service.number}
-                    </span>
-                  </div>
-
-                  {/* Card content */}
-                  <div 
-                    className="flex-1 p-5 border-2 border-white  rounded-lg transition-all duration-300 group max-w-[320px] min-h-[200px] bg-primary-gradient "
-                    
-                  >
-                    {/* Título con ícono */}
-                    <div className="flex justify-center items-center gap-2 mb-3">
-                      <service.icon className="w-8 h-8 text-white" />
-                      <h3 className="font-semibold text-lg text-neutral-300 transition-colors duration-300 text-center">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    {/* Flecha hacia abajo */}
-                    <motion.div
-                      className="mb-3 flex justify-center items-center"
-                      animate={{ y: [0, 4, 0] }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        delay: index * 0.2,
-                      }}
-                    >
-                      <ChevronDown className="w-6 h-6 text-white" />
-                    </motion.div>
-
-                    {/* Descripción */}
-                    <p className="font-light text-sm text-neutral-300 leading-relaxed text-left">
-                      {service.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Cruz doble central */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="relative w-full h-full">
-                {/* Línea vertical */}
-                <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-transparent via-white to-transparent transform -translate-x-1/2" />
-                {/* Línea horizontal */}
-                <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-white to-transparent transform -translate-y-1/2" />
-                {/* Icono Plus central */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-black border-2 border-white">
-                    <Plus className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
 
           {/* CARRUSEL MOBILE */}
-          <div className="lg:hidden relative mb-12 ">
-            <div className="flex flex-col items-center text-center mt-12 min-h-[340px]">
+          <div className="lg:hidden relative mb-12">
+            <div className="flex flex-col items-center text-center mt-12 min-h-[300px]">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={currentSlide}
@@ -272,31 +184,30 @@ export function ServicesSection() {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 }
                   }}
-                  className="flex flex-col items-center text-center w-full"
+                  className="flex flex-col items-center w-full"
                 >
                   {/* Card */}
-                  <div 
-                    className="flex flex-col items-center border-2 border-white rounded-tr-2xl rounded-bl-2xl px-[23px] py-[25px] w-[90%] max-w-md min-w-[380px] min-h-60 bg-mobile-gradient mt-8"
-                  >
-                    {/* Título del servicio */}
-                    <h3 className="font-bold text-3xl text-neutral-300 mb-2 mt-4">
+                  <div className="group relative flex flex-col items-start rounded-xl border-2 border-white/20 bg-mobile-gradient p-6 w-[90%] max-w-md transition-all duration-300 mt-8">
+                    {/* Icon container */}
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/5">
+                      {React.createElement(services[currentSlide].icon, {
+                        className: "h-7 w-7 text-white",
+                      })}
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      className="mb-3 text-xl font-bold text-white text-left"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
                       {services[currentSlide].title}
                     </h3>
 
-                    {/* Flecha hacia abajo */}
-                    <motion.div
-                      className="mb-2"
-                      animate={{ y: [0, 4, 0] }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                      }}
+                    {/* Description */}
+                    <p
+                      className="text-sm text-white font-light leading-relaxed text-left"
+                      style={{ fontFamily: "var(--font-body)" }}
                     >
-                      <ChevronDown className="w-5 h-5 text-white" />
-                    </motion.div>
-
-                    {/* Descripción */}
-                    <p className="font-light text-lg text-neutral-300 leading-relaxed  tracking-wide	w-[95%]">
                       {services[currentSlide].description}
                     </p>
                   </div>
@@ -370,11 +281,11 @@ export function ServicesSection() {
               }}
             >
               {/* Fondo con gradiente mobile */}
-              <div className="absolute inset-0 rounded-lg bg-mobile-gradient border-white border-2" />
+              <div className="absolute inset-0 rounded-lg bg-mobile-gradient" />
 
               {/* Contenido */}
               <span className="relative z-10 text-white">
-                Cotizá tu sitio web ideal
+                Cotizá tu proyecto
               </span>
               <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </a>
@@ -399,15 +310,14 @@ export function ServicesSection() {
               {/* Fondo negro */}
               <div className="absolute inset-0 rounded-lg" />
 
-              {/* Borde degradado */}
+              {/* Fondo gradiente */}
               <div
-                className="absolute inset-0 rounded-sm border-2  bg-mobile-gradient border-white"
-               
+                className="absolute inset-0 rounded-sm bg-mobile-gradient"
               />
 
               {/* Contenido */}
               <span className="relative z-10 text-white">
-                Cotizá tu sitio web ideal
+                Cotizá tu proyecto
               </span>
               <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </a>

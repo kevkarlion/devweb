@@ -23,9 +23,11 @@ export function Navbar() {
   const menuItems = [
     { name: "Inicio", href: "/" },
     { name: "Servicios", href: "/#servicios" },
-    { name: "Blog", href: "/blog" },
+    { name: "Software a medida", href: "/#sistemas" },
     { name: "Proyectos", href: "/#portfolio" },
+    { name: "Nosotros", href: "/#nosotros" },
     { name: "Metodología", href: "/#metodo" },
+    { name: "Blog", href: "/blog" },
     { name: "Contacto", href: "/#contacto" },
   ];
 
@@ -50,9 +52,7 @@ export function Navbar() {
           isScrolled ? "py-3" : "py-5"
         }`}
         style={isScrolled ? scrolledNavStyles : baseNavStyles}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* LOGO - Imagen siempre a la izquierda */}

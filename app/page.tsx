@@ -14,8 +14,8 @@ export default function Home() {
       <SocialStrip />
       <ServicesSection />
       <SoftwareSystemsSection />
-      <AboutSection />
       <PortfolioSection />
+      <AboutSection />
       <ProcessTimeline />
       <ContactSection />
     </main>
