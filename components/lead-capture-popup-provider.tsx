@@ -54,11 +54,11 @@ export function LeadCapturePopupProvider({ children }: LeadCapturePopupProviderP
     markAsShown();
   }, [markAsShown]);
 
-  // Close the popup
+  // Close the popup and persist dismissal so it won't show again this session
   const handleClose = useCallback(() => {
     setIsOpen(false);
-    // Don't set hasShownPopup to false - we don't want to show again in this session
-  }, []);
+    markAsShown(); // Persist dismissal — won't reappear in this session
+  }, [markAsShown]);
 
   // Timer-based popup display
   useEffect(() => {

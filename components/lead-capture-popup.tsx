@@ -95,8 +95,8 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
                 className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 px-4"
               >
                 <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900 to-black p-1">
-                  {/* Gradient border effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-600/20 opacity-50" />
+                  {/* Gradient border effect - brand colors */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[rgb(var(--color-primary)_/_0.2)] to-[rgb(var(--color-secondary)_/_0.2)] opacity-50" />
                   
                   {/* Content */}
                   <div className="relative rounded-xl bg-slate-900/95 p-6 sm:p-8 backdrop-blur">
@@ -112,8 +112,8 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
 
                     {/* Header */}
                     <div className="text-center mb-6">
-                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-500/20 mb-4">
-                        <Mail className="h-6 w-6 text-green-400" />
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-gradient mb-4">
+                        <Mail className="h-6 w-6 text-white" />
                       </div>
                       <Dialog.Title className="text-2xl font-bold text-white">
                         🎁 Checklist Gratis
@@ -130,7 +130,7 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center py-4"
                       >
-                        <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
+                        <CheckCircle className="h-12 w-12 text-white mx-auto mb-3" />
                         <p className="text-white font-semibold">¡Listo!</p>
                         <p className="text-gray-400 text-sm">
                           Revisa tu email para ver el checklist completo
@@ -152,7 +152,7 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
                         <Button
                           type="submit"
                           disabled={status === "loading"}
-                          className="w-full h-12 font-semibold bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white border-0"
+                          className="w-full h-12 font-semibold bg-primary-gradient hover:opacity-90 text-white border-0"
                         >
                           {status === "loading" ? (
                             <span className="flex items-center justify-center gap-2">
