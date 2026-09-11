@@ -32,16 +32,18 @@ export function Navbar() {
   ];
 
   const baseNavStyles = {
-    background: "transparent",
-    backdropFilter: "none",
-    borderBottom: "1px solid rgba(255,255,255,0)",
+    background: "rgba(8, 10, 16, 0.55)",
+    backdropFilter: "blur(16px) saturate(140%)",
+    WebkitBackdropFilter: "blur(16px) saturate(140%)",
+    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    boxShadow: "0 10px 30px -10px rgba(0,0,0,0.4)",
   };
 
   const scrolledNavStyles = {
-    background: "rgba(0, 0, 0, 0.8)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    borderBottom: "1px solid rgba(255,255,255,0.1)",
+    background: "rgba(4, 6, 10, 0.78)",
+    backdropFilter: "blur(18px) saturate(150%)",
+    WebkitBackdropFilter: "blur(18px) saturate(150%)",
+    borderBottom: "1px solid rgba(255,255,255,0.12)",
     boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
   };
 
