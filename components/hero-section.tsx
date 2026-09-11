@@ -35,7 +35,6 @@ export function HeroSection() {
             loop
             playsInline
             preload="auto"
-            poster="/new-hero.webp"
             tabIndex={-1}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
@@ -48,7 +47,6 @@ export function HeroSection() {
             loop
             playsInline
             preload="auto"
-            poster="/new-hero.webp"
             tabIndex={-1}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
