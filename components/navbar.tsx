@@ -80,6 +80,22 @@ export function Navbar() {
     };
   }, [isMenuOpen, isMounted]);
 
+  // Pausar los videos de fondo mientras el menú está abierto: en iOS componer
+  // video + drawer animado a la vez es costosísimo (CPU); al pausar, el drawer
+  // desliza 100% por compositor (GPU). Se reanudan al cerrar.
+  useEffect(() => {
+    if (!isMounted) return;
+    const videos = Array.from(document.querySelectorAll<HTMLVideoElement>("video"));
+    if (isMenuOpen) {
+      videos.forEach((video) => video.pause());
+    } else {
+      videos.forEach((video) => {
+        const playPromise = video.play();
+        if (playPromise) playPromise.catch(() => {});
+      });
+    }
+  }, [isMenuOpen, isMounted]);
+
   const closeMenu = () => {
     setIsMenuOpen(false);
     // Pequeño delay para que el cierre del drawer no se sienta brusco
@@ -90,43 +106,18 @@ export function Navbar() {
     setOpenSection((prev) => (prev === name ? null : name));
   };
 
-  const baseNavStyles = {
-    background: "rgba(8, 10, 16, 0.65)",
-    backdropFilter: "blur(12px) saturate(140%)",
-    WebkitBackdropFilter: "blur(12px) saturate(140%)",
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
-    boxShadow: "0 10px 30px -10px rgba(0,0,0,0.4)",
-  };
-
-  const scrolledNavStyles = {
-    background: "rgba(4, 6, 10, 0.85)",
-    backdropFilter: "blur(14px) saturate(150%)",
-    WebkitBackdropFilter: "blur(14px) saturate(150%)",
-    borderBottom: "1px solid rgba(255,255,255,0.12)",
-    boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
-  };
-
-  // Con el menú abierto el nav queda tapado por el scrim: desactivar el blur evita
-  // doble backdrop-filter (nav + scrim + video hero) → menos jank de paint en mobile.
-  const navStyle = isMenuOpen
-    ? {
-        ...(isScrolled ? scrolledNavStyles : baseNavStyles),
-        backdropFilter: "none",
-        WebkitBackdropFilter: "none",
-      }
-    : isScrolled
-      ? scrolledNavStyles
-      : baseNavStyles;
-
   const linkClasses = `relative text-sm uppercase font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`;
 
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 w-full z-1000 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-1000 transition-all duration-500 border-b ${
           isScrolled ? "py-3" : "py-5"
+        } ${
+          isScrolled
+            ? "bg-[rgba(4,6,10,0.96)] md:bg-[rgba(4,6,10,0.85)] md:backdrop-blur-[14px] md:backdrop-saturate-150 border-white/[0.12] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)]"
+            : "bg-[rgba(8,10,16,0.92)] md:bg-[rgba(8,10,16,0.65)] md:backdrop-blur-[12px] md:backdrop-saturate-150 border-white/[0.08] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.4)]"
         }`}
-        style={navStyle}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* LOGO - Imagen siempre a la izquierda */}
@@ -255,7 +246,6 @@ export function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.28, ease: "easeOut" }}
-            style={{ willChange: "transform" }}
             role="dialog"
             aria-label="Menú de navegación"
           >
@@ -311,9 +301,11 @@ export function Navbar() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
+                          // height con duración 0: el acordeón se expande sin animación de layout
+                          // (es lo que tironеа en iOS). El fade de opacity sí va por compositor.
                           transition={{
-                            height: { duration: 0.2, ease: "easeOut" },
-                            opacity: { duration: 0.15 },
+                            height: { duration: 0 },
+                            opacity: { duration: 0.15, ease: "easeOut" },
                           }}
                           className="overflow-hidden"
                         >

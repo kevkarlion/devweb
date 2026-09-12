@@ -33,7 +33,7 @@ export function HeroSection() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             tabIndex={-1}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
@@ -45,7 +45,7 @@ export function HeroSection() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             tabIndex={-1}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
