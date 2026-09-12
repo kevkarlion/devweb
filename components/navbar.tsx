@@ -4,13 +4,64 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { JetBrains_Mono } from "next/font/google";
+import { ChevronDown, X } from "lucide-react";
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+
+type NavItem = { name: string; href: string };
+type NavSection = {
+  name: string;
+  hub: string;
+  items: NavItem[];
+};
+
+const navSections: NavSection[] = [
+  {
+    name: "Soluciones",
+    hub: "/soluciones",
+    items: [
+      { name: "Software a medida", href: "/soluciones/software-a-medida" },
+      { name: "CRM para empresas de servicios", href: "/soluciones/crm-para-empresas-de-servicios" },
+      { name: "Automatización con IA", href: "/soluciones/automatizacion-con-ia" },
+      { name: "Dashboards y portales de clientes", href: "/soluciones/dashboards-y-portales-de-clientes" },
+      { name: "Desarrollo web B2B", href: "/soluciones/desarrollo-web-b2b" },
+    ],
+  },
+  {
+    name: "Industrias",
+    hub: "/industrias",
+    items: [
+      { name: "Oil & Gas", href: "/industrias/oil-gas" },
+      { name: "Logística y transporte", href: "/industrias/logistica-y-transporte" },
+      { name: "Agroindustria", href: "/industrias/agroindustria" },
+      { name: "Instalaciones industriales", href: "/industrias/instalaciones-industriales" },
+    ],
+  },
+  {
+    name: "Localidades",
+    hub: "/localidades",
+    items: [
+      { name: "Neuquén", href: "/localidades/neuquen" },
+      { name: "Cipolletti", href: "/localidades/cipolletti" },
+      { name: "General Roca", href: "/localidades/general-roca" },
+      { name: "Villa Regina", href: "/localidades/villa-regina" },
+      { name: "Allen", href: "/localidades/allen" },
+      { name: "Añelo · Vaca Muerta", href: "/localidades/anelo-vaca-muerta" },
+    ],
+  },
+];
+
+const simpleItems: NavItem[] = [
+  { name: "Inicio", href: "/" },
+  { name: "Nosotros", href: "/#nosotros" },
+  { name: "Contacto", href: "/#contacto" },
+];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -20,16 +71,15 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const menuItems = [
-    { name: "Inicio", href: "/" },
-    { name: "Servicios", href: "/#servicios" },
-    { name: "Software a medida", href: "/#sistemas" },
-    { name: "Proyectos", href: "/#portfolio" },
-    { name: "Nosotros", href: "/#nosotros" },
-    { name: "Metodología", href: "/#metodo" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contacto", href: "/#contacto" },
-  ];
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    // Pequeño delay para que el cierre del drawer no se sienta brusco
+    setTimeout(() => setOpenSection(null), 350);
+  };
+
+  const toggleSection = (name: string) => {
+    setOpenSection((prev) => (prev === name ? null : name));
+  };
 
   const baseNavStyles = {
     background: "rgba(8, 10, 16, 0.55)",
@@ -47,6 +97,8 @@ export function Navbar() {
     boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
   };
 
+  const linkClasses = `relative text-sm uppercase font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`;
+
   return (
     <>
       <motion.nav
@@ -54,7 +106,6 @@ export function Navbar() {
           isScrolled ? "py-3" : "py-5"
         }`}
         style={isScrolled ? scrolledNavStyles : baseNavStyles}
-
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* LOGO - Imagen siempre a la izquierda */}
@@ -75,12 +126,47 @@ export function Navbar() {
           </motion.a>
 
           {/* MENÚ DESKTOP */}
-          <div className="hidden md:flex items-center gap-8">
-            {menuItems.map((item) => (
+          <div className="hidden md:flex items-center gap-5 lg:gap-7">
+            {/* Silos con dropdown */}
+            {navSections.map((section) => (
+              <div key={section.name} className="relative group">
+                <a
+                  href={section.hub}
+                  className={`${linkClasses} inline-flex items-center gap-1`}
+                >
+                  {section.name}
+                  <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform duration-300 group-hover:rotate-180" />
+                </a>
+                {/* Panel dropdown */}
+                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 hidden group-hover:block">
+                  <div className="w-64 rounded-md border border-white/10 bg-[#0B0F1A]/95 backdrop-blur-xl shadow-2xl py-2">
+                    <a
+                      href={section.hub}
+                      className="block px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white hover:bg-white/5"
+                    >
+                      Ver todas · {section.name}
+                    </a>
+                    <div className="h-px bg-white/10 my-1" />
+                    {section.items.map((item) => (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        className="block px-5 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors duration-200"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Links simples */}
+            {simpleItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className={`relative text-sm uppercase font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`}
+                className={`${linkClasses} ${item.name === "Nosotros" ? "hidden lg:inline-block" : ""}`}
               >
                 {item.name}
                 <motion.span
@@ -104,8 +190,9 @@ export function Navbar() {
 
           {/* BOTÓN HAMBURGER */}
           <button
-            className="md:hidden flex flex-col gap-1.5 z-1001"
+            className="md:hidden flex flex-col gap-1.5 z-[1100] relative"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             <motion.span 
               className="w-8 h-0.5 bg-white rounded-full" 
@@ -123,41 +210,137 @@ export function Navbar() {
         </div>
       </motion.nav>
 
-      {/* MENÚ MOBILE - Full screen */}
+      {/* MENÚ MOBILE - Drawer lateral con acordeones */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            className="fixed inset-0 z-999 bg-black flex flex-col items-center justify-center"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.4 }}
-          >
-            <div className="flex flex-col gap-8 text-center">
-              {menuItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  className="text-3xl font-bold text-white uppercase tracking-tighter hover:text-gray-400"
-                  onClick={() => setIsMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+          <>
+            {/* Scrim */}
+            <motion.div
+              className="fixed inset-0 z-[1101] bg-black/60 backdrop-blur-sm md:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={closeMenu}
+              aria-hidden="true"
+            />
+            {/* Drawer */}
+            <motion.div
+              className="fixed top-0 right-0 h-full w-[86%] max-w-sm z-[1102] bg-[#0B0F1A] border-l border-white/10 flex flex-col md:hidden"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
+              role="dialog"
+              aria-label="Menú de navegación"
+            >
+              {/* Header del drawer */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 shrink-0">
+                <span
+                  className="text-sm font-bold uppercase tracking-widest text-white"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
-                  {item.name}
-                </motion.a>
-              ))}
-              <motion.a
-                href="https://wa.me/5492984252859"
-                className="mt-4 px-8 py-4 bg-white text-black font-bold uppercase text-sm tracking-widest"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                Comenzar ahora
-              </motion.a>
-            </div>
-          </motion.div>
+                  Menú
+                </span>
+                <button
+                  onClick={closeMenu}
+                  className="p-2 -mr-2 text-gray-400 hover:text-white transition-colors"
+                  aria-label="Cerrar menú"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Contenido scrolleable */}
+              <div className="flex-1 overflow-y-auto px-5 py-2">
+                {/* Inicio */}
+                <a
+                  href="/"
+                  onClick={closeMenu}
+                  className="block py-3.5 text-base font-bold text-white uppercase tracking-tight border-b border-white/5"
+                >
+                  Inicio
+                </a>
+
+                {/* Silos como acordeones */}
+                {navSections.map((section) => {
+                  const isOpen = openSection === section.name;
+                  return (
+                    <div key={section.name} className="border-b border-white/5">
+                      <button
+                        onClick={() => toggleSection(section.name)}
+                        aria-expanded={isOpen}
+                        className="w-full flex items-center justify-between py-3.5 text-base font-bold text-white uppercase tracking-tight"
+                      >
+                        {section.name}
+                        <ChevronDown
+                          className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            key="content"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.28, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pb-3 pl-4 border-l border-white/10 ml-2">
+                              <a
+                                href={section.hub}
+                                onClick={closeMenu}
+                                className="block py-2 text-xs font-bold uppercase tracking-widest text-[#B9C8F5]"
+                              >
+                                Ver todas · {section.name}
+                              </a>
+                              {section.items.map((item) => (
+                                <a
+                                  key={item.href}
+                                  href={item.href}
+                                  onClick={closeMenu}
+                                  className="block py-2 text-sm text-gray-400 hover:text-white transition-colors"
+                                >
+                                  {item.name}
+                                </a>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+
+                {/* Links simples restantes */}
+                {simpleItems
+                  .filter((item) => item.name !== "Inicio")
+                  .map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      onClick={closeMenu}
+                      className="block py-3.5 text-base font-bold text-white uppercase tracking-tight border-b border-white/5"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+              </div>
+
+              {/* CTA fijo */}
+              <div className="p-5 border-t border-white/10 shrink-0">
+                <a
+                  href="https://wa.me/5492984252859"
+                  className="block w-full px-6 py-3.5 bg-white text-black font-bold uppercase text-xs tracking-widest text-center"
+                >
+                  Comenzar ahora
+                </a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -17,9 +17,9 @@ const services = [
 
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { name: "Blog", href: "/blog" },
-  { name: "Portfolio", href: "/#portfolio" },
-  { name: "Nosotros", href: "/#nosotros" },
+  { name: "Soluciones", href: "/soluciones" },
+  { name: "Industrias", href: "/industrias" },
+  { name: "Localidades", href: "/localidades" },
   { name: "Contacto", href: "/#contacto" },
 ]
 
@@ -219,14 +219,6 @@ export function Footer() {
               Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-6">
-              <a
-                href="/blog"
-                className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors duration-200"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                Blog
-              </a>
-              <span className="text-neutral-600 text-xs">|</span>
               <a
                 href="https://wa.me/5492984252859"
                 target="_blank"

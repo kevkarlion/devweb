@@ -5,6 +5,20 @@ const nextConfig = {
     deviceSizes: [480, 640, 768, 1024, 1280, 1536],
     minimumCacheTTL: 31536000,
   },
+  async redirects() {
+    return [
+      {
+        source: "/blog",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   headers: () => [
     {
       source: "/(.*)",
