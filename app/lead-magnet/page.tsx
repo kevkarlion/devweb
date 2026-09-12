@@ -4,27 +4,30 @@ import LeadMagnetContent from "./lead-magnet-content";
 // Las fuentes se cargan globalmente desde layout.tsx
 
 export const metadata: Metadata = {
-  title: "7 Señales de que tu Web Necesita una Renewal | Devweb",
+  title: "7 señales de que tu operación necesita digitalización | Devweb Patagonia",
   description:
-    "Descarga gratis nuestro checklist con las 7 señales que indican que tu sitio web necesita una renovación. Descubre si tu web está obsoleta y cómo mejorarla para convertir más visitantes en clientes.",
+    "Guía gratuita para detectar qué procesos de tu operación (cotizaciones, planillas, seguimiento de clientes) se pueden automatizar con CRM, IA y dashboards.",
+  alternates: {
+    canonical: "https://devwebpatagonia.com/lead-magnet",
+  },
   openGraph: {
-    title: "7 Señales de que tu Web Necesita una Renewal | Devweb",
+    title: "7 señales de que tu operación necesita digitalización | Devweb Patagonia",
     description:
-      "Descarga gratis nuestro checklist con las 7 señales que indican que tu sitio web necesita una renovación.",
+      "Guía gratuita para detectar qué procesos de tu operación (cotizaciones, planillas, seguimiento de clientes) se pueden automatizar con CRM, IA y dashboards.",
     images: [
       {
         url: "/og-lead-magnet.jpg",
         width: 1200,
         height: 630,
-        alt: "7 Señales de que tu Web Necesita una Renewal",
+        alt: "7 señales de que tu operación necesita digitalización",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "7 Señales de que tu Web Necesita una Renewal",
+    title: "7 señales de que tu operación necesita digitalización",
     description:
-      "checklist gratuito: ¿tu web necesita renovación?",
+      "Guía gratuita para automatizar cotizaciones, planillas y seguimiento de clientes.",
     images: ["/og-lead-magnet.jpg"],
   },
 };

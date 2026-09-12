@@ -132,7 +132,7 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          Intro y <span className="text-primary-gradient">filosofía</span>
+          Quién está detrás del <span className="text-primary-gradient">código</span>
         </motion.h2>
 
         <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
@@ -144,7 +144,7 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          En devweb PATAGONIA, combinamos diseño, tecnología y estrategia para crear soluciones digitales que acompañen el crecimiento de tu negocio. Nuestro objetivo es desarrollar herramientas útiles, eficientes y alineadas con las necesidades reales de cada empresa.
+          En DevWeb Patagonia diseñamos software para operaciones que no pueden frenar. Nuestro objetivo es desarrollar herramientas útiles y eficientes, alineadas con los procesos reales de cada empresa industrial: desde la cotización hasta la entrega y el control de obra.
         </motion.p>
 
         {/* VERSIÓN MOBILE/TABLET */}
@@ -229,7 +229,7 @@ export function AboutSection() {
             >
               <div className="absolute inset-0 rounded-md bg-primary-gradient border border-white" />
               <span className="relative z-10 text-white text-center">
-                TRANSFORMÁ TU NEGOCIO
+                Pedir diagnóstico técnico
               </span>
               <ArrowRight className="w-5 h-5 relative z-10 text-white" />
             </a>
@@ -265,7 +265,7 @@ export function AboutSection() {
                   className="font-bold text-lg text-neutral-300 uppercase leading-relaxed tracking-wide mb-4"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  ¿CÓMO AYUDA ESTO A TU NEGOCIO A RENTABILIZAR LA INVERSIÓN?
+                  ¿Cómo ayuda esto a tu operación a rentabilizar cada peso invertido?
                 </p>
                 <div className="relative">
                   <Briefcase className="w-8 h-8 text-white" />
@@ -496,7 +496,7 @@ export function AboutSection() {
                   className="font-bold text-xl text-neutral-300 uppercase leading-relaxed tracking-wide mb-6 text-left px-6"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  ¿CÓMO AYUDA ESTO A TU NEGOCIO A RENTABILIZAR LA INVERSIÓN?
+                  ¿Cómo ayuda esto a tu operación a rentabilizar cada peso invertido?
                 </p>
               </div>
 
@@ -550,7 +550,7 @@ export function AboutSection() {
 
                 {/* Contenido */}
                 <span className="relative z-10 text-white text-center">
-                  TRANSFORMÁ TU NEGOCIO HOY
+                  Pedir diagnóstico técnico
                 </span>
                 <ArrowRight className="w-8 h-8 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-2" />
               </a>
@@ -712,7 +712,7 @@ export function AboutSection() {
 
               {/* Contenido */}
               <span className="relative z-10 text-white">
-                Consultoría
+                Diagnóstico técnico
               </span>
               <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </a>

@@ -6,7 +6,7 @@ export function OnePageSchema() {
     "@type": "LocalBusiness",
     "@id": `${baseUrl}/#organization`,
     "name": "Devweb Patagonia — Gestión Digital Integral",
-    "description": "Tu partner digital en la Patagonia. Diseñamos webs que atraen clientes, optimizamos tu presencia en Google y te acompañamos con soporte permanente. Especialistas en General Roca, Cipolletti y Neuquén.",
+    "description": "Software a medida, CRM con IA y dashboards para empresas industriales y de servicios en Neuquén y el Alto Valle. Reemplazamos planillas y WhatsApp disperso por infraestructura que cotiza, pre-califica y reporta sola.",
     "url": baseUrl,
     "logo": `${baseUrl}/logo-new-white.png`,
     "image": `${baseUrl}/og-image.jpg`,
@@ -35,60 +35,51 @@ export function OnePageSchema() {
       {
         "@type": "Service",
         "name": "Software a Medida y CRM",
-        "description": "Desarrollo de sistemas CRM, paneles administrativos y soluciones digitales personalizadas"
+        "description": "Desarrollo de sistemas CRM, paneles administrativos y soluciones digitales a medida de tu operación"
       },
       {
         "@type": "Service",
-        "name": "Desarrollo Web Profesional",
-        "description": "Sitios web modernos, rápidos y optimizados con Next.js y diseño UI/UX"
+        "name": "CRM con IA para empresas de servicios",
+        "description": "Pre-calificación de clientes y seguimiento de cotizaciones y obras sin planillas ni WhatsApp disperso"
       },
       {
         "@type": "Service",
-        "name": "Optimización SEO Local",
-        "description": "Posicionamiento en Google para negocios de General Roca, Cipolletti y Neuquén"
+        "name": "Automatización de Procesos con IA",
+        "description": "Flujos inteligentes que conectan herramientas y eliminan tareas repetitivas"
       },
       {
         "@type": "Service",
-        "name": "Automatización de Procesos",
-        "description": "Flujos inteligentes que conectan herramientas y mejoran la eficiencia operativa"
+        "name": "Dashboards y Portales de Clientes",
+        "description": "Panel administrativo, métricas en tiempo real y portales que le dan visibilidad a tus clientes"
       },
       {
         "@type": "Service",
-        "name": "Dashboards de Negocio",
-        "description": "Métricas clave en tiempo real para tomar decisiones con datos concretos"
+        "name": "Desarrollo Web B2B",
+        "description": "Sitios web optimizados para empresas industriales que cotizan y captan oportunidades en la región"
       },
     ],
     "knowsAbout": [
       "Desarrollo Web",
       "Software a Medida",
       "CRM",
+      "Inteligencia Artificial",
       "SEO Local",
       "Automatización",
       "Dashboards",
+      "Portales de Clientes",
       "Next.js",
-      "Marketing Digital",
     ],
     "foundingDate": "2025",
   };
 
-  const breadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "@id": `${baseUrl}/#breadcrumb`,
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": baseUrl },
-    ],
-  };
+  // El breadcrumb global "Inicio" se eliminó: las páginas anidadas emiten su propio BreadcrumbList
+  // (ServiceHubSchema/SpokeServiceSchema) y el home no necesita migas de pan.
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
     </>
   );

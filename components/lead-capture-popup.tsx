@@ -116,10 +116,10 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
                         <Mail className="h-6 w-6 text-white" />
                       </div>
                       <Dialog.Title className="text-2xl font-bold text-white">
-                        🎁 Checklist Gratis
+                        Diagnóstico técnico gratuito
                       </Dialog.Title>
                       <Dialog.Description className="mt-2 text-gray-400">
-                        Las 7 señales que indican que tu web necesita una renovación
+                        ¿Tu operación todavía se maneja con planillas y WhatsApp? Te mostramos qué procesos se pueden automatizar, sin costo y sin compromiso.
                       </Dialog.Description>
                     </div>
 
@@ -133,7 +133,7 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
                         <CheckCircle className="h-12 w-12 text-white mx-auto mb-3" />
                         <p className="text-white font-semibold">¡Listo!</p>
                         <p className="text-gray-400 text-sm">
-                          Revisa tu email para ver el checklist completo
+                          Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles.
                         </p>
                       </motion.div>
                     ) : (
@@ -161,7 +161,7 @@ export function LeadCapturePopup({ open: externalOpen, onOpenChange: externalOnO
                             </span>
                           ) : (
                             <span className="flex items-center justify-center gap-2">
-                              Obtener Checklist
+                              Pedir diagnóstico técnico
                               <ArrowRight className="h-4 w-4" />
                             </span>
                           )}

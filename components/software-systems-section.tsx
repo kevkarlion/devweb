@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import {
   ExternalLink,
   LayoutDashboard,
@@ -19,6 +20,7 @@ interface SystemFeature {
   features: string[];
   benefit: string;
   color: string;
+  href: string;
 }
 
 const systems: SystemFeature[] = [
@@ -26,7 +28,7 @@ const systems: SystemFeature[] = [
     icon: LayoutDashboard,
     title: "Panel Administrativo",
     description:
-      "Gestioná toda la información de tu negocio desde un único lugar.",
+      "Gestioná cotizaciones, órdenes y clientes desde un único panel, sin planillas ni carpetas dispersas.",
     features: [
       "Usuarios",
       "Productos",
@@ -34,14 +36,15 @@ const systems: SystemFeature[] = [
       "Propiedades",
       "Contenido web",
     ],
-    benefit: "Control total sin depender de terceros",
+    benefit: "Toda la operación en un mismo panel",
     color: "text-coral",
+    href: "/soluciones/software-a-medida",
   },
   {
     icon: BarChart3,
     title: "Dashboard Inteligente",
     description:
-      "Visualizá métricas clave en tiempo real para tomar mejores decisiones.",
+      "Visualizá métricas de operación en tiempo real: cotizaciones, órdenes, flota y tiempos de respuesta.",
     features: [
       "Ventas",
       "Consultas",
@@ -49,36 +52,39 @@ const systems: SystemFeature[] = [
       "Rendimiento",
       "Estadísticas",
     ],
-    benefit: "Información clara para crecer con datos",
+    benefit: "Decisiones operativas con datos reales",
     color: "text-sky",
+    href: "/soluciones/dashboards-y-portales-de-clientes",
   },
   {
     icon: Users,
     title: "CRM y Gestión de Clientes",
     description:
-      "Centralizá contactos, seguimientos y oportunidades comerciales.",
+      "Centralizá clientes, cotizaciones y seguimientos. Fuera los clientes perdidos en el WhatsApp o en una planilla.",
     features: [
       "Historial clientes",
       "Seguimiento",
       "Gestión de leads",
       "Automatización",
     ],
-    benefit: "Más organización y mejores conversiones",
+    benefit: "Cada cliente y cotización, siempre visible",
     color: "text-mint",
+    href: "/soluciones/crm-para-empresas-de-servicios",
   },
   {
     icon: Settings2,
     title: "Automatización de Procesos",
     description:
-      "Reducí tareas repetitivas y mejorá la eficiencia operativa.",
+      "Reducí tareas repetitivas: pre-calificación, emisión de cotizaciones y notificaciones sin intervención manual.",
     features: [
       "Formularios inteligentes",
       "Notificaciones",
       "Integraciones",
       "Flujos personalizados",
     ],
-    benefit: "Menos tiempo manual, más tiempo para vender",
+    benefit: "Menos trabajo manual, más velocidad de respuesta",
     color: "text-lavender",
+    href: "/soluciones/automatizacion-con-ia",
   },
 ];
 
@@ -126,11 +132,11 @@ export function SoftwareSystemsSection() {
           >
             {/* Mobile text */}
             <span className="block lg:hidden leading-tight">
-              Software y Sistemas de Gestión
+              Sistemas que centralizan tu operación
             </span>
             {/* Desktop text */}
             <span className="hidden lg:block">
-              Software y Sistemas de Gestión para Empresas
+              Software y sistemas que centralizan tu operación
             </span>
           </motion.h2>
 
@@ -150,9 +156,7 @@ export function SoftwareSystemsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Desarrollamos soluciones a medida para optimizar procesos,
-            centralizar información y brindar control total sobre tu negocio
-            desde cualquier dispositivo.
+            Un panel administrativo, un dashboard o un CRM que centraliza cotizaciones, órdenes y clientes: toda tu operación en un solo lugar, para vos y para tu equipo.
           </motion.p>
 
           {/* Cards Grid */}
@@ -169,6 +173,7 @@ export function SoftwareSystemsSection() {
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="group relative flex flex-col rounded-xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.05] hover:shadow-xl"
               >
+                <Link href={system.href} className="flex flex-col flex-1">
                 {/* Icon container */}
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 group-hover:scale-110 group-hover:border-white/40">
                   <system.icon className="h-7 w-7 text-white transition-all duration-300 group-hover:scale-110" />
@@ -213,6 +218,7 @@ export function SoftwareSystemsSection() {
                     {system.benefit}
                   </p>
                 </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
@@ -349,7 +355,7 @@ export function SoftwareSystemsSection() {
                 </span>{" "}
                 en{" "}
                 <span className="text-primary-gradient bg-clip-text text-transparent">
-                  decisiones
+                  decisiones operativas
                 </span>
               </h3>
               <p
@@ -387,9 +393,9 @@ export function SoftwareSystemsSection() {
               className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: "var(--font-titles)" }}
             >
-              Tecnología diseñada para{" "}
+              Diseñado para{" "}
               <span className="text-primary-gradient bg-clip-text text-transparent">
-                hacer crecer tu empresa
+                que tu equipo lo use todos los días
               </span>
             </h3>
 
@@ -412,7 +418,7 @@ export function SoftwareSystemsSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span>Contanos qué necesitas</span>
+              <span>Pedir diagnóstico técnico</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.a>
           </motion.div>

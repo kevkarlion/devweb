@@ -10,12 +10,11 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export function HeroSection() {
   // Checklist con enfoque en Software a Medida e IA
   const checklistItems = [
-    "Software a Medida",
-    "CRM a Medida",
-    "Chatbots con IA",
-    "Integración de IA",
-    "Automatización de Procesos",
-    "Tiendas Online",
+    "CRM con IA que pre-califica clientes",
+    "Dashboards en tiempo real",
+    "Portales para tus clientes",
+    "Automatización de cotizaciones",
+    "Software a medida",
   ];
 
   return (
@@ -34,7 +33,7 @@ export function HeroSection() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             tabIndex={-1}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
@@ -46,7 +45,7 @@ export function HeroSection() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             tabIndex={-1}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
@@ -65,7 +64,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Software a medida. <br /> IA que trabaja 24/7.
+              Software a medida para empresas industriales.
             </motion.h1>
 
             <motion.div
@@ -76,7 +75,7 @@ export function HeroSection() {
             >
               <div className="bg-black/60 rounded-xl px-4 py-3">
                 <p className="text-lg font-medium text-neutral-300 leading-tight">
-                  Software a medida, CRMs y chatbots con IA que trabajan 24/7.
+                  CRMs con IA, dashboards y portales para Oil &amp; Gas, logística y agroindustria.
                 </p>
               </div>
             </motion.div>
@@ -86,7 +85,7 @@ export function HeroSection() {
                 href="https://wa.me/5492984252859"
                 className="inline-flex items-center justify-center w-[95%] gap-3 px-8 py-4 border border-white rounded-sm font-semibold text-white bg-mobile-gradient"
               >
-                Solicitar una consultoría
+                Pedir diagnóstico técnico
                 <ArrowRight className="w-5 h-5" />
               </a>
             </motion.div>
@@ -113,12 +112,15 @@ export function HeroSection() {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                 >
-                  Software a medida. <br /> IA que trabaja 24/7.
+                  Software a medida para empresas industriales <br />
+                  <span className="text-primary-gradient bg-clip-text text-transparent">
+                    que no pueden frenar su operación.
+                  </span>
                 </motion.h1>
 
                 <motion.div className="space-y-8">
                   <p className="text-lg text-neutral-300 max-w-xl leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
-                    <strong>Desarrollamos sistemas a la medida de tu operación</strong>: CRMs, automatización y chatbots con IA que responden a tus clientes de día y de noche. Tu proceso no cambia; el software se adapta a él. Software a medida para empresas de la <strong>Patagonia</strong> que quieren crecer sin duplicar esfuerzo.
+                    CRMs con IA, dashboards y portales para proveedores de Oil &amp; Gas, logística y agroindustria en Neuquén y el Alto Valle. Reemplazamos las planillas y el WhatsApp por infraestructura que cotiza, pre-califica y reporta sola.
                   </p>
 
                   <div className="w-[60%]">
@@ -126,7 +128,7 @@ export function HeroSection() {
                       href="https://wa.me/5492984252859"
                       className="inline-flex items-center justify-center w-full gap-3 px-8 py-4 border-2 border-white rounded-sm hover:scale-105 transition-all font-semibold text-white bg-primary-gradient"
                     >
-                      Solicitar una consultoría
+                      Pedir diagnóstico técnico
                       <ArrowRight className="w-6 h-6 group-hover:translate-x-1" />
                     </a>
                   </div>

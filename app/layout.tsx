@@ -10,7 +10,6 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 // ✅ Importar los componentes de Schema
 import { OnePageSchema } from "@/components/OnePageSchema";
-import { FAQSchema } from "@/components/FAQSchema";
 import { WebsiteSchema } from "@/components/WebsiteSchema";
 
 import { Titillium_Web, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
@@ -70,9 +69,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://devwebpatagonia.com/"),
   alternates: {
     canonical: "/",
-    languages: {
-      "es-AR": "/",
-    },
   },
   openGraph: {
     type: "website",
@@ -173,7 +169,6 @@ export default function RootLayout({
           {/* ✅ SCHEMA MARKUP IMPLEMENTADO */}
           <OnePageSchema />
           <WebsiteSchema />
-          <FAQSchema />
 
           <GoogleAnalytics />
           <Footer />

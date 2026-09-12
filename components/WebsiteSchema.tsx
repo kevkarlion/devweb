@@ -9,7 +9,12 @@ export function WebsiteSchema() {
     "publisher": {
       "@type": "Organization",
       "name": "Devweb",
-      "url": "https://devwebpatagonia.com"
+      "url": "https://devwebpatagonia.com",
+      "logo": "https://devwebpatagonia.com/logo-new-white.png",
+      "sameAs": [
+        "https://wa.me/5492984252859",
+        "https://www.instagram.com/devwebpatagonia"
+      ]
     }
   }
 

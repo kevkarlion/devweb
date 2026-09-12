@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Zap, Search, Smartphone, Clock, BarChart3, Shield, MessageCircle, Settings } from "lucide-react";
+import { Check, ArrowRight, FileSpreadsheet, MessageCircle, Clock, Users, Repeat, Database, TrendingUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,52 +10,52 @@ import { Input } from "@/components/ui/input";
 const signals = [
   {
     id: 1,
-    icon: Zap,
-    title: "Carga lenta",
-    description: "Si tu sitio tarda más de 3 segundos en cargar, estás perdiendo clientes. El 53% de los usuarios abandona una web que tarda más de 3 segundos.",
-    tip: "Optimiza imágenes, usa CDN, implementa lazy loading.",
+    icon: FileSpreadsheet,
+    title: "Planillas desactualizadas",
+    description: "La operación se coordina en planillas que nadie actualiza y cada corrección depende de una conversación.",
+    tip: "Un sistema central registra cotizaciones, stock y plazos en tiempo real.",
   },
   {
     id: 2,
-    icon: Search,
-    title: "No aparece en Google",
-    description: "Sin SEO actualizado, tu web es invisible. El 75% de los usuarios nunca pasa de la primera página de resultados.",
-    tip: "Actualiza meta tags, mejora estructura, optimiza contenido.",
+    icon: MessageCircle,
+    title: "WhatsApp disperso",
+    description: "Pedidos, consultas y seguimiento de clientes repartidos en chats sueltos que después nadie puede consultar.",
+    tip: "Centralizá cada contacto y su historial en un solo lugar.",
   },
   {
     id: 3,
-    icon: Smartphone,
-    title: "No es responsive",
-    description: "Más del 60% del tráfico web proviene de dispositivos móviles. Si tu sitio no se ve bien en celular, estás perdiendo la mayoría.",
-    tip: "Diseña mobile-first, testa en múltiples dispositivos.",
+    icon: Clock,
+    title: "Cotizaciones que tardan",
+    description: "Cada cotización exige juntar datos de varias fuentes y eso demora horas que no tenés.",
+    tip: "Automatizá el armado de cotizaciones con los datos que ya cargaste.",
   },
   {
     id: 4,
-    icon: Clock,
-    title: "Diseño obsoleto",
-    description: "Un sitio web con diseño anticuado genera desconfianza. Los visitantes interpretan una web vieja como un negocio que no se actualiza.",
-    tip: "Actualiza el diseño cada 3-4 años, usa tendencias modernas.",
+    icon: Users,
+    title: "Clientes sin visibilidad",
+    description: "No sabés qué pasa con cada cliente: qué cotizó, desde cuándo espera y qué se le prometió.",
+    tip: "Un tablero de seguimiento muestra el estado de cada cuenta.",
   },
   {
     id: 5,
-    icon: BarChart3,
-    title: "Sin analytics",
-    description: "No sabes cuántos visitantes tienes, de dónde vienen, ni qué hacen. Sin datos, optimizar es imposible.",
-    tip: "Implementa Google Analytics 4, configura objetivos.",
+    icon: Repeat,
+    title: "Tareas repetitivas",
+    description: "Cargar pedidos, armar listas y pasarlos en limpio consume horas que no generan valor.",
+    tip: "Automatizá las tareas administrativas que se repiten todos los días.",
   },
   {
     id: 6,
-    icon: Shield,
-    title: "No tiene SSL o está desactualizado",
-    description: "Los navegadores marcan sitios sin SSL como \"no seguros\". Además, vulnerabilidades sin parchear exponen tus datos.",
-    tip: "Renueva certificados, mantiene actualizado el CMS y plugins.",
+    icon: Database,
+    title: "Datos que nadie usa",
+    description: "Acumulás datos sueltos, pero no los convertís en decisiones de operación.",
+    tip: "Dashboards operativos que muestran lo importante sin esperar un informe.",
   },
   {
     id: 7,
-    icon: Settings,
-    title: "Sin mantenimiento técnico",
-    description: "Security patches, backups, actualizaciones del CMS. El mantenimiento prevent problems majors.",
-    tip: "Contrata un plan de mantenimiento o actualiza regularmente.",
+    icon: TrendingUp,
+    title: "Crecimiento que depende de contratar más gente",
+    description: "Si no cambiás los procesos, crecer significa sumar más personal a las mismas tareas.",
+    tip: "Digitalizá procesos para escalar sin duplicar la carga administrativa.",
   },
 ];
 
@@ -99,7 +99,7 @@ if (status === "success") {
       >
         <Check className="w-16 h-16 text-white mx-auto mb-4" />
         <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-titles)" }}>¡Listo!</h3>
-        <p className="text-gray-300">Revisa tu email para ver el checklist completo.</p>
+        <p className="text-gray-300">Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles.</p>
       </motion.div>
     );
   }
@@ -130,7 +130,7 @@ if (status === "success") {
         ) : (
           <span className="flex items-center gap-2">
             <MessageCircle className="w-5 h-5" />
-            Obtener Checklist Gratis
+            Descargar diagnóstico gratuito
           </span>
         )}
       </Button>
@@ -159,20 +159,20 @@ export default function LeadMagnetContent() {
             className="text-center"
           >
             <span className="inline-block px-4 py-1 bg-primary-gradient text-white rounded-full text-sm font-medium mb-6">
-              🎁 Descarga Gratis
+              Diagnóstico gratuito
             </span>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
               style={{ fontFamily: "var(--font-titles)" }}
             >
-              7 Señales de que tu Web{" "}
+              ¿Tu operación todavía se maneja con{" "}
               <span className="text-transparent bg-clip-text bg-primary-gradient">
-                Necesita una Renewal
+                planillas y WhatsApp?
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-              ¿Tu sitio web está obsoleto? Descarga nuestro checklist gratuito 
-              y descubre las 7 señales que indican que es momento de renovar tu presencia digital.
+              Descargá esta guía y detectá en 5 minutos qué procesos se pueden automatizar
+              antes de que otra licitación se te escape por falta de respuesta.
             </p>
 
             {/* Email Form */}
@@ -194,10 +194,10 @@ export default function LeadMagnetContent() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-gradient bg-clip-text text-transparent"
                 style={{ fontFamily: "var(--font-titles)" }}>
-              Las 7 Señales
+              Las 7 señales de tu operación
             </h2>
             <p className="text-gray-400">
-              ¿Cuántas de estas señales tiene tu sitio actual?
+              ¿Cuántas de estas señales reconocés en tu operación?
             </p>
           </motion.div>
 
@@ -223,7 +223,7 @@ export default function LeadMagnetContent() {
                   </div>
                   <p className="text-gray-400 mb-2">{signal.description}</p>
                   <p className="text-sm text-gray-500">
-                    <span className="text-primary-gradient">💡 Tip:</span> {signal.tip}
+                    <span className="text-primary-gradient">Tip:</span> {signal.tip}
                   </p>
                 </div>
               </motion.div>
@@ -238,7 +238,7 @@ export default function LeadMagnetContent() {
             className="text-center mt-16"
           >
             <p className="text-xl text-gray-300 mb-6">
-              ¿Detectaste al menos 3 señales?
+              ¿Reconocés tu operación en alguna de estas señales?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -253,7 +253,7 @@ export default function LeadMagnetContent() {
                 href="/#contacto"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/20 hover:bg-white/5 text-white rounded-lg font-semibold"
               >
-                Solicitar Auditoría
+                Solicitar diagnóstico técnico
               </a>
             </div>
           </motion.div>
@@ -265,21 +265,21 @@ export default function LeadMagnetContent() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary-gradient bg-clip-text text-transparent"
               style={{ fontFamily: "var(--font-titles)" }}>
-            ¿Por qué renovar tu web?
+            ¿Por qué digitalizar tu operación?
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                title: "Más Conversiones",
-                description: "Una web moderna convierte más visitantes en clientes.",
+                title: "Menos errores",
+                description: "Procesos digitalizados reducen los errores de carga y de traslado de datos.",
               },
               {
-                title: "Mejor Posicionamiento",
-                description: "Google favorece sitios rápidos y bien diseñados.",
+                title: "Respuestas más rápidas",
+                description: "Cotizaciones y seguimientos que no esperan a que alguien actualice una planilla.",
               },
               {
-                title: "Mayor Confianza",
-                description: "Un sitio profesional genera más confianza.",
+                title: "Decidí con datos",
+                description: "Dashboards que reemplazan las suposiciones por información real de la operación.",
               },
             ].map((item, index) => (
               <motion.div

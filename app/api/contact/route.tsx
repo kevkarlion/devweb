@@ -3,12 +3,12 @@ import transporter from '@/lib/nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, message } = await request.json();
+    const { name, company, email, phone, sector, necesidad, message } = await request.json();
 
     // Validaciones
-    if (!name?.trim() || !email?.trim() || !message?.trim()) {
+    if (!name?.trim() || !company?.trim() || !email?.trim() || !sector?.trim() || !necesidad?.trim()) {
       return NextResponse.json(
-        { error: 'Todos los campos son requeridos' },
+        { error: 'Nombre, empresa, email, sector y necesidad son requeridos' },
         { status: 400 }
       );
     }
@@ -53,6 +53,10 @@ export async function POST(request: Request) {
                   ${name}
                 </div>
                 <div class="field">
+                  <strong>🏢 Empresa</strong>
+                  ${company}
+                </div>
+                <div class="field">
                   <strong>📧 Email</strong>
                   ${email}
                 </div>
@@ -62,9 +66,18 @@ export async function POST(request: Request) {
                   ${phone}
                 </div>` : ''}
                 <div class="field">
+                  <strong>🏭 Sector</strong>
+                  ${sector}
+                </div>
+                <div class="field">
+                  <strong>🎯 Necesidad</strong>
+                  ${necesidad}
+                </div>
+                ${message ? `
+                <div class="field">
                   <strong>💬 Mensaje</strong>
                   <div class="message">${message}</div>
-                </div>
+                </div>` : ''}
               </div>
               <div class="footer">
                 <p>Este mensaje fue enviado desde el formulario de contacto de DevWeb</p>
@@ -79,15 +92,18 @@ export async function POST(request: Request) {
         </html>
       `,
       text: `
-NUEVO MENSAJE DE CONTACTO - DEVWEB
-===================================
+NUEVO PEDIDO DE DIAGNÓSTICO TÉCNICO - DEVWEB
+===========================================
 
 Nombre: ${name}
+Empresa: ${company}
 Email: ${email}${phone ? `
 Celular: ${phone}` : ''}
+Sector: ${sector}
+Necesidad: ${necesidad}${message ? `
 
 Mensaje:
-${message}
+${message}` : ''}
 
 ---
 Enviado desde el formulario de contacto de DevWeb
@@ -100,7 +116,7 @@ ${new Date().toLocaleString('es-AR')}
 
     return NextResponse.json(
       { 
-        message: '¡Mensaje enviado correctamente! Te contactaremos pronto.',
+        message: 'Recibimos tu pedido de diagnóstico. Te contactamos dentro de las próximas 24 h hábiles.',
         success: true,
         messageId: result.messageId
       },

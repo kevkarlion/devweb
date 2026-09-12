@@ -52,7 +52,7 @@ async function sendConfirmationEmail(email: string): Promise<{ success: boolean;
       from: `"Devweb Patagonia" <${process.env.EMAIL_USER}>`,
       to: email,
       bcc: adminEmail, // Te llega copia a vos también
-      subject: "🎯 Confirmación - 7 Señales de que tu Web Necesita una Renewal",
+      subject: "Nuevo pedido de diagnóstico técnico - DEVWEB",
       html: `
 <!DOCTYPE html>
 <html>
@@ -64,69 +64,33 @@ async function sendConfirmationEmail(email: string): Promise<{ success: boolean;
     .content { background: #f8fafc; padding: 30px; border-radius: 0 0 12px 12px; }
     .title { margin: 0 0 20px 0; font-size: 24px; font-weight: 700; }
     .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 20px; }
-    .checklist { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
-    .check-item { display: flex; align-items: flex-start; margin: 12px 0; }
-    .check-icon { color: #10b981; margin-right: 12px; font-weight: bold; }
-    .cta { display: inline-block; background: #10b981; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 20px 0; }
+    .info { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    .cta { display: inline-block; background: #1e3a5f; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 20px 0; }
     .footer { text-align: center; padding: 20px; color: #64748b; font-size: 14px; }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1 class="title">🎉 ¡Gracias por suscribirte!</h1>
-    <p class="subtitle">Aquí están las 7 señales que prometimos</p>
+    <h1 class="title">Nuevo pedido de diagnóstico técnico</h1>
+    <p class="subtitle">Solicitud registrada a través del formulario</p>
   </div>
   <div class="content">
-    <h2 style="color: #1e3a5f; margin-bottom: 16px;">📋 Las 7 Señales de que tu Web Necesita una Renewal</h2>
-    
-    <div class="checklist">
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>1. Carga lenta</strong> — Si tu sitio tarda más de 3 segundos en cargar, estás perdiendo clientes.</span>
-      </div>
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>2. No aparece en Google</strong> — Sin SEO actualizado, tu web es invisible.</span>
-      </div>
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>3. No es responsive</strong> — Más del 60% del tráfico es desde móvil.</span>
-      </div>
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>4. Diseño obsoleto</strong> — Un sitio antiguo genera desconfianza.</span>
-      </div>
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>5. Sin analytics</strong> — No sabes cuántos visitantes tienes.</span>
-      </div>
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>6. Sin optimización de imágenes</strong> — Archivos pesados = carga lenta.</span>
-      </div>
-      <div class="check-item">
-        <span class="check-icon">✓</span>
-        <span><strong>7. Sin mantenimiento técnico</strong> — Security patches, backups, actualizaciones.</span>
-      </div>
-    </div>
-
-    <p style="margin: 24px 0; color: #475569;">
-      ¿Cuántas de estas señales ves en tu sitio actual? Si detectaste al menos 3, 
-      <strong>es momento de renovar tu presencia digital.</strong>
+    <p style="color: #475569; margin: 0 0 16px 0;">
+      Recibimos tu pedido de diagnóstico técnico gratuito. Te contactamos dentro de las próximas 24 h hábiles.
     </p>
 
-    <a href="https://devwebpatagonia.com/#contacto" class="cta">
-      🚀 Agenda tu Auditoría Gratis
-    </a>
+    <div class="info">
+      <p style="margin: 0;"><strong>Contacto:</strong> ${email}</p>
+      <p style="margin: 12px 0 0;"><strong>Solicitud:</strong> diagnóstico técnico gratuito</p>
+    </div>
 
     <p style="color: #64748b; font-size: 14px; margin-top: 24px;">
-     PD: Este checklist es solo el comienzo. En nuestra auditoría gratuita profundizamos 
-      en cada punto y te proponemos un plan de acción concreto.
+      Analizamos tus procesos y te mostramos qué se puede automatizar con CRM, IA y dashboards: planillas, cotizaciones y seguimiento de clientes.
     </p>
   </div>
   <div class="footer">
-    <p>© ${new Date().getFullYear()} Devweb - Gestión y Desarrollo Web</p>
-    <p>Alto Valle, Río Negro - Patagonia, Argentina</p>
+    <p>© ${new Date().getFullYear()} Devweb - Software a Medida y Desarrollo Web</p>
+    <p>Neuquén y Alto Valle, Patagonia, Argentina</p>
   </div>
 </body>
 </html>
@@ -178,7 +142,7 @@ export async function POST(request: Request) {
       });
     }
 
-    return NextResponse.json({ success: true, message: "Te enviamos el checklist a tu email" });
+    return NextResponse.json({ success: true, message: "Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles." });
   } catch (error) {
     console.error("Error in /api/leads:", error);
     return NextResponse.json(

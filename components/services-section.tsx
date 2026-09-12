@@ -3,13 +3,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 import {
   ArrowRight,
   ChevronDown,
   Code,
-  Palette,
-  Settings2,
   BarChart3,
+  Users,
+  Bot,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -18,28 +19,32 @@ import {
 
 const services = [
   {
-    title: "Software a Medida",
+    title: "Software a medida",
     description:
-      "Desarrollamos sistemas CRM, paneles de administración y soluciones digitales personalizadas para optimizar cada proceso de tu negocio.",
+      "Sistemas desarrollados según tu operación: reemplazamos planillas y circuitos manuales por procesos digitales que no frenan.",
     icon: Code,
+    href: "/soluciones/software-a-medida",
   },
   {
-    title: "Automatización de Procesos",
+    title: "CRM para empresas de servicios",
     description:
-      "Eliminá tareas repetitivas con flujos inteligentes que conectan herramientas, notifican en tiempo real y mejoran la eficiencia operativa.",
-    icon: Settings2,
+      "Centralizá clientes, cotizaciones y seguimientos sin depender del WhatsApp disperso ni de planillas sueltas.",
+    icon: Users,
+    href: "/soluciones/crm-para-empresas-de-servicios",
   },
   {
-    title: "Dashboards Interactivos",
+    title: "Automatización con IA",
     description:
-      "Visualizá métricas clave, controlá tu negocio en tiempo real y tomá decisiones estratégicas respaldadas por datos concretos.",
+      "Automatizamos la pre-calificación de clientes, la emisión de cotizaciones y la carga de datos repetitiva.",
+    icon: Bot,
+    href: "/soluciones/automatizacion-con-ia",
+  },
+  {
+    title: "Dashboards y portales de clientes",
+    description:
+      "Tableros en tiempo real y portales donde tu cliente consulta estados, órdenes e historial sin llamar ni esperar.",
     icon: BarChart3,
-  },
-  {
-    title: "Desarrollo Web Full-Stack",
-    description:
-      "Creamos sitios rápidos y escalables con Next.js, diseño UI/UX profesional, SEO avanzado y rendimiento optimizado.",
-    icon: Palette,
+    href: "/soluciones/dashboards-y-portales-de-clientes",
   },
 ];
 
@@ -100,9 +105,9 @@ export function ServicesSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Texto para mobile */}
-            <span className="block lg:hidden leading-14">Nuestros servicios</span>
+            <span className="block lg:hidden leading-14">Nuestras soluciones</span>
             {/* Texto para desktop */}
-            <span className="hidden lg:block">Servicios de diseño & desarrollo web</span>
+            <span className="hidden lg:block">Soluciones para operación industrial</span>
           </motion.h1>
 
           {/* Subtítulo h2 */}
@@ -113,7 +118,7 @@ export function ServicesSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.25 }}
           >
-            Soluciones Empresariales a Medida
+            Construidas a la medida de tu operación
           </motion.h2>
 
           {/* Divider line */}
@@ -132,7 +137,7 @@ export function ServicesSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Desarrollamos plataformas, sistemas y herramientas digitales adaptadas a los procesos y objetivos de tu empresa.
+            Reemplazamos las planillas y el WhatsApp disperso por sistemas que cotizan, pre-califican y reportan solos. Para empresas de servicios en Neuquén y el Alto Valle.
           </motion.p>
 
           {/* Grid de servicios - 2 columnas en desktop */}
@@ -145,6 +150,7 @@ export function ServicesSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.1 + 0.6 }}
               >
+                <Link href={service.href} className="flex flex-col flex-1">
                 {/* Icon container */}
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 group-hover:scale-110 group-hover:border-white/40">
                   <service.icon className="h-7 w-7 text-white transition-all duration-300 group-hover:scale-110" />
@@ -165,6 +171,7 @@ export function ServicesSection() {
                 >
                   {service.description}
                 </p>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -187,7 +194,10 @@ export function ServicesSection() {
                   className="flex flex-col items-center w-full"
                 >
                   {/* Card */}
-                  <div className="group relative flex flex-col items-start rounded-xl border-2 border-white/20 bg-mobile-gradient p-6 w-[90%] max-w-md transition-all duration-300 mt-8">
+                  <Link
+                    href={services[currentSlide].href}
+                    className="group relative flex flex-col items-start rounded-xl border-2 border-white/20 bg-mobile-gradient p-6 w-[90%] max-w-md transition-all duration-300 mt-8"
+                  >
                     {/* Icon container */}
                     <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/5">
                       {React.createElement(services[currentSlide].icon, {
@@ -210,7 +220,7 @@ export function ServicesSection() {
                     >
                       {services[currentSlide].description}
                     </p>
-                  </div>
+                  </Link>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -285,7 +295,7 @@ export function ServicesSection() {
 
               {/* Contenido */}
               <span className="relative z-10 text-white">
-                Cotizá tu proyecto
+                Pedir diagnóstico técnico
               </span>
               <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </a>
@@ -317,7 +327,7 @@ export function ServicesSection() {
 
               {/* Contenido */}
               <span className="relative z-10 text-white">
-                Cotizá tu proyecto
+                Pedir diagnóstico técnico
               </span>
               <ArrowRight className="w-7 h-7 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </a>

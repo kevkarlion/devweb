@@ -7,8 +7,11 @@ import { ArrowRight, MessageCircle, Mail, MapPin } from "lucide-react"
 
 interface FormData {
   name: string
+  company: string
   email: string
   phone: string
+  sector: string
+  necesidad: string
   message: string
 }
 
@@ -16,9 +19,12 @@ export function ContactSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [formData, setFormData] = useState<FormData>({ 
-    name: "", 
+    name: "",
+    company: "",
     email: "",
     phone: "",
+    sector: "",
+    necesidad: "",
     message: "" 
   })
   const [loading, setLoading] = useState(false)
@@ -62,11 +68,11 @@ export function ContactSection() {
 
       setSubmitStatus({
         type: 'success',
-        message: data.message || '¡Mensaje enviado correctamente! Te contactaremos pronto.'
+        message: data.message || 'Recibimos tu pedido de diagnóstico. Te contactamos dentro de las próximas 24 h hábiles.'
       })
       
       // Limpiar formulario
-      setFormData({ name: "", email: "", phone: "", message: "" })
+      setFormData({ name: "", company: "", email: "", phone: "", sector: "", necesidad: "", message: "" })
 
     } catch (err: any) {
       console.error("Error enviando formulario:", err)
@@ -90,7 +96,7 @@ export function ContactSection() {
   }
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -117,7 +123,7 @@ export function ContactSection() {
               fontFamily: "var(--font-titles)",
             }}
           >
-            Hablemos <br /> de tu proyecto
+            Pedí tu <br /> diagnóstico técnico
           </motion.h1>
 
           <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-8"></div>
@@ -153,9 +159,9 @@ export function ContactSection() {
               className="text-3xl lg:text-4xl font-bold text-white leading-tight"
               style={{ fontFamily: "var(--font-titles)" }}
             >
-              Transformamos ideas en{" "}
+              Contanos cómo opera tu empresa hoy y te decimos qué se puede{" "}
               <span className="text-primary-gradient">
-                experiencias digitales
+                automatizar.
               </span>
             </h2>
 
@@ -163,9 +169,7 @@ export function ContactSection() {
               className="text-neutral-300 text-base leading-relaxed text-left"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              ¿Tenés un proyecto de diseño web o desarrollo de sitio profesional?
-              Contanos tu idea y juntos vamos a crear una experiencia digital que
-              potencie tu marca y atraiga clientes.
+              Sin costo y sin compromiso: te contamos qué procesos de tu operación se pueden automatizar y cómo.
             </p>
 
             <div className="space-y-4 pt-4">
@@ -233,6 +237,28 @@ export function ContactSection() {
 
             <div>
               <label
+                htmlFor="company"
+                className="block font-medium text-sm text-neutral-400 mb-2"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Empresa
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                placeholder=""
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full px-5 py-3.5 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-neutral-600"
+                style={{ fontFamily: "var(--font-body)" }}
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <div>
+              <label
                 htmlFor="email"
                 className="block font-medium text-sm text-neutral-400 mb-2"
                 style={{ fontFamily: "var(--font-body)" }}
@@ -276,6 +302,60 @@ export function ContactSection() {
 
             <div>
               <label
+                htmlFor="sector"
+                className="block font-medium text-sm text-neutral-400 mb-2"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Sector
+              </label>
+              <select
+                id="sector"
+                name="sector"
+                value={formData.sector}
+                onChange={handleChange}
+                className="w-full px-5 py-3.5 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-neutral-600"
+                style={{ fontFamily: "var(--font-body)" }}
+                required
+                disabled={loading}
+              >
+                <option value="" disabled>Seleccioná tu sector</option>
+                <option value="Oil & Gas">Oil & Gas</option>
+                <option value="Logística y transporte">Logística y transporte</option>
+                <option value="Agroindustria">Agroindustria</option>
+                <option value="Instalaciones industriales">Instalaciones industriales</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="necesidad"
+                className="block font-medium text-sm text-neutral-400 mb-2"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Necesidad
+              </label>
+              <select
+                id="necesidad"
+                name="necesidad"
+                value={formData.necesidad}
+                onChange={handleChange}
+                className="w-full px-5 py-3.5 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 placeholder:text-neutral-600"
+                style={{ fontFamily: "var(--font-body)" }}
+                required
+                disabled={loading}
+              >
+                <option value="" disabled>Seleccioná tu necesidad</option>
+                <option value="CRM con IA">CRM con IA</option>
+                <option value="Automatización con IA">Automatización con IA</option>
+                <option value="Dashboards y portales">Dashboards y portales</option>
+                <option value="Software a medida">Software a medida</option>
+                <option value="Diagnóstico general">Diagnóstico general</option>
+              </select>
+            </div>
+
+            <div>
+              <label
                 htmlFor="message"
                 className="block font-medium text-sm text-neutral-400 mb-2"
                 style={{ fontFamily: "var(--font-body)" }}
@@ -291,7 +371,6 @@ export function ContactSection() {
                 rows={5}
                 className="w-full px-5 py-3.5 bg-[#0D0D0D] border border-[#434343] rounded-lg text-neutral-300 text-base focus:border-white focus:outline-none transition-all duration-300 resize-none placeholder:text-neutral-600"
                 style={{ fontFamily: "var(--font-body)" }}
-                required
                 disabled={loading}
               />
             </div>
@@ -320,7 +399,7 @@ export function ContactSection() {
               ) : (
                 <>
                   <span className="relative z-10 text-white text-center">
-                    Enviar Mensaje
+                    Pedir diagnóstico técnico
                   </span>
                   <ArrowRight className="w-5 h-5 relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1" />
                 </>
