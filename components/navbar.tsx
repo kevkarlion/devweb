@@ -205,7 +205,8 @@ export function Navbar() {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              Potenciar mi marca
+              <span className="lg:hidden">Diagnóstico</span>
+              <span className="hidden lg:inline">Pedir diagnóstico técnico</span>
             </motion.a>
           </div>
 
