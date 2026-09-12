@@ -66,10 +66,19 @@ export function Navbar() {
   useEffect(() => {
     setIsMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Scroll lock: cuando el drawer mobile está abierto, el fondo no debe moverse detrás.
+  useEffect(() => {
+    if (!isMounted) return;
+    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen, isMounted]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -82,20 +91,32 @@ export function Navbar() {
   };
 
   const baseNavStyles = {
-    background: "rgba(8, 10, 16, 0.55)",
-    backdropFilter: "blur(16px) saturate(140%)",
-    WebkitBackdropFilter: "blur(16px) saturate(140%)",
+    background: "rgba(8, 10, 16, 0.65)",
+    backdropFilter: "blur(12px) saturate(140%)",
+    WebkitBackdropFilter: "blur(12px) saturate(140%)",
     borderBottom: "1px solid rgba(255,255,255,0.08)",
     boxShadow: "0 10px 30px -10px rgba(0,0,0,0.4)",
   };
 
   const scrolledNavStyles = {
-    background: "rgba(4, 6, 10, 0.78)",
-    backdropFilter: "blur(18px) saturate(150%)",
-    WebkitBackdropFilter: "blur(18px) saturate(150%)",
+    background: "rgba(4, 6, 10, 0.85)",
+    backdropFilter: "blur(14px) saturate(150%)",
+    WebkitBackdropFilter: "blur(14px) saturate(150%)",
     borderBottom: "1px solid rgba(255,255,255,0.12)",
     boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5)",
   };
+
+  // Con el menú abierto el nav queda tapado por el scrim: desactivar el blur evita
+  // doble backdrop-filter (nav + scrim + video hero) → menos jank de paint en mobile.
+  const navStyle = isMenuOpen
+    ? {
+        ...(isScrolled ? scrolledNavStyles : baseNavStyles),
+        backdropFilter: "none",
+        WebkitBackdropFilter: "none",
+      }
+    : isScrolled
+      ? scrolledNavStyles
+      : baseNavStyles;
 
   const linkClasses = `relative text-sm uppercase font-medium text-gray-300 hover:text-white transition-colors duration-300 ${jetbrainsMono.variable}`;
 
@@ -105,7 +126,7 @@ export function Navbar() {
         className={`fixed top-0 left-0 w-full z-1000 transition-all duration-500 ${
           isScrolled ? "py-3" : "py-5"
         }`}
-        style={isScrolled ? scrolledNavStyles : baseNavStyles}
+        style={navStyle}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* LOGO - Imagen siempre a la izquierda */}
@@ -190,7 +211,7 @@ export function Navbar() {
 
           {/* BOTÓN HAMBURGER */}
           <button
-            className="md:hidden flex flex-col gap-1.5 z-[1100] relative"
+            className="md:hidden flex flex-col gap-1.5 z-[1100] relative touch-manipulation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
@@ -211,136 +232,141 @@ export function Navbar() {
       </motion.nav>
 
       {/* MENÚ MOBILE - Drawer lateral con acordeones */}
+      {/* AnimatePresence requires direct children with keys (no fragment) para que el exit corra. */}
       <AnimatePresence>
         {isMenuOpen && (
-          <>
-            {/* Scrim */}
-            <motion.div
-              className="fixed inset-0 z-[1101] bg-black/60 backdrop-blur-sm md:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={closeMenu}
-              aria-hidden="true"
-            />
-            {/* Drawer */}
-            <motion.div
-              className="fixed top-0 right-0 h-full w-[86%] max-w-sm z-[1102] bg-[#0B0F1A] border-l border-white/10 flex flex-col md:hidden"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-              role="dialog"
-              aria-label="Menú de navegación"
-            >
-              {/* Header del drawer */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 shrink-0">
-                <span
-                  className="text-sm font-bold uppercase tracking-widest text-white"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Menú
-                </span>
-                <button
-                  onClick={closeMenu}
-                  className="p-2 -mr-2 text-gray-400 hover:text-white transition-colors"
-                  aria-label="Cerrar menú"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
+          <motion.div
+            key="scrim"
+            className="fixed inset-0 z-[1101] bg-black/60 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
+        )}
+        {isMenuOpen && (
+          <motion.div
+            key="drawer"
+            className="fixed top-0 right-0 h-full w-[86%] max-w-sm z-[1102] bg-[#0B0F1A] border-l border-white/10 flex flex-col md:hidden select-none"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.28, ease: "easeOut" }}
+            style={{ willChange: "transform" }}
+            role="dialog"
+            aria-label="Menú de navegación"
+          >
+            {/* Header del drawer */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 shrink-0">
+              <span
+                className="text-sm font-bold uppercase tracking-widest text-white"
+                style={{ fontFamily: "var(--font-body)" }}
+              >
+                Menú
+              </span>
+              <button
+                onClick={closeMenu}
+                className="p-2 -mr-2 text-gray-400 hover:text-white transition-colors touch-manipulation"
+                aria-label="Cerrar menú"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
-              {/* Contenido scrolleable */}
-              <div className="flex-1 overflow-y-auto px-5 py-2">
-                {/* Inicio */}
-                <a
-                  href="/"
-                  onClick={closeMenu}
-                  className="block py-3.5 text-base font-bold text-white uppercase tracking-tight border-b border-white/5"
-                >
-                  Inicio
-                </a>
+            {/* Contenido scrolleable */}
+            <div className="flex-1 overflow-y-auto px-5 py-2 overscroll-contain">
+              {/* Inicio */}
+              <a
+                href="/"
+                onClick={closeMenu}
+                className="block py-3.5 text-base font-bold text-white uppercase tracking-tight border-b border-white/5"
+              >
+                Inicio
+              </a>
 
-                {/* Silos como acordeones */}
-                {navSections.map((section) => {
-                  const isOpen = openSection === section.name;
-                  return (
-                    <div key={section.name} className="border-b border-white/5">
-                      <button
-                        onClick={() => toggleSection(section.name)}
-                        aria-expanded={isOpen}
-                        className="w-full flex items-center justify-between py-3.5 text-base font-bold text-white uppercase tracking-tight"
-                      >
-                        {section.name}
-                        <ChevronDown
-                          className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            key="content"
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.28, ease: "easeInOut" }}
-                            className="overflow-hidden"
-                          >
-                            <div className="pb-3 pl-4 border-l border-white/10 ml-2">
-                              <a
-                                href={section.hub}
-                                onClick={closeMenu}
-                                className="block py-2 text-xs font-bold uppercase tracking-widest text-[#B9C8F5]"
-                              >
-                                Ver todas · {section.name}
-                              </a>
-                              {section.items.map((item) => (
-                                <a
-                                  key={item.href}
-                                  href={item.href}
-                                  onClick={closeMenu}
-                                  className="block py-2 text-sm text-gray-400 hover:text-white transition-colors"
-                                >
-                                  {item.name}
-                                </a>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                })}
-
-                {/* Links simples restantes */}
-                {simpleItems
-                  .filter((item) => item.name !== "Inicio")
-                  .map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      onClick={closeMenu}
-                      className="block py-3.5 text-base font-bold text-white uppercase tracking-tight border-b border-white/5"
+              {/* Silos como acordeones */}
+              {navSections.map((section) => {
+                const isOpen = openSection === section.name;
+                return (
+                  <div key={section.name} className="border-b border-white/5">
+                    <button
+                      onClick={() => toggleSection(section.name)}
+                      aria-expanded={isOpen}
+                      className="w-full flex items-center justify-between py-3.5 text-base font-bold text-white uppercase tracking-tight touch-manipulation"
                     >
-                      {item.name}
-                    </a>
-                  ))}
-              </div>
+                      {section.name}
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="content"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{
+                            height: { duration: 0.2, ease: "easeOut" },
+                            opacity: { duration: 0.15 },
+                          }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-3 pl-4 border-l border-white/10 ml-2">
+                            <a
+                              href={section.hub}
+                              onClick={closeMenu}
+                              className="block py-2 text-xs font-bold uppercase tracking-widest text-[#B9C8F5] touch-manipulation"
+                            >
+                              Ver todas · {section.name}
+                            </a>
+                            {section.items.map((item) => (
+                              <a
+                                key={item.href}
+                                href={item.href}
+                                onClick={closeMenu}
+                                className="block py-2 text-sm text-gray-400 hover:text-white transition-colors touch-manipulation"
+                              >
+                                {item.name}
+                              </a>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
 
-              {/* CTA fijo */}
-              <div className="p-5 border-t border-white/10 shrink-0">
-                <a
-                  href="https://wa.me/5492984252859"
-                  className="block w-full px-6 py-3.5 bg-white text-black font-bold uppercase text-xs tracking-widest text-center"
-                >
-                  Comenzar ahora
-                </a>
-              </div>
-            </motion.div>
-          </>
+              {/* Links simples restantes */}
+              {simpleItems
+                .filter((item) => item.name !== "Inicio")
+                .map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="block py-3.5 text-base font-bold text-white uppercase tracking-tight border-b border-white/5 touch-manipulation"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+            </div>
+
+            {/* CTA fijo */}
+            <div className="p-5 border-t border-white/10 shrink-0">
+              <a
+                href="https://wa.me/5492984252859"
+                className="block w-full px-6 py-3.5 bg-white text-black font-bold uppercase text-xs tracking-widest text-center touch-manipulation"
+              >
+                Comenzar ahora
+              </a>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
