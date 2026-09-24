@@ -148,6 +148,8 @@ const related = [
   { label: "Dashboards y portales de clientes", href: "/soluciones/dashboards-y-portales-de-clientes" },
   { label: "Software a medida", href: "/soluciones/software-a-medida" },
   { label: "Añelo / Vaca Muerta", href: "/localidades/anelo-vaca-muerta" },
+  { label: "Software para Oil & Gas en Neuquén Capital", href: "/localidades/neuquen/software-para-oil-gas" },
+  { label: "Software para servicios petroleros en Añelo y Vaca Muerta", href: "/localidades/anelo-vaca-muerta/software-para-servicios-petroleros" },
 ];
 
 export default function OilGasPage() {

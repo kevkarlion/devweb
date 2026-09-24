@@ -148,6 +148,7 @@ const related = [
   { label: "CRM para empresas de servicios", href: "/soluciones/crm-para-empresas-de-servicios" },
   { label: "Software a medida", href: "/soluciones/software-a-medida" },
   { label: "Software en Cipolletti", href: "/localidades/cipolletti" },
+  { label: "Software para logística en Cipolletti", href: "/localidades/cipolletti/software-para-logistica" },
 ];
 
 export default function LogisticaYTransportePage() {

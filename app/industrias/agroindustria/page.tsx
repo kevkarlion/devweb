@@ -154,6 +154,8 @@ const related = [
   { label: "Software para empresas de servicios", href: "/soluciones/crm-para-empresas-de-servicios" },
   { label: "Dashboards y portales de clientes", href: "/soluciones/dashboards-y-portales-de-clientes" },
   { label: "General Roca", href: "/localidades/general-roca" },
+  { label: "Digitalización agroindustrial en General Roca", href: "/localidades/general-roca/digitalizacion-agroindustrial" },
+  { label: "Riego y climatización digital en Villa Regina", href: "/localidades/villa-regina/riego-y-climatizacion-digital" },
 ];
 
 export default function AgroindustriaPage() {
