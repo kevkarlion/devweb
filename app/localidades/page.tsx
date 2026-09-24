@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HubPage } from "@/components/hub-page";
 import { ServiceHubSchema, type HubSchemaItem } from "@/components/ServiceHubSchema";
+import { FaqSectionSchema } from "@/components/FaqSectionSchema";
 
 const baseUrl = "https://devwebpatagonia.com";
 const hubPath = "/localidades";
@@ -132,6 +133,7 @@ export default function LocalidadesPage() {
   return (
     <>
       <ServiceHubSchema hubPath={hubPath} hubName={hubName} items={schemaItems} />
+      <FaqSectionSchema questions={faq} />
       <HubPage
         eyebrow="Localidades"
         title={metadata.title as string}
