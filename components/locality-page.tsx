@@ -254,6 +254,7 @@ export function LocalityPage({
           <Accordion
             type="single"
             collapsible
+            defaultValue="item-0"
             className="mx-auto w-full max-w-3xl rounded-xl border border-[#434343] bg-[#0D0D0D] px-6"
           >
             {faq.map((item, index) => (
