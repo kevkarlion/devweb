@@ -5,20 +5,20 @@ import { FaqSectionSchema } from "@/components/FaqSectionSchema";
 
 const baseUrl = "https://devwebpatagonia.com";
 const pagePath = "/localidades/anelo-vaca-muerta";
-const serviceName = "Software para servicios petroleros en Añelo y Vaca Muerta";
+const serviceName = "Software para empresas de servicios petroleros en Añelo y Vaca Muerta";
 const serviceDescription =
   "Sistemas de gestión de servicios petroleros con base en Añelo y Vaca Muerta: cotizaciones, reportes a operadoras, subcontratistas y seguimiento de locaciones multi-sitio.";
 const areaServed = ["Añelo", "Vaca Muerta", "Neuquén Capital"];
 
 export const metadata: Metadata = {
-  title: "Software para servicios petroleros en Añelo y Vaca Muerta",
+  title: "Software para empresas de servicios petroleros en Añelo y Vaca Muerta",
   description:
     "Software para servicios petroleros en Añelo y Vaca Muerta: gestión de cotizaciones, subcontratistas y reportes a operadoras desde la base operativa de Oil & Gas. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software para servicios petroleros en Añelo y Vaca Muerta",
+    title: "Software para empresas de servicios petroleros en Añelo y Vaca Muerta",
     description:
       "Sistemas para proveedores de servicios petroleros con base en Añelo: locaciones múltiples, subcontratistas y reportes a operadoras en una sola plataforma.",
     url: `${baseUrl}${pagePath}`,

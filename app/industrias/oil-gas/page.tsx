@@ -11,14 +11,14 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "Añelo (Vaca Muerta)"];
 
 export const metadata: Metadata = {
-  title: "Software para Oil & Gas en Neuquén y Vaca Muerta",
+  title: "Software para proveedores de Oil & Gas en Vaca Muerta",
   description:
     "Software para proveedores de Oil & Gas en Neuquén y Vaca Muerta: sistemas que ordenan cotizaciones, reportes a operadoras y gestión de locaciones. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software para Oil & Gas en Neuquén y Vaca Muerta",
+    title: "Software para proveedores de Oil & Gas en Vaca Muerta",
     description:
       "Sistemas para proveedores de mantenimiento petrolero: cotizaciones ordenadas, reportes a operadoras en tiempo real y control de locaciones en una sola plataforma.",
     url: `${baseUrl}${pagePath}`,
