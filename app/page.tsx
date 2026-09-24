@@ -5,6 +5,7 @@ import { SoftwareSystemsSection } from "@/components/software-systems-section"
 import { ProcessTimeline } from "@/components/portfolio-section"
 import { ContactSection } from "@/components/contact-section"
 import { PortfolioSection } from "@/components/PortfolioSection"
+import { HomepageHubLinks } from "@/components/homepage-hub-links"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <SoftwareSystemsSection />
+      <HomepageHubLinks />
       <PortfolioSection />
       <AboutSection />
       <ProcessTimeline />
