@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { writeFileSync, existsSync, readFileSync } from "fs";
-
-const LEADS_FILE = "/tmp/leads.json";
 
 // Email regex validation
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,29 +15,6 @@ const createTransporter = () => {
     },
   });
 };
-
-// Read existing leads
-function readLeads(): Array<{ email: string; timestamp: number }> {
-  if (!existsSync(LEADS_FILE)) {
-    return [];
-  }
-  try {
-    const data = readFileSync(LEADS_FILE, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    return [];
-  }
-}
-
-// Save lead to file
-function saveLead(email: string): void {
-  const leads = readLeads();
-  leads.push({
-    email,
-    timestamp: Date.now(),
-  });
-  writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2));
-}
 
 // Send confirmation email
 async function sendConfirmationEmail(email: string): Promise<{ success: boolean; error?: string }> {
@@ -127,9 +101,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Save lead
-    saveLead(normalizedEmail);
-
     // Send confirmation email - WAIT for result so we can report errors
     const emailResult = await sendConfirmationEmail(normalizedEmail);
 
@@ -150,13 +121,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-}
-
-export async function GET() {
-  // Return lead count for debugging
-  const leads = readLeads();
-  return NextResponse.json({
-    count: leads.length,
-    leads: leads.slice(-10), // Last 10 leads
-  });
 }
