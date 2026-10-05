@@ -4,7 +4,7 @@ import LeadMagnetContent from "./lead-magnet-content";
 // Las fuentes se cargan globalmente desde layout.tsx
 
 export const metadata: Metadata = {
-  title: "7 señales de que tu operación necesita digitalización | Devweb Patagonia",
+  title: "7 señales de que tu operación necesita digitalización",
   description:
     "Guía gratuita para detectar qué procesos de tu operación (cotizaciones, planillas, seguimiento de clientes) se pueden automatizar con CRM, IA y dashboards.",
   alternates: {

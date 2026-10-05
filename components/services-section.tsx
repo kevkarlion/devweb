@@ -137,6 +137,12 @@ export function ServicesSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
+            <Link
+              href="/lead-magnet"
+              className="font-semibold text-white underline underline-offset-4 decoration-white/60 hover:text-neutral-300 transition-colors"
+            >
+              ¿Tu operación todavía se maneja con planillas y WhatsApp?{" "}
+            </Link>
             Reemplazamos las planillas y el WhatsApp disperso por sistemas que cotizan, pre-califican y reportan solos. Para empresas de servicios en Neuquén y el Alto Valle.
           </motion.p>
 
