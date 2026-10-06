@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Check, ArrowRight, FileSpreadsheet, MessageCircle, Clock, Users, Repeat, Database, TrendingUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SuccessModal } from "@/components/success-modal";
 
 // The 7 signals data
 const signals = [
@@ -63,6 +64,13 @@ function LeadForm() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const successCardRef = useRef<HTMLDivElement>(null);
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+    requestAnimationFrame(() => successCardRef.current?.focus());
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -80,6 +88,7 @@ function LeadForm() {
 
       if (response.ok && data.success) {
         setStatus("success");
+        setShowSuccessModal(true);
       } else {
         setStatus("error");
         setErrorMessage(data.error || "Error al enviar");
@@ -92,15 +101,24 @@ function LeadForm() {
 
 if (status === "success") {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-center p-8 border-2 border-white/30 rounded-lg bg-black"
-      >
-        <Check className="w-16 h-16 text-white mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-titles)" }}>¡Listo!</h3>
-        <p className="text-gray-300">Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles.</p>
-      </motion.div>
+      <>
+        <motion.div
+          ref={successCardRef}
+          tabIndex={-1}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-center p-8 border-2 border-white/30 rounded-lg bg-black"
+        >
+          <Check className="w-16 h-16 text-white mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "var(--font-titles)" }}>¡Listo!</h3>
+          <p className="text-gray-300">Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles.</p>
+        </motion.div>
+        <SuccessModal
+          open={showSuccessModal}
+          message="Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles."
+          onClose={handleSuccessModalClose}
+        />
+      </>
     );
   }
 

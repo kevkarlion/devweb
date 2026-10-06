@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { ArrowRight, MessageCircle, Mail, MapPin } from "lucide-react"
 import { CONTACT_EMAIL } from "@/lib/contact-info"
+import { SuccessModal } from "@/components/success-modal"
 // Las fuentes se cargan globalmente desde layout.tsx
 
 interface FormData {
@@ -130,21 +131,24 @@ export function ContactSection() {
           <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-8"></div>
         </motion.div>
 
-        {/* Mensaje de estado */}
-        {submitStatus.type && (
+        {/* Mensaje de error en línea */}
+        {submitStatus.type === 'error' && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`w-full max-w-2xl p-4 rounded-lg mb-6 text-center border ${
-              submitStatus.type === 'success' 
-                ? 'bg-green-500/10 border-green-500/20 text-green-400' 
-                : 'bg-red-500/10 border-red-500/20 text-red-400'
-            }`}
+            className="w-full max-w-2xl p-4 rounded-lg mb-6 text-center border bg-red-500/10 border-red-500/20 text-red-400"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {submitStatus.message}
           </motion.div>
         )}
+
+        {/* Confirmación de éxito en modal */}
+        <SuccessModal
+          open={submitStatus.type === 'success'}
+          message={submitStatus.message}
+          onClose={() => setSubmitStatus(prev => ({ type: null, message: prev.message }))}
+        />
 
         {/* Grid: contenido izq — formulario der */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
