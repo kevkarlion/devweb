@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { ArrowRight, MessageCircle, Mail, MapPin } from "lucide-react"
+import { CONTACT_EMAIL } from "@/lib/contact-info"
 // Las fuentes se cargan globalmente desde layout.tsx
 
 interface FormData {
@@ -175,7 +176,7 @@ export function ContactSection() {
             <div className="space-y-4 pt-4">
               {[
                 { icon: MessageCircle, label: "WhatsApp", value: "+54 9 2984 25-2859", href: "https://wa.me/5492984252859" },
-                { icon: Mail, label: "Email", value: "devwebpatagonia@gmail.com" },
+                { icon: Mail, label: "Email", value: CONTACT_EMAIL },
                 { icon: MapPin, label: "Ubicación", value: "General Roca, Río Negro" },
               ].map((item, i) => {
                 const Icon = item.icon

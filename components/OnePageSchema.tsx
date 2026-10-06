@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "@/lib/contact-info";
+
 export function OnePageSchema() {
   const baseUrl = "https://devwebpatagonia.com";
 
@@ -11,7 +13,7 @@ export function OnePageSchema() {
     "logo": `${baseUrl}/logo-new-white.png`,
     "image": `${baseUrl}/og-image.jpg`,
     "telephone": "+5492984252859",
-    "email": "hola@devwebpatagonia.com",
+    "email": CONTACT_EMAIL,
     "priceRange": "$$",
     "sameAs": [
       "https://wa.me/5492984252859",

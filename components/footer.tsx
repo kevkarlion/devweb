@@ -5,6 +5,7 @@ import { MdEmail, MdLocationOn } from "react-icons/md"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowUp } from "lucide-react"
+import { CONTACT_EMAIL } from "@/lib/contact-info"
 
 const services = [
   { name: "Desarrollo Web", href: "/#servicios" },
@@ -32,8 +33,8 @@ const contactInfo = [
   },
   {
     icon: MdEmail,
-    label: "devwebpatagonia@gmail.com",
-    href: "mailto:devwebpatagonia@gmail.com",
+    label: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
     color: "hover:text-sky",
   },
   {

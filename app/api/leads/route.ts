@@ -1,25 +1,13 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import transporter from "@/lib/nodemailer";
+import { CONTACT_EMAIL } from "@/lib/contact-info";
 
 // Email regex validation
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Configure nodemailer transporter
-// Use the same config as lib/nodemailer.ts
-const createTransporter = () => {
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-};
-
 // Send confirmation email
 async function sendConfirmationEmail(email: string): Promise<{ success: boolean; error?: string }> {
   try {
-    const transporter = createTransporter();
     const adminEmail = process.env.CONTACT_EMAIL || process.env.EMAIL_USER;
 
     const mailOptions = {
@@ -75,7 +63,7 @@ async function sendConfirmationEmail(email: string): Promise<{ success: boolean;
     return { success: true };
   } catch (error: any) {
     console.error("Error sending confirmation email:", error);
-    return { success: false, error: "No pudimos enviarte el email de confirmación, pero tu consulta quedó registrada." };
+    return { success: false, error: `No pudimos procesar tu pedido. Escribinos a ${CONTACT_EMAIL} o al WhatsApp +54 9 298 425-2859 y te respondemos a la brevedad.` };
   }
 }
 
@@ -105,12 +93,19 @@ export async function POST(request: Request) {
     const emailResult = await sendConfirmationEmail(normalizedEmail);
 
     if (!emailResult.success) {
-      // Still return success for the form submission, but include the warning
-      return NextResponse.json({
-        success: true,
-        warning: emailResult.error,
-        message: emailResult.error
-      });
+      // No persistence layer exists: this log is the only record of the lead.
+      // Single error-level line so it surfaces in Vercel's logs.
+      console.error(
+        `[api/leads] Delivery failed for ${normalizedEmail}: ${emailResult.error}`
+      );
+      return NextResponse.json(
+        {
+          success: false,
+          warning: emailResult.error,
+          error: emailResult.error,
+        },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({ success: true, message: "Recibimos tu pedido. Te contactamos dentro de las próximas 24 h hábiles." });
