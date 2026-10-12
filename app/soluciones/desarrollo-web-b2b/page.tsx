@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "Cipolletti", "General Roca", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Desarrollo web B2B con Next.js en Neuquén y el Alto Valle",
+  title: "Desarrollo web B2B en Next.js",
   description:
-    "Desarrollo web B2B con Next.js en Neuquén y el Alto Valle: sitio con carga en menos de un segundo, una URL por servicio y formularios que entran al CRM como prospectos. Solicite una propuesta.",
+    "Sitios B2B en Next.js con carga en menos de un segundo, una URL por servicio y formularios conectados al CRM. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Desarrollo web B2B con Next.js en Neuquén y el Alto Valle",
+    title: "Desarrollo web B2B con Next.js y SEO técnico",
     description:
-      "Arquitecturas Next.js con carga en menos de un segundo y una URL por servicio: el prospecto industrial encuentra la búsqueda y pide presupuesto sin fricción.",
+      "Una URL por servicio, carga en menos de un segundo y formularios conectados al CRM.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

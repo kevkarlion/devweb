@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "General Roca", "Alto Valle", "Añelo (Vaca Muerta)"];
 
 export const metadata: Metadata = {
-  title: "Automatización de procesos con IA para empresas industriales",
+  title: "Automatización con IA industrial",
   description:
-    "Automatización de procesos con IA para empresas industriales de Neuquén y el Alto Valle: chatbots entrenados con su base de conocimiento que responden consultas técnicas 24/7 y vuelcan datos al CRM. Solicite una propuesta técnica.",
+    "Chatbots con IA entrenados con su base de conocimiento: responden consultas técnicas 24/7 y vuelcan cada intención al CRM. Solicite diagnóstico técnico.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Automatización de procesos con IA para empresas industriales",
+    title: "Automatización con IA para empresas industriales",
     description:
-      "Chatbots entrenados con su base de conocimiento que responden consultas técnicas 24/7, agendan reuniones con ingeniería y vuelcan cada intención al CRM sin intervención manual.",
+      "Chatbots entrenados con su base de conocimiento que responden consultas 24/7 y cargan cada intención al CRM.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

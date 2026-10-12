@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["General Roca", "Parque Industrial de General Roca", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Digitalización para empresas agroindustriales en General Roca",
+  title: "Software agroindustrial en General Roca",
   description:
-    "Digitalización agroindustrial en General Roca: software para instalación de sistemas de riego agroindustrial, riego automatizado y gestión de clientes del sector frutícola. Solicite una propuesta técnica.",
+    "Software para el sector frutícola de General Roca: pre-cotización de riego por hectáreas, CRM con IA y portales de cliente. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Digitalización para empresas agroindustriales en General Roca",
+    title: "Software agroindustrial para el Alto Valle",
     description:
-      "CRMs e IA que pre-cotizan riego por hectáreas y agenda la visita al productor, más dashboards de instalaciones para el parque industrial y el sector frutícola de General Roca.",
+      "Riego por hectáreas y portales de cliente para el sector frutícola de General Roca. Solicite una propuesta técnica.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Digitalización para empresas agroindustriales en General Roca",
+        alt: "Devweb Patagonia - Software agroindustrial en General Roca y el Alto Valle",
       },
     ],
   },

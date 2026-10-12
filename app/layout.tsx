@@ -33,30 +33,22 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export const metadata: Metadata = {
   title: {
     default:
-      "Devweb Patagonia — Gestión Digital Integral para Empresas | Web + SEO + Soporte",
+      "Software a medida para operación industrial | Devweb",
     template: "%s | Devweb Patagonia",
   },
   description:
-    "Tu partner digital en la Patagonia. Diseñamos webs que atraen clientes, optimizamos tu presencia en Google y te acompañamos con soporte permanente. Especialistas en General Roca, Cipolletti y Neuquén.",
+    "Software a medida, CRM con IA y dashboards para la industria en Neuquén y Vaca Muerta. Automatizamos cotizaciones y reportes. Solicite diagnóstico técnico.",
   keywords: [
-    // Originales mantenidas
-    "diseño web alto valle río negro",
-    "desarrollo web general roca patagonia",
-    "crear sitio web cipolletti empresarial",
-    "agencia digital neuquén capital",
-    "desarrollador web freelance alto valle",
-    "portfolio desarrollador next.js patagonia",
-    "one page landing alto valle",
-    "mantenimiento web río negro",
-    "optimización seo neuquén",
-    "ecommerce desarrollo alto valle",
-    // Nuevas incorporaciones de gestión
-    "gestión de presencia digital",
-    "partner tecnológico para empresas",
-    "posicionamiento en google patagonia",
-    "estrategia digital permanente",
-    "mantenimiento técnico web profesional",
-    "desarrollo de software y dashboards",
+    "software a medida neuquén",
+    "crm con ia para empresas de servicios",
+    "software para oil & gas vaca muerta",
+    "automatización de procesos industriales",
+    "dashboards de operación industrial",
+    "software para logística y transporte alto valle",
+    "digitalización agroindustrial río negro",
+    "software para instalaciones industriales",
+    "portal de clientes para proveedores petroleros",
+    "desarrollo de software patagonia",
   ].join(", "),
   authors: [{ name: "Devweb" }],
   creator: "Devweb",
@@ -74,17 +66,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     url: "https://devwebpatagonia.com/",
-    siteName: "Devweb Patagonia — Gestión Digital Integral",
-    title:
-      "Devweb Patagonia — Gestión Digital Integral para Empresas",
+    siteName: "Devweb Patagonia",
+    title: "Software a medida para operación industrial | Devweb", // 52
     description:
-      "Tu partner digital en la Patagonia. Webs que atraen clientes, SEO optimizado y soporte permanente. General Roca, Cipolletti, Neuquén.",
+      "Software a medida, CRM con IA y dashboards para la industria en Neuquén y Vaca Muerta. Solicite un diagnóstico.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Agencia de Diseño Web y Gestión Digital en General Roca, Cipolletti y Neuquén",
+        alt: "Devweb Patagonia - Software a medida para la operación industrial en Neuquén y Vaca Muerta", // 99
       },
     ],
     ttl: 604800,
@@ -93,12 +84,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@devweb",
     creator: "@devweb",
-    title: "Devweb Patagonia — Gestión Digital Integral para Empresas",
+    title: "Software a medida para operación industrial | Devweb",
     description:
-      "Tu partner digital en la Patagonia. Webs que atraen clientes, SEO optimizado y soporte permanente. General Roca, Cipolletti, Neuquén.",
+      "Software a medida, CRM con IA y dashboards para la industria en Neuquén y Vaca Muerta. Solicite diagnóstico técnico.",
     images: {
       url: "/twitter-image.jpg",
-      alt: "Devweb Patagonia - Diseño Web y Gestión Digital en el Alto Valle",
+      alt: "Devweb Patagonia - Software a medida para operación industrial",
     },
   },
   robots: {

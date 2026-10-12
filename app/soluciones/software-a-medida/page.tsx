@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "General Roca", "Alto Valle", "Añelo (Vaca Muerta)"];
 
 export const metadata: Metadata = {
-  title: "Software a medida para empresas industriales en Neuquén y el Alto Valle",
+  title: "Software a medida industrial",
   description:
-    "Software a medida para empresas industriales multi-locación de Neuquén y el Alto Valle: cotizaciones, proveedores, subcontratistas y reportes en una sola plataforma. Solicite una propuesta técnica.",
+    "Software a medida para operaciones multi-locación: cotizaciones, proveedores, subcontratistas y reportes en una plataforma. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software a medida para empresas industriales en Neuquén y el Alto Valle",
+    title: "Software a medida para operaciones industriales",
     description:
-      "Sistemas a medida para operaciones industriales en varias locaciones: cotizaciones, proveedores y subcontratistas centralizados en una sola plataforma, con relevamiento previo en su empresa.",
+      "Cotizaciones, proveedores y subcontratistas de operaciones multi-locación en una sola plataforma.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Software a medida para empresas industriales en Neuquén y el Alto Valle",
+        alt: "Devweb Patagonia - Software a medida para empresas industriales",
       },
     ],
   },

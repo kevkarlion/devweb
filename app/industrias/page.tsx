@@ -8,16 +8,16 @@ const hubPath = "/industrias";
 const hubName = "Industrias";
 
 export const metadata: Metadata = {
-  title: "Software industrial para Oil & Gas, logística y agroindustria en Neuquén y el Alto Valle",
+  title: "Software para industrias en Neuquén",
   description:
-    "Software y CRMs para el sector industrial en Neuquén y el Alto Valle: proveedores de Oil & Gas, transporte de cargas, riego agroindustrial e instalaciones industriales. Solicite una propuesta técnica.",
+    "Software industrial para Oil & Gas, logística y agroindustria en Neuquén y el Alto Valle: CRM con IA y dashboards. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${hubPath}`,
   },
   openGraph: {
-    title: "Software industrial para Oil & Gas, logística y agroindustria en Neuquén y el Alto Valle",
+    title: "Software para Oil & Gas, logística y agroindustria",
     description:
-      "CRMs con IA, dashboards y portales de clientes para proveedores de Oil & Gas, logística, agroindustria e instalaciones industriales en Neuquén y el Alto Valle.",
+      "CRM con IA, dashboards y automatización para proveedores industriales. Solicite una propuesta técnica.",
     url: `${baseUrl}${hubPath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

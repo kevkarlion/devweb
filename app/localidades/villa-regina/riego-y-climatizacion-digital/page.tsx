@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Villa Regina", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Digitalización de riego y climatización de empaques en Villa Regina",
+  title: "Digitalización de riego y climatización",
   description:
-    "Digitalización de riego y climatización de empaques en Villa Regina: portales de cliente que muestran el estado de la instalación en tiempo real. Solicite una propuesta técnica.",
+    "Portales de cliente que muestran al productor el estado de su riego y climatización en Villa Regina. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Digitalización de riego y climatización de empaques en Villa Regina",
+    title: "Digitalización de riego y climatización | Devweb Patagonia",
     description:
-      "El productor con galpones de empaque ve el estado de su climatización en tiempo real y firma el próximo mantenimiento sin llamadas. Menos llamados, más renovaciones.",
+      "El productor ve el estado de su climatización en tiempo real y firma el próximo mantenimiento sin llamadas.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Digitalización de riego y climatización de empaques en Villa Regina",
+        alt: "Devweb Patagonia - Digitalización de riego y climatización en Villa Regina",
       },
     ],
   },

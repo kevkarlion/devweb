@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "Río Negro", "Alto Valle", "Añelo (Vaca Muerta)"];
 
 export const metadata: Metadata = {
-  title: "Dashboards y portales de clientes para empresas de servicios industriales",
+  title: "Dashboards y portales de clientes",
   description:
-    "Dashboards y portales de clientes para empresas de servicios industriales en Neuquén y el Alto Valle: el cliente final ve el estado de mantenimientos y obras en tiempo real. Solicite una propuesta técnica.",
+    "Dashboards gerenciales y portales de cliente que muestran el estado de mantenimientos y obras en tiempo real. Optimice su operación.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Dashboards y portales de clientes para empresas de servicios industriales",
+    title: "Dashboards y portales de clientes | Devweb Patagonia",
     description:
-      "Portales donde el cliente final ve el estado de sus mantenimientos y obras en tiempo real, y dashboards gerenciales para el control de la operación. Sin reportes manuales.",
+      "El cliente ve el estado de sus mantenimientos y obras en tiempo real y la gerencia controla la operación.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Dashboards y portales de clientes para empresas de servicios industriales",
+        alt: "Devweb Patagonia - Dashboards y portales de clientes para empresas de servicios",
       },
     ],
   },

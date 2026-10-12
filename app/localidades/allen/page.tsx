@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Allen", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Software para agroindustria y climatización en Allen",
+  title: "Software para climatización en Allen",
   description:
-    "Software para agroindustria y climatización en Allen: automatización de cotizaciones de naves industriales, CRM y portales de cliente para empaques frutícolas. Solicite una propuesta técnica.",
+    "Software para climatización de naves industriales y empaques frutícolas en Allen: cotización automática y portales. Solicite diagnóstico técnico.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
     title: "Software para agroindustria y climatización en Allen",
     description:
-      "Desarrollo de software en Allen para climatización de naves industriales y producción frutícola: consultas que se responden en horas y portales que muestran el estado de la instalación.",
+      "Cotización automática de climatización y portales con el estado de la instalación. Solicite diagnóstico técnico.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

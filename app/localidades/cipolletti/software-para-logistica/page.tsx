@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Cipolletti", "Alto Valle este", "Vaca Muerta"];
 
 export const metadata: Metadata = {
-  title: "Software para logística y transporte de cargas pesadas en Cipolletti",
+  title: "Software para logística en Cipolletti",
   description:
-    "Software para empresas de transporte de cargas pesadas en Cipolletti: CRM con pre-calificación automática por tonelaje y zona, gestión de flota y grúas. Solicite una propuesta técnica.",
+    "Software para transporte de cargas pesadas en Cipolletti: CRM que pre-califica por tonelaje y zona, y dashboard de flota. Optimice su operación.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software para logística y transporte de cargas pesadas en Cipolletti",
+    title: "Software para logística y transporte en Cipolletti",
     description:
-      "CRM que filtra consultas de flete por tonelaje, tipo de carga y zona antes de tocar a ventas. Un dashboard para saber dónde está cada grúa y cada unidad de la flota.",
+      "CRM que filtra consultas de flete por tonelaje y zona, y dashboard de flota. Optimice su operación.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

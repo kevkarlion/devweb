@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["General Roca", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Digitalización agroindustrial en General Roca: riego y gestión de clientes",
+  title: "Digitalización agroindustrial en Roca",
   description:
-    "Digitalización agroindustrial en General Roca: CRM con IA que pre-cotiza sistemas de riego por hectáreas y agenda la visita al productor, con seguimiento de instalación. Solicite una propuesta técnica.",
+    "Digitalización agroindustrial en General Roca: CRM con IA que pre-cotiza riego por hectáreas y agenda la visita. Solicite diagnóstico técnico.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Digitalización agroindustrial en General Roca: riego y gestión de clientes",
+    title: "Digitalización agroindustrial en General Roca",
     description:
-      "Un CRM con IA pre-cotiza el sistema de riego según las hectáreas del productor y agenda la visita sin mover un dedo. El sector frutícola deja de cotizar por WhatsApp.",
+      "CRM con IA que pre-cotiza riego por hectáreas y agenda la visita. Solicite diagnóstico técnico.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

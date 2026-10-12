@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "Añelo (Vaca Muerta)", "Polo Industrial de Neuquén"];
 
 export const metadata: Metadata = {
-  title: "Software a medida en Neuquén para Oil & Gas y mantenimiento industrial",
+  title: "Software para Oil & Gas en Neuquén",
   description:
-    "Software a medida en Neuquén para mantenimiento industrial petrolero, ingeniería de detalle y empresas de obras civiles. Sistemas que ordenan cotizaciones y reportes a operadoras. Solicite una propuesta técnica.",
+    "Software a medida para proveedores de Oil & Gas en Neuquén y Vaca Muerta. Cotizaciones y reportes a operadoras automatizados. Optimice su operación.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software a medida en Neuquén para Oil & Gas y mantenimiento industrial",
+    title: "Software para Oil & Gas en Neuquén | Devweb Patagonia",
     description:
-      "Desarrollo de software en Neuquén Capital para proveedores de mantenimiento petrolero, empresas de obras civiles e ingeniería de detalle que operan sobre Vaca Muerta.",
+      "Cotizaciones, ingeniería de detalle y reportes a operadoras automatizados para proveedores de Oil & Gas.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Software a medida en Neuquén para Oil & Gas y mantenimiento industrial",
+        alt: "Devweb Patagonia - Software a medida para Oil & Gas en Neuquén",
       },
     ],
   },

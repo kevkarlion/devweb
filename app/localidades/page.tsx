@@ -8,16 +8,16 @@ const hubPath = "/localidades";
 const hubName = "Localidades";
 
 export const metadata: Metadata = {
-  title: "Software a medida en Neuquén y el Alto Valle: General Roca, Cipolletti, Allen y Villa Regina",
+  title: "Software a medida en Neuquén",
   description:
-    "Desarrollo de software y CRM en Neuquén, Cipolletti, General Roca, Allen, Villa Regina y Añelo (Vaca Muerta). Sistemas para Oil & Gas, logística, riego y climatización. Solicite una propuesta técnica.",
+    "Software a medida, CRM con IA y dashboards para empresas industriales de Neuquén y el Alto Valle. Optimice su operación.",
   alternates: {
     canonical: `${baseUrl}${hubPath}`,
   },
   openGraph: {
-    title: "Software a medida en Neuquén y el Alto Valle: General Roca, Cipolletti, Allen y Villa Regina",
+    title: "Software a medida para la industria en Neuquén y Alto Valle",
     description:
-      "Desarrollo de software y CRM en Neuquén, Cipolletti, General Roca, Allen, Villa Regina y Añelo (Vaca Muerta) para empresas industriales B2B.",
+      "Software a medida, CRM con IA y dashboards para empresas industriales de Neuquén y el Alto Valle.",
     url: `${baseUrl}${hubPath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

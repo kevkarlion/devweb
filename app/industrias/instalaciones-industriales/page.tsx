@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "General Roca", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Software para empresas de instalaciones industriales y obras civiles",
+  title: "Software industrial para obras y flota",
   description:
-    "Software para empresas de instalaciones industriales y obras civiles en Neuquén y el Alto Valle: web corporativa que refleje su envergadura y dashboard de obras y flota con control de subcontratistas. Solicite una propuesta técnica.",
+    "Software para obras industriales e instalaciones en Neuquén y el Alto Valle: sitio corporativo y dashboard de flota. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software para empresas de instalaciones industriales y obras civiles",
+    title: "Software para instalaciones industriales y obras civiles",
     description:
-      "Web corporativa B2B y dashboard de obras y flota para empresas de instalaciones y obras civiles con subcontratistas en varias locaciones.",
+      "Sitio corporativo que refleja su envergadura y dashboard de obras, flota y subcontratistas.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Software para empresas de instalaciones industriales y obras civiles",
+        alt: "Devweb Patagonia - Software para instalaciones industriales y obras civiles",
       },
     ],
   },

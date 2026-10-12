@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Cipolletti", "Alto Valle este", "Fernández Oro"];
 
 export const metadata: Metadata = {
-  title: "Software y CRM para empresas de logística y transporte en Cipolletti",
+  title: "Software para transporte en Cipolletti",
   description:
-    "Software y CRM para empresas de transporte de cargas pesadas en Cipolletti: pre-calificación por tonelaje y zona, gestión de grúas y seguimiento de reparaciones. Solicite una propuesta técnica.",
+    "CRM y dashboards para transporte de cargas, alquiler de grúas y talleres en Cipolletti: pre-calificación por tonelaje. Solicite una propuesta técnica.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software y CRM para empresas de logística y transporte en Cipolletti",
+    title: "Software y CRM para logística y transporte en Cipolletti",
     description:
-      "Desarrollo de software y CRM en Cipolletti para transporte de cargas pesadas, alquiler de grúas y talleres de reparación: prospectos filtrados por tonelaje y zona antes de tocar a ventas.",
+      "CRM con pre-calificación por tonelaje y zona, y dashboard de flota y grúas para el Alto Valle.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Software y CRM para empresas de logística y transporte en Cipolletti",
+        alt: "Devweb Patagonia - Software y CRM para logística y transporte en Cipolletti",
       },
     ],
   },

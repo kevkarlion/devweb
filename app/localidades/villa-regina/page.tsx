@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Villa Regina", "Alto Valle"];
 
 export const metadata: Metadata = {
-  title: "Software para riego y climatización de empaques en Villa Regina",
+  title: "Software para riego en Villa Regina",
   description:
-    "Software para climatización de naves industriales, riego y galpones de empaque frutícola en Villa Regina: portales de cliente con estado de instalación en tiempo real. Solicite una propuesta técnica.",
+    "Software para empaques frutícolas de Villa Regina: riego, climatización y portales de cliente con el estado de la instalación. Optimice su operación.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Software para riego y climatización de empaques en Villa Regina",
+    title: "Software para riego y climatización en Villa Regina",
     description:
-      "Portales de cliente para que el productor de Villa Regina vea el estado de su instalación de climatización y riego en tiempo real, sin llamadas.",
+      "Portales de cliente y gestión de mantenimiento para empaques y cámaras frigoríficas de Villa Regina.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

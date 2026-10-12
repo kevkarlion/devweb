@@ -11,16 +11,16 @@ const serviceDescription =
 const areaServed = ["Neuquén Capital", "Cipolletti", "Alto Valle", "Añelo (Vaca Muerta)"];
 
 export const metadata: Metadata = {
-  title: "CRM para empresas de servicios industriales con pre-calificación por IA",
+  title: "CRM con IA para empresas de servicios",
   description:
-    "CRM con IA para empresas de servicios industriales en Neuquén y el Alto Valle: pre-califica prospectos por tonelaje, hectáreas o zona y enruta solo los proyectos ejecutables. Solicite una propuesta técnica.",
+    "CRM con IA que pre-califica consultas por tonelaje, hectáreas o zona y enruta solo los proyectos ejecutables. Optimice su operación.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "CRM para empresas de servicios industriales con pre-calificación por IA",
+    title: "CRM con IA para empresas de servicios industriales",
     description:
-      "Un CRM con IA que filtra cada consulta de presupuesto por tonelaje, hectáreas o zona antes de tocar a su equipo de ventas, y registra todo el historial de la negociación.",
+      "Un CRM que filtra cada consulta por tonelaje, hectáreas o zona antes de tocar a ventas. Optimice su operación.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",

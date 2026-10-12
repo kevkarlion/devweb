@@ -8,16 +8,16 @@ const hubPath = "/soluciones";
 const hubName = "Soluciones";
 
 export const metadata: Metadata = {
-  title: "Software a medida y CRM para empresas industriales en Neuquén y el Alto Valle",
+  title: "Software a medida y CRM con IA",
   description:
-    "Software a medida, CRMs con IA, automatización, dashboards y portales de clientes para Oil & Gas, logística y agroindustria en Neuquén y el Alto Valle. Solicite una propuesta técnica.",
+    "Software a medida, CRM con IA, automatización y dashboards para empresas industriales de Neuquén y el Alto Valle. Solicite diagnóstico técnico.",
   alternates: {
     canonical: `${baseUrl}${hubPath}`,
   },
   openGraph: {
-    title: "Software a medida y CRM para empresas industriales en Neuquén y el Alto Valle",
+    title: "Software a medida, CRM con IA y dashboards",
     description:
-      "CRMs con IA, dashboards y portales de clientes construidos sobre el proceso real de su operación industrial en Neuquén y el Alto Valle. Solicite una propuesta técnica.",
+      "CRMs con IA, dashboards y portales construidos sobre el proceso real de su operación.",
     url: `${baseUrl}${hubPath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Software a medida y CRM para empresas industriales en Neuquén y el Alto Valle",
+        alt: "Devweb Patagonia - Software a medida y CRM para empresas industriales",
       },
     ],
   },

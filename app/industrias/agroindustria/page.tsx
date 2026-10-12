@@ -17,16 +17,16 @@ const areaServed = [
 ];
 
 export const metadata: Metadata = {
-  title: "Digitalización agroindustrial: riego y climatización en el Alto Valle",
+  title: "Software agroindustrial del Alto Valle",
   description:
-    "Digitalización agroindustrial para el Alto Valle: automatización de riego, climatización de galpones y pre-cotización por hectáreas con CRM por IA en General Roca, Allen y Villa Regina. Solicite una propuesta técnica.",
+    "Software para riego, climatización y pre-cotización por hectáreas en el Alto Valle. Reemplaza planillas y WhatsApp. Solicite diagnóstico técnico.",
   alternates: {
     canonical: `${baseUrl}${pagePath}`,
   },
   openGraph: {
-    title: "Digitalización agroindustrial: riego y climatización en el Alto Valle",
+    title: "Software agroindustrial del Alto Valle | Devweb Patagonia",
     description:
-      "Sistemas para proveedores de riego y climatización del Alto Valle: pre-cotización automática por hectáreas, portales de cliente y seguimiento de instalaciones con datos.",
+      "Riego, climatización y pre-cotización por hectáreas automatizados para el Alto Valle. Solicite diagnóstico técnico.",
     url: `${baseUrl}${pagePath}`,
     siteName: "Devweb Patagonia",
     locale: "es_AR",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Devweb Patagonia - Digitalización agroindustrial para el Alto Valle",
+        alt: "Devweb Patagonia - Software agroindustrial para el Alto Valle",
       },
     ],
   },
