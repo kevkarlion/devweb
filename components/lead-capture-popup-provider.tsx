@@ -8,6 +8,10 @@ const POPUP_DELAY_MS = 15000; // 15 seconds
 const EXIT_INTENT_THRESHOLD = 100; // pixels
 const EXIT_INTENT_THROTTLE_MS = 1000; // throttle exit-intent detection
 
+// Feature flag: set to true to re-enable the "Diagnóstico técnico gratuito" popup.
+// Disabled for now — the modal must not appear on the site.
+const POPUP_ENABLED = false;
+
 interface LeadCapturePopupProviderProps {
   children: React.ReactNode;
 }
@@ -62,6 +66,10 @@ export function LeadCapturePopupProvider({ children }: LeadCapturePopupProviderP
 
   // Timer-based popup display
   useEffect(() => {
+    if (!POPUP_ENABLED) {
+      return;
+    }
+
     // Skip if already shown
     if (checkSessionStorage()) {
       return;
@@ -81,6 +89,10 @@ export function LeadCapturePopupProvider({ children }: LeadCapturePopupProviderP
 
   // Exit intent detection (desktop only)
   useEffect(() => {
+    if (!POPUP_ENABLED) {
+      return;
+    }
+
     // Skip on mobile
     if (isMobileDevice()) {
       return;
@@ -135,7 +147,9 @@ export function LeadCapturePopupProvider({ children }: LeadCapturePopupProviderP
   return (
     <>
       {children}
-      <LeadCapturePopup open={isOpen} onOpenChange={handleClose} />
+      {POPUP_ENABLED && (
+        <LeadCapturePopup open={isOpen} onOpenChange={handleClose} />
+      )}
     </>
   );
 }
