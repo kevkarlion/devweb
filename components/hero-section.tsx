@@ -1,34 +1,89 @@
-// components/HeroSection.jsx
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { JetBrains_Mono } from "next/font/google";
+import { LightningBolt } from "@/components/icons/lightning-bolt";
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-export function HeroSection() {
-  // Checklist con enfoque en Software a Medida e IA
-  const checklistItems = [
-    "CRM con IA que pre-califica clientes",
-    "Dashboards en tiempo real",
-    "Portales para tus clientes",
-    "Automatización de cotizaciones",
-    "Software a medida",
-  ];
+const WHATSAPP_URL = "https://wa.me/5492984252859";
 
+interface Door {
+  title: string;
+  description: string;
+  cta: string;
+  href: string;
+}
+
+const doors: Door[] = [
+  {
+    title: "Presencia Digital",
+    description:
+      "Webs de alta velocidad, catálogos y posicionamiento SEO para captar más clientes.",
+    cta: "Explorar Diseño Web",
+    href: "/soluciones/desarrollo-web-b2b",
+  },
+  {
+    title: "Software e IA",
+    description:
+      "CRMs, dashboards y automatización para empresas que necesitan centralizar su operación.",
+    cta: "Explorar Sistemas Integrados",
+    href: "/soluciones",
+  },
+];
+
+interface DiscoveryCardProps extends Door {
+  index: number;
+}
+
+function DiscoveryCard({ title, description, cta, href, index }: DiscoveryCardProps) {
   return (
-    <div className={`${jetbrainsMono.variable}`}>
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.5 + index * 0.15 }}
+    >
+      <Link
+        href={href}
+        className="group flex h-full flex-col justify-between rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10 [@media(min-height:950px)]:p-8"
+      >
+        <div>
+          <h3
+            className="mb-3 text-xl font-bold text-white [@media(min-height:950px)]:text-2xl"
+            style={{ fontFamily: "var(--font-titles)" }}
+          >
+            {title}
+          </h3>
+          <p
+            className="text-sm leading-relaxed text-neutral-300 [@media(min-height:950px)]:text-base"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            {description}
+          </p>
+        </div>
+        <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
+          {cta}
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      </Link>
+    </motion.div>
+  );
+}
+
+export function HeroSection() {
+  return (
+    <div className={jetbrainsMono.variable}>
       <section
         id="home"
-        role="banner"
-        aria-label="Software a medida, CRM e inteligencia artificial para empresas en la Patagonia"
-        className="relative flex items-center justify-center w-full min-h-screen overflow-hidden pt-14 bg-black lg:pt-24"
+        aria-label="Desarrollo de software a medida y diseño web B2B para empresas en Neuquén y el Alto Valle"
+        className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black pt-14 [@media(min-height:950px)]:pt-24"
       >
-        {/* Full-bleed background video - mobile crop */}
+        {/* Fondo: video full-bleed + overlay industrial */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <video
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-80 lg:hidden"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-80"
             autoPlay
             muted
             loop
@@ -38,116 +93,72 @@ export function HeroSection() {
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/85 lg:hidden" />
-          <video
-            className="absolute inset-0 h-full w-full object-cover object-right opacity-80 hidden lg:block"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            tabIndex={-1}
-          >
-            <source src="/hero-bg.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30 hidden lg:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90" />
         </div>
 
-        <div className="relative z-10 max-w-8xl mx-auto w-full">
-          
-          {/* Layout Mobile */}
-          <div className="lg:hidden relative flex flex-col items-center text-center overflow-hidden min-h-screen">
-            <motion.h1
-              className="pt-16 relative text-[2.5rem] sm:text-5xl leading-[1.05] tracking-wide mb-6 font-bold text-mobile-gradient bg-clip-text text-transparent z-20 px-4 pb-1"
-                style={{ fontFamily: "var(--font-titles)" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Software a medida para empresas industriales.
-            </motion.h1>
+        {/* Contenido */}
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 py-14 text-center sm:px-8 [@media(min-height:950px)]:py-24">
+          {/* Kicker */}
+          <motion.p
+            className="mb-5 inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-300 sm:text-sm"
+            style={{ fontFamily: "var(--font-mono)" }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <LightningBolt className="h-4 w-4 shrink-0 drop-shadow-[0_0_6px_rgba(29,63,255,0.65)]" />
+            Tecnología aplicada a tu negocio
+          </motion.p>
 
-            <motion.div
-              className="relative z-10 w-full px-4 mb-4"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="bg-black/60 rounded-xl px-4 py-3">
-                <p className="text-lg font-medium text-neutral-300 leading-tight">
-                  CRMs con IA, dashboards y portales para Oil &amp; Gas, logística y agroindustria.
-                </p>
-              </div>
-            </motion.div>
+          {/* H1 único del componente (sin duplicados mobile/desktop) */}
+          <motion.h1
+            className="mx-auto max-w-4xl text-[2rem] font-bold leading-[1.1] tracking-tight text-white sm:text-5xl [@media(min-height:950px)]:text-6xl"
+            style={{ fontFamily: "var(--font-titles)" }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            Desarrollo de Software a Medida y{" "}
+            <span className="text-primary-gradient bg-clip-text text-transparent">
+              Diseño Web B2B
+            </span>
+          </motion.h1>
 
-            <motion.div className="relative z-10 w-[97%] mb-6">
-              <a
-                href="https://wa.me/5492984252859"
-                className="inline-flex items-center justify-center w-[95%] gap-3 px-8 py-4 border border-white rounded-sm font-semibold text-white bg-mobile-gradient"
-              >
-                Pedir diagnóstico técnico
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </motion.div>
+          {/* Subtítulo */}
+          <motion.p
+            className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-300 sm:text-lg"
+            style={{ fontFamily: "var(--font-body)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+          >
+            Tecnología aplicada a tu negocio en Neuquén y el Alto Valle. Diseñamos plataformas para
+            escalar tus ventas y construimos la infraestructura (CRM e IA) que ordena tu operación
+            diaria.
+          </motion.p>
 
-            {/* Checklist Mobile */}
-            <div className="relative z-10 w-[90%] grid grid-cols-2 gap-3 p-4 border border-white bg-mobile-gradient rounded-sm">
-              {checklistItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                  <span className="text-xs text-neutral-300 font-bold text-left uppercase" style={{ fontFamily: "var(--font-mono)" }}>{item}</span>
-                </div>
-              ))}
-            </div>
+          {/* Las dos puertas: Presencia Digital vs Software e IA */}
+          <div className="mt-10 grid grid-cols-1 gap-5 text-left md:grid-cols-2 [@media(min-height:950px)]:mt-12">
+            {doors.map((door, index) => (
+              <DiscoveryCard key={door.title} index={index} {...door} />
+            ))}
           </div>
 
-          {/* Layout Desktop */}
-          <div className="hidden lg:block relative min-h-[90vh] overflow-hidden">
-            {/* Content on top of background */}
-            <div className="relative z-10 grid grid-cols-[55%_45%] items-start min-h-[75vh] px-8 py-16">
-              <div className="flex flex-col pl-8 pt-4">
-                <motion.h1
-                  className="text-[clamp(2.25rem,3.6vw,4rem)] leading-[1.05] tracking-wide mb-6 font-bold text-primary-gradient bg-clip-text text-transparent pb-1"
-                style={{ fontFamily: "var(--font-titles)" }}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                >
-                  Software a medida para empresas industriales <br />
-                  <span className="text-primary-gradient bg-clip-text text-transparent">
-                    que no pueden frenar su operación.
-                  </span>
-                </motion.h1>
-
-                <motion.div className="space-y-8">
-                  <p className="text-lg text-neutral-300 max-w-xl leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
-                    CRMs con IA, dashboards y portales para proveedores de Oil &amp; Gas, logística y agroindustria en Neuquén y el Alto Valle. Reemplazamos las planillas y el WhatsApp por infraestructura que cotiza, pre-califica y reporta sola.
-                  </p>
-
-                  <div className="w-[60%]">
-                    <a
-                      href="https://wa.me/5492984252859"
-                      className="inline-flex items-center justify-center w-full gap-3 px-8 py-4 border-2 border-white rounded-sm hover:scale-105 transition-all font-semibold text-white bg-primary-gradient"
-                    >
-                      Pedir diagnóstico técnico
-                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1" />
-                    </a>
-                  </div>
-
-                  {/* Checklist Desktop */}
-                  <div className="w-[95%] p-6 border border-white bg-primary-gradient rounded-sm shadow-2xl">
-                    <div className="grid grid-cols-3 gap-4">
-                      {checklistItems.map((item, index) => (
-                        <div key={index} className="flex items-center gap-2">
-                          <Check className="w-5 h-5 text-white shrink-0" />
-                          <span className="text-sm text-neutral-300 font-bold uppercase" style={{ fontFamily: "var(--font-mono)" }}>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
+          {/* CTA global principal */}
+          <motion.div
+            className="mt-10 flex justify-center [@media(min-height:950px)]:mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.85 }}
+          >
+            <a
+              href={WHATSAPP_URL}
+              className="inline-flex items-center justify-center gap-3 rounded-sm border-2 border-white bg-primary-gradient px-8 py-3.5 font-semibold text-white transition-all duration-300 hover:scale-105 [@media(min-height:950px)]:py-4"
+            >
+              Pedir diagnóstico técnico
+              <ArrowRight className="h-5 w-5" />
+            </a>
+          </motion.div>
         </div>
       </section>
     </div>

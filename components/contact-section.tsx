@@ -119,14 +119,14 @@ export function ContactSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <motion.h1
+          <motion.h2
             className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
             style={{
               fontFamily: "var(--font-titles)",
             }}
           >
             Pedí tu <br /> diagnóstico técnico
-          </motion.h1>
+          </motion.h2>
 
           <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-8"></div>
         </motion.div>

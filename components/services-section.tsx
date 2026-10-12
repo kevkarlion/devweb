@@ -95,7 +95,7 @@ export function ServicesSection() {
       <div className="relative z-10 py-24 md:py-32 px-6">
         <div className="max-w-6xl mx-auto flex flex-col justify-center">
           {/* Título principal - Diferente texto para mobile y desktop */}
-          <motion.h1
+          <motion.h2
             className="pt-6 lg:pt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center text-mobile-gradient lg:text-primary-gradient font-bold"
             style={{
               fontFamily: "var(--font-titles)",
@@ -108,7 +108,7 @@ export function ServicesSection() {
             <span className="block lg:hidden leading-14">Nuestras soluciones</span>
             {/* Texto para desktop */}
             <span className="hidden lg:block">Soluciones para operación industrial</span>
-          </motion.h1>
+          </motion.h2>
 
           {/* Subtítulo h2 */}
           <motion.h2

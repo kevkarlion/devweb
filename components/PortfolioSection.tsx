@@ -138,7 +138,7 @@ export function PortfolioSection() {
               transition={{ duration: 0.8 }}
             >
               {/* Título principal */}
-              <motion.h1
+              <motion.h2
                 className="flex flex-col justify-center items-center text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal bg-clip-text text-transparent text-center text-mobile-gradient lg:text-primary-gradient mb-4 mt-16 font-bold"
                 style={{
                   fontFamily: "var(--font-titles)",
@@ -148,7 +148,7 @@ export function PortfolioSection() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Portfolio
-              </motion.h1>
+              </motion.h2>
 
               <motion.h2
                 className="text-3xl lg:text-4xl font-bold text-white leading-tight"
