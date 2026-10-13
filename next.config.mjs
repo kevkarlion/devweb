@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [480, 640, 768, 1024, 1280, 1536],
+    qualities: [75, 90],
     minimumCacheTTL: 31536000,
   },
   async redirects() {

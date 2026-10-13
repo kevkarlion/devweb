@@ -10,26 +10,26 @@ const HUB_LINKS: HubLink[] = [
   {
     label: "Soluciones",
     description:
-      "Software a medida, CRM con IA, automatización, dashboards y portales de clientes construidos sobre tu operación.",
+      "Diseño Web B2B, posicionamiento SEO, software a medida, CRM con IA y dashboards operativos para escalar tu empresa.",
     href: "/soluciones",
   },
   {
     label: "Industrias",
     description:
-      "Oil & Gas, logística y agroindustria: sistemas para el cuello de botella de cada sector.",
+      "Comercios, pymes B2B, Oil & Gas, logística y agroindustria: soluciones digitales adaptadas al desafío de cada sector.",
     href: "/industrias",
   },
   {
     label: "Localidades",
     description:
-      "Neuquén, Cipolletti, General Roca, Allen, Villa Regina y Añelo: software para la operación real de cada zona.",
+      "Neuquén, Cipolletti, General Roca, Allen, Villa Regina y Añelo: desarrollo web, SEO local y sistemas para empresas de la región.",
     href: "/localidades",
   },
 ];
 
 export function HomepageHubLinks() {
   return (
-    <section id="hubs" className="w-full bg-neutral-950 py-24 md:py-32 px-6">
+    <section id="hubs" className="w-full bg-neutral-950 pb-24 md:pb-32 px-6">
       <div className="max-w-6xl mx-auto flex flex-col justify-center">
         <h2
           className="text-2xl md:text-3xl font-bold text-white text-center mb-12"
