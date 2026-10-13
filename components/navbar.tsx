@@ -12,6 +12,7 @@ type NavItem = { name: string; href: string };
 type NavSection = {
   name: string;
   hub: string;
+  hubLabel?: string;
   items: NavItem[];
 };
 
@@ -50,6 +51,25 @@ const navSections: NavSection[] = [
     ],
   },
 ];
+
+// Recorrido guiado por la Home: anchors a cada seccion, en el orden real del funnel.
+const homeSections: NavSection = {
+  name: "Recorrido",
+  hub: "/",
+  hubLabel: "Ir al inicio",
+  items: [
+    { name: "Diagnóstico", href: "/#diagnostico" },
+    { name: "Servicios", href: "/#servicios" },
+    { name: "Tecnología en acción", href: "/#tecnologia" },
+    { name: "Rubros y zonas", href: "/#hubs" },
+    { name: "Portfolio", href: "/#portfolio" },
+    { name: "Nosotros", href: "/#nosotros" },
+    { name: "Sistemas", href: "/#sistemas" },
+    { name: "Metodología", href: "/#metodologia" },
+    { name: "Preguntas frecuentes", href: "/#faq" },
+    { name: "Contacto", href: "/#contacto" },
+  ],
+};
 
 const simpleItems: NavItem[] = [
   { name: "Inicio", href: "/" },
@@ -138,9 +158,9 @@ export function Navbar() {
           </motion.a>
 
           {/* MENÚ DESKTOP */}
-          <div className="hidden md:flex items-center gap-5 lg:gap-7">
+          <div className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-7">
             {/* Silos con dropdown */}
-            {navSections.map((section) => (
+            {[homeSections, ...navSections].map((section) => (
               <div key={section.name} className="relative group">
                 <a
                   href={section.hub}
@@ -156,7 +176,7 @@ export function Navbar() {
                       href={section.hub}
                       className="block px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white hover:bg-white/5"
                     >
-                      Ver todas · {section.name}
+                              {section.hubLabel ?? `Ver todas · ${section.name}`}
                     </a>
                     <div className="h-px bg-white/10 my-1" />
                     {section.items.map((item) => (
@@ -278,7 +298,7 @@ export function Navbar() {
               </a>
 
               {/* Silos como acordeones */}
-              {navSections.map((section) => {
+              {[homeSections, ...navSections].map((section) => {
                 const isOpen = openSection === section.name;
                 return (
                   <div key={section.name} className="border-b border-white/5">
@@ -315,7 +335,7 @@ export function Navbar() {
                               onClick={closeMenu}
                               className="block py-2 text-xs font-bold uppercase tracking-widest text-[#B9C8F5] touch-manipulation"
                             >
-                              Ver todas · {section.name}
+                      {section.hubLabel ?? `Ver todas · ${section.name}`}
                             </a>
                             {section.items.map((item) => (
                               <a

@@ -372,7 +372,8 @@ export function SoftwareSystemsSection() {
             {/* Imagen */}
             <div className="relative w-full rounded-xl overflow-hidden border border-white/10">
               <Image
-                src="/panel-dashboard.webp"
+                // TODO: replace with the real dashboard screenshot (panel-dashboard.webp is missing from /public)
+                src="/crm-2.webp"
                 alt="Dashboard empresarial con métricas en tiempo real"
                 width={800}
                 height={500}

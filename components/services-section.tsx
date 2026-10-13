@@ -7,44 +7,44 @@ import Link from "next/link";
 import {
   ArrowRight,
   ChevronDown,
-  Code,
-  BarChart3,
-  Users,
-  Bot,
   ChevronLeft,
   ChevronRight,
+  Code,
+  Bot,
+  Globe,
+  Search,
 } from "lucide-react";
 
 // Las fuentes se cargan globalmente desde layout.tsx
 
 const services = [
   {
-    title: "Software a medida",
+    title: "Sitios Web B2B y Landing Pages",
     description:
-      "Sistemas desarrollados según tu operación: reemplazamos planillas y circuitos manuales por procesos digitales que no frenan.",
+      "Diseño de ultra-alta velocidad en Next.js para transmitir autoridad de marca, destacar tus servicios y convertir visitas en clientes.",
+    icon: Globe,
+    href: "/soluciones/desarrollo-web-b2b",
+  },
+  {
+    title: "Posicionamiento SEO Local y E-commerce",
+    description:
+      "Estrategias On-Page y catálogos digitales para dominar las búsquedas comerciales de tu sector en Neuquén y Río Negro.",
+    icon: Search,
+    href: "/soluciones/desarrollo-web-b2b",
+  },
+  {
+    title: "Software a Medida y CRM",
+    description:
+      "Reemplazamos planillas y circuitos manuales por sistemas que centralizan clientes, presupuestos y seguimiento de ventas.",
     icon: Code,
     href: "/soluciones/software-a-medida",
   },
   {
-    title: "CRM para empresas de servicios",
+    title: "Automatización con IA y Dashboards",
     description:
-      "Centralizá clientes, cotizaciones y seguimientos sin depender del WhatsApp disperso ni de planillas sueltas.",
-    icon: Users,
-    href: "/soluciones/crm-para-empresas-de-servicios",
-  },
-  {
-    title: "Automatización con IA",
-    description:
-      "Automatizamos la pre-calificación de clientes, la emisión de cotizaciones y la carga de datos repetitiva.",
+      "Pre-calificación de prospectos por WhatsApp, tableros de control en tiempo real y agentes virtuales para optimizar tu operación.",
     icon: Bot,
     href: "/soluciones/automatizacion-con-ia",
-  },
-  {
-    title: "Dashboards y portales de clientes",
-    description:
-      "Tableros en tiempo real y portales donde tu cliente consulta estados, órdenes e historial sin llamar ni esperar.",
-    icon: BarChart3,
-    href: "/soluciones/dashboards-y-portales-de-clientes",
   },
 ];
 
@@ -94,7 +94,7 @@ export function ServicesSection() {
       {/* Contenido */}
       <div className="relative z-10 py-24 md:py-32 px-6">
         <div className="max-w-6xl mx-auto flex flex-col justify-center">
-          {/* Título principal - Diferente texto para mobile y desktop */}
+          {/* Título principal */}
           <motion.h2
             className="pt-6 lg:pt-24 flex justify-center w-[95%] text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl leading-[0.9] tracking-normal mb-12 bg-clip-text text-transparent text-center self-center text-mobile-gradient lg:text-primary-gradient font-bold"
             style={{
@@ -104,22 +104,8 @@ export function ServicesSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Texto para mobile */}
-            <span className="block lg:hidden leading-14">Nuestras soluciones</span>
-            {/* Texto para desktop */}
-            <span className="hidden lg:block">Soluciones para operación industrial</span>
+            <span className="block leading-14">Soluciones digitales para captar clientes y escalar tu operación</span>
           </motion.h2>
-
-          {/* Subtítulo h2 */}
-          <motion.h3
-            className="text-2xl md:text-3xl font-bold text-white text-center mb-8"
-            style={{ fontFamily: "var(--font-titles)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.25 }}
-          >
-            Construidas a la medida de tu operación
-          </motion.h3>
 
           {/* Divider line */}
           <motion.div
@@ -137,7 +123,7 @@ export function ServicesSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            ¿Tu operación todavía se maneja con planillas y WhatsApp? Reemplazamos las planillas y el WhatsApp disperso por sistemas que cotizan, pre-califican y reportan solos. Para empresas de servicios en Neuquén y el Alto Valle.
+            Desarrollamos sitios web B2B de alta conversión e infraestructura de software a medida para posicionar tu marca y ordenar tu gestión en Neuquén y el Alto Valle.
           </motion.p>
 
           {/* Grid de servicios - 2 columnas en desktop */}

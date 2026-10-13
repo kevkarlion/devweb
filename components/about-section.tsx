@@ -122,7 +122,7 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Sobre nosotros
+          Tecnología con propósito y presencia en la Patagonia
         </motion.h2>
 
         <motion.h3
@@ -144,7 +144,7 @@ export function AboutSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          En DevWeb Patagonia diseñamos software para operaciones que no pueden frenar. Nuestro objetivo es desarrollar herramientas útiles y eficientes, alineadas con los procesos reales de cada empresa industrial: desde la cotización hasta la entrega y el control de obra.
+          Combinamos ingeniería de software a medida y diseño web B2B para impulsar a las empresas de la región. Creamos plataformas de ultra-alta velocidad que captan clientes y desarrollamos la infraestructura digital que optimiza la operación diaria.
         </motion.p>
 
         {/* VERSIÓN MOBILE/TABLET */}
