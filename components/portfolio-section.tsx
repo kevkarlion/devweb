@@ -77,7 +77,7 @@ export function ProcessTimeline() {
           Nuestra <br /> metodología
         </motion.h2>
 
-        <motion.h2
+        <motion.h3
           className="text-3xl lg:text-4xl font-bold text-white leading-tight"
           style={{ fontFamily: "var(--font-titles)" }}
           initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export function ProcessTimeline() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           Diseñada para tu <span className="text-primary-gradient">éxito</span>
-        </motion.h2>
+        </motion.h3>
 
         <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-16"></div>
 

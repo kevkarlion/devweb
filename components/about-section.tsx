@@ -125,7 +125,7 @@ export function AboutSection() {
           Sobre nosotros
         </motion.h2>
 
-        <motion.h2
+        <motion.h3
           className="text-3xl lg:text-4xl font-bold text-white leading-tight"
           style={{ fontFamily: "var(--font-titles)" }}
           initial={{ opacity: 0, y: 20 }}
@@ -133,7 +133,7 @@ export function AboutSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           Quién está detrás del <span className="text-primary-gradient">código</span>
-        </motion.h2>
+        </motion.h3>
 
         <div className="flex justify-center self-center items-center border border-white/60 w-[50%] md:w-[32%] lg:w-[18%] mb-12 mt-4"></div>
 
@@ -339,12 +339,12 @@ export function AboutSection() {
 
               {/* Nombre y profesión */}
               <div className="bg-[#0D0D0D] border-[#434343] border rounded-lg p-3 mb-4 w-full">
-                <h2 
+                <h4 
                   className="font-bold text-lg text-neutral-300"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   Kevin Riquelme
-                </h2>
+                </h4>
                 <p 
                   className="font-light text-base text-neutral-300"
                   style={{ fontFamily: "var(--font-body)" }}
@@ -582,12 +582,12 @@ export function AboutSection() {
               <div className="lg:w-[54%] flex flex-col">
                 {/* Rectángulo con nombre y profesión */}
                 <div className="bg-[#323232] border rounded-lg p-2 mb-2 w-[95%] mt-8">
-                  <h2 
+                  <h4 
                     className="font-bold text-lg text-neutral-300 text-center"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     Kevin Riquelme
-                  </h2>
+                  </h4>
                   <p 
                     className="font-medium text-base text-neutral-300 text-center"
                     style={{ fontFamily: "var(--font-body)" }}

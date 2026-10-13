@@ -111,7 +111,7 @@ export function ServicesSection() {
           </motion.h2>
 
           {/* Subtítulo h2 */}
-          <motion.h2
+          <motion.h3
             className="text-2xl md:text-3xl font-bold text-white text-center mb-8"
             style={{ fontFamily: "var(--font-titles)" }}
             initial={{ opacity: 0, y: 20 }}
@@ -119,7 +119,7 @@ export function ServicesSection() {
             transition={{ duration: 0.6, delay: 0.25 }}
           >
             Construidas a la medida de tu operación
-          </motion.h2>
+          </motion.h3>
 
           {/* Divider line */}
           <motion.div

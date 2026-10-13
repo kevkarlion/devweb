@@ -160,7 +160,7 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2
+            <h3
               className="text-3xl lg:text-4xl font-bold text-white leading-tight"
               style={{ fontFamily: "var(--font-titles)" }}
             >
@@ -168,7 +168,7 @@ export function ContactSection() {
               <span className="text-primary-gradient">
                 automatizar.
               </span>
-            </h2>
+            </h3>
 
             <p
               className="text-neutral-300 text-base leading-relaxed text-left"
