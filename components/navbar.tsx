@@ -63,7 +63,7 @@ const homeSections: NavSection = {
     { name: "Tecnología en acción", href: "/#tecnologia" },
     { name: "Rubros y zonas", href: "/#hubs" },
     { name: "Portfolio", href: "/#portfolio" },
-    { name: "Nosotros", href: "/#nosotros" },
+    { name: "Sobre Mi", href: "/#sobre-mi" },
     { name: "Sistemas", href: "/#sistemas" },
     { name: "Metodología", href: "/#metodologia" },
     { name: "Preguntas frecuentes", href: "/#faq" },
@@ -73,7 +73,7 @@ const homeSections: NavSection = {
 
 const simpleItems: NavItem[] = [
   { name: "Inicio", href: "/" },
-  { name: "Nosotros", href: "/#nosotros" },
+  { name: "Sobre Mi", href: "/#sobre-mi" },
   { name: "Contacto", href: "/#contacto" },
 ];
 
@@ -198,7 +198,7 @@ export function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className={`${linkClasses} ${item.name === "Nosotros" ? "hidden lg:inline-block" : ""}`}
+                className={`${linkClasses} ${item.name === "Sobre Mi" ? "hidden lg:inline-block" : ""}`}
               >
                 {item.name}
                 <motion.span
