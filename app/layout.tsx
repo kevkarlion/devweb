@@ -33,11 +33,11 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export const metadata: Metadata = {
   title: {
     default:
-      "Software a medida para operación industrial | Devweb",
+      "Páginas Web, Software a Medida y CRM con IA | Devweb Patagonia",
     template: "%s | Devweb Patagonia",
   },
   description:
-    "Software a medida, CRM con IA y dashboards para la industria en Neuquén y Vaca Muerta. Automatizamos cotizaciones y reportes. Solicite diagnóstico técnico.",
+    "Desarrollo de páginas web, software a medida, CRM y chatbots con IA en Neuquén y Río Negro. Integra IA para automatizar tu negocio. Solicite diagnóstico.",
   keywords: [
     "software a medida neuquén",
     "crm con ia para empresas de servicios",
