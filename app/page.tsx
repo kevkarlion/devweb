@@ -3,6 +3,8 @@ import { PainPointsSection } from "@/components/pain-points-section"
 import { AboutSection } from "@/components/about-section"
 import { ServicesSection } from "@/components/services-section"
 import { ShowcaseSection } from "@/components/showcase-section"
+import { AutomationBanner } from "@/components/automation-banner"
+import { BrandsMarquee } from "@/components/brands-marquee"
 import { SoftwareSystemsSection } from "@/components/software-systems-section"
 import { MethodologySection } from "@/components/methodology-section"
 import { FaqSection } from "@/components/faq-section"
@@ -17,6 +19,8 @@ export default function Home() {
       <PainPointsSection />
       <ServicesSection />
       <ShowcaseSection />
+      <BrandsMarquee />
+      <AutomationBanner />
       <HomepageHubLinks />
       <PortfolioSection />
       <AboutSection />
